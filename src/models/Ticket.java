@@ -1,3 +1,4 @@
+package src.models;
 import java.time.LocalDateTime;
 public class Ticket {
     // Required model properties

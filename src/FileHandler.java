@@ -1,10 +1,11 @@
+package src;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 public class FileHandler {
     // Set the basic path for the string. Filename.csv will be appended to open files
-    private String path = "../records/";
-    FileHandler(){
+    private String path = "records/";
+    public FileHandler(){
         System.out.println("Constructing FileHandler");
     }
 

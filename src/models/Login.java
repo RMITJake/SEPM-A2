@@ -1,3 +1,4 @@
+package src.models;
 public class Login {
     // Required model properties
     int id;

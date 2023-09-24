@@ -1,5 +1,7 @@
-public class Menu {
-    public Menu(){
+package src.controllers;
+import src.FileHandler;
+public class MenuController {
+    public MenuController(){
         System.out.println("Constructing Menu");
 
         // Create the FileHandler

@@ -1,3 +1,4 @@
+package src.models;
 public class Technician {
     // Required model properties
     int id;

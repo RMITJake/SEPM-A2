@@ -1,8 +1,10 @@
+package src;
+import src.controllers.MenuController;
 public class MenuUI {
-    MenuUI(){
+    public MenuUI(){
         System.out.println("Constructing MenuUI");
         // Create an instance of the Menu backend and InputHandler
-        Menu menu = new Menu();
+        MenuController menu = new MenuController();
         InputHandler userInput = new InputHandler();
     }
 }
