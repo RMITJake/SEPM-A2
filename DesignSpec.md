@@ -1,8 +1,15 @@
-# Key Functions
+# Key Classes and Functions
+- MenuUI
+  Handles all frontend UI interactions with a user
+	- ShowRelevantText
+- Menu
+  Handles the menu logic and backend
 - InputHandler
+	Parses and interprets user inputs, directs the Menu class backend
   - GetInput
   - RegexMatch
 - File Handler
+  Handles the retreival and modification of records from the CSV files
   - ReadFile
 	- SearchId
 	- SearchEmail
@@ -28,7 +35,7 @@
 	- Archive (background task)
 
 ---
-# Classes
+# Models
 - Account
 	- Id
 	- Email (unique)
