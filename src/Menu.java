@@ -4,5 +4,6 @@ public class Menu {
 
         // Create the FileHandler
         FileHandler file = new FileHandler();
+        System.out.println(file.Read("Login"));
     }
 }
