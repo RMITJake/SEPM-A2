@@ -54,7 +54,7 @@ public class Ticket {
     }
 
     // Return model properties in CSV format
-    public getProperties(){
+    public String getProperties(){
         String details = "";
         details += this.id + ",";
         details += this.technicianAssignedId + ",";
@@ -62,7 +62,7 @@ public class Ticket {
         details += this.description + ",";
         details += this.severity + ",";
         details += this.creationDate + ",";
-        details += this.resolvedDateDate;
+        details += this.resolvedDate;
 
         return details;
     }

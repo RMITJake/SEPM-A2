@@ -25,7 +25,7 @@ public class Technician {
     }
 
     // Return model properties in CSV format
-    public getProperties(){
+    public String getProperties(){
         String details = "";
         details += this.id + ",";
         details += this.accountId + ",";

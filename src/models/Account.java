@@ -44,11 +44,11 @@ public class Account {
         return this.disabled;
     }
     public void setDisabled(boolean disabled){
-        this.disabled = dissabled
+        this.disabled = disabled;
     }
 
     // Return model properties in CSV format
-    public getProperties(){
+    public String getProperties(){
         String details = "";
         details += this.id + ",";
         details += this.email + ",";

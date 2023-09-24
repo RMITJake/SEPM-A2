@@ -34,7 +34,7 @@ public class TicketUpdate {
     }
 
     // Return model properties in CSV format
-    public getProperties(){
+    public String getProperties(){
         String details = "";
         details += this.id + ",";
         details += this.ticketId + ",";
