@@ -7,6 +7,8 @@
 - InputHandler
 	Parses and interprets user inputs, directs the Menu class backend
   - GetInput
+- ValidationHandler
+  Validates the user input and throws exceptions where needed
   - RegexMatch
 - File Handler
   Handles the retreival and modification of records from the CSV files
@@ -54,7 +56,7 @@
 - Ticket
 	- Id
 	- TechnicianAssignedId (FK Technician)
-	- AccountId (FK Account)
+	- RequesterId (FK Account)
 	- Description
 	- Severity
 	- CreationDate
@@ -62,6 +64,6 @@
 - TicketUpdate
 	- Id
 	- TicketId (FK Ticket)
-	- UpdateDescription
-	- UpdateDate
+	- Description
+	- UpdateTime
 

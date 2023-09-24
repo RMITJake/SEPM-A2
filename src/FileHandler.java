@@ -1,1 +1,5 @@
-public class FileHandler {}
+public class FileHandler {
+    FileHandler(){
+        System.out.println("Constructing FileHandler");
+    }
+}
