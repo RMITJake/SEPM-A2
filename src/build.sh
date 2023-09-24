@@ -1,2 +1,2 @@
 #!/bin/bash
-javac *.java models/*.java
+javac *.java models/*.java contollers/*.java
