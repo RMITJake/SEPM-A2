@@ -1,5 +1,6 @@
-package src;
+package src.views;
 import src.controllers.MenuController;
+import src.handlers.InputHandler;
 public class MenuUI {
     public MenuUI(){
         System.out.println("Constructing MenuUI");

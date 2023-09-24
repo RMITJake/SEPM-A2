@@ -1,5 +1,5 @@
 import java.io.*;
-import src.MenuUI;
+import src.views.MenuUI;
 
 class App {
     App(){

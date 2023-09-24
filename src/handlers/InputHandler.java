@@ -1,6 +1,6 @@
-package src;
+package src.handlers;
 public class InputHandler {
-    InputHandler(){
+    public InputHandler(){
         System.out.println("Constructing InputHandler");
     }
 }

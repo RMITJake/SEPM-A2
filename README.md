@@ -11,6 +11,12 @@ Each file will be a list of records reflecting the structure of it's associated 
 
 ---
 # User Guide
+## Compile and run on Linux
+1. In a terminal cd into the project root directory.
+2. In the terminal run the build.sh script in the project root directory.
+3. Run the command "java App" to start the program.
+
+## Compile and run on Windows
  
 ---
 # Deliverables:

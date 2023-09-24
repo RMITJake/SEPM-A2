@@ -1,2 +1,2 @@
 #!/bin/bash
-javac *.java src/*.java src/models/*.java src/controllers/*.java
+javac *.java src/controllers/*.java src/handlers/*.java src/models/*.java src/views/*.java
