@@ -1,5 +1,6 @@
 package src.models;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 public class Account {
     // Required model properties
     int id;
@@ -40,6 +41,10 @@ public class Account {
     }
     public void setCreationDate(LocalDateTime creationDate){
         this.creationDate = creationDate;
+    }
+    public void setCreationDateString(String creationDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-ddThh:mm:ss");
+        this.creationDate = LocalDateTime.parse(creationDate, formatter);
     }
     public boolean getDisabled(){
         return this.disabled;

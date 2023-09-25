@@ -2,18 +2,22 @@ package src.controllers;
 import src.handlers.*;
 import src.views.MenuUI;
 import src.models.Account;
+import src.models.Technician;
 public class MenuController {
     // Create the MenuUI, InputHandler, LoginController, TicketController
     MenuUI ui = new MenuUI();
     InputHandler input = new InputHandler();
     LoginController login = new LoginController();
     TicketController ticket = new TicketController();
+    AccountController account = new AccountController();
+    TechnicianController technician = new TechnicianController();
 
     // Keeps track of if the logged in account is a technician or not
     private int accountType = 0;
 
     // Keeps track of the logged in user
-    private Account currentUser = new Account();
+    public Account currentUser = new Account();
+    public Technician currentTechnician = new Technician();
 
     public MenuController(){
         System.out.println("Constructing MenuController");
@@ -31,10 +35,15 @@ public class MenuController {
             String password = input.getSecureInput();
 
             // Login function
-            accountType = login.VerifyLogin(accountId, password);
-            if(accountType != 0){
-                // set current user up as an object for easy reuse
-                currentUser.setId(Integer.parseInt(accountId));
+            currentUser = login.VerifyLogin(accountId, password);
+            if(currentUser != null){
+                System.out.println("CurrentUser: " + currentUser.getProperties());
+            }
+
+            // Check if user is a technician or not
+            currentTechnician = technician.getTechnician(currentUser.getId());
+            if(currentTechnician != null){
+                System.out.println("CurrentTechnician: " + currentTechnician.getProperties());
             }
         }
     }

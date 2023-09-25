@@ -2,9 +2,12 @@ package src.controllers;
 import java.util.ArrayList;
 import src.models.Login;
 import src.handlers.FileHandler;
+import src.controllers.AccountController;
+import src.models.Account;
 public class LoginController {
     private Login testLogin = new Login();
     private FileHandler file = new FileHandler();
+    private Account currentUser = new Account();
     public LoginController(){
         System.out.println("Constructing LoginController");
 
@@ -17,20 +20,28 @@ public class LoginController {
         testLogin.setPassword("1234");
     }
 
-    public int VerifyLogin(String id, String password){
+    public Account VerifyLogin(String id, String password){
+        // loginTable temporarily stores the contents of file.Read()
         ArrayList<String> loginTable = file.Read("Login");
+        // Login object which temporarily holds data to be checked
         Login checkIndex = new Login();
         for(int index=0; index < loginTable.size(); index++) {
             // split the current string into chunks
-            String[] indexArray = loginTable.get(index).split(",", -1);
-            checkIndex.setId(Integer.parseInt(indexArray[0]));
-            checkIndex.setAccountId(Integer.parseInt(indexArray[1]));
-            checkIndex.setPassword(indexArray[2]);
+            String[] indexDetails = loginTable.get(index).split(",", -1);
+
+            // set the account properties with the split data
+            checkIndex.setId(Integer.parseInt(indexDetails[0]));
+            checkIndex.setAccountId(Integer.parseInt(indexDetails[1]));
+            checkIndex.setPassword(indexDetails[2]);
+
+            // compare password with the extracted password
             if (password.equals(checkIndex.getPassword())) {
-                System.out.println("Logged In!");
-                return 2;
+                // Delcaring a temporary account controller here as it should only be single use
+                AccountController temporaryController = new AccountController();
+                currentUser = temporaryController.getAccount(checkIndex.getAccountId());
+                return currentUser;
             }
         }
-        return 0;
+        return null;
     }
 }
