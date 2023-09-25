@@ -19,8 +19,9 @@ public class InputHandler {
         return input;
     }
 
+    // Get input hide the input from the UI
     public String getSecureInput(){
-        input = console.readPassword().toString();
+        input = String.valueOf(console.readPassword());
         return input;
     }
 }
