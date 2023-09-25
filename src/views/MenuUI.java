@@ -26,11 +26,18 @@ public class MenuUI {
         System.out.print(uiText);
     }
 
-    public void MainMenu(){
+    // The techOptions input dependency controls if technician commands are visible
+    public void MainMenu(int techOptions){
         // Main menu
         uiText = "------------------------------\n";
         uiText += "--------  Main Menu  ---------\n";
         uiText += "------------------------------\n";
+        uiText += "[C]reate a new ticket\n";
+        if(techOptions == 2){
+            uiText += "[M]y Open Tickets\n";
+        }
+        uiText += "[L]ogout\n";
+        uiText += "[E]xit\n";
         System.out.print(uiText);
     }
 }

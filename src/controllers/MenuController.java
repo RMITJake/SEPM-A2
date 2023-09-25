@@ -7,7 +7,8 @@ public class MenuController {
     InputHandler input = new InputHandler();
     LoginController login = new LoginController();
 
-    private boolean loggedIn = false;
+    // Keeps track of if the logged in account is a technician or not
+    private int accountType = 0;
 
     public MenuController(){
         System.out.println("Constructing MenuController");
@@ -17,7 +18,7 @@ public class MenuController {
     }
 
     public void LoginLoop(){
-        while(!loggedIn){
+        while(accountType == 0){
             // Show login prompts and get+validate input
             ui.LoginPrompt();
             String accountId = input.getInput();
@@ -25,14 +26,14 @@ public class MenuController {
             String password = input.getSecureInput();
 
             // Login function
-            loggedIn = login.VerifyLogin(accountId, password);
+            accountType = login.VerifyLogin(accountId, password);
         }
     }
 
     public void MainMenuLoop(){
         String menuOption = "";
-        while(!menuOption.equals("X")){
-            ui.MainMenu(); 
+        while(!menuOption.equals("E")){
+            ui.MainMenu(accountType); 
             menuOption = input.getInput();
         }
     }

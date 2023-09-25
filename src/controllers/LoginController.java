@@ -16,11 +16,11 @@ public class LoginController {
         testLogin.setPassword("1234");
     }
 
-    public boolean VerifyLogin(String id, String password){
+    public int VerifyLogin(String id, String password){
         if(password.equals(testLogin.getPassword().toString())){
             System.out.println("Logged In!");
-            return true;
+            return 2;
         }
-        return false;
+        return 0;
     }
 }
