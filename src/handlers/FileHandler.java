@@ -9,7 +9,7 @@ public class FileHandler {
         System.out.println("Constructing FileHandler");
     }
 
-    public void Write(String file){
+    public void Write(String file, String input){
         String workingPath = path + file + ".csv";
     }
 

@@ -1,6 +1,7 @@
 package src.controllers;
 import src.handlers.*;
 import src.views.MenuUI;
+import src.models.Account;
 public class MenuController {
     // Create the MenuUI, InputHandler, LoginController, TicketController
     MenuUI ui = new MenuUI();
@@ -10,6 +11,9 @@ public class MenuController {
 
     // Keeps track of if the logged in account is a technician or not
     private int accountType = 0;
+
+    // Keeps track of the logged in user
+    private Account currentUser = new Account();
 
     public MenuController(){
         System.out.println("Constructing MenuController");
@@ -28,6 +32,10 @@ public class MenuController {
 
             // Login function
             accountType = login.VerifyLogin(accountId, password);
+            if(accountType != 0){
+                // set current user up as an object for easy reuse
+                currentUser.setId(Integer.parseInt(accountId));
+            }
         }
     }
 
@@ -36,8 +44,8 @@ public class MenuController {
         while(!menuOption.equals("E")){
             ui.MainMenu(accountType); 
             menuOption = input.getInput();
-            if(menuOption.equals("M")){
-                ticket.OpenTickets();
+            if(menuOption.equals("C")){
+                ticket.CreateNewTicket(currentUser);
             }
         }
     }

@@ -1,8 +1,15 @@
 package src.controllers;
-import src.handlers.FileHandler;
+import src.handlers.*;
+import src.models.Account;
+import src.models.Ticket;
+import src.views.TicketUI;
+import java.time.LocalDateTime;
 public class TicketController {
     // TicketController will handle both the Ticket and TicketUpdate Models
     private FileHandler file = new FileHandler();
+    private InputHandler input = new InputHandler();
+    private TicketUI ui = new TicketUI();
+    private String userInput;
     public TicketController(){
         System.out.println("Constructing TicketController");
         
@@ -12,6 +19,30 @@ public class TicketController {
         System.out.println(file.Read("ArchivedTicket"));
     }
 
+    public void CreateNewTicket(Account currentUser){
+        Ticket newTicket = new Ticket();
+        // Next 2 to be calculated and assigned
+        newTicket.setId(5);
+        newTicket.setTechnicianAssignedId(1000);
+
+        newTicket.setRequesterId(currentUser.getId());
+
+        // Loop and validate this
+        ui.description();
+        userInput = input.getInput();
+        newTicket.setDescription(userInput);
+
+        // Loop and validate this
+        ui.severity();
+        userInput = input.getInput();
+        newTicket.setSeverity(userInput);
+
+        newTicket.setCreationDate(LocalDateTime.now());
+
+        // Show what will be saved to the csv
+        System.out.println("New ticket created");
+        System.out.println(newTicket.getProperties());
+    }
     public void OpenTickets(){
         System.out.println(file.Read("OpenTicket"));
     }
