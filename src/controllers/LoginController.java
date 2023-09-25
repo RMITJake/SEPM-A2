@@ -1,4 +1,5 @@
 package src.controllers;
+import java.util.ArrayList;
 import src.models.Login;
 import src.handlers.FileHandler;
 public class LoginController {
@@ -8,7 +9,7 @@ public class LoginController {
         System.out.println("Constructing LoginController");
 
         // Test the file handler
-        System.out.println(file.Read("Login"));
+        file.Read("Login");
 
         // Populate the testLogin model
         testLogin.setId(1);
@@ -17,9 +18,18 @@ public class LoginController {
     }
 
     public int VerifyLogin(String id, String password){
-        if(password.equals(testLogin.getPassword().toString())){
-            System.out.println("Logged In!");
-            return 2;
+        ArrayList<String> loginTable = file.Read("Login");
+        Login checkIndex = new Login();
+        for(int index=0; index < loginTable.size(); index++) {
+            // split the current string into chunks
+            String[] indexArray = loginTable.get(index).split(",", -1);
+            checkIndex.setId(Integer.parseInt(indexArray[0]));
+            checkIndex.setAccountId(Integer.parseInt(indexArray[1]));
+            checkIndex.setPassword(indexArray[2]);
+            if (password.equals(checkIndex.getPassword())) {
+                System.out.println("Logged In!");
+                return 2;
+            }
         }
         return 0;
     }

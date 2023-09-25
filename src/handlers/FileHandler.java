@@ -2,6 +2,7 @@ package src.handlers;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 public class FileHandler {
     // Set the basic path for the string. Filename.csv will be appended to open files
     private String path = "records/";
@@ -13,11 +14,11 @@ public class FileHandler {
         String workingPath = path + file + ".csv";
     }
 
-    public String Read(String file){
+    public ArrayList<String> Read(String file){
         // Add the input filename to the path so we can read a file
         String workingPath = path + file + ".csv";
         // Create a blank string to temporarily store the file contents which will be returned
-        String fileContents = "";
+        ArrayList<String> fileContents = new ArrayList<String>();
         // Similar to above fileContents but on a micro level per line basis
         String line;
         try {
@@ -28,8 +29,7 @@ public class FileHandler {
             while((line = reader.readLine()) != null)
             {
                 // Save the line to our fileContents string
-                fileContents += line;
-                fileContents += "\n";
+                fileContents.add(line);
             }
             // return the fileContents to be worked with in another part of the App
             return fileContents;
@@ -37,6 +37,6 @@ public class FileHandler {
             exception.printStackTrace();
         }
         // This will need to return something useful, currently returning a blank string for compilation purposes
-        return "";
+        return fileContents;
     }
 }

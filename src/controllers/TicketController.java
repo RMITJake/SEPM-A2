@@ -23,7 +23,7 @@ public class TicketController {
         Ticket newTicket = new Ticket();
         // Next 2 to be calculated and assigned
         newTicket.setId(5);
-        newTicket.setTechnicianAssignedId(1000);
+        newTicket.setTechnicianAssignedId(assignTechnician());
 
         newTicket.setRequesterId(currentUser.getId());
 
@@ -45,5 +45,11 @@ public class TicketController {
     }
     public void OpenTickets(){
         System.out.println(file.Read("OpenTicket"));
+    }
+
+    private int assignTechnician(){
+        // read through the ticket table and count which tech has which tickets
+        // return the technician id with the least tickets
+        return 1000;
     }
 }
