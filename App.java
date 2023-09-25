@@ -6,6 +6,7 @@ class App {
         System.out.println("Starting Program");
         // Create an instance of the MenuUI frontend
         MenuController menu = new MenuController();
+        menu.LoginLoop();
     }
     public static void main(String[] args){
         // Run the app
