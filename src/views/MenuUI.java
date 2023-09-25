@@ -25,4 +25,12 @@ public class MenuUI {
         uiText = "Enter your password: ";
         System.out.print(uiText);
     }
+
+    public void MainMenu(){
+        // Main menu
+        uiText = "------------------------------\n";
+        uiText += "--------  Main Menu  ---------\n";
+        uiText += "------------------------------\n";
+        System.out.print(uiText);
+    }
 }

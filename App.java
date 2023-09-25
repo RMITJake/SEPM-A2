@@ -7,6 +7,7 @@ class App {
         // Create an instance of the MenuUI frontend
         MenuController menu = new MenuController();
         menu.LoginLoop();
+        menu.MainMenuLoop();
     }
     public static void main(String[] args){
         // Run the app

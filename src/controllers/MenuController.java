@@ -28,4 +28,12 @@ public class MenuController {
             loggedIn = login.VerifyLogin(accountId, password);
         }
     }
+
+    public void MainMenuLoop(){
+        String menuOption = "";
+        while(!menuOption.equals("X")){
+            ui.MainMenu(); 
+            menuOption = input.getInput();
+        }
+    }
 }
