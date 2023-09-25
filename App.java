@@ -1,11 +1,11 @@
 import java.io.*;
-import src.views.MenuUI;
+import src.controllers.MenuController;
 
 class App {
     App(){
         System.out.println("Starting Program");
         // Create an instance of the MenuUI frontend
-        MenuUI menuUI = new MenuUI();
+        MenuController menu = new MenuController();
     }
     public static void main(String[] args){
         // Run the app

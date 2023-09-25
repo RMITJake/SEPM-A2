@@ -28,3 +28,11 @@ Each file will be a list of records reflecting the structure of it's associated 
 - JAVA only
 - No SQL
 - No persistent data
+
+---
+# Action Plan
+1. LoginUI > LoginFunction
+2. MenuUI > OpenTicket
+3. UpdateTicket
+4. CloseTicket
+5. ArchiveTicket
