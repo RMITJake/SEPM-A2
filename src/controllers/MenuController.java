@@ -27,7 +27,8 @@ public class MenuController {
     }
 
     public void LoginLoop(){
-        while(accountType == 0){
+        currentUser.setId(0);
+        while(currentUser.getId() == 0){
             // Show login prompts and get+validate input
             ui.LoginPrompt();
             String accountId = input.getInput();
@@ -51,7 +52,7 @@ public class MenuController {
     public void MainMenuLoop(){
         String menuOption = "";
         while(!menuOption.equals("E")){
-            ui.MainMenu(accountType); 
+            ui.MainMenu(currentTechnician.getId()); 
             menuOption = input.getInput();
             if(menuOption.equals("C")){
                 ticket.CreateNewTicket(currentUser);
