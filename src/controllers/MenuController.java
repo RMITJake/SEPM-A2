@@ -2,10 +2,11 @@ package src.controllers;
 import src.handlers.*;
 import src.views.MenuUI;
 public class MenuController {
-    // Create the MenuUI, and InputHandler
+    // Create the MenuUI, InputHandler, LoginController, TicketController
     MenuUI ui = new MenuUI();
     InputHandler input = new InputHandler();
     LoginController login = new LoginController();
+    TicketController ticket = new TicketController();
 
     // Keeps track of if the logged in account is a technician or not
     private int accountType = 0;
@@ -35,6 +36,9 @@ public class MenuController {
         while(!menuOption.equals("E")){
             ui.MainMenu(accountType); 
             menuOption = input.getInput();
+            if(menuOption.equals("M")){
+                ticket.OpenTickets();
+            }
         }
     }
 }

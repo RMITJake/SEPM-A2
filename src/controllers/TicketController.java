@@ -7,7 +7,12 @@ public class TicketController {
         System.out.println("Constructing TicketController");
         
         // Test the file handler
-        System.out.println(file.Read("Ticket"));
+        System.out.println(file.Read("OpenTicket"));
         System.out.println(file.Read("TicketUpdate"));
+        System.out.println(file.Read("ArchivedTicket"));
+    }
+
+    public void OpenTickets(){
+        System.out.println(file.Read("OpenTicket"));
     }
 }
