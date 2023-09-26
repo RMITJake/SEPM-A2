@@ -27,8 +27,6 @@ public class MenuController {
     }
 
     public void LoginLoop(){
-        currentUser.setId(0);
-        currentTechnician.setId(0);
         while(currentUser.getId() == 0){
             // Show login prompts and get+validate input
             ui.LoginPrompt();

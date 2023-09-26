@@ -42,6 +42,7 @@ public class LoginController {
                 return currentUser;
             }
         }
-        return null;
+        currentUser.setId(0);
+        return currentUser;
     }
 }

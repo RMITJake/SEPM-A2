@@ -35,6 +35,8 @@ public class AccountController {
                 return currentAccount;
             }
         }
-        return null;
+
+        currentAccount.setId(0);
+        return currentAccount;
     }
 }
