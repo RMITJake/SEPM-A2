@@ -94,15 +94,17 @@ public class TicketController {
         // Read through the technician table to get all the techIds
         // Read through the open tickets table and save all the tech cases to an array
         ArrayList<String> technicianTable = file.Read("Technician");
-        ArrayList<Technician> technicianList = new ArrayList<Technician>();
-        Technician newTechnician = new Technician();
+        ArrayList<Integer> technicianList = new ArrayList<Integer>();
         String[] technicianString;
+        int technicianId;
         for(int index=0; index < technicianTable.size(); index++){
             technicianString = technicianTable.get(index).split(",",-1);
-            newTechnician.setId(Integer.parseInt(technicianString[0]));
-            newTechnician.setAccountId(Integer.parseInt(technicianString[1]));
-            newTechnician.setLevel(Integer.parseInt(technicianString[2]));
-            technicianList.add(newTechnician);
+            technicianId = Integer.parseInt(technicianString[0]);
+            technicianList.add(technicianId);
+        }
+
+        for(int index=0; index < technicianList.size(); index++){
+            System.out.println(technicianList.get(index));
         }
 
         ArrayList<Ticket> openTicketList = getOpenTicketList();
@@ -111,22 +113,26 @@ public class TicketController {
         for(int technicianIndex=0; technicianIndex < technicianList.size(); technicianIndex++){
             caseCount = 0;
             for(int ticketIndex=0; ticketIndex < openTicketList.size(); ticketIndex++){
-                if(openTicketList.get(ticketIndex).getTechnicianAssignedId() == technicianList.get(technicianIndex).getId()){
+                System.out.print("technician number: " + technicianList.get(technicianIndex));
+                System.out.println("ticket assigned: " + openTicketList.get(ticketIndex).getTechnicianAssignedId());
+                if(openTicketList.get(ticketIndex).getTechnicianAssignedId() == technicianList.get(technicianIndex)){
+                    System.out.println("found case");
                     caseCount++;
                 }
             }
             technicianCaseCount.add(caseCount);
         }
+        System.out.println(technicianList.get(0) + " " + technicianCaseCount.get(0));
 
         int assignedTechnicianIndex = 0;
         // checking for -1 in this loop stops IndexOutOfBounds
         for(int caseCountIndex=0; caseCountIndex < technicianCaseCount.size()-1; caseCountIndex++){
-            if(assignedTechnicianIndex < technicianCaseCount.get(caseCountIndex)){
+            if(assignedTechnicianIndex <= technicianCaseCount.get(caseCountIndex)){
                 assignedTechnicianIndex = caseCountIndex;
             }
         }
 
-        return technicianList.get(assignedTechnicianIndex).getId();
+        return technicianList.get(assignedTechnicianIndex);
     }
 
     // Functions needed
