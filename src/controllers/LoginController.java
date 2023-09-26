@@ -13,14 +13,10 @@ public class LoginController {
 
         // Test the file handler
         file.Read("Login");
-
-        // Populate the testLogin model
-        testLogin.setId(1);
-        testLogin.setAccountId(1000);
-        testLogin.setPassword("1234");
+        file.Read("Account");
     }
 
-    public Account VerifyLogin(String id, String password){
+    public Account VerifyLogin(String accountId, String password){
         // loginTable temporarily stores the contents of file.Read()
         ArrayList<String> loginTable = file.Read("Login");
         // Login object which temporarily holds data to be checked
@@ -35,7 +31,7 @@ public class LoginController {
             checkIndex.setPassword(indexDetails[2]);
 
             // compare password with the extracted password
-            if (password.equals(checkIndex.getPassword())) {
+            if (Integer.parseInt(accountId) == checkIndex.getAccountId() && password.equals(checkIndex.getPassword())) {
                 // Delcaring a temporary account controller here as it should only be single use
                 AccountController temporaryController = new AccountController();
                 currentUser = temporaryController.getAccountById(checkIndex.getAccountId());
