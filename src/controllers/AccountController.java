@@ -13,7 +13,7 @@ public class AccountController {
         System.out.println(file.Read("Account"));
     }
 
-    public Account getAccount(int accountId){
+    public Account getAccountById(int accountId){
         // accountTable arraylist to store the file contents
         ArrayList<String> accountTable = file.Read("Account");
         // Account object to temporarily store account details

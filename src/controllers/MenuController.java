@@ -38,15 +38,9 @@ public class MenuController {
 
             // Login function
             currentUser = login.VerifyLogin(accountId, password);
-            if(currentUser != null){
-                System.out.println("CurrentUser: " + currentUser.getProperties());
-            }
 
             // Check if user is a technician or not
-            currentTechnician = technician.getTechnician(currentUser.getId());
-            if(currentTechnician.getId() != 0){
-                System.out.println("CurrentTechnician: " + currentTechnician.getProperties());
-            }
+            currentTechnician = technician.getTechnicianById(currentUser.getId());
         }
     }
 

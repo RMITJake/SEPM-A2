@@ -38,7 +38,7 @@ public class LoginController {
             if (password.equals(checkIndex.getPassword())) {
                 // Delcaring a temporary account controller here as it should only be single use
                 AccountController temporaryController = new AccountController();
-                currentUser = temporaryController.getAccount(checkIndex.getAccountId());
+                currentUser = temporaryController.getAccountById(checkIndex.getAccountId());
                 return currentUser;
             }
         }

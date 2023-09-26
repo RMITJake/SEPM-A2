@@ -11,7 +11,7 @@ public class TechnicianController {
         System.out.println(file.Read("Technician"));
     }
 
-    public Technician getTechnician(int accountId){
+    public Technician getTechnicianById(int accountId){
         // accountTable arraylist to store the file contents
         ArrayList<String> technicianTable = file.Read("Technician");
         // Account object to temporarily store account details
