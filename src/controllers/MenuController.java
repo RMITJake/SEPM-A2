@@ -50,6 +50,7 @@ public class MenuController {
             if(menuOption.equals("C")){
                 ticket.CreateNewTicket(currentUser);
             }
+            menuOption = "";
         }
     }
 }

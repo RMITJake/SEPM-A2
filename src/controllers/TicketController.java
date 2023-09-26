@@ -4,6 +4,7 @@ import src.models.Account;
 import src.models.Ticket;
 import src.views.TicketUI;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 public class TicketController {
     // TicketController will handle both the Ticket and TicketUpdate Models
     private FileHandler file = new FileHandler();
@@ -22,20 +23,28 @@ public class TicketController {
     public void CreateNewTicket(Account currentUser){
         Ticket newTicket = new Ticket();
         // Next 2 to be calculated and assigned
-        newTicket.setId(5);
+        newTicket.setId(getNewestTicket().getId()+1);
         newTicket.setTechnicianAssignedId(assignTechnician());
 
         newTicket.setRequesterId(currentUser.getId());
 
         // Loop and validate this
-        ui.description();
-        userInput = input.getInput();
-        newTicket.setDescription(userInput);
+        boolean confirmDetails = false;
+        while(!confirmDetails){
+            ui.description();
+            userInput = input.getInput();
+            newTicket.setDescription(userInput);
 
-        // Loop and validate this
-        ui.severity();
-        userInput = input.getInput();
-        newTicket.setSeverity(userInput);
+            // Loop and validate this
+            ui.severity();
+            userInput = input.getInput();
+            newTicket.setSeverity(userInput);
+
+            ui.confirm(newTicket.getRequesterId(), newTicket.getDescription(), newTicket.getSeverity());
+            if(input.getInput().equals("y")){
+                confirmDetails = true;
+            }
+        }
 
         newTicket.setCreationDate(LocalDateTime.now());
 
@@ -43,8 +52,24 @@ public class TicketController {
         System.out.println("New ticket created");
         System.out.println(newTicket.getProperties());
     }
+
     public void OpenTickets(){
         System.out.println(file.Read("OpenTicket"));
+    }
+
+    public Ticket getNewestTicket(){
+        ArrayList<String> openTicketTable = file.Read("OpenTicket");
+        String[] lastTicketInList = openTicketTable.get(openTicketTable.size()-1).split(",",-1);
+        Ticket newestTicket = new Ticket();
+        newestTicket.setId(Integer.parseInt(lastTicketInList[0]));
+        newestTicket.setTechnicianAssignedId(Integer.parseInt(lastTicketInList[1]));
+        newestTicket.setRequesterId(Integer.parseInt(lastTicketInList[2]));
+        newestTicket.setDescription(lastTicketInList[3]);
+        newestTicket.setSeverity(lastTicketInList[4]);
+        // newestTicket.setCreationDate();
+        // newestTicket.setResolvedDate();
+
+        return newestTicket;
     }
 
     private int assignTechnician(){
@@ -59,4 +84,5 @@ public class TicketController {
     // getAllTicketsByTechnicianId
     // getAllOpenTicketsByAccountId
     // getAllOpenTicketsByTechnicianId
+    // getLastTicket
 }
