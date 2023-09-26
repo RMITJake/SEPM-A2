@@ -52,4 +52,11 @@ public class TicketController {
         // return the technician id with the least tickets
         return 1000;
     }
+
+    // Functions needed
+    // getAllTickets
+    // getAllTicketsByAccountId
+    // getAllTicketsByTechnicianId
+    // getAllOpenTicketsByAccountId
+    // getAllOpenTicketsByTechnicianId
 }
