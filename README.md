@@ -31,8 +31,8 @@ Each file will be a list of records reflecting the structure of it's associated 
 
 ---
 # Action Plan
-1. LoginUI > LoginFunction
-2. MenuUI > OpenTicket
+1. DONE LoginUI > LoginFunction
+2. MenuUI > OpenTicket > need to save ticket to file and use LocalDateTime correctly
 3. UpdateTicket
 4. CloseTicket
 5. ArchiveTicket
