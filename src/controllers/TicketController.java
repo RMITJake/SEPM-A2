@@ -2,6 +2,7 @@ package src.controllers;
 import src.handlers.*;
 import src.models.Account;
 import src.models.Ticket;
+import src.models.Technician;
 import src.views.TicketUI;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class TicketController {
         Ticket newTicket = new Ticket();
         // Next 2 to be calculated and assigned
         newTicket.setId(getNewestTicket().getId()+1);
-        newTicket.setTechnicianAssignedId(assignTechnician());
+        newTicket.setTechnicianAssignedId(assignTechnicianByTicketCount());
 
         newTicket.setRequesterId(currentUser.getId());
 
@@ -53,8 +54,22 @@ public class TicketController {
         System.out.println(newTicket.getProperties());
     }
 
-    public void OpenTickets(){
-        System.out.println(file.Read("OpenTicket"));
+    public ArrayList<Ticket> getOpenTicketList(){
+        ArrayList<String> openTicketTable = file.Read("OpenTicket");
+        ArrayList<Ticket> openTicketList = new ArrayList<Ticket>();
+        Ticket openTicket = new Ticket();
+        for(int index=0; index < openTicketTable.size(); index++){
+            String[] openTicketString = openTicketTable.get(index).split(",",-1);
+            openTicket.setId(Integer.parseInt(openTicketString[0]));
+            openTicket.setTechnicianAssignedId(Integer.parseInt(openTicketString[1]));
+            openTicket.setRequesterId(Integer.parseInt(openTicketString[2]));
+            openTicket.setDescription(openTicketString[3]);
+            openTicket.setSeverity(openTicketString[4]);
+//            openTicket.setCreationDate();
+//            openTicket.setResolvedDate();
+            openTicketList.add(openTicket);
+        }
+        return openTicketList;
     }
 
     public Ticket getNewestTicket(){
@@ -72,16 +87,16 @@ public class TicketController {
         return newestTicket;
     }
 
-    private int assignTechnician(){
+    private int assignTechnicianByTicketCount(){
         // read through the ticket table and count which tech has which tickets
         // return the technician id with the least tickets
 
         // Read through the technician table to get all the techIds
         // Read through the open tickets table and save all the tech cases to an array
         ArrayList<String> technicianTable = file.Read("Technician");
-        ArrayList<Technician> technicianList = new ArrayList<Technician>;
+        ArrayList<Technician> technicianList = new ArrayList<Technician>();
         Technician newTechnician = new Technician();
-        String[] technicianString = "";
+        String[] technicianString;
         for(int index=0; index < technicianTable.size(); index++){
             technicianString = technicianTable.get(index).split(",",-1);
             newTechnician.setId(Integer.parseInt(technicianString[0]));
@@ -90,12 +105,28 @@ public class TicketController {
             technicianList.add(newTechnician);
         }
 
-        int caseCount = 0;
-        for(int index=0; index < technicianList.size(); index++){
-
+        ArrayList<Ticket> openTicketList = getOpenTicketList();
+        ArrayList<Integer> technicianCaseCount = new ArrayList<Integer>();
+        int caseCount;
+        for(int technicianIndex=0; technicianIndex < technicianList.size(); technicianIndex++){
+            caseCount = 0;
+            for(int ticketIndex=0; ticketIndex < openTicketList.size(); ticketIndex++){
+                if(openTicketList.get(ticketIndex).getTechnicianAssignedId() == technicianList.get(technicianIndex).getId()){
+                    caseCount++;
+                }
+            }
+            technicianCaseCount.add(caseCount);
         }
 
-        return 1000;
+        int assignedTechnicianIndex = 0;
+        // checking for -1 in this loop stops IndexOutOfBounds
+        for(int caseCountIndex=0; caseCountIndex < technicianCaseCount.size()-1; caseCountIndex++){
+            if(assignedTechnicianIndex < technicianCaseCount.get(caseCountIndex)){
+                assignedTechnicianIndex = caseCountIndex;
+            }
+        }
+
+        return technicianList.get(assignedTechnicianIndex).getId();
     }
 
     // Functions needed
