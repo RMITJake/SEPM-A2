@@ -75,6 +75,26 @@ public class TicketController {
     private int assignTechnician(){
         // read through the ticket table and count which tech has which tickets
         // return the technician id with the least tickets
+
+        // Read through the technician table to get all the techIds
+        // Read through the open tickets table and save all the tech cases to an array
+        ArrayList<String> technicianTable = file.Read("Technician");
+        ArrayList<Technician> technicianList = new ArrayList<Technician>;
+        Technician newTechnician = new Technician();
+        String[] technicianString = "";
+        for(int index=0; index < technicianTable.size(); index++){
+            technicianString = technicianTable.get(index).split(",",-1);
+            newTechnician.setId(Integer.parseInt(technicianString[0]));
+            newTechnician.setAccountId(Integer.parseInt(technicianString[1]));
+            newTechnician.setLevel(Integer.parseInt(technicianString[2]));
+            technicianList.add(newTechnician);
+        }
+
+        int caseCount = 0;
+        for(int index=0; index < technicianList.size(); index++){
+
+        }
+
         return 1000;
     }
 
