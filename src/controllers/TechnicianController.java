@@ -28,6 +28,10 @@ public class TechnicianController {
                 return currentTechnician;
             }
         }
-        return null;
+
+        currentTechnician.setId(0);
+        currentTechnician.setAccountId(0);
+        currentTechnician.setLevel(0);
+        return currentTechnician;
     }
 }

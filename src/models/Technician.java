@@ -8,14 +8,6 @@ public class Technician {
     // Blank default constructor
     public Technician(){}
 
-    // Secondary constructor to create empty technician
-    // Using as a work around to prevent null reference errors
-    public Technician(int id, int accountId, int level){
-        this.id = 0;
-        this.accountId = 0;
-        this.level = 0;
-    }
-
     // Getters and Setters
     public int getId(){
         return this.id;

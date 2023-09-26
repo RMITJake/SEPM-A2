@@ -44,9 +44,6 @@ public class MenuController {
 
             // Check if user is a technician or not
             currentTechnician = technician.getTechnician(currentUser.getId());
-            if(currentTechnician == null){
-                currentTechnician = new Technician(0, 0, 0);
-            }
             if(currentTechnician.getId() != 0){
                 System.out.println("CurrentTechnician: " + currentTechnician.getProperties());
             }
