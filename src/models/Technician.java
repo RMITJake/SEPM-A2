@@ -5,9 +5,6 @@ public class Technician {
     int accountId;
     int level;
 
-    // Blank default constructor
-    public Technician(){}
-
     // Getters and Setters
     public int getId(){
         return this.id;
