@@ -76,53 +76,62 @@ public class TicketController {
     }
 
     private int assignTechnicianByTicketCount(){
-        // read through the ticket table and count which tech has which tickets
-        // return the technician id with the least tickets
-
-        // Read through the technician table to get all the techIds
-        // Read through the open tickets table and save all the tech cases to an array
+        // Read Technician.csv into an array
         ArrayList<String> technicianTable = file.Read("Technician");
+        // Initialise a list to store the technicianIds extracted from the array
         ArrayList<Integer> technicianList = new ArrayList<Integer>();
+        // String to temporarily hold split Technician information
         String[] technicianString;
-        int technicianId;
+
+        // Loop through technicianTable
+        // Split the string into parts
+        // Save the technicianId to the list of technicians
         for(int index=0; index < technicianTable.size(); index++){
             technicianString = technicianTable.get(index).split(",",-1);
-            technicianId = Integer.parseInt(technicianString[0]);
-            technicianList.add(technicianId);
+            technicianList.add(Integer.parseInt(technicianString[0]));
         }
 
+        // Int to store the assigned technician
         int assignedTechnicianId = 0;
+        // Int to store the case count for the assigned technician
         int assignedTechnicianCaseCount = -1;
+        // Read the OpenTicket.csv to an array
         ArrayList<String> openTicketTable = file.Read("OpenTicket");
+        // Initialise an array to store the case counts
         ArrayList<Integer> technicianCaseCount = new ArrayList<Integer>();
+        // String to temporarily hold split OpenTicket information
         String[] openTicketString;
+        // Int to hold the case count for the technician being iterated over
         int caseCount;
+
+        // Iterate over the list of technicianIds
         for(int technicianIndex=0; technicianIndex < technicianList.size(); technicianIndex++){
+            // reset the case count for each tech
             caseCount = 0;
+            // Iterate over the open ticket list
             for(int caseIndex=0; caseIndex < openTicketTable.size(); caseIndex++){
+                // split the string to allow the technicianId to be extracted
                 openTicketString = openTicketTable.get(caseIndex).split(",",-1);
-                technicianId = Integer.parseInt(openTicketString[1]);
-                if(technicianList.get(technicianIndex) == technicianId){
+                // If the technicianId matches the current technicianId which is being iterated over, increase case count by 1
+                if(technicianList.get(technicianIndex) == Integer.parseInt(openTicketString[1])){
                     caseCount++;
                 }
             }
+
+            // Add the casecount to the list of case counts
             technicianCaseCount.add(caseCount);
+
+            // if the current number of cases is less than that of the currently assigned tech, then assign the tech with less cases
             if(caseCount < assignedTechnicianCaseCount || assignedTechnicianCaseCount == -1){
                 assignedTechnicianId = technicianList.get(technicianIndex);
                 assignedTechnicianCaseCount = caseCount;
             }
 
+            // print confirmation message
             System.out.println(technicianList.get(technicianIndex) + " " + technicianCaseCount.get(technicianIndex));
         }
 
+        // return the techId
         return assignedTechnicianId;
     }
-
-    // Functions needed
-    // getAllTickets
-    // getAllTicketsByAccountId
-    // getAllTicketsByTechnicianId
-    // getAllOpenTicketsByAccountId
-    // getAllOpenTicketsByTechnicianId
-    // getLastTicket
 }
