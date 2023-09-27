@@ -52,6 +52,7 @@ public class TicketController {
         // Show what will be saved to the csv
         System.out.println("New ticket created");
         System.out.println(newTicket.getProperties());
+        file.Write("OpenTicket", newTicket.getProperties());
     }
 
     public ArrayList<Ticket> getOpenTicketList(){
@@ -112,14 +113,6 @@ public class TicketController {
         int caseCount;
         for(int technicianIndex=0; technicianIndex < technicianList.size(); technicianIndex++){
             caseCount = 0;
-            for(int ticketIndex=0; ticketIndex < openTicketList.size(); ticketIndex++){
-                System.out.print("technician number: " + technicianList.get(technicianIndex));
-                System.out.println("ticket assigned: " + openTicketList.get(ticketIndex).getTechnicianAssignedId());
-                if(openTicketList.get(ticketIndex).getTechnicianAssignedId() == technicianList.get(technicianIndex)){
-                    System.out.println("found case");
-                    caseCount++;
-                }
-            }
             technicianCaseCount.add(caseCount);
         }
         System.out.println(technicianList.get(0) + " " + technicianCaseCount.get(0));

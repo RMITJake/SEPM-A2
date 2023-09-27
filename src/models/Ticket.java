@@ -63,7 +63,7 @@ public class Ticket {
         details += this.description + ",";
         details += this.severity + ",";
         details += this.creationDate + ",";
-        details += this.resolvedDate;
+        details += this.resolvedDate + "\r\n";
 
         return details;
     }

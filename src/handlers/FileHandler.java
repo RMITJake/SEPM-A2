@@ -1,6 +1,8 @@
 package src.handlers;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 public class FileHandler {
@@ -11,7 +13,15 @@ public class FileHandler {
     }
 
     public void Write(String file, String input){
+        // Add the input filename to the path so we can write to a file
         String workingPath = path + file + ".csv";
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(workingPath, true));
+            writer.append(input);
+            writer.close();
+        } catch (Exception ex) {
+            ex.getStackTrace();
+        }
     }
 
     public ArrayList<String> Read(String file){
