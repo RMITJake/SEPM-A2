@@ -4,7 +4,6 @@ import src.models.Login;
 import src.views.AccountUI;
 import src.handlers.*;
 import java.util.ArrayList;
-//temporary impot
 import java.time.LocalDateTime;
 public class AccountController {
     private FileHandler file = new FileHandler();
@@ -21,25 +20,32 @@ public class AccountController {
         // Get user input for needed properties
         boolean confirmDetails = false;
         while(!confirmDetails){
-            ui.Email();
-            userInput = input.getInput();
-
+            do{
+                ui.Email();
+                userInput = input.getInput();
+            } while (!validate.Email(userInput))
             newAccount.setEmail(userInput);
             
-            ui.FullName();
-            userInput = input.getInput();
+            do{
+                ui.FullName();
+                userInput = input.getInput();
+            } while (!validate.FullName(userInput));
             newAccount.setFullName(userInput);
             
-            ui.PhoneNumber();
-            userInput = input.getInput();
+            do{
+                ui.PhoneNumber();
+                userInput = input.getInput();
+            } while (!validate.PhoneNumber(userInput))
             newAccount.setPhoneNumber(Integer.parseInt(userInput));
 
             boolean passwordMatch = false;
             String password;
             String passwordConfirm;
             while(!passwordMatch){
+                do{
                 ui.Password();
                 password = input.getInput();
+                } while (!validate.Password(userInput));
                 
                 ui.PasswordConfirm();
                 passwordConfirm = input.getInput();

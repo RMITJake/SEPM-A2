@@ -24,4 +24,7 @@ public class ValidationHandler {
   public boolean PhoneNumber(String input){
     return true;
   }
+  public boolean Password(String input){
+    return true;
+  }
 }
