@@ -8,13 +8,6 @@ public class LoginController {
     private Login testLogin = new Login();
     private FileHandler file = new FileHandler();
     private Account currentUser = new Account();
-    public LoginController(){
-        System.out.println("Constructing LoginController");
-
-        // Test the file handler
-        file.Read("Login");
-        file.Read("Account");
-    }
 
     public Account VerifyLogin(String accountId, String password){
         // loginTable temporarily stores the contents of file.Read()

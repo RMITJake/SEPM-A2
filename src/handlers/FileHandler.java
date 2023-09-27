@@ -8,9 +8,6 @@ import java.util.ArrayList;
 public class FileHandler {
     // Set the basic path for the string. Filename.csv will be appended to open files
     private String path = "records/";
-    public FileHandler(){
-        System.out.println("Constructing FileHandler");
-    }
 
     public void Write(String file, String input){
         // Add the input filename to the path so we can write to a file

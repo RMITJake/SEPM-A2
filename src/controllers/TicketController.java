@@ -12,14 +12,6 @@ public class TicketController {
     private InputHandler input = new InputHandler();
     private TicketUI ui = new TicketUI();
     private String userInput;
-    public TicketController(){
-        System.out.println("Constructing TicketController");
-        
-        // Test the file handler
-        System.out.println(file.Read("OpenTicket"));
-        System.out.println(file.Read("TicketUpdate"));
-        System.out.println(file.Read("ArchivedTicket"));
-    }
 
     public void CreateNewTicket(Account currentUser){
         // Initialise ticket

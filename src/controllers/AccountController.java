@@ -6,12 +6,6 @@ import java.util.ArrayList;
 import java.time.LocalDateTime;
 public class AccountController {
     private FileHandler file = new FileHandler();
-    public AccountController(){
-        System.out.println("Constructing AccountController");
-                
-        // Test the file handler
-        System.out.println(file.Read("Account"));
-    }
 
     public Account getAccountById(int accountId){
         // accountTable arraylist to store the file contents

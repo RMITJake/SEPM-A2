@@ -9,10 +9,6 @@ public class InputHandler {
     // Create the Console object to obfuscate input for passwords
     Console console = System.console();
 
-    public InputHandler(){
-        System.out.println("Constructing InputHandler");
-    }
-
     // General getInput function
     public String getInput(){
         input = scn.nextLine();

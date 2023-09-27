@@ -20,10 +20,8 @@ public class MenuController {
     public Technician currentTechnician = new Technician();
 
     public MenuController(){
-        System.out.println("Constructing MenuController");
-
         // Print out the welcome message
-        ui.Welcome();
+        ui.WelcomeBanner();
     }
 
     public void LoginLoop(){

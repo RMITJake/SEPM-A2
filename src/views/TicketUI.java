@@ -1,9 +1,5 @@
 package src.views;
 public class TicketUI {
-    public TicketUI(){
-        System.out.println("Constructing TicketUI");
-    }
-
     public void description(){
         System.out.println("What is the issue? ");
     }

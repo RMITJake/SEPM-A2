@@ -2,11 +2,7 @@ package src.views;
 public class MenuUI {
     private String uiText;
 
-    public MenuUI(){
-        System.out.println("Constructing MenuUI");
-    }
-
-    public void Welcome(){
+    public void WelcomeBanner(){
         // Welcome prompt
         uiText = "------------------------------\n";
         uiText += "Sales Power Ticketing System\n";

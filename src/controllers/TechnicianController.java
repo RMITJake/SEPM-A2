@@ -4,12 +4,6 @@ import src.models.Technician;
 import java.util.ArrayList;
 public class TechnicianController {
     private FileHandler file = new FileHandler();
-    public TechnicianController(){
-        System.out.println("Constructing TechnicianController");
-                
-        // Test the file handler
-        System.out.println(file.Read("Technician"));
-    }
 
     public Technician getTechnicianById(int accountId){
         // accountTable arraylist to store the file contents
