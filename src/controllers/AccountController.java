@@ -111,7 +111,7 @@ public class AccountController {
     }
 
     public int setLoginId(){
-        // Functionally similar to getNewestTicket()
+        // Streamlined version of getNewestTicket to only return the need ID
         ArrayList<String> loginTable = file.Read("Login");
         String[] lastLoginProperties = loginTable.get(loginTable.size()-1).split(",",-1);
         return Integer.parseInt(lastLoginProperties[0]+1);
