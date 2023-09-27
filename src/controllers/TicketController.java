@@ -91,37 +91,31 @@ public class TicketController {
             technicianList.add(technicianId);
         }
 
+        int assignedTechnicianId = 0;
+        int assignedTechnicianCaseCount = -1;
         ArrayList<String> openTicketTable = file.Read("OpenTicket");
         ArrayList<Integer> technicianCaseCount = new ArrayList<Integer>();
         String[] openTicketString;
         int caseCount;
-        System.out.println("Checkin how many tickets a tech has");
         for(int technicianIndex=0; technicianIndex < technicianList.size(); technicianIndex++){
             caseCount = 0;
             for(int caseIndex=0; caseIndex < openTicketTable.size(); caseIndex++){
                 openTicketString = openTicketTable.get(caseIndex).split(",",-1);
                 technicianId = Integer.parseInt(openTicketString[1]);
-                System.out.print("technician is: " + technicianList.get(technicianIndex));
-                System.out.println(" ticket tech: " + openTicketTable.get(caseIndex).split(",",1));
                 if(technicianList.get(technicianIndex) == technicianId){
                     caseCount++;
                 }
             }
             technicianCaseCount.add(caseCount);
+            if(caseCount < assignedTechnicianCaseCount || assignedTechnicianCaseCount == -1){
+                assignedTechnicianId = technicianList.get(technicianIndex);
+                assignedTechnicianCaseCount = caseCount;
+            }
+
             System.out.println(technicianList.get(technicianIndex) + " " + technicianCaseCount.get(technicianIndex));
         }
 
-        int assignedTechnicianIndex = 0;
-        // checking for -1 in this loop stops IndexOutOfBounds
-        for(int caseCountIndex=0; caseCountIndex < technicianCaseCount.size()-1; caseCountIndex++){
-            if(assignedTechnicianIndex <= technicianCaseCount.get(caseCountIndex)){
-                assignedTechnicianIndex = caseCountIndex;
-            }
-        }
-
-        System.out.println("Assigning tecnician: " + technicianList.get(assignedTechnicianIndex));
-
-        return technicianList.get(assignedTechnicianIndex);
+        return assignedTechnicianId;
     }
 
     // Functions needed
