@@ -7,6 +7,7 @@ public class MenuController {
     // Create the MenuUI, InputHandler, LoginController, TicketController
     MenuUI ui = new MenuUI();
     InputHandler input = new InputHandler();
+    ValidationHandler validate = new ValidationHandler();
     LoginController login = new LoginController();
     TicketController ticket = new TicketController();
     AccountController account = new AccountController();
@@ -18,10 +19,23 @@ public class MenuController {
     // Keeps track of the logged in user
     public Account currentUser = new Account();
     public Technician currentTechnician = new Technician();
+    
+    // Keeps track of the menu option selected
+    String menuOption;
 
     public MenuController(){
         // Print out the welcome message
         ui.WelcomeBanner();
+    }
+
+    public String WelcomeLoop(){
+        do{
+            menuOption = "";
+            ui.WelcomePrompt();
+            menuOption = input.getInput();
+        } while (!validate.Welcome(menuOption));
+
+        return menuOption;
     }
 
     public void LoginLoop(){
@@ -41,7 +55,7 @@ public class MenuController {
     }
 
     public void MainMenuLoop(){
-        String menuOption = "";
+        menuOption = "";
         while(!menuOption.equals("E")){
             ui.MainMenu(currentTechnician.getId()); 
             menuOption = input.getInput();

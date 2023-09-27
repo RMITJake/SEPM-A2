@@ -10,6 +10,15 @@ public class MenuUI {
         System.out.println(uiText);
     }
 
+    public void WelcomePrompt(){
+        uiText = "Press the corresponding key in brackets to make a selection\n";
+        uiText += "[L]ogin\n";
+        uiText += "[C]reate an Account\n";
+        uiText += "[F]orgot Password\n";
+        uiText += "[E]xit\n";
+        System.out.println(uiText);
+    }
+
     public void LoginPrompt(){
         // Get users AccountId
         uiText = "Enter your acount number: ";

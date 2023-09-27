@@ -5,6 +5,7 @@ class App {
     App(){
         // Create an instance of the MenuUI frontend
         MenuController menu = new MenuController();
+        menu.WelcomeLoop();
         menu.LoginLoop();
         menu.MainMenuLoop();
     }
