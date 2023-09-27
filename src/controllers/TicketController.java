@@ -22,48 +22,53 @@ public class TicketController {
     }
 
     public void CreateNewTicket(Account currentUser){
+        // Initialise ticket
         Ticket newTicket = new Ticket();
-        // Next 2 to be calculated and assigned
-        newTicket.setId(getNewestTicket().getId()+1);
-
+        // Set the requesterId to the currentUserId
         newTicket.setRequesterId(currentUser.getId());
-
-        // Loop and validate this
+        
+        // Get user input for description and severity properties
         boolean confirmDetails = false;
         while(!confirmDetails){
             ui.description();
             userInput = input.getInput();
             newTicket.setDescription(userInput);
-
+            
             // Loop and validate this
             ui.severity();
             userInput = input.getInput();
             newTicket.setSeverity(userInput);
-
+            
             ui.confirm(newTicket.getRequesterId(), newTicket.getDescription(), newTicket.getSeverity());
             if(input.getInput().equals("y")){
                 confirmDetails = true;
             }
         }
-
+        
+        // Use getNewestTicket() to calculate the ticket Id
+        newTicket.setId(getNewestTicket().getId()+1);
+        // Use assignTechnicianByTicketCount() to calculate assigned tech
         newTicket.setTechnicianAssignedId(assignTechnicianByTicketCount());
+        // Set the creationDate to now
         newTicket.setCreationDate(LocalDateTime.now());
 
         // Show what will be saved to the csv
+        // Show ticket confirmation
         System.out.println("New ticket created");
+        // Show ticket details
         System.out.println(newTicket.getProperties());
+        // Write the ticket to OpenTicket.csv
         file.Write("OpenTicket", newTicket.getProperties());
     }
 
-    public ArrayList<String> getOpenTicketList(){
-        ArrayList<String> openTicketTable = file.Read("OpenTicket");
-        return openTicketTable;
-    }
-
     public Ticket getNewestTicket(){
+        // Read OpenTicket.csv into an array
         ArrayList<String> openTicketTable = file.Read("OpenTicket");
+        // write the last ticket in the open ticket array into it's own array for processing
         String[] lastTicketInList = openTicketTable.get(openTicketTable.size()-1).split(",",-1);
+        // Initialise an blank ticket
         Ticket newestTicket = new Ticket();
+        // Write the extracted ticket information to ticket properties
         newestTicket.setId(Integer.parseInt(lastTicketInList[0]));
         newestTicket.setTechnicianAssignedId(Integer.parseInt(lastTicketInList[1]));
         newestTicket.setRequesterId(Integer.parseInt(lastTicketInList[2]));
@@ -72,6 +77,7 @@ public class TicketController {
         // newestTicket.setCreationDate();
         // newestTicket.setResolvedDate();
 
+        // return the ticket
         return newestTicket;
     }
 
