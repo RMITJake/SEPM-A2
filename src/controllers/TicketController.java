@@ -25,7 +25,6 @@ public class TicketController {
         Ticket newTicket = new Ticket();
         // Next 2 to be calculated and assigned
         newTicket.setId(getNewestTicket().getId()+1);
-        newTicket.setTechnicianAssignedId(assignTechnicianByTicketCount());
 
         newTicket.setRequesterId(currentUser.getId());
 
@@ -47,6 +46,7 @@ public class TicketController {
             }
         }
 
+        newTicket.setTechnicianAssignedId(assignTechnicianByTicketCount());
         newTicket.setCreationDate(LocalDateTime.now());
 
         // Show what will be saved to the csv
@@ -55,22 +55,9 @@ public class TicketController {
         file.Write("OpenTicket", newTicket.getProperties());
     }
 
-    public ArrayList<Ticket> getOpenTicketList(){
+    public ArrayList<String> getOpenTicketList(){
         ArrayList<String> openTicketTable = file.Read("OpenTicket");
-        ArrayList<Ticket> openTicketList = new ArrayList<Ticket>();
-        Ticket openTicket = new Ticket();
-        for(int index=0; index < openTicketTable.size(); index++){
-            String[] openTicketString = openTicketTable.get(index).split(",",-1);
-            openTicket.setId(Integer.parseInt(openTicketString[0]));
-            openTicket.setTechnicianAssignedId(Integer.parseInt(openTicketString[1]));
-            openTicket.setRequesterId(Integer.parseInt(openTicketString[2]));
-            openTicket.setDescription(openTicketString[3]);
-            openTicket.setSeverity(openTicketString[4]);
-//            openTicket.setCreationDate();
-//            openTicket.setResolvedDate();
-            openTicketList.add(openTicket);
-        }
-        return openTicketList;
+        return openTicketTable;
     }
 
     public Ticket getNewestTicket(){
@@ -104,18 +91,25 @@ public class TicketController {
             technicianList.add(technicianId);
         }
 
-        for(int index=0; index < technicianList.size(); index++){
-            System.out.println(technicianList.get(index));
-        }
-
-        ArrayList<Ticket> openTicketList = getOpenTicketList();
+        ArrayList<String> openTicketTable = file.Read("OpenTicket");
         ArrayList<Integer> technicianCaseCount = new ArrayList<Integer>();
+        String[] openTicketString;
         int caseCount;
+        System.out.println("Checkin how many tickets a tech has");
         for(int technicianIndex=0; technicianIndex < technicianList.size(); technicianIndex++){
             caseCount = 0;
+            for(int caseIndex=0; caseIndex < openTicketTable.size(); caseIndex++){
+                openTicketString = openTicketTable.get(caseIndex).split(",",-1);
+                technicianId = Integer.parseInt(openTicketString[1]);
+                System.out.print("technician is: " + technicianList.get(technicianIndex));
+                System.out.println(" ticket tech: " + openTicketTable.get(caseIndex).split(",",1));
+                if(technicianList.get(technicianIndex) == technicianId){
+                    caseCount++;
+                }
+            }
             technicianCaseCount.add(caseCount);
+            System.out.println(technicianList.get(technicianIndex) + " " + technicianCaseCount.get(technicianIndex));
         }
-        System.out.println(technicianList.get(0) + " " + technicianCaseCount.get(0));
 
         int assignedTechnicianIndex = 0;
         // checking for -1 in this loop stops IndexOutOfBounds
@@ -124,6 +118,8 @@ public class TicketController {
                 assignedTechnicianIndex = caseCountIndex;
             }
         }
+
+        System.out.println("Assigning tecnician: " + technicianList.get(assignedTechnicianIndex));
 
         return technicianList.get(assignedTechnicianIndex);
     }
