@@ -1,3 +1,25 @@
+# Checklist
+1.
+[X] Create Account - Email, Full Name, Phone Number, Password
+[ ] Password regex
+[ ] Email uniqueness check
+
+2.
+[X] Sumbit a Ticket - description, severity, requires Login
+[ ] Set the ticket status to open
+[ ] Forgot Password
+
+3.
+[ ] Assign ticket by severity
+
+4.
+[X] Assign ticket by ticket count
+[ ] Assign ticket at random
+
+5.
+[ ]
+
+---
 # Key Classes and Functions
 - MenuUI
   Handles all frontend UI interactions with a user
