@@ -38,7 +38,15 @@ public class MenuController {
         return menuOption;
     }
 
-    public void LoginLoop(){
+    public void CreateUser(){
+        do{
+            menuOption = "";
+            account.CreateUser();
+            menuOption = input.getInput();
+        } while (!validate.CreateUser(menuOption));
+    }
+
+    public boolean LoginLoop(){
         while(currentUser.getId() == 0){
             // Show login prompts and get+validate input
             ui.LoginPrompt();
@@ -52,6 +60,7 @@ public class MenuController {
             // Check if user is a technician or not
             currentTechnician = technician.getTechnicianById(currentUser.getId());
         }
+        return true;
     }
 
     public void MainMenuLoop(){

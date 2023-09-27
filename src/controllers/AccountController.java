@@ -1,11 +1,74 @@
 package src.controllers;
 import src.models.Account;
-import src.handlers.FileHandler;
+import src.models.Login;
+import src.views.AccountUI;
+import src.handlers.*;
 import java.util.ArrayList;
 //temporary impot
 import java.time.LocalDateTime;
 public class AccountController {
     private FileHandler file = new FileHandler();
+    private InputHandler input = new InputHandler();
+    private ValidationHandler validate = new ValidationHandler();
+    private AccountUI ui = new AccountUI();
+    String userInput;
+
+    public void CreateUser(){
+        // Initialise account
+        Account newAccount = new Account();
+        Login newLogin = new Login();
+        
+        // Get user input for needed properties
+        boolean confirmDetails = false;
+        while(!confirmDetails){
+            ui.Email();
+            userInput = input.getInput();
+
+            newAccount.setEmail(userInput);
+            
+            ui.FullName();
+            userInput = input.getInput();
+            newAccount.setFullName(userInput);
+            
+            ui.PhoneNumber();
+            userInput = input.getInput();
+            newAccount.setPhoneNumber(Integer.parseInt(userInput));
+
+            boolean passwordMatch = false;
+            String password;
+            String passwordConfirm;
+            while(!passwordMatch){
+                ui.Password();
+                password = input.getInput();
+                
+                ui.PasswordConfirm();
+                passwordConfirm = input.getInput();
+                if(password.equals(passwordConfirm)){
+                    newLogin.setPassword(userInput);
+                    passwordMatch = true;
+                }
+            }
+            ui.Confirm(newAccount.getEmail(), newAccount.getFullName(), newAccount.getPhoneNumber());
+            if(input.getInput().equals("Y")){
+                newAccount.setId(getNewestAccount().getId()+1);
+                newAccount.setCreationDate(LocalDateTime.now());
+                newAccount.setDisabled(false);
+                newLogin.setId(setLoginId());
+                newLogin.setAccountId(newAccount.getId());
+                confirmDetails = true;
+            } else if (input.getInput().equals("C")){
+                newAccount = null;
+                confirmDetails = true;
+            }
+        }
+        
+        System.out.println("New account created");
+        System.out.println(newAccount.getProperties());
+        file.Write("Account", newAccount.getProperties()+"\r\n");
+        System.out.println("New login created");
+        System.out.println(newLogin.getProperties());
+        file.Write("Login", newLogin.getProperties()+"\r\n");
+    }
 
     public Account getAccountById(int accountId){
         // accountTable arraylist to store the file contents
@@ -21,9 +84,7 @@ public class AccountController {
                 currentAccount.setEmail(indexDetails[1]);
                 currentAccount.setFullName(indexDetails[2]);
                 currentAccount.setPhoneNumber(Integer.parseInt(indexDetails[3]));
-                // currentAccount.setCreationDateString(indexDetails[4]);
-                // placeholder
-                currentAccount.setCreationDate(LocalDateTime.now());
+                currentAccount.setCreationDate(LocalDateTime.parse(indexDetails[4]));
                 currentAccount.setDisabled(Boolean.parseBoolean(indexDetails[5]));
 
                 return currentAccount;
@@ -33,4 +94,27 @@ public class AccountController {
         currentAccount.setId(0);
         return currentAccount;
     }
+
+    public Account getNewestAccount(){
+        // Functionally similar to getNewestTicket()
+        ArrayList<String> accountTable = file.Read("Account");
+        String[] lastAccountInList = accountTable.get(accountTable.size()-1).split(",",-1);
+        Account newestAccount = new Account();
+        newestAccount.setId(Integer.parseInt(lastAccountInList[0]));
+        newestAccount.setEmail(lastAccountInList[1]);
+        newestAccount.setFullName(lastAccountInList[2]);
+        newestAccount.setPhoneNumber(Integer.parseInt(lastAccountInList[3]));
+        newestAccount.setCreationDate(LocalDateTime.parse(lastAccountInList[4]));
+        newestAccount.setDisabled(Boolean.parseBoolean(lastAccountInList[5]));
+
+        return newestAccount;
+    }
+
+    public int setLoginId(){
+        // Functionally similar to getNewestTicket()
+        ArrayList<String> loginTable = file.Read("Login");
+        String[] lastLoginProperties = loginTable.get(loginTable.size()-1).split(",",-1);
+        return Integer.parseInt(lastLoginProperties[0]+1);
+    }
+
 }

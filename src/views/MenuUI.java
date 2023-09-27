@@ -16,7 +16,8 @@ public class MenuUI {
         uiText += "[C]reate an Account\n";
         uiText += "[F]orgot Password\n";
         uiText += "[E]xit\n";
-        System.out.println(uiText);
+        uiText += "Selection: ";
+        System.out.print(uiText);
     }
 
     public void LoginPrompt(){
