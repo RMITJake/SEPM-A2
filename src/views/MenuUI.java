@@ -5,7 +5,7 @@ public class MenuUI {
     public void WelcomeBanner(){
         // Welcome prompt
         uiText = "------------------------------\n";
-        uiText += "Sales Power Ticketing System\n";
+        uiText += "    Cinco Ticketing System   \n";
         uiText += "------------------------------";
         System.out.println(uiText);
     }

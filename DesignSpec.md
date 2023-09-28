@@ -10,7 +10,7 @@
 [X] Forgot Password
 
 3.
-[ ] Assign ticket by severity
+[X] Assign ticket by severity
 
 4.
 [X] Assign ticket by ticket count
@@ -21,16 +21,16 @@
 
 6.
 [ ] Allow technicians to set the severity of a ticket, requires SelectTicket
-[ ] Escalate ticket
+[ ] Escalate ticket, requires SelectTicket
 
 7.
-[ ] Change ticket status
+[ ] Change ticket status, requires SelectTicket
 
 8.
 [ ] Move ticket from OpenTickets to ArchivedTickets after 24 hours
 
 9.
-[ ] Log in
+[X] Log in
 [ ] Staff - See my open tickets
 [ ] Tech - See all open tickets
 [ ] Tech - See all archived tickets
