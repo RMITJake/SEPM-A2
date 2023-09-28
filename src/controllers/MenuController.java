@@ -13,9 +13,6 @@ public class MenuController {
     AccountController account = new AccountController();
     TechnicianController technician = new TechnicianController();
 
-    // Keeps track of if the logged in account is a technician or not
-    private int accountType = 0;
-
     // Keeps track of the logged in user
     public Account currentUser = new Account();
     public Technician currentTechnician = new Technician();

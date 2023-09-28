@@ -38,6 +38,7 @@ public class FileHandler {
                 // Save the line to our fileContents string
                 fileContents.add(line);
             }
+            reader.close();
             // return the fileContents to be worked with in another part of the App
             return fileContents;
         } catch (IOException exception) {

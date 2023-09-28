@@ -2,10 +2,8 @@ package src.controllers;
 import java.util.ArrayList;
 import src.models.Login;
 import src.handlers.FileHandler;
-import src.controllers.AccountController;
 import src.models.Account;
 public class LoginController {
-    private Login testLogin = new Login();
     private FileHandler file = new FileHandler();
     private Account currentUser = new Account();
 

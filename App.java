@@ -1,4 +1,3 @@
-import java.io.*;
 import src.controllers.MenuController;
 
 class App {

@@ -2,7 +2,6 @@ package src.controllers;
 import src.handlers.*;
 import src.models.Account;
 import src.models.Ticket;
-import src.models.Technician;
 import src.views.TicketUI;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
