@@ -38,7 +38,7 @@ public class TicketController {
         }
         
         // Use getNewestTicket() to calculate the ticket Id
-        newTicket.setId(getNewestTicket().getId()+1);
+        newTicket.setId(GetNewestTicket().getId()+1);
         // Use assignTechnicianByTicketCount() to calculate assigned tech
         newTicket.setTechnicianAssignedId(AssignTechnician(newTicket.getSeverity()));
         // Set the ticket status to open
@@ -55,7 +55,7 @@ public class TicketController {
         file.Write("OpenTicket", newTicket.getProperties());
     }
 
-    public Ticket getNewestTicket(){
+    public Ticket GetNewestTicket(){
         // Read OpenTicket.csv into an array
         ArrayList<String> openTicketTable = file.Read("OpenTicket");
         // write the last ticket in the open ticket array into it's own array for processing
@@ -171,7 +171,7 @@ public class TicketController {
         newTicket.setRequesterId(1);
         newTicket.setDescription("Password Reset: " + email);
         newTicket.setSeverity("low");
-        newTicket.setId(getNewestTicket().getId()+1);
+        newTicket.setId(GetNewestTicket().getId()+1);
         newTicket.setTechnicianAssignedId(AssignTechnician(newTicket.getSeverity()));
         newTicket.setStatus("open");
         newTicket.setCreationDate(LocalDateTime.now());
