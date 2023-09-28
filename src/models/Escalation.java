@@ -22,7 +22,7 @@ public class Escalation {
         this.ticketId = ticketId;
     }
     public int getRequesterId(){
-        return this.requesterIdId;
+        return this.requesterId;
     }
     public void setRequesterId(int requesterId){
         this.requesterId = requesterId;
@@ -47,7 +47,7 @@ public class Escalation {
         details += this.id + ",";
         details += this.ticketId + ",";
         details += this.requesterId + ",";
-        details += this.description + ",";
+        details += this.reason + ",";
         details += this.updateTime;
 
         return details;

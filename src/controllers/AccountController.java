@@ -23,7 +23,7 @@ public class AccountController {
             do{
                 ui.Email();
                 userInput = input.getInput();
-            } while (!validate.Email(userInput))
+            } while (validate.Email(userInput));
             newAccount.setEmail(userInput);
             
             do{
@@ -35,7 +35,7 @@ public class AccountController {
             do{
                 ui.PhoneNumber();
                 userInput = input.getInput();
-            } while (!validate.PhoneNumber(userInput))
+            } while (!validate.PhoneNumber(userInput));
             newAccount.setPhoneNumber(Integer.parseInt(userInput));
 
             boolean passwordMatch = false;
