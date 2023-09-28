@@ -41,6 +41,8 @@ public class TicketController {
         newTicket.setId(getNewestTicket().getId()+1);
         // Use assignTechnicianByTicketCount() to calculate assigned tech
         newTicket.setTechnicianAssignedId(assignTechnicianByTicketCount());
+        // Set the ticket status to open
+        newTicket.setStatus("open");
         // Set the creationDate to now
         newTicket.setCreationDate(LocalDateTime.now());
 
@@ -66,7 +68,8 @@ public class TicketController {
         newestTicket.setRequesterId(Integer.parseInt(lastTicketInList[2]));
         newestTicket.setDescription(lastTicketInList[3]);
         newestTicket.setSeverity(lastTicketInList[4]);
-        // newestTicket.setCreationDate();
+        newestTicket.setStatus(lastTicketInList[5]);
+        newestTicket.setCreationDate(LocalDateTime.parse(lastTicketInList[6]));
         // newestTicket.setResolvedDate();
 
         // return the ticket

@@ -2,7 +2,7 @@
 1.
 [X] Create Account - Email, Full Name, Phone Number, Password
 [ ] Password regex
-[ ] Email uniqueness check
+[X] Email uniqueness check
 
 2.
 [X] Sumbit a Ticket - description, severity, requires Login
