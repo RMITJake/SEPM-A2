@@ -26,13 +26,14 @@ public class ValidationHandler {
     // String to temporarily store split account properties
     String[] accountProperties;
     boolean emailMatch = false;
-    for(int index=0; index < accountTable.size(); index++){
+    int index = 0;
+    do{
       accountProperties = accountTable.get(index).split(",",-1);
-      // check if email input matches
       if(input.equals(accountProperties[1])){
         emailMatch = true;
       }
-    }
+      index++;
+    } while (!emailMatch && index < accountTable.size());
     return emailMatch;
   }
 
