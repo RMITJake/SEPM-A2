@@ -17,4 +17,12 @@ public class TicketUI {
         System.out.println("----------------------------");
         System.out.print("Are the following details correct? [Y/N] ");
     }
+
+    public void ForgotPassword(){
+        System.out.print("Enter your email address or type \"C\" to cancel: ");
+    }
+
+    public void ForgotPassword(String email){
+        System.out.println("If an account for " + email + " is found a ticket will be submitted to reset the password.");
+    }
 }

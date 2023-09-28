@@ -14,7 +14,9 @@ class App {
             if(applicationLoop.equals("C")){
                 menu.CreateUser();
             }
-            if(applicationLoop.equals("F")){}
+            if(applicationLoop.equals("F")){
+                menu.ForgotPassword();
+            }
             if(applicationLoop.equals("L")){
                 loggedIn = menu.LoginLoop();
             }

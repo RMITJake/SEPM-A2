@@ -46,6 +46,10 @@ public class MenuController {
         } while (!validate.CreateUser(menuOption));
     }
 
+    public void ForgotPassword(){
+        ticket.ForgotPassword();
+    }
+
     public boolean LoginLoop(){
         while(currentUser.getId() == 0){
             // Show login prompts and get+validate input

@@ -10,6 +10,7 @@ public class TicketController {
     // TicketController will handle both the Ticket and TicketUpdate Models
     private FileHandler file = new FileHandler();
     private InputHandler input = new InputHandler();
+    private ValidationHandler validate = new ValidationHandler();
     private TicketUI ui = new TicketUI();
     private String userInput;
 
@@ -134,5 +135,31 @@ public class TicketController {
 
         // return the techId
         return assignedTechnicianId;
+    }
+
+    public void ForgotPassword(){
+        do{
+            ui.ForgotPassword();
+            userInput = input.getInput();
+        } while (!validate.Email(userInput) && userInput.equals("C"));
+        if(validate.Email(userInput))
+        {
+            ui.ForgotPassword(userInput);
+            ResetPassword(userInput);
+        }
+    }
+
+    public void ResetPassword(String email){
+        Ticket newTicket = new Ticket();
+        // Set the requesterId to the system user
+        newTicket.setRequesterId(1);
+        newTicket.setDescription("Password Reset: " + email);
+        newTicket.setSeverity("low");
+        newTicket.setId(getNewestTicket().getId()+1);
+        newTicket.setTechnicianAssignedId(assignTechnicianByTicketCount());
+        newTicket.setStatus("open");
+        newTicket.setCreationDate(LocalDateTime.now());
+        // Write the ticket to OpenTicket.csv
+        file.Write("OpenTicket", newTicket.getProperties());
     }
 }
