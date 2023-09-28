@@ -1,7 +1,7 @@
 # Checklist
 1.
 [X] Create Account - Email, Full Name, Phone Number, Password
-[X] Password regex
+[ ] Password regex
 [X] Email uniqueness check
 
 2.
