@@ -40,7 +40,7 @@ public class TicketController {
         // Use getNewestTicket() to calculate the ticket Id
         newTicket.setId(getNewestTicket().getId()+1);
         // Use assignTechnicianByTicketCount() to calculate assigned tech
-        newTicket.setTechnicianAssignedId(assignTechnicianByTicketCount());
+        newTicket.setTechnicianAssignedId(AssignTechnician(newTicket.getSeverity()));
         // Set the ticket status to open
         newTicket.setStatus("open");
         // Set the creationDate to now
@@ -76,22 +76,39 @@ public class TicketController {
         return newestTicket;
     }
 
-    private int assignTechnicianByTicketCount(){
+    private int AssignTechnician(String severity){
+        return AssignTechnicianByTicketCount(AssignTechnicianBySeverity(severity));
+    }
+
+    private ArrayList<Integer> AssignTechnicianBySeverity(String severity){
         // Read Technician.csv into an array
         ArrayList<String> technicianTable = file.Read("Technician");
-        // Initialise a list to store the technicianIds extracted from the array
         ArrayList<Integer> technicianList = new ArrayList<Integer>();
-        // String to temporarily hold split Technician information
-        String[] technicianString;
 
+        String technicianLevel;
+        if(!severity.equals("high")){
+            technicianLevel = "1";
+        } else {
+            technicianLevel = "2";
+        }
+        
         // Loop through technicianTable
         // Split the string into parts
-        // Save the technicianId to the list of technicians
+        // Save the technicianId to the list of technicians if the level is correct
+        // String to temporarily hold split Technician information
+        String[] currentTechnician;
         for(int index=0; index < technicianTable.size(); index++){
-            technicianString = technicianTable.get(index).split(",",-1);
-            technicianList.add(Integer.parseInt(technicianString[0]));
+            currentTechnician = technicianTable.get(index).split(",",-1);
+            if(currentTechnician[2].equals(technicianLevel)){
+                technicianList.add(Integer.parseInt(currentTechnician[0]));
+            }
         }
 
+        return technicianList;
+    }
+
+    // Takes in a list storing technicianIds extracted from the array
+    private int AssignTechnicianByTicketCount(ArrayList<Integer> technicianList){
         // Int to store the assigned technician
         int assignedTechnicianId = 0;
         // Int to store the case count for the assigned technician
@@ -155,7 +172,7 @@ public class TicketController {
         newTicket.setDescription("Password Reset: " + email);
         newTicket.setSeverity("low");
         newTicket.setId(getNewestTicket().getId()+1);
-        newTicket.setTechnicianAssignedId(assignTechnicianByTicketCount());
+        newTicket.setTechnicianAssignedId(AssignTechnician(newTicket.getSeverity()));
         newTicket.setStatus("open");
         newTicket.setCreationDate(LocalDateTime.now());
         // Write the ticket to OpenTicket.csv
