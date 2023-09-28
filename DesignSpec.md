@@ -6,7 +6,7 @@
 
 2.
 [X] Sumbit a Ticket - description, severity, requires Login
-[ ] Set the ticket status to open
+[X] Set the ticket status to open
 [ ] Forgot Password
 
 3.
