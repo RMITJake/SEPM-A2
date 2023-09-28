@@ -17,7 +17,7 @@
 [ ] Assign ticket at random
 
 5.
-[ ] Add predefine technicians to Accounts+Login+Technician.csv
+[X] Add predefine technicians to Accounts+Login+Technician.csv
 
 6.
 [ ] Allow technicians to set the severity of a ticket, requires SelectTicket

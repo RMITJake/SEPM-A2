@@ -46,18 +46,18 @@ public class ValidationHandler {
   }
 
   public boolean Password(String input){
+    //CURRENTLY DISABLED
     boolean passwordMatch;
     // Per spec we check for uppercase and lowercase alphanumeric, no symbols
     // Check length
-    // Could check length with string.length() but that returns an int where we want a boolean
-    passwordMatch = Pattern.matches("^[\\S]{20,}", input);
+
     // Check uppercase
     passwordMatch = Pattern.matches("[A-Z]", input);
     // Check lowercase
     passwordMatch = Pattern.matches("[a-z]", input);
     // check digits
-    passwordMatch = Pattern.matches("[\\d]", input);
+    passwordMatch = Pattern.matches("[\\d]+", input);
     
-    return passwordMatch;
+    return true;
   }
 }

@@ -45,18 +45,18 @@ public class AccountController {
                 do{
                 ui.Password();
                 password = input.getInput();
-                } while (!validate.Password(userInput));
+                } while (!validate.Password(password));
                 
                 ui.PasswordConfirm();
                 passwordConfirm = input.getInput();
                 if(password.equals(passwordConfirm)){
-                    newLogin.setPassword(userInput);
+                    newLogin.setPassword(password);
                     passwordMatch = true;
                 }
             }
             ui.Confirm(newAccount.getEmail(), newAccount.getFullName(), newAccount.getPhoneNumber());
             if(input.getInput().equals("Y")){
-                newAccount.setId(getNewestAccount().getId()+1);
+                newAccount.setId((getNewestAccount().getId())+1);
                 newAccount.setCreationDate(LocalDateTime.now());
                 newAccount.setDisabled(false);
                 newLogin.setId(setLoginId());
