@@ -17,7 +17,25 @@
 [ ] Assign ticket at random
 
 5.
-[ ]
+[ ] Add predefine technicians to Accounts+Login+Technician.csv
+
+6.
+[ ] Allow technicians to set the severity of a ticket, requires SelectTicket
+[ ] Escalate ticket
+
+7.
+[ ] Change ticket status
+
+8.
+[ ] Move ticket from OpenTickets to ArchivedTickets after 24 hours
+
+9.
+[ ] Log in
+[ ] Staff - See my open tickets
+[ ] Tech - See all open tickets
+[ ] Tech - See all archived tickets
+[ ] Tech - See all closed tickets
+[ ] Tech - See all tickets
 
 ---
 # Key Classes and Functions
