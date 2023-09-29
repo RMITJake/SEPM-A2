@@ -5,7 +5,7 @@ class App {
     boolean loggedIn;
     boolean applicationExit;
 
-    App(){
+    private void Run(){
         // Create an instance of the MenuUI frontend
         MenuController menu = new MenuController();
         do{
@@ -25,8 +25,10 @@ class App {
             if(applicationLoop.equals("E")){}
         } while (!applicationLoop.equals("E"));
     }
+
     public static void main(String[] args){
         // Run the app
         App app = new App();
+        app.Run();
     }
 }
