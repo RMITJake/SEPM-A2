@@ -1,7 +1,7 @@
 # Checklist
 1.
 [X] Create Account - Email, Full Name, Phone Number, Password
-[ ] Password regex
+[X] Password regex - for testing only checks for min length 4, for submission change to min length 20
 [X] Email uniqueness check
 
 2.

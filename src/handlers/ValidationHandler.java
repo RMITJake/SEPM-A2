@@ -46,18 +46,46 @@ public class ValidationHandler {
   }
 
   public boolean Password(String input){
-    //CURRENTLY DISABLED
-    boolean passwordMatch;
+    int index;
+    boolean lengthMatch;
+    boolean uppercaseMatch;
+    boolean lowercaseMatch;
+    boolean digitMatch;
+
     // Per spec we check for uppercase and lowercase alphanumeric, no symbols
-    // Check length
+    // TEMPORARY - ONLY CHECKING FOR 4 MIN CHARACTERS FOR TESTING, PER SPEC CHECK FOR 20
+    // Check length of the string
+    regex = "^[a-zA-Z\\d]{4,}";
+    lengthMatch = Pattern.matches(regex, input);
 
     // Check uppercase
-    passwordMatch = Pattern.matches("[A-Z]", input);
+    regex = "[A-Z]";
+    index = 0;
+    do{
+      uppercaseMatch = Pattern.matches(regex, input.substring(index, index+1));
+      index++;
+    } while(!uppercaseMatch && index < input.length());
+
     // Check lowercase
-    passwordMatch = Pattern.matches("[a-z]", input);
+    regex = "[a-z]";
+    index = 0;
+    do{
+      lowercaseMatch = Pattern.matches(regex, input.substring(index, index+1));
+      index++;
+    } while(!lowercaseMatch && index < input.length());
+
     // check digits
-    passwordMatch = Pattern.matches("[\\d]+", input);
+    regex = "[\\d]";
+    index = 0;
+    do{
+      digitMatch = Pattern.matches(regex, input.substring(index, index+1));
+      index++;
+    } while(!digitMatch && index < input.length());
+
+    if(lengthMatch && uppercaseMatch && lowercaseMatch && digitMatch){
+      return true;
+    }
     
-    return true;
+    return false;
   }
 }
