@@ -23,7 +23,7 @@ public class AccountController {
             do{
                 ui.Email();
                 userInput = input.getInput();
-            } while (validate.Email(userInput));
+            } while (!validate.Email(userInput));
             newAccount.setEmail(userInput);
             
             do{

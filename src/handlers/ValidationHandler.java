@@ -17,7 +17,13 @@ public class ValidationHandler {
   }
 
   public boolean Email(String input){
-    return EmailUniqueCheck(input);
+    boolean emailMatch;
+    regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    emailMatch = Pattern.matches(regex, input);
+    if(emailMatch){
+      EmailUniqueCheck(input);
+    }
+    return emailMatch;
   }
 
   public boolean EmailUniqueCheck(String input){
@@ -38,11 +44,17 @@ public class ValidationHandler {
   }
 
   public boolean FullName(String input){
-    return true;
+    boolean fullNameMatch;
+    regex = "^[\\w]{1,}";
+    fullNameMatch = Pattern.matches(regex, input);
+    return fullNameMatch;
   }
 
   public boolean PhoneNumber(String input){
-    return true;
+    boolean phoneNumberMatch;
+    regex = "^[\\d]{10,10}$";
+    phoneNumberMatch = Pattern.matches(regex, input);
+    return phoneNumberMatch;
   }
 
   public boolean Password(String input){
