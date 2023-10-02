@@ -13,6 +13,7 @@ public class TicketController {
     private ValidationHandler validate = new ValidationHandler();
     private TicketUI ui = new TicketUI();
     private String userInput;
+    private Ticket selectedTicket = new Ticket();
 
     public void CreateNewTicket(Account currentUser){
         // Initialise ticket
@@ -200,5 +201,35 @@ public class TicketController {
         newTicket.setCreationDate(LocalDateTime.now());
         // Write the ticket to OpenTicket.csv
         file.Write("OpenTicket", newTicket.getProperties());
+    }
+
+    public void SelectTicket(){
+        // Needs checks so users can only select their own tickets
+        // Techs can check all tickets
+        // Create an empty ticket
+        ui.SelectTicket();
+        userInput = input.getInput();
+        if(validate.TicketId(userInput)){
+            ArrayList<String> ticketTable = file.Read("OpenTicket");
+            String[] ticketString;
+            for(int ticketIndex=0; ticketIndex < ticketTable.size(); ticketIndex++){
+                ticketString = ticketTable.get(ticketIndex).split(",",-1);
+                if(Integer.parseInt(userInput) == Integer.parseInt(ticketString[0])){
+                    selectedTicket.setId(Integer.parseInt(ticketString[0]));
+                    selectedTicket.setTechnicianAssignedId(Integer.parseInt(ticketString[1]));
+                    selectedTicket.setRequesterId(Integer.parseInt(ticketString[2]));
+                    selectedTicket.setDescription(ticketString[3]);
+                    selectedTicket.setSeverity(ticketString[4]);
+                    selectedTicket.setStatus(ticketString[5]);
+                    selectedTicket.setCreationDate(LocalDateTime.parse(ticketString[6]));
+                    // selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
+                    DisplayTicket(selectedTicket);
+                }
+            }
+        }
+    }
+    
+    public void DisplayTicket(Ticket ticket){
+        ui.DisplayTicket(ticket);
     }
 }

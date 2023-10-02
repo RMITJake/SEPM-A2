@@ -100,4 +100,10 @@ public class ValidationHandler {
     
     return false;
   }
+
+  public boolean TicketId(String input){
+    regex = "^[\\d]+";
+    boolean ticketIdMatch = Pattern.matches(regex, input);
+    return ticketIdMatch;
+  }
 }

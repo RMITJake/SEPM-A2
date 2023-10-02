@@ -66,11 +66,14 @@ public class MenuController {
 
     public void MainMenuLoop(){
         menuOption = "";
+        // ticket.DisplayTicket();
         while(!menuOption.equals("E")){
             ui.MainMenu(currentTechnician.getId()); 
             menuOption = input.getInput();
             if(menuOption.equals("C")){
                 ticket.CreateNewTicket(currentUser);
+            } else if (menuOption.equals("S")){
+                ticket.SelectTicket();
             }
             menuOption = "";
         }

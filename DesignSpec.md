@@ -14,7 +14,7 @@
 
 4.
 [X] Assign ticket by ticket count
-[ ] Assign ticket at random
+[X] Assign ticket at random
 
 5.
 [X] Add predefine technicians to Accounts+Login+Technician.csv
@@ -42,7 +42,7 @@
 - MenuUI
   Handles all frontend UI interactions with a user
 	- ShowRelevantText
-- Menu
+- MenuController
   Handles the menu logic and backend
 - InputHandler
 	Parses and interprets user inputs, directs the Menu class backend
@@ -85,6 +85,12 @@
 	- Phone Number [\d]{10}
 	- CreationDate
 	- Disabled
+- Escalation (maybe merge model with TicketUpdate and just use and Escalation record to store data)
+	- Id
+	- TicketId
+	- RequesterId
+	- Reason
+	- UpdateTime
 - Technician
 	- Id
 	- AccountId (FK Account)
@@ -93,6 +99,10 @@
 	- Id
 	- AccountId (FK Account)
 	- Password [a-zA-Z\d]{20,}
+- Technician
+	- Id
+	- AccountId
+	- Level
 - Ticket
 	- Id
 	- TechnicianAssignedId (FK Technician)

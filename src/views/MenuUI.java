@@ -39,8 +39,10 @@ public class MenuUI {
         uiText += "--------  Main Menu  ---------\n";
         uiText += "------------------------------\n";
         uiText += "[C]reate a new ticket\n";
+        uiText += "[S]elect Ticket\n";
+        // uiText += "[M]y Open Tickets\n";
         if(techOptions > 0){
-            uiText += "[M]y Open Tickets\n";
+            uiText += "[M]y Assigned Tickets\n";
         }
         uiText += "[L]ogout\n";
         uiText += "[E]xit\n";

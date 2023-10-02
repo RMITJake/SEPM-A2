@@ -1,4 +1,5 @@
 package src.views;
+import src.models.Ticket;
 public class TicketUI {
     public void description(){
         System.out.println("What is the issue? ");
@@ -24,5 +25,23 @@ public class TicketUI {
 
     public void ForgotPassword(String email){
         System.out.println("If an account for " + email + " is found a ticket will be submitted to reset the password.");
+    }
+
+    public void SelectTicket(){
+        System.out.print("Enter the id of the ticket you wish to view: ");
+    }
+
+    public void DisplayTicket(Ticket ticket){
+        String ticketDetails;
+        System.out.println("------------------------------");
+        ticketDetails = "Ticket ID: " + ticket.getId();
+        ticketDetails += ", Requester: " + ticket.getRequesterId() + "\n";
+        ticketDetails += "Assigned Technician: " + ticket.getTechnicianAssignedId() + "\n";
+        ticketDetails += "Description: " + ticket.getDescription() + "\n";
+        ticketDetails += "Severity: " + ticket.getSeverity() + "\n";
+        ticketDetails += "Status: " + ticket.getStatus() + "\n";
+        ticketDetails += "Creation Date: " + ticket.getCreationDate() + "\n";
+        System.out.println(ticketDetails);
+        System.out.println("------------------------------");
     }
 }
