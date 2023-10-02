@@ -34,7 +34,7 @@ public class TicketController {
             newTicket.setSeverity(userInput);
             
             ui.confirm(newTicket.getRequesterId(), newTicket.getDescription(), newTicket.getSeverity());
-            if(input.getInput().equals("y")){
+            if(input.getInput().toUpperCase().equals("Y")){
                 confirmDetails = true;
             }
         }

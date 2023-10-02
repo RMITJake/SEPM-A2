@@ -29,7 +29,7 @@ public class MenuController {
         do{
             menuOption = "";
             ui.WelcomePrompt();
-            menuOption = input.getInput();
+            menuOption = input.getInput().toUpperCase();
         } while (!validate.Welcome(menuOption));
 
         return menuOption;
@@ -39,7 +39,7 @@ public class MenuController {
         do{
             menuOption = "";
             account.CreateUser();
-            menuOption = input.getInput();
+            menuOption = input.getInput().toUpperCase();
         } while (!validate.CreateUser(menuOption));
     }
 
@@ -67,12 +67,12 @@ public class MenuController {
     public void MainMenuLoop(){
         menuOption = "";
         // ticket.DisplayTicket();
-        while(!menuOption.equals("E")){
+        while(!menuOption.toUpperCase().equals("E")){
             ui.MainMenu(currentTechnician.getId()); 
             menuOption = input.getInput();
-            if(menuOption.equals("C")){
+            if(menuOption.toUpperCase().equals("C")){
                 ticket.CreateNewTicket(currentUser);
-            } else if (menuOption.equals("S")){
+            } else if (menuOption.toUpperCase().equals("S")){
                 ticket.SelectTicket();
             }
             menuOption = "";
