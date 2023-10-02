@@ -5,6 +5,7 @@ import src.models.Ticket;
 import src.views.TicketUI;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Random;
 public class TicketController {
     // TicketController will handle both the Ticket and TicketUpdate Models
     private FileHandler file = new FileHandler();
@@ -141,16 +142,38 @@ public class TicketController {
 
             // if the current number of cases is less than that of the currently assigned tech, then assign the tech with less cases
             if(caseCount < assignedTechnicianCaseCount || assignedTechnicianCaseCount == -1){
-                assignedTechnicianId = technicianList.get(technicianIndex);
+                // assignedTechnicianId = technicianList.get(technicianIndex);
                 assignedTechnicianCaseCount = caseCount;
             }
+        }
 
-            // print confirmation message
-            System.out.println(technicianList.get(technicianIndex) + " " + technicianCaseCount.get(technicianIndex));
+        // Array to store the techs with the lowest case count
+        ArrayList<Integer> technicianLowestCaseCount = new ArrayList<Integer>();
+        // Get a list indexes with the lowest ticket counts
+        for(int index=0; index < technicianCaseCount.size(); index++){
+            if(assignedTechnicianCaseCount == technicianCaseCount.get(index)){
+                technicianLowestCaseCount.add(technicianList.get(index));
+            }
         }
 
         // return the techId
-        return assignedTechnicianId;
+        return AssignTechnicianAtRandom(technicianLowestCaseCount);
+    }
+    
+    public int AssignTechnicianAtRandom(ArrayList<Integer> technicianLowestCaseCount){
+        // If there is only 1 technician in the list assign the case
+        if(technicianLowestCaseCount.size() == 1){
+            return technicianLowestCaseCount.get(0);
+        }
+
+        // Create the Random object to generate the random number
+        Random randomiser = new Random();
+        // Get the upper limit for the randomiser
+        int upperLimit = technicianLowestCaseCount.size();
+        // Generate the random number
+        int randomNumber = randomiser.nextInt(upperLimit);
+        // Return the techId at the random index
+        return technicianLowestCaseCount.get(randomNumber);
     }
 
     public void ForgotPassword(){
