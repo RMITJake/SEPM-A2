@@ -21,7 +21,6 @@
 
 6.
 [X] Allow technicians to set the severity of a ticket, requires SelectTicket
--->need to write altered severity to record
 [ ] Escalate ticket, requires SelectTicket
 
 7.

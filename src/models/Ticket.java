@@ -47,7 +47,6 @@ public class Ticket {
         details += this.status + ",";
         details += this.creationDate + ",";
         details += this.resolvedDate + "\r\n";
-
         return details;
     }
 }
