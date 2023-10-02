@@ -223,13 +223,23 @@ public class TicketController {
                     selectedTicket.setStatus(ticketString[5]);
                     selectedTicket.setCreationDate(LocalDateTime.parse(ticketString[6]));
                     // selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
-                    DisplayTicket(selectedTicket);
+                    this.selectedTicket = selectedTicket;
+                    DisplayTicket(this.selectedTicket);
                 }
             }
         }
     }
     
     public void DisplayTicket(Ticket ticket){
-        ui.DisplayTicket(ticket);
+        do {
+            ui.DisplayTicket(ticket);
+            ui.TicketMenu();
+            userInput = input.getInput();
+            if(userInput.toUpperCase().equals("S")){
+                ui.ChangeSeverity();
+                userInput = input.getInput();
+                ticket.setSeverity(userInput);
+            }
+        } while (!userInput.toUpperCase().equals("M"));
     }
 }

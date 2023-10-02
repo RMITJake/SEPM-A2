@@ -20,7 +20,8 @@
 [X] Add predefine technicians to Accounts+Login+Technician.csv
 
 6.
-[ ] Allow technicians to set the severity of a ticket, requires SelectTicket
+[X] Allow technicians to set the severity of a ticket, requires SelectTicket
+-->need to write altered severity to record
 [ ] Escalate ticket, requires SelectTicket
 
 7.
