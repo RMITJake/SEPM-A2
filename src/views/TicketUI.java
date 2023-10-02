@@ -47,7 +47,7 @@ public class TicketUI {
     
     public void TicketMenu(){
         String menu = "";
-        menu += "[S]et ticket severity";
+        menu += "[S]et ticket severity\n";
         menu += "[M]ain menu";
         System.out.println(menu);
     }

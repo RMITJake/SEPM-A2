@@ -21,6 +21,18 @@ public class FileHandler {
         }
     }
 
+    public void WriteOver(String file, String input){
+    // Add the input filename to the path so we can write to a file
+    String workingPath = path + file + ".csv";
+    try{
+        BufferedWriter writer = new BufferedWriter(new FileWriter(workingPath));
+        writer.write(input);
+        writer.close();
+    } catch (Exception ex) {
+        ex.getStackTrace();
+    }
+}
+
     public ArrayList<String> Read(String file){
         // Add the input filename to the path so we can read a file
         String workingPath = path + file + ".csv";

@@ -239,7 +239,23 @@ public class TicketController {
                 ui.ChangeSeverity();
                 userInput = input.getInput();
                 ticket.setSeverity(userInput);
+                UpdateTicketRecord(ticket);
             }
         } while (!userInput.toUpperCase().equals("M"));
+    }
+
+    public void UpdateTicketRecord(Ticket ticket){
+        ArrayList<String> oldTicketTable = file.Read("OpenTicket");
+        String newTicketTable = "";
+        String[] ticketString;
+        for(int ticketIndex=0; ticketIndex < oldTicketTable.size(); ticketIndex++){
+            ticketString = oldTicketTable.get(ticketIndex).split(",",-1);
+            if(ticket.getId() == Integer.parseInt(ticketString[0])){
+                newTicketTable += ticket.getProperties();
+            } else {
+                newTicketTable += oldTicketTable.get(ticketIndex) + "\r\n";
+            }
+        }
+        file.WriteOver("OpenTicket", newTicketTable);
     }
 }
