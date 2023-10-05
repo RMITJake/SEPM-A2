@@ -74,6 +74,10 @@ public class MenuController {
             } else if (menuOption.equals("S")){
                 ticket.selectTicket();
             }
+            // Technician menu options
+            else if (menuOption.equals("+") && currentTechnician.getId() != 0) {
+                ticket.EscalateTicket(ticket.selectedTicket, currentTechnician);
+            }
         }while(!menuOption.equals("E"));
         return menuOption;
     }

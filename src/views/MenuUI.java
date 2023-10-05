@@ -44,6 +44,7 @@ public class MenuUI {
         if(techOptions > 0){
             uiText += "--------  Tech Menu  ---------\n";
             uiText += "[M]y Assigned Tickets\n";
+            uiText += "[+]Escalate Selected Ticket\n";
         }
         uiText += "[L]ogout\n";
         uiText += "[E]xit\n";

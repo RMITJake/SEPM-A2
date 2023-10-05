@@ -1,6 +1,7 @@
 package src.controllers;
 import src.handlers.*;
 import src.models.Account;
+import src.models.Technician;
 import src.models.Ticket;
 import src.views.TicketUI;
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ public class TicketController {
     private ValidationHandler validate = new ValidationHandler();
     private TicketUI ui = new TicketUI();
     private String userInput;
-    private Ticket selectedTicket = new Ticket();
+    protected Ticket selectedTicket = new Ticket();
 
     // Record strings, used to minimize hard coded file references
     protected String openTicketRecord = file.openTicketRecord;
@@ -45,7 +46,7 @@ public class TicketController {
         }
         
         // Use getNewestTicket() to calculate the ticket Id
-        newTicket.setId(getNewestTicket().getId()+1);
+        newTicket.setId(getNewestTicket(openTicketRecord).getId()+1);
         // Use assignTechnicianByTicketCount() to calculate assigned tech
         newTicket.setTechnicianAssignedId(assignTechnician(newTicket.getSeverity()));
         // Set the ticket status to open
@@ -62,9 +63,9 @@ public class TicketController {
         file.write(record, newTicket.getProperties());
     }
 
-    public Ticket getNewestTicket(){
+    public Ticket getNewestTicket(String record){
         // Read OpenTicket.csv into an array
-        ArrayList<String> openTicketTable = file.read(openTicketRecord);
+        ArrayList<String> openTicketTable = file.read(record);
         // write the last ticket in the open ticket array into it's own array for processing
         String[] lastTicketInList = openTicketTable.get(openTicketTable.size()-1).split(",",-1);
         // Initialise an blank ticket
@@ -198,7 +199,7 @@ public class TicketController {
         newTicket.setRequesterId(1);
         newTicket.setDescription("Password Reset: " + email);
         newTicket.setSeverity("low");
-        newTicket.setId(getNewestTicket().getId()+1);
+        newTicket.setId(getNewestTicket(openTicketRecord).getId()+1);
         newTicket.setTechnicianAssignedId(assignTechnician(newTicket.getSeverity()));
         newTicket.setStatus("open");
         newTicket.setCreationDate(LocalDateTime.now());
@@ -215,7 +216,8 @@ public class TicketController {
         if(validate.ticketId(userInput)){
             ArrayList<String> ticketTable = file.read(openTicketRecord);
             String[] ticketString;
-            for(int ticketIndex=0; ticketIndex < ticketTable.size(); ticketIndex++){
+            int ticketIndex = 0;
+            do{
                 ticketString = ticketTable.get(ticketIndex).split(",",-1);
                 if(Integer.parseInt(userInput) == Integer.parseInt(ticketString[0])){
                     selectedTicket.setId(Integer.parseInt(ticketString[0]));
@@ -228,7 +230,8 @@ public class TicketController {
                     // selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
                     DisplayTicket(selectedTicket);
                 }
-            }
+                ticketIndex++;
+            } while(selectedTicket.getId() == 0 && ticketIndex < ticketTable.size());
         }
     }
     
@@ -236,14 +239,14 @@ public class TicketController {
         do {
             ui.displayTicket(ticket);
             ui.ticketMenu();
-            userInput = input.getInput();
-            if(userInput.toUpperCase().equals("S")){
+            userInput = input.getInput().toUpperCase();
+            if(userInput.equals("S")){
                 ui.changeSeverity();
                 userInput = input.getInput();
                 ticket.setSeverity(userInput);
                 updateTicketRecord(ticket);
             }
-        } while (!userInput.toUpperCase().equals("M"));
+        } while (!userInput.equals("M"));
     }
 
     public void updateTicketRecord(Ticket ticket){
@@ -261,7 +264,7 @@ public class TicketController {
         file.writeOver(openTicketRecord, newTicketTable);
     }
 
-    public void EscalateTicket(Ticket ticket){
+    public void EscalateTicket(Ticket ticket, Technician currentTechnician){
         // Options to escalate ticket
         // 1. Create a new ticket in the escalate table which is assigned to L2
         // - Pros = original CO maintains ticket ownership, L2 can open and close tickets for escalation
@@ -271,5 +274,10 @@ public class TicketController {
         // - Cons - L1 looses track of the ticket
 
         Ticket escalationTicket = ticket;
+        escalationTicket.setRequesterId(currentTechnician.getId());
+        escalationTicket.setTechnicianAssignedId(assignTechnician("high"));
+        escalationTicket.setId(getNewestTicket(escalationRecord).getId()+1);
+        escalationTicket.setCreationDate(LocalDateTime.now());
+        file.write(escalationRecord, escalationTicket.getProperties());
     }
 }
