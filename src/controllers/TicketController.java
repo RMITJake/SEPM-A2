@@ -15,7 +15,10 @@ public class TicketController {
     private String userInput;
     private Ticket selectedTicket = new Ticket();
 
-    public void CreateNewTicket(Account currentUser){
+    // Record strings, used to minimize hard coded file references
+    protected String openTicketRecord = "OpenTicket";
+
+    public void CreateNewTicket(Account currentUser, String record){
         // Initialise ticket
         Ticket newTicket = new Ticket();
         // Set the requesterId to the currentUserId
@@ -54,7 +57,7 @@ public class TicketController {
         // Show ticket details
         System.out.println(newTicket.getProperties());
         // Write the ticket to OpenTicket.csv
-        file.Write("OpenTicket", newTicket.getProperties());
+        file.Write(record, newTicket.getProperties());
     }
 
     public Ticket GetNewestTicket(){
@@ -257,5 +260,18 @@ public class TicketController {
             }
         }
         file.WriteOver("OpenTicket", newTicketTable);
+    }
+
+    public void EscalateTicket(Ticket ticket){
+        // Options to escalate ticket
+        // 1. Create a new ticket in the escalate table which is assigned to L2
+        // - Pros = original CO maintains ticket ownership, L2 can open and close tickets for escalation
+        // - Cons
+        // 2. Assign ticket to L2
+        // - Pros = easy
+        // - Cons
+
+        Ticket escalationTicket = new Ticket();
+
     }
 }

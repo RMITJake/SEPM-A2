@@ -70,7 +70,7 @@ public class MenuController {
             ui.MainMenu(currentTechnician.getId()); 
             menuOption = input.getInput().toUpperCase();
             if(menuOption.equals("C")){
-                ticket.CreateNewTicket(currentUser);
+                ticket.CreateNewTicket(currentUser, ticket.openTicketRecord);
             } else if (menuOption.equals("S")){
                 ticket.SelectTicket();
             }
