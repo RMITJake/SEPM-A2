@@ -63,11 +63,11 @@ public class TicketController {
         file.write(record, newTicket.getProperties());
     }
 
-    public Ticket getNewestTicket(String record){
+    public Ticket getNewestTicket(String record) {
         // Read OpenTicket.csv into an array
         ArrayList<String> openTicketTable = file.read(record);
         // write the last ticket in the open ticket array into it's own array for processing
-        String[] lastTicketInList = openTicketTable.get(openTicketTable.size()-1).split(",",-1);
+        String[] lastTicketInList = openTicketTable.get(openTicketTable.size() - 1).split(",", -1);
         // Initialise an blank ticket
         Ticket newestTicket = new Ticket();
         // Write the extracted ticket information to ticket properties
@@ -82,6 +82,27 @@ public class TicketController {
 
         // return the ticket
         return newestTicket;
+    }
+
+    // Get all open tickets
+    // If technician is null then only tickets submitted by the user will be shown
+    // If technician is not null then tickets assigned to the technician will be shown
+    public ArrayList<String> getAllTickets(String record, Account currentUser, Technician currentTechnician) {
+        ArrayList<String> userTickets = new ArrayList<String>();
+        ArrayList<String> ticketTable = file.read(record);
+        String[] ticket; 
+        for (int index = 0; index < ticketTable.size(); index++) {
+            ticket = ticketTable.get(index).split(",",-1);
+            // get tickets assigned to technician
+            if (currentTechnician != null && Integer.parseInt(ticket[1]) == currentTechnician.getId()) {
+                userTickets.add(ticketTable.get(index));
+            } 
+            // get tickets owned by user
+            else if (currentTechnician == null && Integer.parseInt(ticket[2]) == currentUser.getId()) {
+                userTickets.add(ticketTable.get(index));
+            }
+        }
+        return userTickets;
     }
 
     private int assignTechnician(String severity){
@@ -251,6 +272,21 @@ public class TicketController {
 
     public void displayTicket(Ticket ticket) {
         ui.displayTicket(ticket);
+    }
+
+    public void displayTicketString(String ticket) {
+        Ticket newTicket = new Ticket();
+        String[] ticketString;
+        ticketString = ticket.split(",",-1);
+        newTicket.setId(Integer.parseInt(ticketString[0]));
+        newTicket.setTechnicianAssignedId(Integer.parseInt(ticketString[1]));
+        newTicket.setRequesterId(Integer.parseInt(ticketString[2]));
+        newTicket.setDescription(ticketString[3]);
+        newTicket.setSeverity(ticketString[4]);
+        newTicket.setStatus(ticketString[5]);
+        newTicket.setCreationDate(LocalDateTime.parse(ticketString[6]));
+        // selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
+        ui.displayTicket(newTicket);
     }
 
     public void changeSeverity(Ticket ticket) {

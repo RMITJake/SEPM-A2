@@ -40,7 +40,7 @@ public class TicketUI {
         ticketDetails += "Description: " + ticket.getDescription() + "\n";
         ticketDetails += "Severity: " + ticket.getSeverity() + "\n";
         ticketDetails += "Status: " + ticket.getStatus() + "\n";
-        ticketDetails += "Creation Date: " + ticket.getCreationDate() + "\n";
+        ticketDetails += "Creation Date: " + ticket.getCreationDate();
         System.out.println(ticketDetails);
         System.out.println("------------------------------");
     }

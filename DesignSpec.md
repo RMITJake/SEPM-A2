@@ -1,4 +1,5 @@
 # Checklist
+Legend: X = done, W = Work in progress
 1.
 [X] Create Account - Email, Full Name, Phone Number, Password
 [X] Password regex - for testing only checks for min length 4, for submission change to min length 20
@@ -32,11 +33,14 @@
 
 9.
 [X] Log in
-[ ] Staff - See my open tickets
-[ ] Tech - See all open tickets
+[X] Staff - See my open tickets
+[ ] Staff - See my archived tickets
+[W] Tech - See my assigned tickets
 [ ] Tech - See all archived tickets
 [ ] Tech - See all closed tickets
 [ ] Tech - See all tickets
+[ ] L2 - See my escalations
+[ ] L2 - See all escalations
 
 ---
 # Key Classes and Functions

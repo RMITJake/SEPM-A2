@@ -3,6 +3,7 @@ import src.handlers.*;
 import src.views.MenuUI;
 import src.models.Account;
 import src.models.Technician;
+import java.util.ArrayList;
 public class MenuController {
     // Create the MenuUI, InputHandler, LoginController, TicketController
     MenuUI ui = new MenuUI();
@@ -76,9 +77,19 @@ public class MenuController {
                 do{
                     menuOption = ticketMenuLoop();
                 } while(menuOption != "M");
+            } else if (menuOption.equals("M")) {
+                ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, null);
+                for (int index = 0; index < myTickets.size(); index++) {
+                    ticket.displayTicketString(myTickets.get(index));
+                }
             }
             // Technician menu options
-
+            else if (menuOption.equals("A")) {
+                ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, currentTechnician);
+                for (int index = 0; index < myTickets.size(); index++) {
+                    ticket.displayTicketString(myTickets.get(index));
+                }
+            }
         }while(!menuOption.equals("E"));
         return menuOption;
     }

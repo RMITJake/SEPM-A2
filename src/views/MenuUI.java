@@ -40,10 +40,10 @@ public class MenuUI {
         uiText += "------------------------------\n";
         uiText += "[C]reate a new ticket\n";
         uiText += "[S]elect Ticket\n";
-        // uiText += "[M]y Open Tickets\n";
+        uiText += "[M]y Open Tickets\n";
         if(techOptions > 0){
             uiText += "--------  Tech Menu  ---------\n";
-            uiText += "[M]y Assigned Tickets\n";
+            uiText += "[A]ssigned Tickets\n";
         }
         uiText += "[L]ogout\n";
         uiText += "[E]xit\n";
