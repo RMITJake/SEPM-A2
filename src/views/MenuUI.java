@@ -44,10 +44,17 @@ public class MenuUI {
         if(techOptions > 0){
             uiText += "--------  Tech Menu  ---------\n";
             uiText += "[M]y Assigned Tickets\n";
-            uiText += "[+]Escalate Selected Ticket\n";
         }
         uiText += "[L]ogout\n";
         uiText += "[E]xit\n";
         System.out.print(uiText);
+    }
+    
+    public void ticketMenu(){
+        String menu = "";
+        menu += "[S]et ticket severity\n";
+        menu += "[E]scalate ticket\n";
+        menu += "[M]ain menu";
+        System.out.println(menu);
     }
 }

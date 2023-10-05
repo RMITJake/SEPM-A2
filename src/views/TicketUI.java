@@ -44,13 +44,6 @@ public class TicketUI {
         System.out.println(ticketDetails);
         System.out.println("------------------------------");
     }
-    
-    public void ticketMenu(){
-        String menu = "";
-        menu += "[S]et ticket severity\n";
-        menu += "[M]ain menu";
-        System.out.println(menu);
-    }
 
     public void changeSeverity(){
         String menu = "";

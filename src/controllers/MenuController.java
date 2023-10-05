@@ -14,8 +14,8 @@ public class MenuController {
     TechnicianController technician = new TechnicianController();
 
     // Keeps track of the logged in user
-    public Account currentUser = new Account();
-    public Technician currentTechnician = new Technician();
+    protected Account currentUser = new Account();
+    protected Technician currentTechnician = new Technician();
     
     // Keeps track of the menu option selected
     String menuOption;
@@ -73,12 +73,28 @@ public class MenuController {
                 ticket.createNewTicket(currentUser, ticket.openTicketRecord);
             } else if (menuOption.equals("S")){
                 ticket.selectTicket();
+                do{
+                    menuOption = ticketMenuLoop();
+                } while(menuOption != "M");
             }
             // Technician menu options
-            else if (menuOption.equals("+") && currentTechnician.getId() != 0) {
-                ticket.EscalateTicket(ticket.selectedTicket, currentTechnician);
-            }
+
         }while(!menuOption.equals("E"));
+        return menuOption;
+    }
+
+    public String ticketMenuLoop() {
+        do {
+            menuOption = "";
+            ticket.displayTicket(ticket.selectedTicket);
+            ui.ticketMenu();
+            menuOption = input.getInput().toUpperCase();
+            if(menuOption.equals("S")){
+                ticket.changeSeverity(ticket.selectedTicket);
+            } else if (menuOption.equals("E")) {
+                ticket.escalateTicket(ticket.selectedTicket, currentTechnician);
+            }
+        } while (!menuOption.equals("M"));
         return menuOption;
     }
 }

@@ -21,10 +21,11 @@
 
 6.
 [X] Allow technicians to set the severity of a ticket, requires SelectTicket
-[ ] Escalate ticket, requires SelectTicket
+[X] Escalate ticket, requires SelectTicket
 
 7.
 [ ] Change ticket status, requires SelectTicket
+-> additional move tickets to the ArchiveTicket record
 
 8.
 [ ] Move ticket from OpenTickets to ArchivedTickets after 24 hours

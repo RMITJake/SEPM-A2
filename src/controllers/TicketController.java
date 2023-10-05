@@ -228,34 +228,19 @@ public class TicketController {
                     selectedTicket.setStatus(ticketString[5]);
                     selectedTicket.setCreationDate(LocalDateTime.parse(ticketString[6]));
                     // selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
-                    DisplayTicket(selectedTicket);
                 }
                 ticketIndex++;
             } while(selectedTicket.getId() == 0 && ticketIndex < ticketTable.size());
         }
     }
     
-    public void DisplayTicket(Ticket ticket){
-        do {
-            ui.displayTicket(ticket);
-            ui.ticketMenu();
-            userInput = input.getInput().toUpperCase();
-            if(userInput.equals("S")){
-                ui.changeSeverity();
-                userInput = input.getInput();
-                ticket.setSeverity(userInput);
-                updateTicketRecord(ticket);
-            }
-        } while (!userInput.equals("M"));
-    }
-
-    public void updateTicketRecord(Ticket ticket){
+    public void updateTicketRecord(Ticket ticket) {
         ArrayList<String> oldTicketTable = file.read(openTicketRecord);
         String newTicketTable = "";
         String[] ticketString;
-        for(int ticketIndex=0; ticketIndex < oldTicketTable.size(); ticketIndex++){
-            ticketString = oldTicketTable.get(ticketIndex).split(",",-1);
-            if(ticket.getId() == Integer.parseInt(ticketString[0])){
+        for (int ticketIndex = 0; ticketIndex < oldTicketTable.size(); ticketIndex++) {
+            ticketString = oldTicketTable.get(ticketIndex).split(",", -1);
+            if (ticket.getId() == Integer.parseInt(ticketString[0])) {
                 newTicketTable += ticket.getProperties();
             } else {
                 newTicketTable += oldTicketTable.get(ticketIndex) + "\r\n";
@@ -264,7 +249,19 @@ public class TicketController {
         file.writeOver(openTicketRecord, newTicketTable);
     }
 
-    public void EscalateTicket(Ticket ticket, Technician currentTechnician){
+    public void displayTicket(Ticket ticket) {
+        ui.displayTicket(ticket);
+    }
+
+    public void changeSeverity(Ticket ticket) {
+        userInput = "";
+        ui.changeSeverity();
+        userInput = input.getInput();
+        ticket.setSeverity(userInput);
+        updateTicketRecord(ticket);
+    }
+
+    public void escalateTicket(Ticket ticket, Technician currentTechnician){
         // Options to escalate ticket
         // 1. Create a new ticket in the escalate table which is assigned to L2
         // - Pros = original CO maintains ticket ownership, L2 can open and close tickets for escalation
