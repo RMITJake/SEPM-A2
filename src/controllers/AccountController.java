@@ -11,6 +11,8 @@ public class AccountController {
     private ValidationHandler validate = new ValidationHandler();
     private AccountUI ui = new AccountUI();
     String userInput;
+    private String accountRecord = file.accountRecord;
+    private String loginRecord = file.loginRecord;
 
     public void CreateUser(){
         // Initialise account
@@ -70,15 +72,15 @@ public class AccountController {
         
         System.out.println("New account created");
         System.out.println(newAccount.getProperties());
-        file.Write("Account", newAccount.getProperties()+"\r\n");
+        file.Write(accountRecord, newAccount.getProperties()+"\r\n");
         System.out.println("New login created");
         System.out.println(newLogin.getProperties());
-        file.Write("Login", newLogin.getProperties()+"\r\n");
+        file.Write(loginRecord, newLogin.getProperties()+"\r\n");
     }
 
     public Account getAccountById(int accountId){
         // accountTable arraylist to store the file contents
-        ArrayList<String> accountTable = file.Read("Account");
+        ArrayList<String> accountTable = file.Read(accountRecord);
         // Account object to temporarily store account details
         Account currentAccount = new Account();
         for(int index=0; index < accountTable.size(); index++){
@@ -103,7 +105,7 @@ public class AccountController {
 
     public Account getNewestAccount(){
         // Functionally similar to getNewestTicket()
-        ArrayList<String> accountTable = file.Read("Account");
+        ArrayList<String> accountTable = file.Read(accountRecord);
         String[] lastAccountInList = accountTable.get(accountTable.size()-1).split(",",-1);
         Account newestAccount = new Account();
         newestAccount.setId(Integer.parseInt(lastAccountInList[0]));
@@ -118,9 +120,8 @@ public class AccountController {
 
     public int setLoginId(){
         // Streamlined version of getNewestTicket to only return the need ID
-        ArrayList<String> loginTable = file.Read("Login");
+        ArrayList<String> loginTable = file.Read(loginRecord);
         String[] lastLoginProperties = loginTable.get(loginTable.size()-1).split(",",-1);
         return Integer.parseInt(lastLoginProperties[0]+1);
     }
-
 }

@@ -16,7 +16,8 @@ public class TicketController {
     private Ticket selectedTicket = new Ticket();
 
     // Record strings, used to minimize hard coded file references
-    protected String openTicketRecord = "OpenTicket";
+    private String openTicketRecord = file.openTicketRecord;
+    private String technicianRecord = file.technicianRecord;
 
     public void CreateNewTicket(Account currentUser, String record){
         // Initialise ticket
@@ -87,7 +88,7 @@ public class TicketController {
 
     private ArrayList<Integer> AssignTechnicianBySeverity(String severity){
         // Read Technician.csv into an array
-        ArrayList<String> technicianTable = file.Read("Technician");
+        ArrayList<String> technicianTable = file.Read(technicianRecord);
         ArrayList<Integer> technicianList = new ArrayList<Integer>();
 
         String technicianLevel;

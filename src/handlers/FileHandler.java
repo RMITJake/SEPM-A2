@@ -9,6 +9,15 @@ public class FileHandler {
     // Set the basic path for the string. Filename.csv will be appended to open files
     private String path = "records/";
 
+    // Set record strings to minimize hardcoding
+    public String accountRecord = "Account";
+    public String archivedTicketRecord = "ArchivedTicket";
+    public String escalationRecord = "Escalation";
+    public String loginRecord = "Login";
+    public String openTicketRecord = "OpenTicket";
+    public String technicianRecord = "Technician";
+    public String ticketUpdateRecord = "TicketUpdate";
+
     public void Write(String file, String input){
         // Add the input filename to the path so we can write to a file
         String workingPath = path + file + ".csv";
