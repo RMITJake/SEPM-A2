@@ -6,29 +6,29 @@ public class ValidationHandler {
   FileHandler file = new FileHandler();
 
   // Welcome menu validation
-  public boolean Welcome(String input){
+  public boolean welcome(String input){
     regex = "^[L|C|F|E]$";
     return Pattern.matches(regex, input);
   }
 
   // Validation relevant to creating a new user
-  public boolean CreateUser(String input){
+  public boolean createUser(String input){
     return true;
   }
 
-  public boolean Email(String input){
+  public boolean email(String input){
     boolean emailMatch;
     regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
     emailMatch = Pattern.matches(regex, input);
     if(emailMatch){
-      EmailUniqueCheck(input);
+      emailUniqueCheck(input);
     }
     return emailMatch;
   }
 
-  public boolean EmailUniqueCheck(String input){
+  public boolean emailUniqueCheck(String input){
     // Streamlined version of getNewestTicket to only return the need ID
-    ArrayList<String> accountTable = file.Read("Account");
+    ArrayList<String> accountTable = file.read("Account");
     // String to temporarily store split account properties
     String[] accountProperties;
     boolean emailMatch = false;
@@ -43,21 +43,21 @@ public class ValidationHandler {
     return emailMatch;
   }
 
-  public boolean FullName(String input){
+  public boolean fullName(String input){
     boolean fullNameMatch;
     regex = "^[\\w]{1,}";
     fullNameMatch = Pattern.matches(regex, input);
     return fullNameMatch;
   }
 
-  public boolean PhoneNumber(String input){
+  public boolean phoneNumber(String input){
     boolean phoneNumberMatch;
     regex = "^[\\d]{10,10}$";
     phoneNumberMatch = Pattern.matches(regex, input);
     return phoneNumberMatch;
   }
 
-  public boolean Password(String input){
+  public boolean password(String input){
     int index;
     boolean lengthMatch;
     boolean uppercaseMatch;
@@ -101,7 +101,7 @@ public class ValidationHandler {
     return false;
   }
 
-  public boolean TicketId(String input){
+  public boolean ticketId(String input){
     regex = "^[\\d]+";
     boolean ticketIdMatch = Pattern.matches(regex, input);
     return ticketIdMatch;

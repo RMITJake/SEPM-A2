@@ -8,18 +8,18 @@ class App {
         // Create an instance of the MenuUI frontend
         MenuController menu = new MenuController();
         do{
-            applicationLoop = menu.WelcomeLoop().toUpperCase();
+            applicationLoop = menu.welcomeLoop().toUpperCase();
             if(applicationLoop.equals("C")){
-                menu.CreateUser();
+                menu.createUser();
             }
             if(applicationLoop.equals("F")){
-                menu.ForgotPassword();
+                menu.forgotPassword();
             }
             if(applicationLoop.equals("L")){
-                loggedIn = menu.LoginLoop();
+                loggedIn = menu.loginLoop();
             }
             if(loggedIn){
-                applicationLoop = menu.MainMenuLoop();
+                applicationLoop = menu.mainMenuLoop();
             }
         } while (!applicationLoop.equals("E"));
     }

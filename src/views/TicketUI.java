@@ -19,19 +19,19 @@ public class TicketUI {
         System.out.print("Are the following details correct? [Y/N] ");
     }
 
-    public void ForgotPassword(){
+    public void forgotPassword(){
         System.out.print("Enter your email address or type \"C\" to cancel: ");
     }
 
-    public void ForgotPassword(String email){
+    public void forgotPassword(String email){
         System.out.println("If an account for " + email + " is found a ticket will be submitted to reset the password.");
     }
 
-    public void SelectTicket(){
+    public void selectTicket(){
         System.out.print("Enter the id of the ticket you wish to view: ");
     }
 
-    public void DisplayTicket(Ticket ticket){
+    public void displayTicket(Ticket ticket){
         String ticketDetails;
         System.out.println("------------------------------");
         ticketDetails = "Ticket ID: " + ticket.getId();
@@ -45,14 +45,14 @@ public class TicketUI {
         System.out.println("------------------------------");
     }
     
-    public void TicketMenu(){
+    public void ticketMenu(){
         String menu = "";
         menu += "[S]et ticket severity\n";
         menu += "[M]ain menu";
         System.out.println(menu);
     }
 
-    public void ChangeSeverity(){
+    public void changeSeverity(){
         String menu = "";
         menu += "What is the severity of the ticket: ";
         System.out.print(menu);

@@ -18,7 +18,7 @@ public class FileHandler {
     public String technicianRecord = "Technician";
     public String ticketUpdateRecord = "TicketUpdate";
 
-    public void Write(String file, String input){
+    public void write(String file, String input){
         // Add the input filename to the path so we can write to a file
         String workingPath = path + file + ".csv";
         try{
@@ -30,7 +30,7 @@ public class FileHandler {
         }
     }
 
-    public void WriteOver(String file, String input){
+    public void writeOver(String file, String input){
     // Add the input filename to the path so we can write to a file
     String workingPath = path + file + ".csv";
     try{
@@ -42,7 +42,7 @@ public class FileHandler {
     }
 }
 
-    public ArrayList<String> Read(String file){
+    public ArrayList<String> read(String file){
         // Add the input filename to the path so we can read a file
         String workingPath = path + file + ".csv";
         // Create a blank string to temporarily store the file contents which will be returned

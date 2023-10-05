@@ -2,7 +2,7 @@ package src.views;
 public class MenuUI {
     private String uiText;
 
-    public void WelcomeBanner(){
+    public void welcomeBanner(){
         // Welcome prompt
         uiText = "------------------------------\n";
         uiText += "    Cinco Ticketing System   \n";
@@ -10,7 +10,7 @@ public class MenuUI {
         System.out.println(uiText);
     }
 
-    public void WelcomePrompt(){
+    public void welcomePrompt(){
         uiText = "Press the corresponding key in brackets to make a selection\n";
         uiText += "[L]ogin\n";
         uiText += "[C]reate an Account\n";
@@ -20,20 +20,20 @@ public class MenuUI {
         System.out.print(uiText);
     }
 
-    public void LoginPrompt(){
+    public void loginPrompt(){
         // Get users AccountId
         uiText = "Enter your acount number: ";
         System.out.print(uiText);
     }
     
-    public void PasswordPrompt(){
+    public void passwordPrompt(){
         // Get users AccountId
         uiText = "Enter your password: ";
         System.out.print(uiText);
     }
 
     // The techOptions input dependency controls if technician commands are visible
-    public void MainMenu(int techOptions){
+    public void mainMenu(int techOptions){
         // Main menu
         uiText = "------------------------------\n";
         uiText += "--------  Main Menu  ---------\n";

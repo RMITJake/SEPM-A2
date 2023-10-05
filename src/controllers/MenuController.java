@@ -20,43 +20,43 @@ public class MenuController {
     // Keeps track of the menu option selected
     String menuOption;
 
-    public MenuController(){
+    public void menuController(){
         // Print out the welcome message
-        ui.WelcomeBanner();
+        ui.welcomeBanner();
     }
 
-    public String WelcomeLoop(){
+    public String welcomeLoop(){
         do{
             menuOption = "";
-            ui.WelcomePrompt();
+            ui.welcomePrompt();
             menuOption = input.getInput().toUpperCase();
-        } while (!validate.Welcome(menuOption));
+        } while (!validate.welcome(menuOption));
 
         return menuOption;
     }
 
-    public void CreateUser(){
+    public void createUser(){
         do{
             menuOption = "";
-            account.CreateUser();
+            account.createUser();
             menuOption = input.getInput().toUpperCase();
-        } while (!validate.CreateUser(menuOption));
+        } while (!validate.createUser(menuOption));
     }
 
-    public void ForgotPassword(){
-        ticket.ForgotPassword();
+    public void forgotPassword(){
+        ticket.forgotPassword();
     }
 
-    public boolean LoginLoop(){
+    public boolean loginLoop(){
         while(currentUser.getId() == 0){
             // Show login prompts and get+validate input
-            ui.LoginPrompt();
+            ui.loginPrompt();
             String accountId = input.getInput();
-            ui.PasswordPrompt();
+            ui.passwordPrompt();
             String password = input.getSecureInput();
 
             // Login function
-            currentUser = login.VerifyLogin(accountId, password);
+            currentUser = login.verifyLogin(accountId, password);
 
             // Check if user is a technician or not
             currentTechnician = technician.getTechnicianById(currentUser.getId());
@@ -64,15 +64,15 @@ public class MenuController {
         return true;
     }
 
-    public String MainMenuLoop(){
+    public String mainMenuLoop(){
         do{
             menuOption = "";
-            ui.MainMenu(currentTechnician.getId()); 
+            ui.mainMenu(currentTechnician.getId()); 
             menuOption = input.getInput().toUpperCase();
             if(menuOption.equals("C")){
-                ticket.CreateNewTicket(currentUser, ticket.openTicketRecord);
+                ticket.createNewTicket(currentUser, ticket.openTicketRecord);
             } else if (menuOption.equals("S")){
-                ticket.SelectTicket();
+                ticket.selectTicket();
             }
         }while(!menuOption.equals("E"));
         return menuOption;

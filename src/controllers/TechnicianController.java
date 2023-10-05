@@ -10,7 +10,7 @@ public class TechnicianController {
 
     public Technician getTechnicianById(int accountId){
         // accountTable arraylist to store the file contents
-        ArrayList<String> technicianTable = file.Read(technicianRecord);
+        ArrayList<String> technicianTable = file.read(technicianRecord);
         // Account object to temporarily store account details
         Technician currentTechnician = new Technician();
         for(int index=0; index < technicianTable.size(); index++){

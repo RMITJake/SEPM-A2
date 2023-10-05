@@ -14,7 +14,7 @@ public class AccountController {
     private String accountRecord = file.accountRecord;
     private String loginRecord = file.loginRecord;
 
-    public void CreateUser(){
+    public void createUser(){
         // Initialise account
         Account newAccount = new Account();
         Login newLogin = new Login();
@@ -23,21 +23,21 @@ public class AccountController {
         boolean confirmDetails = false;
         while(!confirmDetails){
             do{
-                ui.Email();
+                ui.email();
                 userInput = input.getInput();
-            } while (!validate.Email(userInput));
+            } while (!validate.email(userInput));
             newAccount.setEmail(userInput);
             
             do{
-                ui.FullName();
+                ui.fullName();
                 userInput = input.getInput();
-            } while (!validate.FullName(userInput));
+            } while (!validate.fullName(userInput));
             newAccount.setFullName(userInput);
             
             do{
-                ui.PhoneNumber();
+                ui.phoneNumber();
                 userInput = input.getInput();
-            } while (!validate.PhoneNumber(userInput));
+            } while (!validate.phoneNumber(userInput));
             newAccount.setPhoneNumber(Integer.parseInt(userInput));
 
             boolean passwordMatch = false;
@@ -45,18 +45,18 @@ public class AccountController {
             String passwordConfirm;
             while(!passwordMatch){
                 do{
-                ui.Password();
+                ui.password();
                 password = input.getInput();
-                } while (!validate.Password(password));
+                } while (!validate.password(password));
                 
-                ui.PasswordConfirm();
+                ui.passwordConfirm();
                 passwordConfirm = input.getInput();
                 if(password.equals(passwordConfirm)){
                     newLogin.setPassword(password);
                     passwordMatch = true;
                 }
             }
-            ui.Confirm(newAccount.getEmail(), newAccount.getFullName(), newAccount.getPhoneNumber());
+            ui.confirm(newAccount.getEmail(), newAccount.getFullName(), newAccount.getPhoneNumber());
             if(input.getInput().equals("Y")){
                 newAccount.setId((getNewestAccount().getId())+1);
                 newAccount.setCreationDate(LocalDateTime.now());
@@ -72,15 +72,15 @@ public class AccountController {
         
         System.out.println("New account created");
         System.out.println(newAccount.getProperties());
-        file.Write(accountRecord, newAccount.getProperties()+"\r\n");
+        file.write(accountRecord, newAccount.getProperties()+"\r\n");
         System.out.println("New login created");
         System.out.println(newLogin.getProperties());
-        file.Write(loginRecord, newLogin.getProperties()+"\r\n");
+        file.write(loginRecord, newLogin.getProperties()+"\r\n");
     }
 
     public Account getAccountById(int accountId){
         // accountTable arraylist to store the file contents
-        ArrayList<String> accountTable = file.Read(accountRecord);
+        ArrayList<String> accountTable = file.read(accountRecord);
         // Account object to temporarily store account details
         Account currentAccount = new Account();
         for(int index=0; index < accountTable.size(); index++){
@@ -105,7 +105,7 @@ public class AccountController {
 
     public Account getNewestAccount(){
         // Functionally similar to getNewestTicket()
-        ArrayList<String> accountTable = file.Read(accountRecord);
+        ArrayList<String> accountTable = file.read(accountRecord);
         String[] lastAccountInList = accountTable.get(accountTable.size()-1).split(",",-1);
         Account newestAccount = new Account();
         newestAccount.setId(Integer.parseInt(lastAccountInList[0]));
@@ -120,7 +120,7 @@ public class AccountController {
 
     public int setLoginId(){
         // Streamlined version of getNewestTicket to only return the need ID
-        ArrayList<String> loginTable = file.Read(loginRecord);
+        ArrayList<String> loginTable = file.read(loginRecord);
         String[] lastLoginProperties = loginTable.get(loginTable.size()-1).split(",",-1);
         return Integer.parseInt(lastLoginProperties[0]+1);
     }
