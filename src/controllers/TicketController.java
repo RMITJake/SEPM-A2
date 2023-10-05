@@ -62,7 +62,7 @@ public class TicketController {
 
     public Ticket GetNewestTicket(){
         // Read OpenTicket.csv into an array
-        ArrayList<String> openTicketTable = file.Read("OpenTicket");
+        ArrayList<String> openTicketTable = file.Read(openTicketRecord);
         // write the last ticket in the open ticket array into it's own array for processing
         String[] lastTicketInList = openTicketTable.get(openTicketTable.size()-1).split(",",-1);
         // Initialise an blank ticket
@@ -119,7 +119,7 @@ public class TicketController {
         // Int to store the case count for the assigned technician
         int assignedTechnicianCaseCount = -1;
         // Read the OpenTicket.csv to an array
-        ArrayList<String> openTicketTable = file.Read("OpenTicket");
+        ArrayList<String> openTicketTable = file.Read(openTicketRecord);
         // Initialise an array to store the case counts
         ArrayList<Integer> technicianCaseCount = new ArrayList<Integer>();
         // String to temporarily hold split OpenTicket information
@@ -203,7 +203,7 @@ public class TicketController {
         newTicket.setStatus("open");
         newTicket.setCreationDate(LocalDateTime.now());
         // Write the ticket to OpenTicket.csv
-        file.Write("OpenTicket", newTicket.getProperties());
+        file.Write(openTicketRecord, newTicket.getProperties());
     }
 
     public void SelectTicket(){
@@ -213,7 +213,7 @@ public class TicketController {
         ui.SelectTicket();
         userInput = input.getInput();
         if(validate.TicketId(userInput)){
-            ArrayList<String> ticketTable = file.Read("OpenTicket");
+            ArrayList<String> ticketTable = file.Read(openTicketRecord);
             String[] ticketString;
             for(int ticketIndex=0; ticketIndex < ticketTable.size(); ticketIndex++){
                 ticketString = ticketTable.get(ticketIndex).split(",",-1);
@@ -248,7 +248,7 @@ public class TicketController {
     }
 
     public void UpdateTicketRecord(Ticket ticket){
-        ArrayList<String> oldTicketTable = file.Read("OpenTicket");
+        ArrayList<String> oldTicketTable = file.Read(openTicketRecord);
         String newTicketTable = "";
         String[] ticketString;
         for(int ticketIndex=0; ticketIndex < oldTicketTable.size(); ticketIndex++){
@@ -259,7 +259,7 @@ public class TicketController {
                 newTicketTable += oldTicketTable.get(ticketIndex) + "\r\n";
             }
         }
-        file.WriteOver("OpenTicket", newTicketTable);
+        file.WriteOver(openTicketRecord, newTicketTable);
     }
 
     public void EscalateTicket(Ticket ticket){
