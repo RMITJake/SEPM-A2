@@ -10,13 +10,13 @@ public class FileHandler {
     private String path = "records/";
 
     // Set record strings to minimize hardcoding
-    public String accountRecord = "Account";
-    public String archivedTicketRecord = "ArchivedTicket";
-    public String escalationRecord = "Escalation";
-    public String loginRecord = "Login";
-    public String openTicketRecord = "OpenTicket";
-    public String technicianRecord = "Technician";
-    public String ticketUpdateRecord = "TicketUpdate";
+    public final String accountRecord = "Account";
+    public final String archivedTicketRecord = "ArchivedTicket";
+    public final String escalationRecord = "Escalation";
+    public final String loginRecord = "Login";
+    public final String openTicketRecord = "OpenTicket";
+    public final String technicianRecord = "Technician";
+    public final String ticketUpdateRecord = "TicketUpdate";
 
     public void write(String file, String input){
         // Add the input filename to the path so we can write to a file
