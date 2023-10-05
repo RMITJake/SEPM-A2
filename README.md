@@ -12,6 +12,8 @@ Each file will be a list of records reflecting the structure of it's associated 
 ---
 # User Guide
 ## Running the program
+- Prerequisite: OpenJDK 17.0.8 or a compatible version should be installed
+
 ### Compile and run on Linux using the build script
 1. In a terminal cd into the project root directory.
 2. In the terminal run the build.sh script in the project root directory.
