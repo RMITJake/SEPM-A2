@@ -16,7 +16,7 @@ public class TicketController {
     private Ticket selectedTicket = new Ticket();
 
     // Record strings, used to minimize hard coded file references
-    private String openTicketRecord = file.openTicketRecord;
+    protected String openTicketRecord = file.openTicketRecord;
     private String technicianRecord = file.technicianRecord;
 
     public void CreateNewTicket(Account currentUser, String record){
