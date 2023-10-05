@@ -50,4 +50,10 @@ public class TicketUI {
         menu += "What is the severity of the ticket: ";
         System.out.print(menu);
     }
+
+    public void escalationReason(){
+        String menu = "";
+        menu += "Why is this ticket being escalated: ";
+        System.out.print(menu);
+    }
 }

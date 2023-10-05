@@ -307,6 +307,16 @@ public class TicketController {
         // - Cons - L1 looses track of the ticket
 
         Ticket escalationTicket = ticket;
+        ui.escalationReason();
+        String confirm;
+        do{
+            confirm = "";
+            userInput = input.getInput();
+            System.out.println("Is the below escaltion reason correct? [Y/N] ");
+            System.out.println(userInput);
+            confirm = input.getInput().toUpperCase();
+        } while(!confirm.equals("Y"));
+        escalationTicket.setDescription(userInput);
         escalationTicket.setRequesterId(currentTechnician.getId());
         escalationTicket.setTechnicianAssignedId(assignTechnician("high"));
         escalationTicket.setId(getNewestTicket(escalationRecord).getId()+1);
