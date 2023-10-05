@@ -25,7 +25,9 @@ Each file will be a list of records reflecting the structure of it's associated 
 ### Compile and run on Windows using Eclipse
 
 ## Using the program
+### As A Customer
 
+### As A Technician
  
 ---
 # Deliverables:
