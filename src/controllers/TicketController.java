@@ -116,8 +116,6 @@ public class TicketController {
 
     // Takes in a list storing technicianIds extracted from the array
     private int AssignTechnicianByTicketCount(ArrayList<Integer> technicianList){
-        // Int to store the assigned technician
-        int assignedTechnicianId = 0;
         // Int to store the case count for the assigned technician
         int assignedTechnicianCaseCount = -1;
         // Read the OpenTicket.csv to an array
@@ -228,8 +226,7 @@ public class TicketController {
                     selectedTicket.setStatus(ticketString[5]);
                     selectedTicket.setCreationDate(LocalDateTime.parse(ticketString[6]));
                     // selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
-                    this.selectedTicket = selectedTicket;
-                    DisplayTicket(this.selectedTicket);
+                    DisplayTicket(selectedTicket);
                 }
             }
         }
@@ -271,7 +268,7 @@ public class TicketController {
         // - Cons
         // 2. Assign ticket to L2
         // - Pros = easy
-        // - Cons
+        // - Cons - L1 looses track of the ticket
 
         Ticket escalationTicket = new Ticket();
 
