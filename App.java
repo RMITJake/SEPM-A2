@@ -3,13 +3,12 @@ import src.controllers.MenuController;
 class App {
     String applicationLoop;
     boolean loggedIn;
-    boolean applicationExit;
 
     private void Run(){
         // Create an instance of the MenuUI frontend
         MenuController menu = new MenuController();
         do{
-            applicationLoop = menu.WelcomeLoop();
+            applicationLoop = menu.WelcomeLoop().toUpperCase();
             if(applicationLoop.equals("C")){
                 menu.CreateUser();
             }
@@ -20,9 +19,8 @@ class App {
                 loggedIn = menu.LoginLoop();
             }
             if(loggedIn){
-                menu.MainMenuLoop();
+                applicationLoop = menu.MainMenuLoop();
             }
-            if(applicationLoop.equals("E")){}
         } while (!applicationLoop.equals("E"));
     }
 
@@ -30,5 +28,6 @@ class App {
         // Run the app
         App app = new App();
         app.Run();
+        System.exit(0);
     }
 }

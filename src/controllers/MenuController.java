@@ -64,18 +64,17 @@ public class MenuController {
         return true;
     }
 
-    public void MainMenuLoop(){
-        menuOption = "";
-        // ticket.DisplayTicket();
-        while(!menuOption.toUpperCase().equals("E")){
+    public String MainMenuLoop(){
+        do{
+            menuOption = "";
             ui.MainMenu(currentTechnician.getId()); 
-            menuOption = input.getInput();
-            if(menuOption.toUpperCase().equals("C")){
+            menuOption = input.getInput().toUpperCase();
+            if(menuOption.equals("C")){
                 ticket.CreateNewTicket(currentUser);
-            } else if (menuOption.toUpperCase().equals("S")){
+            } else if (menuOption.equals("S")){
                 ticket.SelectTicket();
             }
-            menuOption = "";
-        }
+        }while(!menuOption.equals("E"));
+        return menuOption;
     }
 }
