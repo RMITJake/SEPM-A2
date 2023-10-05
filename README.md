@@ -11,12 +11,21 @@ Each file will be a list of records reflecting the structure of it's associated 
 
 ---
 # User Guide
-## Compile and run on Linux
+## Running the program
+### Compile and run on Linux using the build script
 1. In a terminal cd into the project root directory.
 2. In the terminal run the build.sh script in the project root directory.
 3. Run the command "java App" to start the program.
 
-## Compile and run on Windows
+### Compile and run on Linux manually
+1. In a terminal cd into the project root directory.
+2. Run the command "javac *.java src/controllers/*.java src/handlers/*.java src/models/*.java src/views/*.java"
+3. Run the command "java App" to start the program.
+
+### Compile and run on Windows using Eclipse
+
+## Using the program
+
  
 ---
 # Deliverables:
@@ -27,12 +36,5 @@ Each file will be a list of records reflecting the structure of it's associated 
 - Compatible with RMIT MyDesktop service
 - JAVA only
 - No SQL
-- No persistent data
-
+- Data persistence, using .csv files for persistence, risky in the case of multiple write attempts to an already open file.
 ---
-# Action Plan
-1. DONE LoginUI > LoginFunction
-2. MenuUI > OpenTicket > need to save ticket to file and use LocalDateTime correctly
-3. UpdateTicket
-4. CloseTicket
-5. ArchiveTicket
