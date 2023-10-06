@@ -76,7 +76,7 @@ public class MenuController {
                 ticket.selectTicket();
                 do{
                     menuOption = ticketMenuLoop();
-                } while(menuOption != "M");
+                } while(!menuOption.equals("M"));
             } else if (menuOption.equals("M")) {
                 ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, null);
                 for (int index = 0; index < myTickets.size(); index++) {
@@ -99,7 +99,11 @@ public class MenuController {
             menuOption = "";
             ticket.displayTicket(ticket.selectedTicket);
             ui.ticketMenu();
-            menuOption = input.getInput().toUpperCase();
+            menuOption = input.getInput().toUpperCase();            
+            if (menuOption == null || menuOption.trim().isEmpty()) {
+                System.out.println("Input is null or empty. Please enter a valid option.");  //handle null or empty input
+                continue;
+            }
             if(menuOption.equals("S")){
                 ticket.changeSeverity(ticket.selectedTicket);
             } else if (menuOption.equals("E")) {
@@ -108,4 +112,5 @@ public class MenuController {
         } while (!menuOption.equals("M"));
         return menuOption;
     }
+
 }
