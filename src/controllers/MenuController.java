@@ -106,11 +106,14 @@ public class MenuController {
             }
             if(menuOption.equals("S")){
                 ticket.changeSeverity(ticket.selectedTicket);
+            }
+           if(menuOption.equals("C")){
+                ticket.changeStatus(ticket.selectedTicket);
             } else if (menuOption.equals("E")) {
                 ticket.escalateTicket(ticket.selectedTicket, currentTechnician);
             }
         } while (!menuOption.equals("M"));
         return menuOption;
-    }
-
+        }
+    
 }

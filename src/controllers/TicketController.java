@@ -323,4 +323,8 @@ public class TicketController {
         escalationTicket.setCreationDate(LocalDateTime.now());
         file.write(escalationRecord, escalationTicket.getProperties());
     }
+
+	public void changeStatus(Ticket ticket) {
+		Ticket statusTicket = ticket;
+	}
 }
