@@ -3,10 +3,10 @@
 - An IT Service Desk ticketing system for a small startup, Cinco. 
 It allows staff members to submit IT issues and technicians to manage and resolve the issues efficiently.
 
+
 ---
 # Summary
-- Developed using openjdk version "17.0.8" 2023-07-18
-
+- Developed using openjdk version "17.0.8" 2023-07-18.
 
 ## Files
 As the project is pure Java and there is no scope to write SQL queries, data persistence will be handled through standalone files which will act in place of database tables.
@@ -16,20 +16,22 @@ Each file will be a list of records reflecting the structure of it's associated 
 # User Guide
 ## Prerequisites 
 - OpenJDK 17.0.8 or a compatible version should be installed.
-- Have access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
+- Have an access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
 
 ## Running the program
 Follow these steps to execute the IT Service Desk Ticketing System.
 
-### Step 1: Download the Zip file
+### Step 1: Download the ZIP file
 1. Open ***Google Chrome*** and go to [SEPM-2 Github](https://github.com/RMITJake/SEPM-A2#compile-and-run-on-linux-using-the-build-script).
 2. Sign in using your Github credentials.
 3. Click `<> Code` and `Download ZIP` to download `SEPM-2-main.zip`.
-4. Unzip the downloaded file in the **Downloads** folder. 
+4. Unzip the downloaded file in the ***Downloads*** folder. 
 
 ### Step 2: Run the Java codes
-1. Open ***Eclipse*** >> **File** >> **Open Projects from File System...**
-2. Click **Directory** and **Downloads/SEPM-A2-main**
+1. Open ***Eclipse*** >> ***File*** >> ***Open Projects from File System...***
+2. Click ***Directory*** >> ***Downloads/SEPM-A2-main*** >> ***Open***
+3. Click the `SEPM-A2-main` in ***Project Explorer*** and `Run App`.
+- ![Screenshot1](https://github.com/RMITJake/SEPM-A2/blob/main/Screen_Shot_56.png)
 
 ### Step 3: Execute the IT Service Desk Tikcketing System
 1. Menu Options: 
