@@ -42,37 +42,42 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         1. `C` - Create a new user account.
         2. `F` - Forgot password feature.
         3. `L` - Log in to an existing account.
+        4. `E` - Exit the system.
 
 2. Creating a User:
-    1. Choose "C" to create a new user account.
-    2. Follow the prompts to provide necessary information.
+    1. Choose `C` to create a new user account.
+    2. Enter your email address.
+    3. Enter your full name.
+    4. Enter your phone number.
+    5. Enter a new password (including lowercase/uppercase/number).
+    6. Confirm the entered password.
+    7. Check the Account Summary and confirm it is correct `Y`.
+    8. New account successfully created. Don't forget your account number and password!
 
-3. Forgot Password:
-    1. Choose "F" to access the "Forgot Password" feature.
+3. Logging In:
+    1. Choose `L` to log in to an existing account.
+    2. Enter your account number.
+    3. Enter your password.
+    4. Logged in succesfully.
+    5. The Main Menu presents the following options:
+        1. `C` - Create a new ticket
+        2. `S` - Select Ticket
+        3. `M` - My Open Tickets
+        4. `L` - Logout the account
+        5. `E` - Exit the system.
+
+4. Forgot Password:
+    1. Choose `F` to access the ***Forgot Password*** feature.
     2. Follow the prompts to reset your password.
 
-4. Logging In:
-    1. Choose "L" to log in to an existing account.
-    2. Enter your credentials (email and password).
 
 5. Main Menu:
     1. If logged in successfully, you will access the main menu.
     2. Choose different options from the main menu as provided by the application.
 
 6. Exiting the Application:
-    1. To exit the application, choose "E" at any point.
+    1. To exit the application, choose `E` at any point.
 
-### Compile and run on Linux using the build script
-1. In a terminal cd into the project root directory.
-2. In the terminal run the build.sh script in the project root directory.
-3. Run the command "java App" to start the program.
-
-### Compile and run on Linux manually
-1. In a terminal cd into the project root directory.
-2. Run the command "javac *.java src/controllers/*.java src/handlers/*.java src/models/*.java src/views/*.java"
-3. Run the command "java App" to start the program.
-
-### Compile and run on Windows using Eclipse
 
 ## Using the program
 ### As A Customer
