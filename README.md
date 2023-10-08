@@ -14,7 +14,7 @@ As the project is pure Java and there is no scope to write SQL queries, data per
 - OpenJDK 17.0.8 or a compatible version should be installed.
 - Have an access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
 
-## Running the program
+## ▶ Running the program
 Follow these steps to execute the IT Service Desk Ticketing System.
 
 ### Step 1: 📥 Download the ZIP file
