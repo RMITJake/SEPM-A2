@@ -39,10 +39,10 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 ### Step 3: Execute the IT Service Desk Tikcketing System
 1. Menu Options: 
     1. Upon starting, the program presents the following options:
-        1. `C` - Create a new user account.
-        2. `F` - Forgot password feature.
-        3. `L` - Log in to an existing account.
-        4. `E` - Exit the system.
+        - `C` - Create a new user account.
+        - `F` - Forgot password feature.
+        - `L` - Log in to an existing account.
+        - `E` - Exit the system.
 
 2. Creating a User:
     1. Enter `C` to create a new user account.
