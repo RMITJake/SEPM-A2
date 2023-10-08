@@ -21,9 +21,9 @@ Each file will be a list of records reflecting the structure of it's associated 
 Follow these steps to execute the IT Service Desk Ticketing System.
 
 ### Step 1: Access the Github
-1. Open [Google Chrome](google.chrome/) and go to [SEPM-2 Github](https://github.com/RMITJake/SEPM-A2#compile-and-run-on-linux-using-the-build-script).
+1. Open Google Chrome and go to [SEPM-2 Github](https://github.com/RMITJake/SEPM-A2#compile-and-run-on-linux-using-the-build-script).
 2. Sign in using your Github credentials.
-3. Click '<> Code' and 'Download ZIP'.
+3. Click `<> Code` and `Download ZIP`.
 
 ### Step 2: Compile the Java codes
 
