@@ -60,11 +60,13 @@ Follow these steps to execute the IT Service Desk Ticketing System.
     3. Enter your password.
     4. Logged in succesfully.
     5. The Main Menu presents the following options:
-        1. `C` - Create a new ticket
-        2. `S` - Select Ticket
-        3. `M` - My Open Tickets
-        4. `L` - Logout the account
-        5. `E` - Exit the system.
+        1. ***C*** - Create a new ticket
+        2. ***S*** - Select Ticket
+        3. ***M*** - My Open Tickets
+        4. ***L*** - Logout the account
+        5. ***E*** - Exit the system.
+    6. Choose 
+
 
 4. Forgot Password:
     1. Choose `F` to access the ***Forgot Password*** feature.
