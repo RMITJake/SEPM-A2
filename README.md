@@ -15,13 +15,13 @@ Each file will be a list of records reflecting the structure of it's associated 
 # User Guide
 ## Prerequisites Running the program
 - OpenJDK 17.0.8 or a compatible version should be installed.
-- Have access to RMIT's myDesktop.
+- Have access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
 
 ## Running the program
 Follow these steps to execute the IT Service Desk Ticketing System.
 
 ### Step 1: Access the Github
-1. Open [Google Chrome](chrome://welcome/) and go to [SEPM-2 Github](https://github.com/RMITJake/SEPM-A2#compile-and-run-on-linux-using-the-build-script).
+1. Open [Google Chrome](google.chrome/) and go to [SEPM-2 Github](https://github.com/RMITJake/SEPM-A2#compile-and-run-on-linux-using-the-build-script).
 2. Sign in using your Github credentials.
 3. Click '<> Code' and 'Download ZIP'.
 
