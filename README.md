@@ -49,9 +49,9 @@ Follow these steps to execute the IT Service Desk Ticketing System.
     2. Enter your email address.
     3. Enter your full name.
     4. Enter your phone number.
-    5. Enter a new password (including lowercase/uppercase/number).
+    5. Enter a new password (including **lowercase**/**uppercase**/**number**/**min length 20**).
     6. Confirm the entered password.
-    7. Check the Account Summary and confirm it is correct `Y`.
+    7. Check the Account Summary and confirm it is correct `Y`/`N`.
     8. New account successfully created. Don't forget your account number and password!
 
 3. Logging In:
@@ -61,12 +61,24 @@ Follow these steps to execute the IT Service Desk Ticketing System.
     4. Logged in succesfully.
     5. The Main Menu presents the following options:
         - ***C*** - Create a new ticket
-        - ***S*** - Select Ticket
+        - ***S*** - View the Tickets
         - ***M*** - My Open Tickets
         - ***L*** - Logout the account
         - ***E*** - Exit the system.
     6. Enter ***C*** to create a new ticket.
-        1.
+        1. Provide a description of your IT issue.
+        2. Provide a severity of the issue (`low`/`medium`/`high`).
+        3. The ticket has been opened!
+        4. Check the Ticket Summary and confirm it is correct `Y`/`N`.
+    7. Enter ***S*** to view the ticket submitted.
+        1. Enter the Ticket ID.
+        2. You can view the detailed ticket information.
+        <br/>
+        3. Enter `S` to change the ticket severity.
+            1. Enter the appropriate severity.
+            2. Confirm the changed Ticket Summary.
+        4. Enter `E` to escalate the ticket.
+            1. 
 
 
 4. Forgot Password:
