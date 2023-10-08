@@ -45,7 +45,7 @@ public class ValidationHandler {
 
   public boolean fullName(String input){
     boolean fullNameMatch;
-    regex = "^[\\w]{1,}";
+    regex = "^[\\w|\\s|']{1,}";
     fullNameMatch = Pattern.matches(regex, input);
     return fullNameMatch;
   }
