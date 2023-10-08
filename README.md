@@ -5,8 +5,15 @@
 - Developed using openjdk version "17.0.8" 2023-07-18.
 
 ## 📁 Files
-As the project is pure Java and there is no scope to write SQL queries, data persistence will be handled through standalone files which will act in place of database tables. Each file will be a list of records reflecting the structure of it's associated class.
+As the project is pure Java and there is no scope to write SQL queries, data persistence will be handled through csv files in the "records" folder which will act in place of database tables. Each file will be a list of records reflecting the structure of it's associated class.
 
+Example Staff user:
+Login #: 4005
+Password: SuperSecure55
+
+Example Technician user:
+Login #: 4008
+Password: Password123
 
 ---
 # 📄 User Guide
@@ -18,21 +25,21 @@ As the project is pure Java and there is no scope to write SQL queries, data per
 Follow these steps to execute the IT Service Desk Ticketing System.
 
 ### Step 1: 📥 Download the ZIP file
-1. Open ***Google Chrome*** and go to [SEPM-2 Github](https://github.com/RMITJake/SEPM-A2#compile-and-run-on-linux-using-the-build-script).
+1. Open ***Google Chrome*** and go to [SEPM-2 Github](https://github.com/RMITJake/SEPM-A2).
 2. Sign in using your Github credentials.
 3. Click `<> Code` and `Download ZIP` to download `SEPM-2-main.zip`.
 4. Unzip the downloaded file in the ***Downloads*** folder. 
 
-### Step 2: ▶ Run the Java codes
+### Step 2: ▶ Run the Java application
 1. Open ***Eclipse*** >> ***File*** >> ***Open Projects from File System...***
-2. Click ***Directory*** >> ***Downloads/SEPM-A2-main*** >> ***Open***
-3. Click the `SEPM-A2-main` in ***Project Explorer*** and `Run App`.
+2. Click ***Directory*** >> ***Downloads/SEPM-A2-main*** >> ***Finish***
+3. Click the `SEPM-A2-main` in ***Project Explorer*** and then click the green play button to run the app.
 <br/>![Screenshot1](https://github.com/RMITJake/SEPM-A2/blob/1a7c87126fa5b65ae0fc21d96013e39ac71f0d00/Screen%20Shot%2056.png) 
 
-4. Java codes are successfully running!
+4. The Java application is successfully running!
 <br/>![Screenshot2](https://github.com/RMITJake/SEPM-A2/blob/19046f501341baf7cbc340c663afd79487f6d12c/Screen%20Shot%2057.png) 
 
-### Step 3: 🖥 Execute the IT Service Desk Tikcketing System
+### Step 3: 🖥 Execute the IT Service Desk Ticketing System
 1. Menu Options: 
     1. Upon starting, the program presents the following options:
         - `C` - Create a new user account.
@@ -76,10 +83,10 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         <br/>![Screenshot4](https://github.com/RMITJake/SEPM-A2/blob/4b68369c7b58db5d56747a2413268c6b36a7380a/Screen%20Shot%2058.png) 
         3. Enter `S` to change the ticket severity.
             1. Enter the appropriate severity.
-            2. Confirm the updated Ticket Summary.
+						2. Enter "low", "medium", or "high". The ticket will be updated with the new severity.
         4. Enter `E` to escalate the ticket.
             1. Provide a reason to escalate this ticket.
-            2. Confirm the reason and updated Ticket Summary.
+            2. Confirm the reason for escalation.
         5. Enter `M` to go back to the Main Menu.
     9. Enter ***E*** to Exit the system. 
 
@@ -94,14 +101,4 @@ Follow these steps to execute the IT Service Desk Ticketing System.
     1. Enter `E` to Exit the system.
 
 
----
-# Deliverables:
-- Console based Java application
-- Ticketing System
----
-# Limitations
-- Compatible with RMIT MyDesktop service
-- JAVA only
-- No SQL
-- Data persistence, using .csv files for persistence, risky in the case of multiple write attempts to an already open file.
 ---
