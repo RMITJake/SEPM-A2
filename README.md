@@ -31,7 +31,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 1. Open ***Eclipse*** >> ***File*** >> ***Open Projects from File System...***
 2. Click ***Directory*** >> ***Downloads/SEPM-A2-main*** >> ***Open***
 3. Click the `SEPM-A2-main` in ***Project Explorer*** and `Run App`.
-- ![Screenshot1](https://github.com/RMITJake/SEPM-A2/blob/1a7c87126fa5b65ae0fc21d96013e39ac71f0d00/Screen%20Shot%2056.png)
+<br/>![Screenshot1](https://github.com/RMITJake/SEPM-A2/blob/1a7c87126fa5b65ae0fc21d96013e39ac71f0d00/Screen%20Shot%2056.png)
 
 ### Step 3: Execute the IT Service Desk Tikcketing System
 1. Menu Options: 
