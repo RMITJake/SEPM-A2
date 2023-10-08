@@ -63,14 +63,14 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         - ***M*** - My Open Tickets
         - ***L*** - Logout the account
         - ***E*** - Exit the system.
-    6. \[AS A STAFF\] Enter ***C*** to create a new ticket.
+    6. `[AS A STAFF]` Enter ***C*** to create a new ticket.
         1. Provide a description of your IT issue.
         2. Provide a severity of the issue (`low`/`medium`/`high`).
         3. The ticket has been opened!
         4. Check the Ticket Summary and confirm it is correct `Y`/`N`.
-    7. \[AS A STAFF\] Enter ***M*** to view my tickets that have been opened.
+    7. `[AS A STAFF]` Enter ***M*** to view my tickets that have been opened.
         1. Check the Ticket Summary and confirm its information.
-    8. \[AS A TECHNICIAN\] Enter ***S*** to view the ticket submitted.
+    8. `[AS A TECHNICIAN]` Enter ***S*** to view the ticket submitted.
         1. Enter the Ticket ID.
         2. View the detailed ticket information.
         <br/>![Screenshot4](https://github.com/RMITJake/SEPM-A2/blob/4b68369c7b58db5d56747a2413268c6b36a7380a/Screen%20Shot%2058.png) 
