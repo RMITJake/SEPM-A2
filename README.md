@@ -48,7 +48,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
     5. Enter a new password (including **lowercase**/**uppercase**/**number**).
     6. Confirm the entered password.
     7. Check the Account Summary and confirm it is correct `Y`/`N`.
-    8. New account successfully created! Don't forget your account number and password(In this case, `4008` and `Abc123` are the account number and password respectively.)
+    8. New account successfully created! <br/>Don't forget your account number and password(In this case, `4008` and `Abc123` are the account number and password respectively.)
     <br/>![Screenshot3](https://github.com/RMITJake/SEPM-A2/blob/4b68369c7b58db5d56747a2413268c6b36a7380a/Screen%20Shot%2059.png) 
     9. Press ***Enter*** to move on.
 
