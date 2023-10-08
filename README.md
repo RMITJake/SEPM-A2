@@ -1,7 +1,7 @@
 # IT Service Desk Ticketing System
 - Software Engineering Project Management Assessment 2
 - An IT Service Desk ticketing system for a small startup, Cinco. 
-It allows staff members to submit IT issues and technicians to manage and resolve the issues efficiently.
+<br/>It allows staff members to submit IT issues and technicians to manage and resolve the issues efficiently.
 
 
 ---
@@ -10,7 +10,7 @@ It allows staff members to submit IT issues and technicians to manage and resolv
 
 ## Files
 As the project is pure Java and there is no scope to write SQL queries, data persistence will be handled through standalone files which will act in place of database tables.
-Each file will be a list of records reflecting the structure of it's associated class.
+<br/>Each file will be a list of records reflecting the structure of it's associated class.
 
 ---
 # User Guide
@@ -31,7 +31,10 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 1. Open ***Eclipse*** >> ***File*** >> ***Open Projects from File System...***
 2. Click ***Directory*** >> ***Downloads/SEPM-A2-main*** >> ***Open***
 3. Click the `SEPM-A2-main` in ***Project Explorer*** and `Run App`.
-<br/>![Screenshot1](https://github.com/RMITJake/SEPM-A2/blob/1a7c87126fa5b65ae0fc21d96013e39ac71f0d00/Screen%20Shot%2056.png)
+<br/>![Screenshot1](https://github.com/RMITJake/SEPM-A2/blob/1a7c87126fa5b65ae0fc21d96013e39ac71f0d00/Screen%20Shot%2056.png) 
+
+4. Java codes are successfully running!
+<br/>![Screenshot1](https://github.com/RMITJake/SEPM-A2/blob/19046f501341baf7cbc340c663afd79487f6d12c/Screen%20Shot%2057.png) 
 
 ### Step 3: Execute the IT Service Desk Tikcketing System
 1. Menu Options: 
