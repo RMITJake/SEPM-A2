@@ -41,7 +41,34 @@ public class FileHandler {
         ex.getStackTrace();
     }
 }
+    public ArrayList<String> readAll(String file){
+        // Add the input filename to the path so we can read a file
+        String workingPath = path + file + ".csv";
+        // Create a blank string to temporarily store the file contents which will be returned
+        ArrayList<String> fileContents = new ArrayList<String>();
+        // Similar to above fileContents but on a micro level per line basis
+        String line;
+        try {
+            // Using BufferedReader to read file contents
+            BufferedReader reader = new BufferedReader(new FileReader(workingPath));
 
+            // Iterate through the lines in the file until there are no more lines
+            while((line = reader.readLine()) != null)
+            {
+                // Save the line to our fileContents string
+                fileContents.add(line);
+            }
+            reader.close();
+            // return the fileContents to be worked with in another part of the App
+            return fileContents;
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        // This will need to return something useful, currently returning a blank string for compilation purposes
+        System.out.println(fileContents);
+        return fileContents;
+    }
+    
     public ArrayList<String> read(String file){
         // Add the input filename to the path so we can read a file
         String workingPath = path + file + ".csv";
@@ -66,6 +93,7 @@ public class FileHandler {
             exception.printStackTrace();
         }
         // This will need to return something useful, currently returning a blank string for compilation purposes
+        System.out.println(fileContents);
         return fileContents;
     }
 }

@@ -79,6 +79,7 @@ public class MenuController {
                 } while(!menuOption.equals("M"));
             } else if (menuOption.equals("M")) {
                 ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, null);
+                System.out.println(ticket.getAllTickets());
                 for (int index = 0; index < myTickets.size(); index++) {
                     ticket.displayTicketString(myTickets.get(index));
                 }

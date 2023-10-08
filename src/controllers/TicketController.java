@@ -6,6 +6,7 @@ import src.models.Ticket;
 import src.views.TicketUI;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 public class TicketController {
     // TicketController will handle both the Ticket and TicketUpdate Models
@@ -18,6 +19,7 @@ public class TicketController {
 
     // Record strings, used to minimize hard coded file references
     protected final String openTicketRecord = file.openTicketRecord;
+    protected List<String> allTickets;
     private final String escalationRecord = file.escalationRecord;
     private final String technicianRecord = file.technicianRecord;
 
@@ -103,6 +105,17 @@ public class TicketController {
             }
         }
         return userTickets;
+    }
+    //method overloading for the purposes of archive system
+    public  ArrayList<String> getAllTickets(){   	
+    	 ArrayList<String> allTickets = new ArrayList<String>();
+         ArrayList<String> ticketTable = file.read("openTicket");
+         String[] ticket; 
+         for (int index = 0; index < ticketTable.size(); index++) {
+             ticket = ticketTable.get(index).split(",",-1);
+             allTickets.add(ticketTable.get(index));             
+         }         
+         return allTickets;
     }
 
     private int assignTechnician(String severity){
@@ -252,7 +265,9 @@ public class TicketController {
                 }
                 ticketIndex++;
             } while(selectedTicket.getId() == 0 && ticketIndex < ticketTable.size());
+            
         }
+        
     }
     
     public void updateTicketRecord(Ticket ticket) {

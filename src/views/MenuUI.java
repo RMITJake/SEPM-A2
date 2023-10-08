@@ -22,7 +22,7 @@ public class MenuUI {
 
     public void loginPrompt(){
         // Get users AccountId
-        uiText = "Enter your acount number: ";
+        uiText = "Enter your account number: ";
         System.out.print(uiText);
     }
     
