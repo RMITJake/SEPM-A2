@@ -30,6 +30,17 @@ public class FileHandler {
             ex.getStackTrace();
         }
     }
+    
+    public void write(String filePath, ArrayList<String[]> input) {
+    	try (FileWriter writer = new FileWriter(filePath)) {
+            for (String[] row : input) {
+                writer.append(String.join(",", row));
+                writer.append('\n');
+            }
+        } catch (IOException e) {
+            System.err.println("An IOException was caught: " + e.getMessage());
+        }
+    }
 
     public void writeOver(String file, String input){
     // Add the input filename to the path so we can write to a file

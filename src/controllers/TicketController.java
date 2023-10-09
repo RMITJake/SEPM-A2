@@ -127,7 +127,7 @@ public class TicketController {
         for (String[] stringArray : rows) {
             for (String element : stringArray) {
             	//prints out each element of string array
-            	//System.out.println(element.toString());
+            	System.out.println(element.toString());
             }
         }
         return rows;
