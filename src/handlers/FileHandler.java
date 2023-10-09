@@ -2,6 +2,7 @@ package src.handlers;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,6 +69,13 @@ public class FileHandler {
         System.out.println(fileContents);
         return fileContents;
     }
+    public File readFile(String file) {
+    	String workingPath = path + file + ".csv";
+    	File csvFile = new File(workingPath);
+		return csvFile;		
+    }
+    
+    
     
     public ArrayList<String> read(String file){
         // Add the input filename to the path so we can read a file

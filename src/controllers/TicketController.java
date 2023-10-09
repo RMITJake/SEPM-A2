@@ -1,4 +1,5 @@
 package src.controllers;
+
 import src.handlers.*;
 import src.models.Account;
 import src.models.Technician;
@@ -8,6 +9,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
+import java.io.*;
 public class TicketController {
     // TicketController will handle both the Ticket and TicketUpdate Models
     private FileHandler file = new FileHandler();
@@ -107,15 +110,29 @@ public class TicketController {
         return userTickets;
     }
     //method overloading for the purposes of archive system
-    public  ArrayList<String> getAllTickets(){   	
-    	 ArrayList<String> allTickets = new ArrayList<String>();
-         ArrayList<String> ticketTable = file.read("openTicket");
-         String[] ticket; 
-         for (int index = 0; index < ticketTable.size(); index++) {
-             ticket = ticketTable.get(index).split(",",-1);
-             allTickets.add(ticketTable.get(index));             
-         }         
-         return allTickets;
+    public  ArrayList<String[]> getAllTickets(){  
+    	//holds rows of data
+    	ArrayList<String[]> rows = new ArrayList<>();
+        File OpenTicketFile = file.readFile("OpenTicket");
+        try (Scanner scanner = new Scanner(OpenTicketFile)) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] values = line.split(",");             
+                rows.add(values);
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found: " + e.getMessage());
+        }
+        //for debugging purposes, iterates over the array list and then the string arrays inside the array list
+        for (String[] stringArray : rows) {
+            for (String element : stringArray) {
+            	//prints out each element of string array
+            	//System.out.println(element.toString());
+            }
+        }
+        return rows;
+    	
+    	
     }
 
     private int assignTechnician(String severity){
