@@ -57,14 +57,15 @@ public class AccountController {
                 }
             }
             ui.confirm(newAccount.getEmail(), newAccount.getFullName(), newAccount.getPhoneNumber());
-            if(input.getInput().equals("Y")){
+            userInput = input.getInput().toUpperCase();
+            if(userInput.equals("Y")){
                 newAccount.setId((getNewestAccount().getId())+1);
                 newAccount.setCreationDate(LocalDateTime.now());
                 newAccount.setDisabled(false);
                 newLogin.setId(setLoginId());
                 newLogin.setAccountId(newAccount.getId());
                 confirmDetails = true;
-            } else if (input.getInput().equals("C")){
+            } else if (userInput.equals("C")){
                 newAccount = null;
                 confirmDetails = true;
             }

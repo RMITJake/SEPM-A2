@@ -40,7 +40,6 @@ public class MenuController {
         do{
             menuOption = "";
             account.createUser();
-            menuOption = input.getInput().toUpperCase();
         } while (!validate.createUser(menuOption));
     }
 
