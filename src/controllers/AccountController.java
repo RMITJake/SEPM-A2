@@ -59,10 +59,13 @@ public class AccountController {
             ui.confirm(newAccount.getEmail(), newAccount.getFullName(), newAccount.getPhoneNumber());
             userInput = input.getInput().toUpperCase();
             if(userInput.equals("Y")){
-                newAccount.setId((getNewestAccount().getId())+1);
+                newAccount.setId(getNewestAccountId()+1);
+                System.out.println("old account id: " +getNewestAccountId());
+                System.out.println("new account id: " +(getNewestAccountId()+1));
                 newAccount.setCreationDate(LocalDateTime.now());
                 newAccount.setDisabled(false);
                 newLogin.setId(setLoginId());
+                System.out.println("new login id: " +setLoginId());
                 newLogin.setAccountId(newAccount.getId());
                 confirmDetails = true;
             } else if (userInput.equals("C")){
@@ -104,25 +107,17 @@ public class AccountController {
         return currentAccount;
     }
 
-    public Account getNewestAccount(){
+    public int getNewestAccountId(){
         // Functionally similar to getNewestTicket()
         ArrayList<String> accountTable = file.read(accountRecord);
         String[] lastAccountInList = accountTable.get(accountTable.size()-1).split(",",-1);
-        Account newestAccount = new Account();
-        newestAccount.setId(Integer.parseInt(lastAccountInList[0]));
-        newestAccount.setEmail(lastAccountInList[1]);
-        newestAccount.setFullName(lastAccountInList[2]);
-        newestAccount.setPhoneNumber(Integer.parseInt(lastAccountInList[3]));
-        newestAccount.setCreationDate(LocalDateTime.parse(lastAccountInList[4]));
-        newestAccount.setDisabled(Boolean.parseBoolean(lastAccountInList[5]));
-
-        return newestAccount;
+        return Integer.parseInt(lastAccountInList[0]);
     }
 
     public int setLoginId(){
         // Streamlined version of getNewestTicket to only return the need ID
         ArrayList<String> loginTable = file.read(loginRecord);
         String[] lastLoginProperties = loginTable.get(loginTable.size()-1).split(",",-1);
-        return Integer.parseInt(lastLoginProperties[0]+1);
+        return Integer.parseInt(lastLoginProperties[0])+1;
     }
 }
