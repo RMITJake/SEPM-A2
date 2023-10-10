@@ -44,4 +44,15 @@ public class Account {
         details += this.disabled;
         return details;
     }
+    public String getAccountDetails() {
+    	String accountDetails = "";
+    	accountDetails += "----------------------------\n";
+    	accountDetails += "Account ID: "+this.id + "\n";
+    	accountDetails += "Email: "+this.email + "\n";
+    	accountDetails += "Full Name: "+this.fullName + "\n";
+    	accountDetails += "Phone Number: "+this.phoneNumber + "\n";
+    	accountDetails += "Creation Date: "+this.creationDate + "\n";
+    	accountDetails += "----------------------------";
+    	return accountDetails;
+    }
 }
