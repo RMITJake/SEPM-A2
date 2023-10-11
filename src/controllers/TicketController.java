@@ -55,7 +55,7 @@ public class TicketController {
         // Use assignTechnicianByTicketCount() to calculate assigned tech
         newTicket.setTechnicianAssignedId(assignTechnician(newTicket.getSeverity()));
         // Set the ticket status to open
-        newTicket.setStatus("open");
+        newTicket.setStatus("open and unresolved");
         // Set the creationDate to now
         newTicket.setCreationDate(LocalDateTime.now());
 
@@ -124,12 +124,12 @@ public class TicketController {
             System.err.println("File not found: " + e.getMessage());
         }
         //for debugging purposes, iterates over the array list and then the string arrays inside the array list
-        for (String[] stringArray : rows) {
-            for (String element : stringArray) {
-            	//prints out each element of string array
-            	System.out.println(element.toString());
-            }
-        }
+//        for (String[] stringArray : rows) {
+//            for (String element : stringArray) {
+//            	//prints out each element of string array
+//            	System.out.println(element.toString());
+//            }
+//        }
         return rows;
     	
     	
@@ -252,7 +252,7 @@ public class TicketController {
         newTicket.setSeverity("low");
         newTicket.setId(getNewestTicket(openTicketRecord).getId()+1);
         newTicket.setTechnicianAssignedId(assignTechnician(newTicket.getSeverity()));
-        newTicket.setStatus("open");
+        newTicket.setStatus("open and unresolved");
         newTicket.setCreationDate(LocalDateTime.now());
         // Write the ticket to OpenTicket.csv
         file.write(openTicketRecord, newTicket.getProperties());
@@ -336,7 +336,7 @@ public class TicketController {
         // - Cons
         // 2. Assign ticket to L2
         // - Pros = easy
-        // - Cons - L1 looses track of the ticket
+        // - Cons - L1 looses track of the ticket 
 
         Ticket escalationTicket = ticket;
         ui.escalationReason();
@@ -344,7 +344,7 @@ public class TicketController {
         do{
             confirm = "";
             userInput = input.getInput();
-            System.out.println("Is the below escaltion reason correct? [Y/N] ");
+            System.out.println("Is the below escalation reason correct? [Y/N] ");
             System.out.println(userInput);
             confirm = input.getInput().toUpperCase();
         } while(!confirm.equals("Y"));
@@ -356,7 +356,14 @@ public class TicketController {
         file.write(escalationRecord, escalationTicket.getProperties());
     }
 
-	public void changeStatus(Ticket ticket) {
+	public void changeStatus(Ticket ticket, String menuOption) {
 		Ticket statusTicket = ticket;
+		statusTicket.setResolvedDate(LocalDateTime.now());
+		if (menuOption.equals("Y")) {
+			statusTicket.setStatus("closed and resolved");
+		} else if(menuOption.equals("N")) {
+			statusTicket.setStatus("closed and unresolved");
+		}
+				file.write(openTicketRecord, statusTicket.getProperties());
 	}
 }

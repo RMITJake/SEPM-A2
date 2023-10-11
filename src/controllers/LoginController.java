@@ -8,7 +8,7 @@ public class LoginController {
     private Account currentUser = new Account();
     private String loginRecord = file.loginRecord;
 
-    public Account verifyLogin(String accountId, String password){
+    public Account verifyLogin(int accountId, String password){
         // loginTable temporarily stores the contents of file.Read()
         ArrayList<String> loginTable = file.read(loginRecord);
         // Login object which temporarily holds data to be checked
@@ -23,7 +23,7 @@ public class LoginController {
             checkIndex.setPassword(indexDetails[2]);
 
             // compare password with the extracted password
-            if (Integer.parseInt(accountId) == checkIndex.getAccountId() && password.equals(checkIndex.getPassword())) {
+            if (accountId == checkIndex.getAccountId() && password.equals(checkIndex.getPassword())) {
                 // Delcaring a temporary account controller here as it should only be single use
                 AccountController temporaryController = new AccountController();
                 currentUser = temporaryController.getAccountById(checkIndex.getAccountId());

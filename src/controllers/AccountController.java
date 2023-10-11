@@ -75,10 +75,10 @@ public class AccountController {
         }
         
         System.out.println("New account created");
-        System.out.println(newAccount.getProperties());
+        System.out.println(newAccount.getAccountDetails());
         file.write(accountRecord, newAccount.getProperties()+"\r\n");
         System.out.println("New login created");
-        System.out.println(newLogin.getProperties());
+        System.out.println(newLogin.getAccountDetails());
         file.write(loginRecord, newLogin.getProperties()+"\r\n");
     }
 

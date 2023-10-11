@@ -23,4 +23,13 @@ public class Login {
         details += this.password;
         return details;
     }
+    
+    public String getAccountDetails() {
+    	String accountDetails = "";
+    	accountDetails += "----------------------------\n";
+    	accountDetails += "Account ID: "+this.id + "\n";
+    	accountDetails += "Password: "+this.password + "\n";
+    	accountDetails += "----------------------------";
+    	return accountDetails;
+    }
 }
