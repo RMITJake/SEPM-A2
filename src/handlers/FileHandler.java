@@ -34,8 +34,8 @@ public class FileHandler {
     public void write(String filePath, ArrayList<String[]> input) {
     	try (FileWriter writer = new FileWriter(filePath)) {
             for (String[] row : input) {
-                writer.append(String.join(",", row));
-                writer.append('\n');
+                writer.write(String.join(",", row));
+                writer.write('\n');
             }
         } catch (IOException e) {
             System.err.println("An IOException was caught: " + e.getMessage());

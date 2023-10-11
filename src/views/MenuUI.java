@@ -54,8 +54,24 @@ public class MenuUI {
         String menu = "";       
         menu += "[S]et ticket severity\n";
         menu += "[E]scalate ticket\n";
-        menu += "[T] Close ticket\n";
+        menu += "[T] Change ticket status\n";
         menu += "[M]ain menu";
         System.out.println(menu);
     }
+    public void ticketStatusMenu(){
+        String menu = "";   
+        menu += "------------------------------\r\n";
+        menu += "[O] Open Ticket\n";
+        menu += "[C] Close ticket\n";
+        menu += "[B] Back menu\n";
+        menu += "------------------------------\r\n";
+        System.out.println(menu);
+    }
+    
+    public void resolvePrompt() {
+    	 uiText = "Was the ticket issue resolved? (Y/N input only:) ";
+         System.out.print(uiText);
+    }
+    
+    
 }

@@ -356,9 +356,14 @@ public class TicketController {
         file.write(escalationRecord, escalationTicket.getProperties());
     }
 
-	public void changeStatus(Ticket ticket) {
+	public void changeStatus(Ticket ticket, String menuOption) {
 		Ticket statusTicket = ticket;
 		statusTicket.setResolvedDate(LocalDateTime.now());
-		file.write(openTicketRecord, statusTicket.getProperties());
+		if (menuOption.equals("Y")) {
+			statusTicket.setStatus("closed and resolved");
+		} else if(menuOption.equals("N")) {
+			statusTicket.setStatus("closed and unresolved");
+		}
+				file.write(openTicketRecord, statusTicket.getProperties());
 	}
 }

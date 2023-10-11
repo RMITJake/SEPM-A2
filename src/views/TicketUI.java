@@ -40,12 +40,14 @@ public class TicketUI {
         ticketDetails += "Description: " + ticket.getDescription() + "\n";
         ticketDetails += "Severity: " + ticket.getSeverity() + "\n";
         ticketDetails += "Status: " + ticket.getStatus() + "\n";
-        ticketDetails += "Creation Date: " + ticket.getCreationDate();
+        ticketDetails += "Creation Date: " + ticket.getCreationDate()+ "\n";
         ticketDetails += "Resolution Date: " + ticket.getResolvedDate() + "\n";
         System.out.println(ticketDetails);
         System.out.println("------------------------------");
     }
-
+    
+    
+    
     public void changeSeverity(){
         String menu = "";
         menu += "What is the severity of the ticket: ";
@@ -57,9 +59,5 @@ public class TicketUI {
         menu += "Why is this ticket being escalated: ";
         System.out.print(menu);
     }
-    public void closeTicket() {
-    	String menu = "";
-    	menu += "Why is this ticket being closed: ";
-    	System.out.print(menu);
-    }
+    
 }
