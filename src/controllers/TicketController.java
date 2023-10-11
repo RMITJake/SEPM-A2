@@ -55,7 +55,7 @@ public class TicketController {
         // Use assignTechnicianByTicketCount() to calculate assigned tech
         newTicket.setTechnicianAssignedId(assignTechnician(newTicket.getSeverity()));
         // Set the ticket status to open
-        newTicket.setStatus("open");
+        newTicket.setStatus("open and unresolved");
         // Set the creationDate to now
         newTicket.setCreationDate(LocalDateTime.now());
 
@@ -252,7 +252,7 @@ public class TicketController {
         newTicket.setSeverity("low");
         newTicket.setId(getNewestTicket(openTicketRecord).getId()+1);
         newTicket.setTechnicianAssignedId(assignTechnician(newTicket.getSeverity()));
-        newTicket.setStatus("open");
+        newTicket.setStatus("open and unresolved");
         newTicket.setCreationDate(LocalDateTime.now());
         // Write the ticket to OpenTicket.csv
         file.write(openTicketRecord, newTicket.getProperties());
