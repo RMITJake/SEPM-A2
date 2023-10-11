@@ -51,9 +51,10 @@ public class MenuUI {
     }
     
     public void ticketMenu(){
-        String menu = "";
+        String menu = "";       
         menu += "[S]et ticket severity\n";
         menu += "[E]scalate ticket\n";
+        menu += "[T] Close ticket\n";
         menu += "[M]ain menu";
         System.out.println(menu);
     }

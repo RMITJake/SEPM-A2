@@ -32,10 +32,10 @@ public class ArchiveController {
         if (timestamp.isBefore(LocalDateTime.now().minusDays(1))) {
             iterator.remove();
             int rowNumber = 1;  // Row counter for better readability
-            for (String[] ticketArray : allTickets) {
-                System.out.println("Row " + rowNumber + ": " + Arrays.toString(ticketArray));
-                rowNumber++;
-            }
+//            for (String[] ticketArray : allTickets) {
+//                System.out.println("Row " + rowNumber + ": " + Arrays.toString(ticketArray));
+//                rowNumber++;
+//            }
             fileHandler.write(fileHandler.openTicketRecord, allTickets);
         }
 	}

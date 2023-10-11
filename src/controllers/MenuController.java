@@ -118,6 +118,9 @@ public class MenuController {
             } else if (menuOption.equals("E")) {
                 ticket.escalateTicket(ticket.selectedTicket, currentTechnician);
             }
+           if(menuOption.equals("T")) {
+        	   ticket.changeStatus(ticket.selectedTicket);
+           }
         } while (!menuOption.equals("M"));
         return menuOption;
         }
