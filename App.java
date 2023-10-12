@@ -8,8 +8,6 @@ class App {
     private void Run(){
         // Create an instance of the MenuUI frontend
         MenuController menu = new MenuController();
-        ArchiveController archiveCheck = new ArchiveController();
-        archiveCheck.getClosedTickets();
         do{
             applicationLoop = menu.welcomeLoop().toUpperCase();
             if(applicationLoop.equals("C")){

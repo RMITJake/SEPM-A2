@@ -22,7 +22,7 @@ public class MenuController {
 
 	// Keeps track of the menu option selected
 	String menuOption;
-
+	
 	public void menuController() {
 		// Print out the welcome message
 		ui.welcomeBanner();
@@ -30,6 +30,7 @@ public class MenuController {
 
 	public String welcomeLoop() {
 		do {
+			ticket.archiveOldTickets();
 			menuOption = "";
 			ui.welcomePrompt();
 			menuOption = input.getInput().toUpperCase();
