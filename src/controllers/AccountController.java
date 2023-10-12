@@ -25,7 +25,7 @@ public class AccountController {
             do{
                 ui.email();
                 userInput = input.getInput();
-            } while (!validate.email(userInput));
+            } while (!validate.email(userInput) || !validate.emailUniqueCheck(userInput));
             newAccount.setEmail(userInput);
             
             do{

@@ -1,5 +1,8 @@
 package src.handlers;
 import java.util.regex.*;
+
+import src.models.Account;
+
 import java.util.ArrayList;
 public class ValidationHandler {
   String regex;
@@ -20,27 +23,26 @@ public class ValidationHandler {
     boolean emailMatch;
     regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
     emailMatch = Pattern.matches(regex, input);
-    if(emailMatch){
-      emailUniqueCheck(input);
-    }
     return emailMatch;
   }
 
   public boolean emailUniqueCheck(String input){
-    // Streamlined version of getNewestTicket to only return the need ID
-    ArrayList<String> accountTable = file.read("Account");
-    // String to temporarily store split account properties
-    String[] accountProperties;
-    boolean emailMatch = false;
-    int index = 0;
-    do{
-      accountProperties = accountTable.get(index).split(",",-1);
-      if(input.equals(accountProperties[1])){
-        emailMatch = true;
-      }
-      index++;
-    } while (!emailMatch && index < accountTable.size());
-    return emailMatch;
+	  ArrayList<String> accountTable = file.read("Account");
+	  Account checkIndex = new Account();
+	  boolean emailMatch = false;
+	  boolean match = false;
+	  for(int index=0; index < accountTable.size(); index++) {
+		  String[] indexDetails = accountTable.get(index).split(",", -1);;
+          checkIndex.setEmail((indexDetails[1]));
+          if (input != checkIndex.getEmail() && !match) {
+        	  emailMatch = true;
+          }
+          if (input.equals(checkIndex.getEmail())) {
+        	  match = true;
+        	  emailMatch = false;
+          }
+	  }
+	    return emailMatch;
   }
 
   public boolean fullName(String input){
