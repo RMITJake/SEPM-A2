@@ -27,7 +27,7 @@ public class Login {
     public String getAccountDetails() {
     	String accountDetails = "";
     	accountDetails += "----------------------------\n";
-    	accountDetails += "Account ID: "+this.id + "\n";
+    	accountDetails += "Account ID: "+this.accountId + "\n";
     	accountDetails += "Password: "+this.password + "\n";
     	accountDetails += "----------------------------";
     	return accountDetails;
