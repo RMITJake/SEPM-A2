@@ -15,7 +15,7 @@ public class MenuUI {
         uiText += "[L]ogin\n";
         uiText += "[C]reate an Account\n";
         uiText += "[F]orgot Password\n";
-        uiText += "E[x]it\n";
+        uiText += " E[x]it\n";
         uiText += "Selection: ";
         System.out.print(uiText);
     }
@@ -38,15 +38,15 @@ public class MenuUI {
         uiText = "------------------------------\n";
         uiText += "--------  Main Menu  ---------\n";
         uiText += "------------------------------\n";
-        uiText += "Create a [n]ew ticket\n";
-        uiText += "[S]elect Ticket\n";
+        uiText += " Create a [n]ew ticket\n";
+        uiText += "[P]ick Ticket\n";
         uiText += "[M]y Open Tickets\n";
         if(techOptions > 0){
             uiText += "--------  Tech Menu  ---------\n";
             uiText += "[A]ssigned Tickets\n";
         }
         uiText += "[L]ogout\n";
-        uiText += "E[x]it\n";
+        uiText += " E[x]it\n";
         System.out.print(uiText);
     }
     

@@ -80,7 +80,7 @@ public class MenuController {
 			menuOption = input.getInput().toUpperCase();
 			if (menuOption.equals("N") || menuOption.equals("n")) {
 				ticket.createNewTicket(currentUser, ticket.openTicketRecord);
-			} else if (menuOption.equals("S")) {
+			} else if (menuOption.equals("P")|| menuOption.equals("p")) {
 				ticket.selectTicket();
 				do {
 					menuOption = ticketMenuLoop();
