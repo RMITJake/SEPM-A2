@@ -12,10 +12,10 @@ public class MenuUI {
 
     public void welcomePrompt(){
         uiText = "Press the corresponding key in brackets to make a selection\n";
-        uiText += "[L]ogin\n";
-        uiText += "[C]reate an Account\n";
-        uiText += "[F]orgot Password\n";
-        uiText += "[Q]uit\n";
+        uiText += "[L] Login\n";
+        uiText += "[C] Create an Account\n";
+        uiText += "[F] Forgot Password\n";
+        uiText += "[Q] Quit\n";
         uiText += "Selection: ";
         System.out.print(uiText);
     }
@@ -38,24 +38,24 @@ public class MenuUI {
         uiText = "------------------------------\n";
         uiText += "--------  Main Menu  ---------\n";
         uiText += "------------------------------\n";
-        uiText += " Create a [n]ew ticket\n";
-        uiText += "[P]ick Ticket\n";
-        uiText += " My [O]pen Tickets\n";
+        uiText += "[N] Create a new ticket\n";
+        uiText += "[P] Pick Ticket\n";
+        uiText += "[O] My Open Tickets\n";
         if(techOptions > 0){
             uiText += "--------  Tech Menu  ---------\n";
-            uiText += "[A]ssigned Tickets\n";
+            uiText += "[A] Assigned Tickets\n";
         }
-        uiText += "[L]ogout\n";
-        uiText += "[Q]uit\n";
+        uiText += "[L] Logout\n";
+        uiText += "[Q] Quit\n";
         System.out.print(uiText);
     }
     
     public void ticketMenu(){
         String menu = "";       
-        menu += "[S]et ticket severity\n";
-        menu += "[E]scalate ticket\n";
+        menu += "[S] Set ticket severity\n";
+        menu += "[E] Escalate ticket\n";
         menu += "[T] Change ticket status\n";
-        menu += "[B]ack to main menu"; 
+        menu += "[B] Back to main menu"; 
         System.out.println(menu);
     }
     public void ticketStatusMenu(){
@@ -63,7 +63,7 @@ public class MenuUI {
         menu += "------------------------------\r\n";
         menu += "[O] Open Ticket\n";
         menu += "[X] Close ticket\n";
-        menu += "[B]ack to main menu\n";
+        menu += "[B] Back to main menu\n";
         menu += "------------------------------\r\n";
         System.out.println(menu);
     }
