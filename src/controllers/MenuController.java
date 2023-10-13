@@ -100,7 +100,7 @@ public class MenuController {
 					ticket.displayTicketString(myTickets.get(index));
 				}
 			}
-		} while (!menuOption.equals("E"));
+		} while (!menuOption.equals("X"));
 		return menuOption;
 	}
 
