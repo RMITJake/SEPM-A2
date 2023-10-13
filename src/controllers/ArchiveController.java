@@ -48,7 +48,6 @@ public class ArchiveController {
     }
 	public void archiveOldTickets() {
       for (Ticket ticket : tickets) {
-          System.out.println(ticket.getStatus());
           if (ticket.getResolvedDate() != null) { 	
               if (LocalDateTime.now().isAfter(ticket.getResolvedDate().plusDays(1)) 
                   && ((ticket.getStatus().equals("closed and resolved") 
@@ -58,9 +57,7 @@ public class ArchiveController {
               }
           }
       }
-      for (Ticket ticket : tickets) {
-          System.out.println(ticket.getProperties());
-      }
+     
   }
 	
 	
