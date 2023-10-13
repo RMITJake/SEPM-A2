@@ -84,8 +84,8 @@ public class MenuController {
 				ticket.selectTicket();
 				do {
 					menuOption = ticketMenuLoop();
-				} while (!menuOption.equals("M"));
-			} else if (menuOption.equals("M")) {
+				} while (!menuOption.equals("B") && !menuOption.equals("b"));
+			} else if (menuOption.equals("O") || menuOption.equals("o")) {
 				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, null);
 				ticket.getAllTickets();
 				for (int index = 0; index < myTickets.size(); index++) {
@@ -123,9 +123,9 @@ public class MenuController {
 			if (menuOption.equals("T")) {
 				do {
 					menuOption = ticketStatusLoop();
-				} while (!menuOption.equals("B"));
+				} while (!menuOption.equals("B") && !menuOption.equals("b"));
 			}
-		} while (!menuOption.equals("B"));
+		} while (!menuOption.equals("B") && !menuOption.equals("b"));
 		return menuOption;
 	}
 

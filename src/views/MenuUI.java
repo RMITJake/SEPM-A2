@@ -40,7 +40,7 @@ public class MenuUI {
         uiText += "------------------------------\n";
         uiText += " Create a [n]ew ticket\n";
         uiText += "[P]ick Ticket\n";
-        uiText += "[M]y Open Tickets\n";
+        uiText += " My [O]pen Tickets\n";
         if(techOptions > 0){
             uiText += "--------  Tech Menu  ---------\n";
             uiText += "[A]ssigned Tickets\n";
@@ -55,7 +55,7 @@ public class MenuUI {
         menu += "[S]et ticket severity\n";
         menu += "[E]scalate ticket\n";
         menu += "[T] Change ticket status\n";
-        menu += "[M]ain menu";
+        menu += "[B]ack to main menu"; 
         System.out.println(menu);
     }
     public void ticketStatusMenu(){
@@ -63,7 +63,7 @@ public class MenuUI {
         menu += "------------------------------\r\n";
         menu += "[O] Open Ticket\n";
         menu += "[C] Close ticket\n";
-        menu += "[B] Back menu\n";
+        menu += "[B]ack to main menu\n";
         menu += "------------------------------\r\n";
         System.out.println(menu);
     }
