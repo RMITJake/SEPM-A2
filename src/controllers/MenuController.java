@@ -138,6 +138,11 @@ public class MenuController {
 				System.out.println("Input is null or empty. Please enter a valid option."); // handle null or empty
 				continue;
 			}
+			if (menuOption.equals("O") || menuOption.equals("o")) {
+				ticket.changeOpenStatus(ticket.selectedTicket);
+				
+			}
+
 			if (menuOption.equals("X") || menuOption.equals("x")) {
 				ui.resolvePrompt();
 				menuOption = input.getInput().toUpperCase();
