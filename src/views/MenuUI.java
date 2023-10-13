@@ -7,7 +7,7 @@ public class MenuUI {
         uiText = "------------------------------\n";
         uiText += "    Cinco Ticketing System   \n";
         uiText += "------------------------------";
-        System.out.println(uiText);
+        System.out.println(uiText); 
     }
 
     public void welcomePrompt(){
@@ -38,7 +38,7 @@ public class MenuUI {
         uiText = "------------------------------\n";
         uiText += "--------  Main Menu  ---------\n";
         uiText += "------------------------------\n";
-        uiText += "[C]reate a new ticket\n";
+        uiText += "Create a [n]ew ticket\n";
         uiText += "[S]elect Ticket\n";
         uiText += "[M]y Open Tickets\n";
         if(techOptions > 0){

@@ -78,7 +78,7 @@ public class MenuController {
 			menuOption = "";
 			ui.mainMenu(currentTechnician.getId());
 			menuOption = input.getInput().toUpperCase();
-			if (menuOption.equals("C")) {
+			if (menuOption.equals("N") || menuOption.equals("n")) {
 				ticket.createNewTicket(currentUser, ticket.openTicketRecord);
 			} else if (menuOption.equals("S")) {
 				ticket.selectTicket();
@@ -101,7 +101,7 @@ public class MenuController {
 				}
 			}
 		} while (!menuOption.equals("X"));
-		return menuOption;
+		return menuOption; 
 	}
 
 	public String ticketMenuLoop() {
