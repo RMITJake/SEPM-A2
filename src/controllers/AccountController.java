@@ -22,32 +22,58 @@ public class AccountController {
         // Get user input for needed properties
         boolean confirmDetails = false;
         while(!confirmDetails){
+        	String emailValidationResult;
+        	String emailUniqueCheckResult = null;
             do{
                 ui.email();
                 userInput = input.getInput();
-            } while (!validate.email(userInput) || !validate.emailUniqueCheck(userInput));
+                emailValidationResult = validate.email(userInput);
+                if(emailValidationResult != null) {
+                	System.out.println(emailValidationResult);
+                } else {
+                	emailUniqueCheckResult = validate.emailUniqueCheck(userInput);
+                	if(emailUniqueCheckResult != null) {
+                		System.out.println(emailUniqueCheckResult);
+                	}
+                }
+            } while (emailValidationResult != null || emailUniqueCheckResult != null);
             newAccount.setEmail(userInput);
             
+            String fullNameValidationResult;
             do{
                 ui.fullName();
                 userInput = input.getInput();
-            } while (!validate.fullName(userInput));
+                fullNameValidationResult = validate.fullName(userInput);
+                if(fullNameValidationResult != null) {
+                	System.out.println(fullNameValidationResult);
+                }
+            } while (fullNameValidationResult != null);
             newAccount.setFullName(userInput);
             
+            String phoneNumberValidationResult;
             do{
                 ui.phoneNumber();
                 userInput = input.getInput();
-            } while (!validate.phoneNumber(userInput));
+                phoneNumberValidationResult = validate.phoneNumber(userInput);
+                if(phoneNumberValidationResult != null) {
+                	System.out.println(phoneNumberValidationResult);
+                }
+            } while (phoneNumberValidationResult != null);
             newAccount.setPhoneNumber(Integer.parseInt(userInput));
 
             boolean passwordMatch = false;
             String password;
             String passwordConfirm;
             while(!passwordMatch){
+            	String passwordValidationResult;
                 do{
-                ui.password();
-                password = input.getInput();
-                } while (!validate.password(password));
+                	ui.password();
+                	password = input.getInput();
+                	passwordValidationResult = validate.password(password);
+                	if(passwordValidationResult != null) {
+                		System.out.println(passwordValidationResult);
+                	}
+                } while (passwordValidationResult != null);
                 
                 ui.passwordConfirm();
                 passwordConfirm = input.getInput();
