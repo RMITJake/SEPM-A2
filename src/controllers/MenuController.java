@@ -51,25 +51,28 @@ public class MenuController {
 	}
 
 	public boolean loginLoop() {
-		while (currentUser.getId() == 0) {
-			// Show login prompts and get+validate input
-			ui.loginPrompt();
-			String accountIdRawInput = input.getInput();
-			ui.passwordPrompt();
-			String password = input.getSecureInput();
-			// Attempt to parse accountId from string to integer
-			int accountId = 0;
-			try {
-				accountId = Integer.parseInt(accountIdRawInput);
-			} catch (NumberFormatException ex) {
-				// Do nothing because accountId is initialized
-			}
-			// Login function
-			currentUser = login.verifyLogin(accountId, password);
-
-			// Check if user is a technician or not
-			currentTechnician = technician.getTechnicianById(currentUser.getId());
+		// Show login prompts and get+validate input
+		ui.loginPrompt();
+		String accountIdRawInput = input.getInput();
+		ui.passwordPrompt();
+		String password = input.getSecureInput();
+		// Attempt to parse accountId from string to integer
+		int accountId = 0;
+		try {
+			accountId = Integer.parseInt(accountIdRawInput);
+		} catch (NumberFormatException ex) {
+			// Do nothing because accountId is initialized
 		}
+		// Login function
+		currentUser = login.verifyLogin(accountId, password);
+
+		// Check if user is a technician or not
+		currentTechnician = technician.getTechnicianById(currentUser.getId());
+	
+		if(currentUser.getId() == 0){
+			return false;
+		}
+		
 		return true;
 	}
 
