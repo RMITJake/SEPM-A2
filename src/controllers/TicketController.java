@@ -369,9 +369,14 @@ public class TicketController {
 	}
 
 	public void changeSeverity(Ticket ticket) {
-		userInput = "";
-		ui.changeSeverity();
-		userInput = input.getInput();
+		do{
+			userInput = "";
+			ui.changeSeverity();
+			userInput = input.getInput();
+			if(!validate.ticketSeverity(userInput)){
+				System.out.println("Ticket statuses can only be \"low\", \"medium\", or \"high\"");
+			}
+		} while (!validate.ticketSeverity(userInput));
 		ticket.setSeverity(userInput);
 		updateTicketRecord(ticket);
 	}

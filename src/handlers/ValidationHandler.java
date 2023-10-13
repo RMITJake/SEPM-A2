@@ -108,4 +108,10 @@ public class ValidationHandler {
     boolean ticketIdMatch = Pattern.matches(regex, input);
     return ticketIdMatch;
   }
+
+  public boolean ticketSeverity(String input){
+    regex = "^(low|medium|high)$";
+    boolean ticketStatusMatch = Pattern.matches(regex, input);
+    return ticketStatusMatch;
+  }
 }
