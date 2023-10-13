@@ -20,7 +20,7 @@ public class TicketUI {
     }
 
     public void forgotPassword(){
-        System.out.print("Enter your email address or type \"C\" to cancel: ");
+        System.out.print("Enter your email address or type \"B\" to go back: ");
     }
 
     public void forgotPassword(String email){

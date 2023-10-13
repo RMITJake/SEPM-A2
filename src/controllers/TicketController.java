@@ -283,7 +283,7 @@ public class TicketController {
 		do {
 			ui.forgotPassword();
 			userInput = input.getInput();
-		} while (!validate.email(userInput) && userInput.equals("C"));
+		} while (!validate.email(userInput) && !userInput.equals("B") && !userInput.equals("b"));
 		if (validate.email(userInput)) {
 			ui.forgotPassword(userInput);
 			resetPassword(userInput);
