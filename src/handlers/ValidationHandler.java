@@ -10,7 +10,7 @@ public class ValidationHandler {
 
   // Welcome menu validation
   public boolean welcome(String input){
-    regex = "^[L|C|F|X]$";
+    regex = "^[L|C|F|Q]$";
     return Pattern.matches(regex, input);
   }
 

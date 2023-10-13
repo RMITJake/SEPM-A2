@@ -100,7 +100,7 @@ public class MenuController {
 					ticket.displayTicketString(myTickets.get(index));
 				}
 			}
-		} while (!menuOption.equals("X"));
+		} while (!menuOption.equals("Q"));
 		return menuOption; 
 	}
 
@@ -138,7 +138,7 @@ public class MenuController {
 				System.out.println("Input is null or empty. Please enter a valid option."); // handle null or empty
 				continue;
 			}
-			if (menuOption.equals("C")) {
+			if (menuOption.equals("X") || menuOption.equals("x")) {
 				ui.resolvePrompt();
 				menuOption = input.getInput().toUpperCase();
 				if (menuOption.equals("Y")) {

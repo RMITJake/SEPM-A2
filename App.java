@@ -22,7 +22,7 @@ class App {
             if(loggedIn){
                 applicationLoop = menu.mainMenuLoop();
             }
-        } while (!applicationLoop.equals("X"));
+        } while (!applicationLoop.equals("Q"));
     }
 
     public static void main(String[] args){
