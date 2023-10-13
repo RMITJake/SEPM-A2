@@ -369,16 +369,19 @@ public class TicketController {
 	}
 
 	public void changeSeverity(Ticket ticket) {
-		do{
-			userInput = "";
-			ui.changeSeverity();
-			userInput = input.getInput();
-			if(!validate.ticketSeverity(userInput)){
-				System.out.println("Ticket statuses can only be \"low\", \"medium\", or \"high\"");
+		userInput = "";
+		ui.changeSeverity();
+		userInput = input.getInput().toLowerCase();
+		if(validate.ticketSeverity(userInput)){
+			if((!ticket.getSeverity().equals("high") && userInput.equals("high")) || ticket.getSeverity().equals("high") && !userInput.equals("high")){
+				ticket.setSeverity(userInput);
+				ticket.setTechnicianAssignedId(assignTechnician(ticket.getSeverity()));
+				updateTicketRecord(ticket);
+			} else {
+				ticket.setSeverity(userInput);
+				updateTicketRecord(ticket);
 			}
-		} while (!validate.ticketSeverity(userInput));
-		ticket.setSeverity(userInput);
-		updateTicketRecord(ticket);
+		}
 	}
 
 	public void escalateTicket(Ticket ticket, Technician currentTechnician) {
