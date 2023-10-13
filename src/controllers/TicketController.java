@@ -30,6 +30,7 @@ public class TicketController {
 	private final String escalationRecord = file.escalationRecord;
 	private final String technicianRecord = file.technicianRecord;
 	List<Ticket> tickets;
+	
 	public void createNewTicket(Account currentUser, String record) {
 		// Initialise ticket
 		Ticket newTicket = new Ticket();
@@ -116,50 +117,48 @@ public class TicketController {
 		return userTickets;
 	}
 
-	public List<Ticket> getAllTickets() {
-		tickets = new ArrayList<>();
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("records/OpenTicket.csv"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                Ticket ticket = new Ticket();
-                ticket.setId(Integer.parseInt(data[0]));
-                ticket.setTechnicianAssignedId(Integer.parseInt(data[1]));
-                ticket.setRequesterId(Integer.parseInt(data[2]));
-                ticket.setDescription(data[3]);
-                ticket.setSeverity(data[4]);
-                ticket.setStatus(data[5]);
-                ticket.setCreationDate(LocalDateTime.parse(data[6]));
-                if (!data[7].equals("null")) {
-                    ticket.setResolvedDate(LocalDateTime.parse(data[7]));
-                }
-                tickets.add(ticket);            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return tickets;
-    }
-
-    public void archiveOldTickets() {
-        tickets = getAllTickets();
-        for (Ticket ticket : tickets) {
-            System.out.println(ticket.getStatus());
-
-            if (ticket.getResolvedDate() != null) { 	
-                System.out.println(ticket.getStatus());
-                if (ticket.getResolvedDate().isAfter(LocalDateTime.now().plusDays(1)) 
-                    && (ticket.getStatus().equals("closed and resolved") 
-                    || ticket.getStatus().equals("closed and unresolved"))) {
-                    ticket.setStatus("archived");
-                    updateTicketRecordArchive(ticket);
-                    
-                }
-            }
-        }
-    }
-
+//	public List<Ticket> getAllTickets() {
+//		tickets = new ArrayList<>();
+//
+//        try (BufferedReader reader = new BufferedReader(new FileReader("records/OpenTicket.csv"))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                String[] data = line.split(",");
+//                Ticket ticket = new Ticket();
+//                ticket.setId(Integer.parseInt(data[0]));
+//                ticket.setTechnicianAssignedId(Integer.parseInt(data[1]));
+//                ticket.setRequesterId(Integer.parseInt(data[2]));
+//                ticket.setDescription(data[3]);
+//                ticket.setSeverity(data[4]);
+//                ticket.setStatus(data[5]);
+//                ticket.setCreationDate(LocalDateTime.parse(data[6]));
+//                if (!data[7].equals("null")) {
+//                    ticket.setResolvedDate(LocalDateTime.parse(data[7]));
+//                }
+//                tickets.add(ticket);            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        
+//        return tickets;
+//    }
+//
+//    public void archiveOldTickets() {
+//        tickets = getAllTickets();
+//        for (Ticket ticket : tickets) {
+//            System.out.println(ticket.getStatus());
+//            if (ticket.getResolvedDate() != null) { 	
+//                System.out.println(ticket.getStatus());
+//                if (ticket.getResolvedDate().isAfter(LocalDateTime.now().plusDays(1)) 
+//                    && (ticket.getStatus().equals("closed and resolved") 
+//                    || ticket.getStatus().equals("closed and unresolved"))) {
+//                    ticket.setStatus("archived");
+//                    updateTicketRecordArchive(ticket);                   
+//                }
+//            }
+//        }
+//    }
+//
     public void updateTicketRecordArchive(Ticket updatedTicket) {
         // Update the list of tickets in memory
         for (int i = 0; i < tickets.size(); i++) {
@@ -324,7 +323,9 @@ public class TicketController {
 					selectedTicket.setSeverity(ticketString[4]);
 					selectedTicket.setStatus(ticketString[5]);
 					selectedTicket.setCreationDate(LocalDateTime.parse(ticketString[6]));
-					// selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
+					if (ticketString[7] != null && !ticketString[7].equals("null")) {
+						selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
+					}
 				}
 				ticketIndex++;
 			} while (selectedTicket.getId() == 0 && ticketIndex < ticketTable.size());
@@ -411,6 +412,6 @@ public class TicketController {
 		} else if (menuOption.equals("N")) {
 			statusTicket.setStatus("closed and unresolved");
 		}
-		file.write(openTicketRecord, statusTicket.getProperties());
+		updateTicketRecord(statusTicket);
 	}
 }

@@ -30,7 +30,7 @@ public class MenuController {
 
 	public String welcomeLoop() {
 		do {
-			ticket.archiveOldTickets();
+//			ticket.archiveOldTickets();
 			menuOption = "";
 			ui.welcomePrompt();
 			menuOption = input.getInput().toUpperCase();
@@ -87,7 +87,7 @@ public class MenuController {
 				} while (!menuOption.equals("B") && !menuOption.equals("b"));
 			} else if (menuOption.equals("O") || menuOption.equals("o")) {
 				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, null);
-				ticket.getAllTickets();
+//				ticket.getAllTickets();
 				for (int index = 0; index < myTickets.size(); index++) {
 					ticket.displayTicketString(myTickets.get(index));
 				}
