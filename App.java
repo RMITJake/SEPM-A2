@@ -25,6 +25,7 @@ class App {
                 applicationLoop = menu.mainMenuLoop();
             }
         } while (!applicationLoop.equals("Q"));
+        System.out.println("Thank you for using the program");
     }
 
     public static void main(String[] args){
