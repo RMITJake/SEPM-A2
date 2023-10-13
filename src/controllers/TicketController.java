@@ -159,24 +159,24 @@ public class TicketController {
 //        }
 //    }
 //
-//    public void updateTicketRecordArchive(Ticket updatedTicket) {
-//        // Update the list of tickets in memory
-//        for (int i = 0; i < tickets.size(); i++) {
-//            if (tickets.get(i).getId() == updatedTicket.getId()) {
-//                tickets.set(i, updatedTicket);
-//                break;
-//            }
-//        }
-//
-//        // Re-write the entire file with the updated list
-//        try (BufferedWriter writer = new BufferedWriter(new FileWriter("records/OpenTicket.csv"))) {
-//            for (Ticket ticket : tickets) {
-//                writer.write(ticket.getProperties());
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public void updateTicketRecordArchive(Ticket updatedTicket) {
+        // Update the list of tickets in memory
+        for (int i = 0; i < tickets.size(); i++) {
+            if (tickets.get(i).getId() == updatedTicket.getId()) {
+                tickets.set(i, updatedTicket);
+                break;
+            }
+        }
+
+        // Re-write the entire file with the updated list
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("records/OpenTicket.csv"))) {
+            for (Ticket ticket : tickets) {
+                writer.write(ticket.getProperties());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 	private int assignTechnician(String severity) {

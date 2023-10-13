@@ -50,11 +50,11 @@ public class ArchiveController {
       for (Ticket ticket : tickets) {
           System.out.println(ticket.getStatus());
           if (ticket.getResolvedDate() != null) { 	
-              if (ticket.getResolvedDate().isAfter(LocalDateTime.now().minusDays(1)) 
+              if (ticket.getResolvedDate().isBefore(ticket.getResolvedDate().plusDays(1)) 
                   && (ticket.getStatus().equals("closed and resolved") 
                   || ticket.getStatus().equals("closed and unresolved"))) {
                   ticket.setStatus("archived");
-//                  updateTicketRecordArchive(ticket);                   
+                  ticketController.updateTicketRecord(ticket);                   
               }
           }
       }
