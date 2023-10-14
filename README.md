@@ -18,19 +18,18 @@
 
 > Staff
 
-|   |   |
+| User ID  | Password  |
 |---|---|
-| User ID  | `4005`  |
-| Password  | `SuperSecure55`  |
+| `4005`  | `SuperSecure55`  |
+
 
 <br/>
 
 > Technician
 
-|   |   |
+| User ID  | Password  |
 |---|---|
-| User ID  | `4000`  |
-| Password  | `Password123`  |
+| `4000`  | `Password123`  |
 
 
 ## ▶ Running the program
