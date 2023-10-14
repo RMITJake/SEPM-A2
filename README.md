@@ -5,21 +5,27 @@
 - Developed using openjdk version "17.0.8" 2023-07-18.
 
 ## 📁 Files
-As the project is pure Java and there is no scope to write SQL queries, data persistence will be handled through csv files in the "records" folder which will act in place of database tables. Each file will be a list of records reflecting the structure of it's associated class.
+- As the project is pure Java and there is no scope to write SQL queries, data persistence will be handled through csv files in the "records" folder which will act in place of database tables. Each file will be a list of records reflecting the structure of it's associated class.
 
-Example Staff user:
-Login #: 4005
-Password: SuperSecure55
-
-Example Technician user:
-Login #: 4008
-Password: Password123
 
 ---
 # 📄 User Guide
 ## ✅ Prerequisites 
 - OpenJDK 17.0.8 or a compatible version should be installed.
 - Have an access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
+
+## **Example (for Testing Purposes)
+
+| Staff |  |
+| --- | --- |
+| User ID  | 4005  |
+| Password  | SuperSecure55  |
+
+| Technician |  |
+| --- | --- |
+| User ID  | 4000  |
+| Password  | Password123  |
+
 
 ## ▶ Running the program
 Follow these steps to execute the IT Service Desk Ticketing System.
