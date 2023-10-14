@@ -14,13 +14,13 @@
 - OpenJDK 17.0.8 or a compatible version should be installed.
 - Have an access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
 
-## 🔢 Example (for Testing Purposes)
+## 🔢 Example Inputs (for Testing Purposes)
 
 > **Staff**
 
 | User ID  | Password  |
 |---|---|
-| `4005`  | `SuperSecure55`  |
+| `4005`  | `SuperSecure55SuperSecure55`  |
 
 
 <br/>
@@ -29,7 +29,7 @@
 
 | User ID  | Password  |
 |---|---|
-| `4000`  | `Password123`  |
+| `4000`  | `Password123Password123`  |
 
 
 ## ▶ Running the program
@@ -44,72 +44,112 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 ### Step 2: ▶ Run the Java application
 1. Open ***Eclipse*** >> ***File*** >> ***Open Projects from File System...***
 2. Click ***Directory*** >> ***Downloads/SEPM-A2-main*** >> ***Finish***
-3. Click the `SEPM-A2-main` in ***Project Explorer*** and then click the green play button to run the app.
+3. Click the `SEPM-A2-main` in ***Project Explorer*** and then click the *green play button* to run the app.
 <br/>![Screenshot1](https://github.com/RMITJake/SEPM-A2/blob/1a7c87126fa5b65ae0fc21d96013e39ac71f0d00/Screen%20Shot%2056.png) 
 
 4. The Java application is successfully running!
-<br/>![Screenshot2](https://github.com/RMITJake/SEPM-A2/blob/19046f501341baf7cbc340c663afd79487f6d12c/Screen%20Shot%2057.png) 
+<br/>![Screenshot2](https://github.com/RMITJake/SEPM-A2/blob/579735a7708b685596d7f76bca497ac8bb4c82f4/Screen%20Shot%2057.png) 
 
 ### Step 3: 🖥 Execute the IT Service Desk Ticketing System
 1. Menu Options: 
     1. Upon starting, the program presents the following options:
+        - `L` - Log in to an existing account.
         - `C` - Create a new user account.
         - `F` - Forgot password feature.
-        - `L` - Log in to an existing account.
-        - `E` - Exit the system.
+        - `Q` - Quit the system.
 
 2. Creating an Account:
     1. Enter `C` to create a new user account.
     2. Enter your email address.
     3. Enter your full name.
     4. Enter your valid phone number (*the phone number length should be **10***).
-    5. Enter a new password (including **lowercase**/**uppercase**/**number**/**min 4 characters**).
+    5. Enter a new password (including **lowercase**/**uppercase**/**number**/**min 20 characters**).
     6. Confirm the entered password.
     7. Check the Account Summary and confirm it is correct `Y`/`N`.
-    8. New account successfully created! <br/>Don't forget your account number and password.<br/>(In this case, `4008` and `Abc123` are the account number and password respectively.)
-    <br/>![Screenshot3](https://github.com/RMITJake/SEPM-A2/blob/4b68369c7b58db5d56747a2413268c6b36a7380a/Screen%20Shot%2059.png) 
-    9. Press ***Enter*** to move on.
+    8. New account successfully created! <br/>Don't forget your Account ID and password.
 
-3. Login:
+3. ***`[AS A STAFF]`*** Login:
     1. Enter `L` to log in.
-    2. Enter your account number.
-    3. Enter your password.
+    2. Enter your account ID (e.g. `4005`).
+    3. Enter your password (e.g. `SuperSecure55SuperSecure55`).
     4. Logged in succesfully!
     5. The Main Menu presents the following options:
-        - ***C*** - Create a new ticket
-        - ***S*** - View the Tickets
-        - ***M*** - My Open Tickets
-        - ***L*** - Logout the account
-        - ***E*** - Exit the system.
-    6. `[AS A STAFF]` Enter ***C*** to create a new ticket.
+        - `N` - Create a New ticket.
+        - `O` - View my Open Tickets.
+        - `L` - Logout the account.
+        - `Q` - Quit the system.
+    6. Enter `N` to create a new ticket.
         1. Provide a description of your IT issue.
         2. Provide a severity of the issue (`low`/`medium`/`high`).
-        3. The ticket has been opened!
-        4. Check the Ticket Summary and confirm it is correct `Y`/`N`.
-    7. `[AS A STAFF]` Enter ***M*** to view my tickets that have been opened.
-        1. Check the Ticket Summary and confirm its information.
-    8. 🔒 `[AS A TECHNICIAN]` Enter ***S*** to view the ticket submitted.
+        3. Check the Ticket Summary and confirm it is correct `Y`/`N`.
+        4. The ticket for your issue has been opened! 
+    7. Enter `O` to view my tickets that have been opened.
+        1. Check the Ticket Information and its status.
+    8. Enter `Q` to quit the system. Thank you for using!
+
+4. 🔐 ***`[AS A TECHNICIAN]`*** Login:
+    1. Enter `L` to log in.
+    2. Enter your account ID (e.g. `4000`).
+    3. Enter your password (e.g. `Password123Password123`).
+    4. Logged in succesfully!
+    5. The Main Menu and Tech Menu present the following options:
+        - **Main Menu**
+            - `N` - Create a New ticket.
+            - `O` - View my Open Tickets.
+        - **Tech Menu**
+            - `A` - View Assigned Tickets.
+            - `P` - Pick a ticket to take actions.
+            - `L` - Logout the account.
+            - `Q` - Quit the system.
+    6. Enter `N` to create a new ticket.
+        1. Provide a description of your IT issue.
+        2. Provide a severity of the issue (`low`/`medium`/`high`).
+        3. Check the Ticket Summary and confirm it is correct `Y`/`N`.
+        4. The ticket for your issue has been opened! 
+    7. Enter `O` to view my tickets that have been opened.
+        1. Check the Ticket Information and its status.
+    8. Enter `A` to view the tickets assigned.
+    9. Enter `P` to pick a ticket to take actions.
         1. Enter the Ticket ID.
-        2. View the detailed ticket information.
-        <br/>![Screenshot4](https://github.com/RMITJake/SEPM-A2/blob/4b68369c7b58db5d56747a2413268c6b36a7380a/Screen%20Shot%2058.png) 
-        3. Enter `S` to change the ticket severity.
-            1. Enter the appropriate severity.
-						2. Enter "low", "medium", or "high". The ticket will be updated with the new severity.
-        4. Enter `E` to escalate the ticket.
-            1. Provide a reason to escalate this ticket.
-            2. Confirm the reason for escalation.
-        5. Enter `M` to go back to the Main Menu.
-    9. Enter ***E*** to Exit the system. 
+        2. View the detailed ticket information and the following options.
+            - `S` - Set the ticket severity.
+            - `E` - Escalate the ticket.
+            - `T` - Change the ticket status.
+            - `B` - Back to the Main Menu.
+    10. Enter `S` to change the ticket severity.
+        1. Enter a new severity (`low`/`medium`/`high`).
+        2. Check the updated Ticket Information.
+    11. 🆙 Enter `E` to escalate the ticket.
+        1. Provide a reason to escalate this ticket.
+        2. Confirm the reason for escalation by entering `Y`.
+        3. Check the updated Ticket Information.
+    12. Enter `T` to change the ticket status. The following status options are shown:
+        - `O` - `Open`
+        - `X` - `Close`
+        - `B` - Back to the Main Menu.<br/>
+        1. `Open` status
+            1. Enter `O` to open the ticket.
+            2. The ticket has been opened. Check the updated Ticket Information.
+        2. `Close` status - `Resolved` ✅
+            1. Enter `X` to close the ticket.
+            2. Enter ***Y***, meaning that the issue was resolved.
+            3. Check the updated Ticket Information.
+        3. `Close` status - `Unresolved` ❎
+            1. Enter `X` to close the ticket.
+            2. Enter ***N***, meaning that the issue was unresolved.
+            3. Check the updated Ticket Information.
+    13. Enter `B` to go back to the Main Menu.
+    14. Enter `Q` to quit the system. 
 
 
 4. Forgot Password:
     1. Enter `F` to access the ***Forgot Password*** feature.
     2. Enter your email address to reset your password.
-    3. A ticket to reset your password has been opened.<br/>It is marked as High Priority and will be resolved as soon as possible.
+    3. A ticket to reset your password has been opened.<br/>It is marked as ❗***High Priority*** and will be resolved as soon as possible.
 
 
 5. Exit:
-    1. Enter `E` to Exit the system.
+    1. Enter `Q` to quit the system.
 
 
 ---
