@@ -22,6 +22,32 @@ public class MenuController {
 
 	// Keeps track of the menu option selected
 	String menuOption;
+
+	// Menu options:
+	// Login Menu
+	public final String loginOption = "L";
+	public final String createAccountOption = "C";
+	public final String forgotPasswordOption = "F";
+	public final String quitOption = "Q";
+
+	// Main Menu
+	final String backOption = "B";
+	final String createNewTicketOption = "N";
+	final String myOpenTicketsOption = "O";
+	final String logoutOption = "L";
+
+	// Technician Menu
+	final String assignedTicketsOption = "A";
+	final String pickTicketOption = "P";
+
+	// Ticket Menu
+	final String setTicketSeverityOption = "S";
+	final String escalateTicketOption = "E";
+	final String changeTicketStatusOption = "T";
+
+	// Ticket Status Menu
+	final String openTicketOption = "O";
+	final String closeTicketOption = "X";
 	
 	public void menuController() {
 		// Print out the welcome message
