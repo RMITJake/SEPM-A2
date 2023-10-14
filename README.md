@@ -20,7 +20,7 @@
 
 | User ID  | Password  |
 |---|---|
-| `4005`  | `SuperSecure55`  |
+| `4005`  | `SuperSecure55SuperSecure55`  |
 
 
 <br/>
@@ -29,7 +29,7 @@
 
 | User ID  | Password  |
 |---|---|
-| `4000`  | `Password123`  |
+| `4000`  | `Password123Password123`  |
 
 
 ## ▶ Running the program
@@ -68,10 +68,10 @@ Follow these steps to execute the IT Service Desk Ticketing System.
     7. Check the Account Summary and confirm it is correct `Y`/`N`.
     8. New account successfully created! <br/>Don't forget your Account ID and password.
 
-3. `[AS A STAFF]` Login:
+3. ***`[AS A STAFF]`*** Login:
     1. Enter `L` to log in.
-    2. Enter your account ID.
-    3. Enter your password.
+    2. Enter your account ID (e.g. `4005`).
+    3. Enter your password (e.g. `SuperSecure55SuperSecure55`).
     4. Logged in succesfully!
     5. The Main Menu presents the following options:
         - `N` - Create a New ticket.
@@ -87,10 +87,10 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         1. Check the Ticket Information and its status.
     8. Enter `Q` to quit the system. Thank you for using!
 
-4. 🔐 `[AS A TECHNICIAN]` Login:
+4. 🔐 ***`[AS A TECHNICIAN]`*** Login:
     1. Enter `L` to log in.
-    2. Enter your account ID.
-    3. Enter your password.
+    2. Enter your account ID (e.g. `4000`).
+    3. Enter your password (e.g. `Password123Password123`).
     4. Logged in succesfully!
     5. The Main Menu and Tech Menu present the following options:
         - **Main Menu**
