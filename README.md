@@ -16,21 +16,21 @@
 
 ## **Example (for Testing Purposes)
 
-| Staff |  |
-| --- | --- |
-| User ID  | 4005  |
-| Password  | SuperSecure55  |
+> Staff
 
-|   Staff   |                |
-| :--------:| -------------- |
-| User ID   | 4005           |
-| Password  | SuperSecure55  |
+|   |   |
+|---|---|
+| User ID  | `4005`  |
+| Password  | `SuperSecure55`  |
 
+<br/>
 
-| Technician |  |
-| --- | --- |
-| User ID  | 4000  |
-| Password  | Password123  |
+> Technician
+
+|   |   |
+|---|---|
+| User ID  | `4000`  |
+| Password  | `Password123`  |
 
 
 ## ▶ Running the program
