@@ -16,7 +16,7 @@
 
 ## **Example (for Testing Purposes)
 
-> Staff
+> **Staff**
 
 | User ID  | Password  |
 |---|---|
@@ -25,7 +25,7 @@
 
 <br/>
 
-> Technician
+> **Technician**
 
 | User ID  | Password  |
 |---|---|
