@@ -14,7 +14,7 @@
 - OpenJDK 17.0.8 or a compatible version should be installed.
 - Have an access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
 
-## 🔢 Example (for Testing Purposes)
+## 🔢 Example Inputs (for Testing Purposes)
 
 > **Staff**
 
@@ -44,7 +44,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 ### Step 2: ▶ Run the Java application
 1. Open ***Eclipse*** >> ***File*** >> ***Open Projects from File System...***
 2. Click ***Directory*** >> ***Downloads/SEPM-A2-main*** >> ***Finish***
-3. Click the `SEPM-A2-main` in ***Project Explorer*** and then click the green play button to run the app.
+3. Click the `SEPM-A2-main` in ***Project Explorer*** and then click the *green play button* to run the app.
 <br/>![Screenshot1](https://github.com/RMITJake/SEPM-A2/blob/1a7c87126fa5b65ae0fc21d96013e39ac71f0d00/Screen%20Shot%2056.png) 
 
 4. The Java application is successfully running!
