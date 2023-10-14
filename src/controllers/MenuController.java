@@ -127,7 +127,7 @@ public class MenuController {
 				for (int index = 0; index < myTickets.size(); index++) {
 					ticket.displayTicketString(myTickets.get(index));
 				}
-			} else if (menuOption.equals(pickTicketOption) && currentUser.getId()<4005) {
+			} else if (menuOption.equals(pickTicketOption) && currentTechnician.getId() != 0) {
 				ticket.selectTicket();
 				ticketMenuLoop();
 			}
