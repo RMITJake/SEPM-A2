@@ -69,7 +69,7 @@ public class ValidationHandler {
     // Per spec we check for uppercase and lowercase alphanumeric, no symbols
     // TEMPORARY - ONLY CHECKING FOR 4 MIN CHARACTERS FOR TESTING, PER SPEC CHECK FOR 20
     // Check length of the string
-    regex = "^[a-zA-Z\\d]{4,}";
+    regex = "^[a-zA-Z\\d]{20,}";
     lengthMatch = Pattern.matches(regex, input);
 
     // Check uppercase
