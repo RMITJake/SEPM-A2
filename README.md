@@ -14,17 +14,22 @@
 - OpenJDK 17.0.8 or a compatible version should be installed.
 - Have an access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
 
-## **Example (for Testing Purposes)
+## 🔢 Example (for Testing Purposes)
 
-| Staff |  |
-| --- | --- |
-| User ID  | 4005  |
-| Password  | SuperSecure55  |
+> **Staff**
 
-| Technician |  |
-| --- | --- |
-| User ID  | 4000  |
-| Password  | Password123  |
+| User ID  | Password  |
+|---|---|
+| `4005`  | `SuperSecure55`  |
+
+
+<br/>
+
+> **Technician**
+
+| User ID  | Password  |
+|---|---|
+| `4000`  | `Password123`  |
 
 
 ## ▶ Running the program
