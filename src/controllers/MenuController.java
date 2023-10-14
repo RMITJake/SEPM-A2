@@ -131,7 +131,7 @@ public class MenuController {
 				ticket.selectTicket();
 				ticketMenuLoop();
 			}
-		} while (!menuOption.equals(quitOption));
+		} while (!menuOption.equals(quitOption) && !menuOption.equals(logoutOption));
 		return menuOption; 
 	}
 
