@@ -19,14 +19,17 @@ public class ValidationHandler {
     return true;
   }
 
-  public boolean email(String input){
-    boolean emailMatch;
+  public String email(String input){
     regex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-    emailMatch = Pattern.matches(regex, input);
-    return emailMatch;
+    boolean emailMatch = Pattern.matches(regex, input);
+
+    if(!emailMatch){
+      return "**Invalid email format. Please enter a valid email address format (e.g. example@example.com).\n";
+    }
+    return null;
   }
 
-  public boolean emailUniqueCheck(String input){
+  public String emailUniqueCheck(String input){
 	  ArrayList<String> accountTable = file.read("Account");
 	  Account checkIndex = new Account();
 	  boolean emailMatch = false;
@@ -34,7 +37,7 @@ public class ValidationHandler {
 	  for(int index=0; index < accountTable.size(); index++) {
 		  String[] indexDetails = accountTable.get(index).split(",", -1);;
           checkIndex.setEmail((indexDetails[1]));
-          if (input != checkIndex.getEmail() && !match) {
+          if (!input.equals(checkIndex.getEmail()) && !match) {
         	  emailMatch = true;
           }
           if (input.equals(checkIndex.getEmail())) {
@@ -42,35 +45,52 @@ public class ValidationHandler {
         	  emailMatch = false;
           }
 	  }
-	    return emailMatch;
+    if (emailMatch){
+      return null;
+    } else{
+      return "**The entered email address is already in use. Please try again with different one.\n";
+    }
   }
 
-  public boolean fullName(String input){
-    boolean fullNameMatch;
+  public String fullName(String input){
     regex = "^[\\w|\\s|']{1,}";
-    fullNameMatch = Pattern.matches(regex, input);
-    return fullNameMatch;
+    boolean fullNameMatch = Pattern.matches(regex, input);
+
+    if (!fullNameMatch) {
+      return "**Invalid full name. Please try again.\n";
+    }
+
+    return null;
   }
 
-  public boolean phoneNumber(String input){
-    boolean phoneNumberMatch;
+  public String phoneNumber(String input){
     regex = "^[\\d]{10,10}$";
-    phoneNumberMatch = Pattern.matches(regex, input);
-    return phoneNumberMatch;
+    boolean phoneNumberMatch = Pattern.matches(regex, input);
+    
+    if (!phoneNumberMatch) {
+      return "**Invalid phone number. Please try again.\n";
+    }
+
+    return null;
   }
 
-  public boolean password(String input){
+  public String password(String input){
     int index;
     boolean lengthMatch;
     boolean uppercaseMatch;
     boolean lowercaseMatch;
     boolean digitMatch;
+    String errorMessage = null;
 
     // Per spec we check for uppercase and lowercase alphanumeric, no symbols
     // TEMPORARY - ONLY CHECKING FOR 4 MIN CHARACTERS FOR TESTING, PER SPEC CHECK FOR 20
     // Check length of the string
     regex = "^[a-zA-Z\\d]{20,}";
     lengthMatch = Pattern.matches(regex, input);
+
+    if (!lengthMatch){
+      errorMessage = "**Password must be at least 20 characters long.\n";
+    }
 
     // Check uppercase
     regex = "[A-Z]";
@@ -80,6 +100,10 @@ public class ValidationHandler {
       index++;
     } while(!uppercaseMatch && index < input.length());
 
+    if (!uppercaseMatch && errorMessage == null){
+      errorMessage = "**Password must contain at least one uppercase letter.\n";
+    }
+
     // Check lowercase
     regex = "[a-z]";
     index = 0;
@@ -87,6 +111,10 @@ public class ValidationHandler {
       lowercaseMatch = Pattern.matches(regex, input.substring(index, index+1));
       index++;
     } while(!lowercaseMatch && index < input.length());
+
+    if (!lowercaseMatch && errorMessage == null){
+      errorMessage = "**Password must contain at least one lowercase letter.\n";
+    }
 
     // check digits
     regex = "[\\d]";
@@ -96,11 +124,11 @@ public class ValidationHandler {
       index++;
     } while(!digitMatch && index < input.length());
 
-    if(lengthMatch && uppercaseMatch && lowercaseMatch && digitMatch){
-      return true;
+    if (!digitMatch && errorMessage == null){
+      errorMessage = "**Password must contain at least one digit.\n";
     }
     
-    return false;
+    return errorMessage;
   }
 
   public boolean ticketId(String input){
