@@ -35,15 +35,15 @@ public class ValidationHandler {
 	  boolean emailMatch = false;
 	  boolean match = false;
 	  for(int index=0; index < accountTable.size(); index++) {
-		  String[] indexDetails = accountTable.get(index).split(",", -1);;
-          checkIndex.setEmail((indexDetails[1]));
-          if (!input.equals(checkIndex.getEmail()) && !match) {
-        	  emailMatch = true;
-          }
-          if (input.equals(checkIndex.getEmail())) {
-        	  match = true;
-        	  emailMatch = false;
-          }
+		  String[] indexDetails = accountTable.get(index).split(",", -1);
+      checkIndex.setEmail((indexDetails[1]));
+      if (!input.equals(checkIndex.getEmail()) && !match) {
+        emailMatch = true;
+      }
+      if (input.equals(checkIndex.getEmail())) {
+        match = true;
+        emailMatch = false;
+      }
 	  }
     if (emailMatch){
       return null;
