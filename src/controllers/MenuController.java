@@ -24,6 +24,10 @@ public class MenuController {
 	String menuOption;
 
 	// Menu options:
+	// General options
+	public final String confirmOption = "Y";
+	public final String rejectOption = "N";
+
 	// Login Menu
 	public final String loginOption = "L";
 	public final String createAccountOption = "C";
@@ -107,9 +111,9 @@ public class MenuController {
 			menuOption = "";
 			ui.mainMenu(currentTechnician.getId());
 			menuOption = input.getInput().toUpperCase();
-			if (menuOption.equals("N") || menuOption.equals("n")) {
+			if (menuOption.equals(createNewTicketOption)) {
 				ticket.createNewTicket(currentUser, ticket.openTicketRecord);
-			} else if (menuOption.equals("O") || menuOption.equals("o")) {
+			} else if (menuOption.equals(myOpenTicketsOption)) {
 				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, null);
 //				ticket.getAllTickets();
 				for (int index = 0; index < myTickets.size(); index++) {
@@ -117,19 +121,19 @@ public class MenuController {
 				}
 			}
 			// Technician menu options
-			else if (menuOption.equals("A")) {
+			else if (menuOption.equals(assignedTicketsOption)) {
 				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser,
 						currentTechnician);
 				for (int index = 0; index < myTickets.size(); index++) {
 					ticket.displayTicketString(myTickets.get(index));
 				}
-			} else if (menuOption.equals("P") && currentUser.getId()<4005) {
+			} else if (menuOption.equals(pickTicketOption) && currentUser.getId()<4005) {
 				ticket.selectTicket();
 				do {
 					menuOption = ticketMenuLoop();
-				} while (!menuOption.equals("B") && !menuOption.equals("b"));
+				} while (!menuOption.equals(backOption));
 			}
-		} while (!menuOption.equals("Q"));
+		} while (!menuOption.equals(quitOption));
 		return menuOption; 
 	}
 
@@ -144,17 +148,17 @@ public class MenuController {
 				// input
 				continue;
 			}
-			if (menuOption.equals("S")) {
+			if (menuOption.equals(setTicketSeverityOption)) {
 				ticket.changeSeverity(ticket.selectedTicket);
-			} else if (menuOption.equals("E")) {
+			} else if (menuOption.equals(escalateTicketOption)) {
 				ticket.escalateTicket(ticket.selectedTicket, currentTechnician);
 			}
-			if (menuOption.equals("T")) {
+			if (menuOption.equals(changeTicketStatusOption)) {
 				do {
 					menuOption = ticketStatusLoop();
-				} while (!menuOption.equals("B") && !menuOption.equals("b"));
+				} while (!menuOption.equals(backOption));
 			}
-		} while (!menuOption.equals("B") && !menuOption.equals("b"));
+		} while (!menuOption.equals(backOption));
 		return menuOption;
 	}
 
@@ -167,21 +171,21 @@ public class MenuController {
 				System.out.println("Input is null or empty. Please enter a valid option."); // handle null or empty
 				continue;
 			}
-			if (menuOption.equals("O") || menuOption.equals("o")) {
+			if (menuOption.equals(myOpenTicketsOption)) {
 				ticket.changeOpenStatus(ticket.selectedTicket);
 				
 			}
 
-			if (menuOption.equals("X") || menuOption.equals("x")) {
+			if (menuOption.equals(closeTicketOption)) {
 				ui.resolvePrompt();
 				menuOption = input.getInput().toUpperCase();
-				if (menuOption.equals("Y")) {
+				if (menuOption.equals(confirmOption)) {
 					ticket.changeStatus(ticket.selectedTicket, menuOption);
-				} else if (menuOption.equals("N")) {
+				} else if (menuOption.equals(rejectOption)) {
 					ticket.changeStatus(ticket.selectedTicket, menuOption);
 				}
 			}
-		} while (!menuOption.equals("B"));			
+		} while (!menuOption.equals(backOption));			
 		return menuOption;
 	}
 		
