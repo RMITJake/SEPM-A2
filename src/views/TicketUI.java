@@ -46,7 +46,9 @@ public class TicketUI {
         System.out.println("------------------------------");
     }
     
-    
+    public void archivedPrompt() {
+		System.err.println("Ticket is archived and can no longer be opened!");
+	}
     
     public void changeSeverity(){
         String menu = "";

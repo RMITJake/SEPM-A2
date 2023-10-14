@@ -417,8 +417,24 @@ public class TicketController {
 		statusTicket.setResolvedDate(LocalDateTime.now());
 		if (menuOption.equals("Y")) {
 			statusTicket.setStatus("closed and resolved");
+			ui.displayTicket(statusTicket);
 		} else if (menuOption.equals("N")) {
 			statusTicket.setStatus("closed and unresolved");
+			ui.displayTicket(statusTicket);
+		}
+		updateTicketRecord(statusTicket);
+	}
+
+	
+
+	public void changeOpenStatus(Ticket ticket) {
+		Ticket statusTicket = ticket;
+		if (statusTicket.getStatus().equals("archived")) {
+			ui.archivedPrompt();
+			ui.displayTicket(statusTicket);
+		} else {
+			statusTicket.setStatus("open and unresolved");
+			ui.displayTicket(statusTicket);
 		}
 		updateTicketRecord(statusTicket);
 	}
