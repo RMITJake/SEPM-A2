@@ -88,7 +88,11 @@ public class AccountController {
                 	ui.password();
                 	userInput = input.getInput();
                     password = userInput;
-                	passwordValidationResult = validate.password(password);
+                    try{
+                        passwordValidationResult = validate.password(password);
+                    } catch (StringIndexOutOfBoundsException ex) {
+                        System.out.println("Password field cannot be blank.");
+                    }
                 	if(passwordValidationResult != null) {
                 		System.out.println(passwordValidationResult);
                 	}
