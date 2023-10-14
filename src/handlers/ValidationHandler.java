@@ -68,7 +68,7 @@ public class ValidationHandler {
     boolean phoneNumberMatch = Pattern.matches(regex, input);
     
     if (!phoneNumberMatch) {
-      return "**Invalid phone number. Please try again.\n";
+      return "**Invalid phone number. Please try again with a valid phone number(10 length).\n";
     }
 
     return null;
