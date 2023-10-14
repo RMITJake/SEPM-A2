@@ -21,6 +21,12 @@
 | User ID  | 4005  |
 | Password  | SuperSecure55  |
 
+|   Staff   |                |
+| :--------:| -------------- |
+| User ID   | 4005           |
+| Password  | SuperSecure55  |
+
+
 | Technician |  |
 | --- | --- |
 | User ID  | 4000  |
