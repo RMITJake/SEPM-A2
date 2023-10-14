@@ -145,7 +145,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 4. Forgot Password:
     1. Enter `F` to access the ***Forgot Password*** feature.
     2. Enter your email address to reset your password.
-    3. A ticket to reset your password has been opened.<br/>It is marked as ***High Priority***❗ and will be resolved as soon as possible.
+    3. A ticket to reset your password has been opened.<br/>It is marked as ❗***High Priority*** and will be resolved as soon as possible.
 
 
 5. Exit:
