@@ -48,7 +48,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 <br/>![Screenshot1](https://github.com/RMITJake/SEPM-A2/blob/1a7c87126fa5b65ae0fc21d96013e39ac71f0d00/Screen%20Shot%2056.png) 
 
 4. The Java application is successfully running!
-<br/>![Screenshot2](https://github.com/RMITJake/SEPM-A2/blob/19046f501341baf7cbc340c663afd79487f6d12c/Screen%20Shot%2057.png) 
+<br/>![Screenshot2](https://github.com/RMITJake/SEPM-A2/blob/579735a7708b685596d7f76bca497ac8bb4c82f4/Screen%20Shot%2057.png) 
 
 ### Step 3: 🖥 Execute the IT Service Desk Ticketing System
 1. Menu Options: 
