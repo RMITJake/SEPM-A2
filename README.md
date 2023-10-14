@@ -14,7 +14,7 @@
 - OpenJDK 17.0.8 or a compatible version should be installed.
 - Have an access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
 
-## **Example (for Testing Purposes)
+## 🔢 Example (for Testing Purposes)
 
 > **Staff**
 
