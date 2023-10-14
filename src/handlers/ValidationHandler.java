@@ -24,7 +24,7 @@ public class ValidationHandler {
     boolean emailMatch = Pattern.matches(regex, input);
 
     if(!emailMatch){
-      return "**Invalid email format. Please enter a valid email address format (e.g. example@example.com).";
+      return "**Invalid email format. Please enter a valid email address format (e.g. example@example.com).\n";
     }
     return null;
   }
@@ -48,7 +48,7 @@ public class ValidationHandler {
     if (emailMatch){
       return null;
     } else{
-      return "**The entered email address is already in use. Please try again with different one.";
+      return "**The entered email address is already in use. Please try again with different one.\n";
     }
   }
 
@@ -57,7 +57,7 @@ public class ValidationHandler {
     boolean fullNameMatch = Pattern.matches(regex, input);
 
     if (!fullNameMatch) {
-      return "**Invalid full name. Please try again.";
+      return "**Invalid full name. Please try again.\n";
     }
 
     return null;
@@ -68,7 +68,7 @@ public class ValidationHandler {
     boolean phoneNumberMatch = Pattern.matches(regex, input);
     
     if (!phoneNumberMatch) {
-      return "**Invalid phone number. Please try again.";
+      return "**Invalid phone number. Please try again.\n";
     }
 
     return null;
@@ -89,7 +89,7 @@ public class ValidationHandler {
     lengthMatch = Pattern.matches(regex, input);
 
     if (!lengthMatch){
-      errorMessage = "**Password must be at least 4 characters long.";
+      errorMessage = "**Password must be at least 20 characters long.\n";
     }
 
     // Check uppercase
@@ -101,7 +101,7 @@ public class ValidationHandler {
     } while(!uppercaseMatch && index < input.length());
 
     if (!uppercaseMatch && errorMessage == null){
-      errorMessage = "**Password must contain at least one uppercase letter.";
+      errorMessage = "**Password must contain at least one uppercase letter.\n";
     }
 
     // Check lowercase
@@ -113,7 +113,7 @@ public class ValidationHandler {
     } while(!lowercaseMatch && index < input.length());
 
     if (!lowercaseMatch && errorMessage == null){
-      errorMessage = "**Password must contain at least one lowercase letter.";
+      errorMessage = "**Password must contain at least one lowercase letter.\n";
     }
 
     // check digits
@@ -125,7 +125,7 @@ public class ValidationHandler {
     } while(!digitMatch && index < input.length());
 
     if (!digitMatch && errorMessage == null){
-      errorMessage = "**Password must contain at least one digit.";
+      errorMessage = "**Password must contain at least one digit.\n";
     }
     
     return errorMessage;
