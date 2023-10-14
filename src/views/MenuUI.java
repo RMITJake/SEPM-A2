@@ -39,11 +39,12 @@ public class MenuUI {
         uiText += "--------  Main Menu  ---------\n";
         uiText += "------------------------------\n";
         uiText += "[N] Create a new ticket\n";
-        uiText += "[P] Pick Ticket\n";
+        //uiText += "[P] Pick Ticket\n";
         uiText += "[O] My Open Tickets\n";
         if(techOptions > 0){
             uiText += "--------  Tech Menu  ---------\n";
             uiText += "[A] Assigned Tickets\n";
+            uiText += "[P] Pick Ticket\n";
         }
         uiText += "[L] Logout\n";
         uiText += "[Q] Quit\n";
@@ -72,6 +73,8 @@ public class MenuUI {
     	 uiText = "Was the ticket issue resolved? (Y/N input only:) ";
          System.out.print(uiText);
     }
+
+	
     
     
 }
