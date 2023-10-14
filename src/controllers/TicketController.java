@@ -22,7 +22,7 @@ public class TicketController {
 	private ValidationHandler validate = new ValidationHandler();
 	private TicketUI ui = new TicketUI();
 	private String userInput;
-	protected Ticket selectedTicket = new Ticket();
+	protected Ticket selectedTicket;
 
 	// Record strings, used to minimize hard coded file references
 	protected final String openTicketRecord = file.openTicketRecord;
@@ -307,9 +307,10 @@ public class TicketController {
 		// Needs checks so users can only select their own tickets
 		// Techs can check all tickets
 		// Create an empty ticket
+		selectedTicket = new Ticket();
 		ui.selectTicket();
 		userInput = input.getInput();
-		if (validate.ticketId(userInput)) {
+		if (validate.ticketId(userInput)){
 			ArrayList<String> ticketTable = file.read(openTicketRecord);
 			String[] ticketString;
 			int ticketIndex = 0;
@@ -329,9 +330,10 @@ public class TicketController {
 				}
 				ticketIndex++;
 			} while (selectedTicket.getId() == 0 && ticketIndex < ticketTable.size());
-
+			if(selectedTicket.getId() == 0){
+				System.out.println("No ticket found.");
+			}
 		}
-
 	}
 
 	public void updateTicketRecord(Ticket ticket) {

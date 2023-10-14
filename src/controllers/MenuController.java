@@ -129,16 +129,14 @@ public class MenuController {
 				}
 			} else if (menuOption.equals(pickTicketOption) && currentUser.getId()<4005) {
 				ticket.selectTicket();
-				do {
-					menuOption = ticketMenuLoop();
-				} while (!menuOption.equals(backOption));
+				ticketMenuLoop();
 			}
 		} while (!menuOption.equals(quitOption));
 		return menuOption; 
 	}
 
-	public String ticketMenuLoop() {
-		do {
+	public void ticketMenuLoop() {
+		while (!menuOption.equals(backOption) && ticket.selectedTicket.getId() != 0){
 			menuOption = "";
 			ticket.displayTicket(ticket.selectedTicket);
 			ui.ticketMenu();
@@ -158,8 +156,7 @@ public class MenuController {
 					menuOption = ticketStatusLoop();
 				} while (!menuOption.equals(backOption));
 			}
-		} while (!menuOption.equals(backOption));
-		return menuOption;
+		}
 	}
 
 	public String ticketStatusLoop() {
