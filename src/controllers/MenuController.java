@@ -23,39 +23,39 @@ public class MenuController {
 	// Keeps track of the menu option selected
 	String menuOption;
 
-	// Menu options:
-	// General options
-	public final String confirmOption = "Y";
-	public final String rejectOption = "N";
+	// // Menu options:
+	// // General options
+	// public final String confirmOption = "Y";
+	// public final String rejectOption = "N";
 
-	// Login Menu
-	public final String loginOption = "L";
-	public final String createAccountOption = "C";
-	public final String forgotPasswordOption = "F";
-	public final String quitOption = "Q";
+	// // Login Menu
+	public final String loginOption = ui.loginOption;
+	public final String createAccountOption = ui.createAccountOption;
+	public final String forgotPasswordOption = ui.forgotPasswordOption;
+	public final String quitOption = ui.quitOption;
 
-	// Main Menu
-	final String backOption = "B";
-	final String createNewTicketOption = "N";
-	final String myOpenTicketsOption = "O";
-	final String logoutOption = "L";
+	// // Main Menu
+	// final String backOption = "B";
+	// final String createNewTicketOption = "N";
+	// final String myOpenTicketsOption = "O";
+	// final String logoutOption = "L";
 
-	// Technician Menu
-	final String assignedTicketsOption = "A";
-	final String pickTicketOption = "P";
-	final String myArchivedTicketsOption = "U";
-	final String otherArchivedTicketsOption = "V";
-	final String myClosedTicketsOption = "G";
-	final String otherClosedTicketsOption = "H";
+	// // Technician Menu
+	// final String assignedTicketsOption = "A";
+	// final String pickTicketOption = "P";
+	// final String myArchivedTicketsOption = "U";
+	// final String otherArchivedTicketsOption = "V";
+	// final String myClosedTicketsOption = "G";
+	// final String otherClosedTicketsOption = "H";
 
-	// Ticket Menu
-	final String setTicketSeverityOption = "S";
-	final String escalateTicketOption = "E";
-	final String changeTicketStatusOption = "T";
+	// // Ticket Menu
+	// final String setTicketSeverityOption = "S";
+	// final String escalateTicketOption = "E";
+	// final String changeTicketStatusOption = "T";
 
-	// Ticket Status Menu
-	final String openTicketOption = "O";
-	final String closeTicketOption = "X";
+	// // Ticket Status Menu
+	// final String openTicketOption = "O";
+	// final String closeTicketOption = "X";
 	
 	public void menuController() {
 		// Print out the welcome message
@@ -115,9 +115,9 @@ public class MenuController {
 			menuOption = "";
 			ui.mainMenu(currentTechnician.getId());
 			menuOption = input.getInput().toUpperCase();
-			if (menuOption.equals(createNewTicketOption)) {
+			if (menuOption.equals(ui.createNewTicketOption)) {
 				ticket.createNewTicket(currentUser, ticket.openTicketRecord);
-			} else if (menuOption.equals(myOpenTicketsOption)) {
+			} else if (menuOption.equals(ui.myOpenTicketsOption)) {
 				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, null);
 //				ticket.getAllTickets();
 				for (int index = 0; index < myTickets.size(); index++) {
@@ -125,39 +125,36 @@ public class MenuController {
 				}
 			}
 			// Technician menu options
-			else if (menuOption.equals(assignedTicketsOption)) {
+			else if (menuOption.equals(ui.assignedTicketsOption)) {
 				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, currentTechnician);
 				String[] currentTicket;
 				for (int index = 0; index < myTickets.size(); index++) {
 					currentTicket = myTickets.get(index).split(",",-1);
 					ticket.displayTicketString(myTickets.get(index));
 				}
-			} else if (menuOption.equals(pickTicketOption) && currentTechnician.getId() != 0) {
+			} else if (menuOption.equals(ui.pickTicketOption) && currentTechnician.getId() != 0) {
 				ticket.selectTicket();
 				ticketMenuLoop();
 			// } else if (menuOption.equals(myArchivedTicketsOption) && currentTechnician.getId() != 0){
-			} else if (menuOption.equals(myArchivedTicketsOption) && currentTechnician.getId() != 0){
+			} else if (menuOption.equals(ui.myArchivedTicketsOption) && currentTechnician.getId() != 0){
 				ArrayList<String> archivedTickets = ticket.getUserTickets("archived", currentTechnician, 1);
 				displatTicketList(archivedTickets);
-			} else if (menuOption.equals(otherArchivedTicketsOption) && currentTechnician.getId() != 0){
+			} else if (menuOption.equals(ui.otherArchivedTicketsOption) && currentTechnician.getId() != 0){
 				ArrayList<String> archivedTickets = ticket.getUserTickets("archived", currentTechnician, 2);
 				displatTicketList(archivedTickets);
-
-			} else if (menuOption.equals(myClosedTicketsOption) && currentTechnician.getId() != 0){
+			} else if (menuOption.equals(ui.myClosedTicketsOption) && currentTechnician.getId() != 0){
 				ArrayList<String> archivedTickets = ticket.getUserTickets("closed", currentTechnician, 1);
 				displatTicketList(archivedTickets);
-
-			} else if (menuOption.equals(otherClosedTicketsOption) && currentTechnician.getId() != 0){
+			} else if (menuOption.equals(ui.otherClosedTicketsOption) && currentTechnician.getId() != 0){
 				ArrayList<String> archivedTickets = ticket.getUserTickets("closed", currentTechnician, 2);
 				displatTicketList(archivedTickets);
-
 			}
-		} while (!menuOption.equals(quitOption) && !menuOption.equals(logoutOption));
+		} while (!menuOption.equals(ui.quitOption) && !menuOption.equals(ui.logoutOption));
 		return menuOption; 
 	}
 
 	public void ticketMenuLoop() {
-		while (!menuOption.equals(backOption) && ticket.selectedTicket.getId() != 0){
+		while (!menuOption.equals(ui.backOption) && ticket.selectedTicket.getId() != 0){
 			menuOption = "";
 			ticket.displayTicket(ticket.selectedTicket);
 			ui.ticketMenu();
@@ -167,15 +164,15 @@ public class MenuController {
 				// input
 				continue;
 			}
-			if (menuOption.equals(setTicketSeverityOption)) {
+			if (menuOption.equals(ui.setTicketSeverityOption)) {
 				ticket.changeSeverity(ticket.selectedTicket);
-			} else if (menuOption.equals(escalateTicketOption)) {
+			} else if (menuOption.equals(ui.escalateTicketOption)) {
 				ticket.escalateTicket(ticket.selectedTicket, currentTechnician);
 			}
-			if (menuOption.equals(changeTicketStatusOption)) {
+			if (menuOption.equals(ui.changeTicketStatusOption)) {
 				do {
 					menuOption = ticketStatusLoop();
-				} while (!menuOption.equals(backOption));
+				} while (!menuOption.equals(ui.backOption));
 			}
 		}
 	}
@@ -189,21 +186,20 @@ public class MenuController {
 				System.out.println("Input is null or empty. Please enter a valid option."); // handle null or empty
 				continue;
 			}
-			if (menuOption.equals(myOpenTicketsOption)) {
+			if (menuOption.equals(ui.myOpenTicketsOption)) {
 				ticket.changeOpenStatus(ticket.selectedTicket);
-				
 			}
 
-			if (menuOption.equals(closeTicketOption)) {
+			if (menuOption.equals(ui.closeTicketOption)) {
 				ui.resolvePrompt();
 				menuOption = input.getInput().toUpperCase();
-				if (menuOption.equals(confirmOption)) {
+				if (menuOption.equals(ui.confirmOption)) {
 					ticket.changeStatus(ticket.selectedTicket, menuOption);
-				} else if (menuOption.equals(rejectOption)) {
+				} else if (menuOption.equals(ui.rejectOption)) {
 					ticket.changeStatus(ticket.selectedTicket, menuOption);
 				}
 			}
-		} while (!menuOption.equals(backOption));			
+		} while (!menuOption.equals(ui.backOption));			
 		return menuOption;
 	}
 		
