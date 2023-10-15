@@ -43,6 +43,8 @@ public class MenuController {
 	// Technician Menu
 	final String assignedTicketsOption = "A";
 	final String pickTicketOption = "P";
+	final String myArchivedTicketsOption = "U";
+	final String otherArchivedTicketsOption = "V";
 
 	// Ticket Menu
 	final String setTicketSeverityOption = "S";
@@ -122,14 +124,22 @@ public class MenuController {
 			}
 			// Technician menu options
 			else if (menuOption.equals(assignedTicketsOption)) {
-				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser,
-						currentTechnician);
+				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, currentTechnician);
+				String[] currentTicket;
 				for (int index = 0; index < myTickets.size(); index++) {
+					currentTicket = myTickets.get(index).split(",",-1);
 					ticket.displayTicketString(myTickets.get(index));
 				}
 			} else if (menuOption.equals(pickTicketOption) && currentTechnician.getId() != 0) {
 				ticket.selectTicket();
 				ticketMenuLoop();
+			// } else if (menuOption.equals(myArchivedTicketsOption) && currentTechnician.getId() != 0){
+			} else if (menuOption.equals(myArchivedTicketsOption)){
+				ArrayList<String> archivedTickets = ticket.getArchivedTickets(currentTechnician, 1);
+				displatTicketList(archivedTickets);
+			} else if (menuOption.equals(otherArchivedTicketsOption) && currentTechnician.getId() != 0){
+				ArrayList<String> archivedTickets = ticket.getArchivedTickets(currentTechnician, 2);
+				displatTicketList(archivedTickets);
 			}
 		} while (!menuOption.equals(quitOption) && !menuOption.equals(logoutOption));
 		return menuOption; 
@@ -186,5 +196,14 @@ public class MenuController {
 		return menuOption;
 	}
 		
-
+	private void displatTicketList(ArrayList<String> ticketList){
+		if(ticketList.size() == 0){
+			System.out.println("There are no tickets in this list available to display.");
+		} else {
+			for (int index = 0; index < ticketList.size(); index++) {
+				String[] currentTicket = ticketList.get(index).split(",",-1);
+				ticket.displayTicketString(ticketList.get(index));
+			}
+		}
+	}
 }

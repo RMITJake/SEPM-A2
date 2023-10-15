@@ -1,0 +1,29 @@
+	final String assignedTicketsOption = "A";
+	final String backOption = "B";
+	public final String createAccountOption = "C";
+	D
+	final String escalateTicketOption = "E";
+	public final String forgotPasswordOption = "F";
+	G
+	H
+	I
+	J
+	K
+	public final String loginOption = "L";
+	final String logoutOption = "L";
+	M
+	final String createNewTicketOption = "N";
+	public final String rejectOption = "N";
+	final String myOpenTicketsOption = "O";
+	final String openTicketOption = "O";
+	final String pickTicketOption = "P";
+	public final String quitOption = "Q";
+	R
+	final String setTicketSeverityOption = "S";
+	final String changeTicketStatusOption = "T";
+	myArchivedTicketsOption = "U";
+	otherArchivedTicketsOption = "V";
+	W
+	final String closeTicketOption = "X";
+	public final String confirmOption = "Y";
+	Z

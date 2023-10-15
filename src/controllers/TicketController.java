@@ -117,32 +117,31 @@ public class TicketController {
 		return userTickets;
 	}
 
-//	public List<Ticket> getAllTickets() {
-//		tickets = new ArrayList<>();
-//
-//        try (BufferedReader reader = new BufferedReader(new FileReader("records/OpenTicket.csv"))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String[] data = line.split(",");
-//                Ticket ticket = new Ticket();
-//                ticket.setId(Integer.parseInt(data[0]));
-//                ticket.setTechnicianAssignedId(Integer.parseInt(data[1]));
-//                ticket.setRequesterId(Integer.parseInt(data[2]));
-//                ticket.setDescription(data[3]);
-//                ticket.setSeverity(data[4]);
-//                ticket.setStatus(data[5]);
-//                ticket.setCreationDate(LocalDateTime.parse(data[6]));
-//                if (!data[7].equals("null")) {
-//                    ticket.setResolvedDate(LocalDateTime.parse(data[7]));
-//                }
-//                tickets.add(ticket);            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        
-//        return tickets;
-//    }
-//
+	public ArrayList<String> getAllTickets(String record) {
+		ArrayList<String> ticketTable = file.read(record);
+		return ticketTable;
+	}
+
+	public ArrayList<String> getArchivedTickets(Technician currentTechnician, int flow){
+		// pass ints in to this function to control the flow
+		// 1 = my archived tickets
+		// 2 = other users archived tickets
+		// This cuts down on code duplication
+		ArrayList<String> userTickets = new ArrayList<String>();
+		ArrayList<String> ticketTable = getAllTickets(openTicketRecord);
+		String[] ticket;
+		for (int index = 0; index < ticketTable.size(); index++) {
+			ticket = ticketTable.get(index).split(",", -1);
+			if(flow == 1 && Integer.parseInt(ticket[1]) == currentTechnician.getId() && ticket[5].equals("archived")){
+				userTickets.add(ticketTable.get(index));
+			} else if (flow == 2 && Integer.parseInt(ticket[1]) != currentTechnician.getId() && ticket[5].equals("archived")) {
+				userTickets.add(ticketTable.get(index));
+			}
+		}
+		return userTickets;
+	}
+
+
 //    public void archiveOldTickets() {
 //        tickets = getAllTickets();
 //        for (Ticket ticket : tickets) {

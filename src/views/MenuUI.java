@@ -45,6 +45,8 @@ public class MenuUI {
             uiText += "--------  Tech Menu  ---------\n";
             uiText += "[A] Assigned Tickets\n";
             uiText += "[P] Pick Ticket\n";
+            uiText += "[U] My Archived Tickets\n";
+            uiText += "[V] Other Technician's Archived Tickets\n";
         }
         uiText += "[L] Logout\n";
         uiText += "[Q] Quit\n";
