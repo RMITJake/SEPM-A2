@@ -99,6 +99,10 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         - **Tech Menu**
             - `A` - View Assigned Tickets.
             - `P` - Pick a ticket to take actions.
+            - `G` - My Closed Tickets
+            - `H` - Other Technician's Closed Tickets
+            - `U` - My Archived Tickets
+            - `V` - Other Technician's Archived Tickets
             - `L` - Logout the account.
             - `Q` - Quit the system.
     6. Enter `N` to create a new ticket.
@@ -108,7 +112,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         4. The ticket for your issue has been opened! 
     7. Enter `O` to view my tickets that have been opened.
         1. Check the Ticket Information and its status.
-    8. Enter `A` to view the tickets assigned.
+    8. Enter `A` to view all of the tickets assigned to you.
     9. Enter `P` to pick a ticket to take actions.
         1. Enter the Ticket ID.
         2. View the detailed ticket information and the following options.
@@ -116,30 +120,35 @@ Follow these steps to execute the IT Service Desk Ticketing System.
             - `E` - Escalate the ticket.
             - `T` - Change the ticket status.
             - `B` - Back to the Main Menu.
-    10. Enter `S` to change the ticket severity.
-        1. Enter a new severity (`low`/`medium`/`high`).
-        2. Check the updated Ticket Information.
-    11. 🆙 Enter `E` to escalate the ticket.
-        1. Provide a reason to escalate this ticket.
-        2. Confirm the reason for escalation by entering `Y`.
-        3. Check the updated Ticket Information.
-    12. Enter `T` to change the ticket status. The following status options are shown:
-        - `O` - `Open`
-        - `X` - `Close`
-        - `B` - Back to the Main Menu.<br/>
-        1. `Open` status
-            1. Enter `O` to open the ticket.
-            2. The ticket has been opened. Check the updated Ticket Information.
-        2. `Close` status - `Resolved` ✅
-            1. Enter `X` to close the ticket.
-            2. Enter ***Y***, meaning that the issue was resolved.
+        3. Enter `S` to change the ticket severity.
+            1. Enter a new severity (`low`/`medium`/`high`).
+            2. Check the updated Ticket Information.
+        4. 🆙 Enter `E` to escalate the ticket.
+            1. Provide a reason to escalate this ticket.
+            2. Confirm the reason for escalation by entering `Y`.
             3. Check the updated Ticket Information.
-        3. `Close` status - `Unresolved` ❎
-            1. Enter `X` to close the ticket.
-            2. Enter ***N***, meaning that the issue was unresolved.
-            3. Check the updated Ticket Information.
-    13. Enter `B` to go back to the Main Menu.
-    14. Enter `Q` to quit the system. 
+        5. Enter `T` to change the ticket status. The following status options are shown:
+            - `O` - `Open`
+            - `X` - `Close`
+            - `B` - Back to the Main Menu.<br/>
+            1. `Open` status
+                1. Enter `O` to open the ticket.
+                2. The ticket has been opened. Check the updated Ticket Information.
+            2. `Close` status - `Resolved` ✅
+                1. Enter `X` to close the ticket.
+                2. Enter ***Y***, meaning that the issue was resolved.
+                3. Check the updated Ticket Information.
+            3. `Close` status - `Unresolved` ❎
+                1. Enter `X` to close the ticket.
+                2. Enter ***N***, meaning that the issue was unresolved.
+                3. Check the updated Ticket Information.
+        6. Enter `B` to go back to the Main Menu.
+    10. Enter `G` to view all of the closed tickets assigned to you.
+    11. Enter `H` to view all of the closed tickets assigned to other technicians.
+    12. Enter `U` to view all of the archived tickets assigned to you.
+    13. Enter `V` to view all of the archived tickets assigned to other technicians.
+    14. Enter `L` to log out of the current user and return to the login menu.
+    15. Enter `Q` to quit the system. 
 
 
 4. Forgot Password:
