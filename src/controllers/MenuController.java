@@ -23,40 +23,13 @@ public class MenuController {
 	// Keeps track of the menu option selected
 	String menuOption;
 
-	// // Menu options:
-	// // General options
-	// public final String confirmOption = "Y";
-	// public final String rejectOption = "N";
-
-	// // Login Menu
+	// Menu functions needed to pass to App class
 	public final String loginOption = ui.loginOption;
 	public final String createAccountOption = ui.createAccountOption;
 	public final String forgotPasswordOption = ui.forgotPasswordOption;
 	public final String quitOption = ui.quitOption;
-
-	// // Main Menu
-	// final String backOption = "B";
-	// final String createNewTicketOption = "N";
-	// final String myOpenTicketsOption = "O";
 	public final String logoutOption = "L";
 
-	// // Technician Menu
-	// final String assignedTicketsOption = "A";
-	// final String pickTicketOption = "P";
-	// final String myArchivedTicketsOption = "U";
-	// final String otherArchivedTicketsOption = "V";
-	// final String myClosedTicketsOption = "G";
-	// final String otherClosedTicketsOption = "H";
-
-	// // Ticket Menu
-	// final String setTicketSeverityOption = "S";
-	// final String escalateTicketOption = "E";
-	// final String changeTicketStatusOption = "T";
-
-	// // Ticket Status Menu
-	// final String openTicketOption = "O";
-	// final String closeTicketOption = "X";
-	
 	public void menuController() {
 		// Print out the welcome message
 		ui.welcomeBanner();
