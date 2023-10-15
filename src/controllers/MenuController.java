@@ -45,6 +45,8 @@ public class MenuController {
 	final String pickTicketOption = "P";
 	final String myArchivedTicketsOption = "U";
 	final String otherArchivedTicketsOption = "V";
+	final String myClosedTicketsOption = "G";
+	final String otherClosedTicketsOption = "H";
 
 	// Ticket Menu
 	final String setTicketSeverityOption = "S";
@@ -134,12 +136,21 @@ public class MenuController {
 				ticket.selectTicket();
 				ticketMenuLoop();
 			// } else if (menuOption.equals(myArchivedTicketsOption) && currentTechnician.getId() != 0){
-			} else if (menuOption.equals(myArchivedTicketsOption)){
-				ArrayList<String> archivedTickets = ticket.getArchivedTickets(currentTechnician, 1);
+			} else if (menuOption.equals(myArchivedTicketsOption) && currentTechnician.getId() != 0){
+				ArrayList<String> archivedTickets = ticket.getUserTickets("archived", currentTechnician, 1);
 				displatTicketList(archivedTickets);
 			} else if (menuOption.equals(otherArchivedTicketsOption) && currentTechnician.getId() != 0){
-				ArrayList<String> archivedTickets = ticket.getArchivedTickets(currentTechnician, 2);
+				ArrayList<String> archivedTickets = ticket.getUserTickets("archived", currentTechnician, 2);
 				displatTicketList(archivedTickets);
+
+			} else if (menuOption.equals(myClosedTicketsOption) && currentTechnician.getId() != 0){
+				ArrayList<String> archivedTickets = ticket.getUserTickets("closed", currentTechnician, 1);
+				displatTicketList(archivedTickets);
+
+			} else if (menuOption.equals(otherClosedTicketsOption) && currentTechnician.getId() != 0){
+				ArrayList<String> archivedTickets = ticket.getUserTickets("closed", currentTechnician, 2);
+				displatTicketList(archivedTickets);
+
 			}
 		} while (!menuOption.equals(quitOption) && !menuOption.equals(logoutOption));
 		return menuOption; 

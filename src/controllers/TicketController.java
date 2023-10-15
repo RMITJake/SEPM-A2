@@ -122,9 +122,9 @@ public class TicketController {
 		return ticketTable;
 	}
 
-	public ArrayList<String> getArchivedTickets(Technician currentTechnician, int flow){
+	public ArrayList<String> getUserTickets(String status, Technician currentTechnician, int flow){
 		// pass ints in to this function to control the flow
-		// 1 = my archived tickets
+		// 1 = my user tickets
 		// 2 = other users archived tickets
 		// This cuts down on code duplication
 		ArrayList<String> userTickets = new ArrayList<String>();
@@ -132,9 +132,9 @@ public class TicketController {
 		String[] ticket;
 		for (int index = 0; index < ticketTable.size(); index++) {
 			ticket = ticketTable.get(index).split(",", -1);
-			if(flow == 1 && Integer.parseInt(ticket[1]) == currentTechnician.getId() && ticket[5].equals("archived")){
+			if(flow == 1 && Integer.parseInt(ticket[1]) == currentTechnician.getId() && ticket[5].equals(status)){
 				userTickets.add(ticketTable.get(index));
-			} else if (flow == 2 && Integer.parseInt(ticket[1]) != currentTechnician.getId() && ticket[5].equals("archived")) {
+			} else if (flow == 2 && Integer.parseInt(ticket[1]) != currentTechnician.getId() && ticket[5].equals(status)) {
 				userTickets.add(ticketTable.get(index));
 			}
 		}
