@@ -68,7 +68,7 @@ public class TicketController {
 		// Show ticket confirmation
 		System.out.println("New ticket created");
 		// Show ticket details
-		System.out.println(newTicket.getProperties());
+		System.out.println(newTicket.getTicketDetails());
 		// Write the ticket to OpenTicket.csv
 		file.write(record, newTicket.getProperties());
 	}

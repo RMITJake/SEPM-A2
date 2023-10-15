@@ -49,4 +49,17 @@ public class Ticket {
         details += this.resolvedDate + "\r\n";
         return details;
     }
+    public String getTicketDetails() {
+    	String ticketDetails = "";
+    	ticketDetails += "----------------------------\n";
+    	ticketDetails += "Ticket ID: "+this.id + "\n";
+    	ticketDetails += "Assigned Technician ID: "+this.technicianAssignedId + "\n";
+    	ticketDetails += "Requester ID: "+this.requesterId + "\n";
+    	ticketDetails += "Issue Description: "+this.description + "\n";
+    	ticketDetails += "Severity: "+this.severity + "\n";
+    	ticketDetails += "Status: "+this.status + "\n";
+    	ticketDetails += "Creation Date: "+this.creationDate + "\n";
+    	ticketDetails += "----------------------------";
+    	return ticketDetails;
+    }
 }
