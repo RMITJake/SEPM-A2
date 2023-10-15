@@ -38,7 +38,7 @@ public class MenuController {
 	// final String backOption = "B";
 	// final String createNewTicketOption = "N";
 	// final String myOpenTicketsOption = "O";
-	// final String logoutOption = "L";
+	public final String logoutOption = "L";
 
 	// // Technician Menu
 	// final String assignedTicketsOption = "A";

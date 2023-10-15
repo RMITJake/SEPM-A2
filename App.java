@@ -23,6 +23,9 @@ class App {
             }
             if(loggedIn){
                 applicationLoop = menu.mainMenuLoop();
+                if(applicationLoop.equals(menu.logoutOption)){
+                    loggedIn = false;
+                }
             }
         } while (!applicationLoop.equals(menu.quitOption));
         System.out.println("Thank you for using the program");
