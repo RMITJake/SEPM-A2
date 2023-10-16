@@ -125,10 +125,7 @@ public class MenuController {
 				ArrayList<String> archivedTickets = ticket.getUserTickets("closed", currentTechnician, 2);
 				displatTicketList(archivedTickets);
 			} else if (menuOption.equals(ui.reportOption) && currentTechnician.getId() != 0){
-				ArrayList<String> allTickets = ticket.getAllTickets(file.openTicketRecord);
-				LocalDateTime startDate = LocalDateTime.parse("2023-10-02T00:00:00.000000000");
-				LocalDateTime endDate = LocalDateTime.parse("2023-10-07T00:00:00.000000000");
-				report.generateReport(allTickets, startDate, endDate);
+				generateReportLoop();
 			}
 		} while (!menuOption.equals(ui.quitOption) && !menuOption.equals(ui.logoutOption));
 		return menuOption; 
@@ -192,6 +189,30 @@ public class MenuController {
 				String[] currentTicket = ticketList.get(index).split(",",-1);
 				ticket.displayTicketString(ticketList.get(index));
 			}
+		}
+	}
+
+	private void generateReportLoop(){
+		do{
+			menuOption = "";
+			ui.reportStartDatePrompt();
+			menuOption = input.getInput();
+			if(validate.reportDate(menuOption)){
+				String start = menuOption
+				ui.reportEndDatePrompt();
+				menuOption = input.getInput();
+			}
+			if(validate.reportDate(menuOption)){
+				String end = menuOption
+				ui.reportConfirmPrompt();
+				menuOption = input.getInput().toUpperCase;
+			}
+		} while(!menuOption.equals(confirmOption) && !menuOption.equals(backOption));
+		if(menuOption.equals(confirmOption)){
+			ArrayList<String> allTickets = ticket.getAllTickets(file.openTicketRecord);
+			LocalDateTime startDate = LocalDateTime.parse("2023-10-02T00:00:00.000000000");
+			LocalDateTime endDate = LocalDateTime.parse("2023-10-07T00:00:00.000000000");
+			report.generateReport(allTickets, startDate, endDate);
 		}
 	}
 }

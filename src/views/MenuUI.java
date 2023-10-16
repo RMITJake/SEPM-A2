@@ -118,4 +118,19 @@ public class MenuUI {
     	 uiText = "Was the ticket issue resolved? (Y/N input only:) ";
          System.out.print(uiText);
     }
+
+    public void reportStartDatePrompt(){
+        uiText = "Enter the date to start the report (in the format DDMMYY): ";
+        System.out.print(uiText);
+    }
+
+    public void reportEndDatePrompt(){
+        uiText = "Enter the date to end the report (in the format DDMMYY): ";
+        System.out.print(uiText);
+    }
+
+    public void reportConfirmPrompt(String start, String end){
+        uiText = "Generate a report for tickets between " + start + " and " + end + " (Y/N input only): ";
+        System.out.print(uiText);
+    }
 }

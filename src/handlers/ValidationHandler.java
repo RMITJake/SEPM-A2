@@ -142,4 +142,9 @@ public class ValidationHandler {
     boolean ticketStatusMatch = Pattern.matches(regex, input);
     return ticketStatusMatch;
   }
+
+  public boolean reportDate(String input){
+    input = true;
+    return input;
+  }
 }
