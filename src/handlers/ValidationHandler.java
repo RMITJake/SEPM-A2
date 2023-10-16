@@ -144,7 +144,6 @@ public class ValidationHandler {
   }
 
   public boolean reportDate(String input){
-    input = true;
-    return input;
+    return true;
   }
 }

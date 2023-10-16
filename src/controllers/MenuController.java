@@ -5,7 +5,9 @@ import src.views.MenuUI;
 import src.models.Account;
 import src.models.Technician;
 import java.util.ArrayList;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MenuController {
 	// Create the MenuUI, InputHandler, LoginController, TicketController
@@ -193,25 +195,28 @@ public class MenuController {
 	}
 
 	private void generateReportLoop(){
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("ddMMyy");
+		LocalDate start = null;
+		LocalDate end = null;
 		do{
 			menuOption = "";
 			ui.reportStartDatePrompt();
 			menuOption = input.getInput();
 			if(validate.reportDate(menuOption)){
-				String start = menuOption
+				start = LocalDate.parse(menuOption, dateFormat);
 				ui.reportEndDatePrompt();
 				menuOption = input.getInput();
 			}
 			if(validate.reportDate(menuOption)){
-				String end = menuOption
-				ui.reportConfirmPrompt();
-				menuOption = input.getInput().toUpperCase;
+				end = LocalDate.parse(menuOption, dateFormat);
+				ui.reportConfirmPrompt(start.toString(), end.toString());
+				menuOption = input.getInput().toUpperCase();
 			}
-		} while(!menuOption.equals(confirmOption) && !menuOption.equals(backOption));
-		if(menuOption.equals(confirmOption)){
+		} while(!menuOption.equals(ui.confirmOption) && !menuOption.equals(ui.backOption));
+		if(menuOption.equals(ui.confirmOption)){
 			ArrayList<String> allTickets = ticket.getAllTickets(file.openTicketRecord);
-			LocalDateTime startDate = LocalDateTime.parse("2023-10-02T00:00:00.000000000");
-			LocalDateTime endDate = LocalDateTime.parse("2023-10-07T00:00:00.000000000");
+			LocalDateTime startDate = start.atStartOfDay();
+			LocalDateTime endDate = end.atStartOfDay();
 			report.generateReport(allTickets, startDate, endDate);
 		}
 	}
