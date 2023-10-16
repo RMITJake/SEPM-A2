@@ -26,6 +26,7 @@ public class MenuUI {
 	public final String otherArchivedTicketsOption = "V";
 	public final String myClosedTicketsOption = "G";
 	public final String otherClosedTicketsOption = "H";
+	public final String reportOption = "R";
 
 	// Ticket Menu
 	public final String setTicketSeverityOption = "S";
@@ -75,17 +76,24 @@ public class MenuUI {
         uiText += "[" + createNewTicketOption + "] Create a new ticket\n";
         uiText += "[" + myOpenTicketsOption + "] My Open Tickets\n";
         if(techOptions > 0){
-            uiText += "--------  Tech Menu  ---------\n";
-            uiText += "[" + assignedTicketsOption + "] Assigned Tickets\n";
-            uiText += "[" + pickTicketOption + "] Pick Ticket\n";
-            uiText += "[" + myClosedTicketsOption + "] My Closed Tickets\n";
-            uiText += "[" + otherClosedTicketsOption + "] Other Technician's Closed Tickets\n";
-            uiText += "[" + myArchivedTicketsOption + "] My Archived Tickets\n";
-            uiText += "[" + otherArchivedTicketsOption + "] Other Technician's Archived Tickets\n";
+            uiText += technicianMenu();
         }
         uiText += "[" + logoutOption + "] Logout\n";
         uiText += "[" + quitOption + "] Quit\n";
         System.out.print(uiText);
+    }
+
+    public String technicianMenu(){
+        uiText = "--------  Tech Menu  ---------\n";
+        uiText += "[" + assignedTicketsOption + "] Assigned Tickets\n";
+        uiText += "[" + pickTicketOption + "] Pick Ticket\n";
+        uiText += "[" + myClosedTicketsOption + "] My Closed Tickets\n";
+        uiText += "[" + otherClosedTicketsOption + "] Other Technician's Closed Tickets\n";
+        uiText += "[" + myArchivedTicketsOption + "] My Archived Tickets\n";
+        uiText += "[" + otherArchivedTicketsOption + "] Other Technician's Archived Tickets\n";
+        uiText += "[" + reportOption + "] Generate Report\n";
+
+        return uiText;
     }
     
     public void ticketMenu(){

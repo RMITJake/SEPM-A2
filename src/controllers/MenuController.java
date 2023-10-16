@@ -5,6 +5,7 @@ import src.views.MenuUI;
 import src.models.Account;
 import src.models.Technician;
 import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 public class MenuController {
 	// Create the MenuUI, InputHandler, LoginController, TicketController
@@ -15,6 +16,8 @@ public class MenuController {
 	TicketController ticket = new TicketController();
 	AccountController account = new AccountController();
 	TechnicianController technician = new TechnicianController();
+	ReportController report = new ReportController();
+	FileHandler file = new FileHandler();
 
 	// Keeps track of the logged in user
 	protected Account currentUser = new Account();
@@ -121,6 +124,11 @@ public class MenuController {
 			} else if (menuOption.equals(ui.otherClosedTicketsOption) && currentTechnician.getId() != 0){
 				ArrayList<String> archivedTickets = ticket.getUserTickets("closed", currentTechnician, 2);
 				displatTicketList(archivedTickets);
+			} else if (menuOption.equals(ui.reportOption) && currentTechnician.getId() != 0){
+				ArrayList<String> allTickets = ticket.getAllTickets(file.openTicketRecord);
+				LocalDateTime startDate = LocalDateTime.parse("2023-10-02T00:00:00.000000000");
+				LocalDateTime endDate = LocalDateTime.parse("2023-10-07T00:00:00.000000000");
+				report.generateReport(allTickets, startDate, endDate);
 			}
 		} while (!menuOption.equals(ui.quitOption) && !menuOption.equals(ui.logoutOption));
 		return menuOption; 
