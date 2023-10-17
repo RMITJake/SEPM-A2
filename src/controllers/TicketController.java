@@ -417,10 +417,10 @@ public class TicketController {
 		Ticket statusTicket = ticket;
 		statusTicket.setResolvedDate(LocalDateTime.now());
 		if (menuOption.equals("Y")) {
-			statusTicket.setStatus("closed and resolved");
+			statusTicket.setStatus(Ticket.closedResolvedStatus);
 			ui.displayTicket(statusTicket);
 		} else if (menuOption.equals("N")) {
-			statusTicket.setStatus("closed and unresolved");
+			statusTicket.setStatus(Ticket.closedUnresolvedStatus);
 			ui.displayTicket(statusTicket);
 		}
 		updateTicketRecord(statusTicket);
@@ -430,11 +430,11 @@ public class TicketController {
 
 	public void changeOpenStatus(Ticket ticket) {
 		Ticket statusTicket = ticket;
-		if (statusTicket.getStatus().equals("archived")) {
+		if (statusTicket.getStatus().equals(Ticket.archivedStatus)) {
 			ui.archivedPrompt();
 			ui.displayTicket(statusTicket);
 		} else {
-			statusTicket.setStatus("open and unresolved");
+			statusTicket.setStatus(Ticket.openStatus);
 			ui.displayTicket(statusTicket);
 		}
 		updateTicketRecord(statusTicket);
