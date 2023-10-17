@@ -47,23 +47,23 @@ public class ReportController {
         System.out.println("DEBUGGING Number of closed and resolved tickets: " + closedResolvedTickets.size());
         System.out.println("DEBUGGING Number of closed and unresolved tickets: " + closedUnresolvedTickets.size());
         System.out.println("DEBUGGING Number of archived tickets: " + archivedTickets.size());
-        for(int i=0; i < allTickets.size(); i++){
-            System.out.println("DEBUGGING ALLTICKETS: " + allTickets.get(i));
-        }
-        for(int i=0; i < filteredTickets.size(); i++){
-            System.out.println("DEBUGGING FILTEREDTICKETS: " + filteredTickets.get(i));
-        }
-        for(int i=0; i < openTickets.size(); i++){
-            System.out.println("DEBUGGING OPENTICKETS: " + openTickets.get(i));
-        }
-        for(int i=0; i < closedResolvedTickets.size(); i++){
-            System.out.println("DEBUGGING CLOSEDRESOLVEDTICKETS: " + closedResolvedTickets.get(i));
-        }
-        for(int i=0; i < closedUnresolvedTickets.size(); i++){
-            System.out.println("DEBUGGING CLOSEDUNRESOLVEDTICKETS: " + closedUnresolvedTickets.get(i));
-        }
-        for(int i=0; i < closedUnresolvedTickets.size(); i++){
-            System.out.println("DEBUGGING ARCHIVEDTICKETS: " + archivedTickets.get(i));
-        }
+        // for(int i=0; i < allTickets.size(); i++){
+        //     System.out.println("DEBUGGING ALLTICKETS: " + allTickets.get(i));
+        // }
+        // for(int i=0; i < filteredTickets.size(); i++){
+        //     System.out.println("DEBUGGING FILTEREDTICKETS: " + filteredTickets.get(i));
+        // }
+        // for(int i=0; i < openTickets.size(); i++){
+        //     System.out.println("DEBUGGING OPENTICKETS: " + openTickets.get(i));
+        // }
+        // for(int i=0; i < closedResolvedTickets.size(); i++){
+        //     System.out.println("DEBUGGING CLOSEDRESOLVEDTICKETS: " + closedResolvedTickets.get(i));
+        // }
+        // for(int i=0; i < closedUnresolvedTickets.size(); i++){
+        //     System.out.println("DEBUGGING CLOSEDUNRESOLVEDTICKETS: " + closedUnresolvedTickets.get(i));
+        // }
+        // for(int i=0; i < closedUnresolvedTickets.size(); i++){
+        //     System.out.println("DEBUGGING ARCHIVEDTICKETS: " + archivedTickets.get(i));
+        // }
     }
 }
