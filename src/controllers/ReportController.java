@@ -12,21 +12,58 @@ public class ReportController {
     public void generateReport(ArrayList<String> allTickets, LocalDateTime startDate, LocalDateTime endDate){
         ArrayList<String> filteredTickets = new ArrayList<String>();
         String[] currentTicket;
+        ArrayList<String> openTickets = new ArrayList<String>();
+        ArrayList<String> closedResolvedTickets = new ArrayList<String>();
+        ArrayList<String> closedUnresolvedTickets = new ArrayList<String>();
+        ArrayList<String> archivedTickets = new ArrayList<String>();
+
+        //SHOW
+        //who
+        //when submitted (creationDate)
+        //severity
+        //tecnician
+        //time to close (Close date - creation date)
+
         for(int index=0; index < allTickets.size(); index++){
             currentTicket = allTickets.get(index).split(",", -1);
             LocalDateTime currentTicketDate = LocalDateTime.parse(currentTicket[6]);
             if(currentTicketDate.isAfter(startDate) && currentTicketDate.isBefore(endDate)){
                 filteredTickets.add(allTickets.get(index));
+                if(currentTicket[5].equals("open and unresolved")){
+                    openTickets.add(allTickets.get(index));
+                } else if (currentTicket[5].equals("closed and unresolved")){
+                    closedResolvedTickets.add(allTickets.get(index));
+                } else if (currentTicket[5].equals("closed")){
+                    closedUnresolvedTickets.add(allTickets.get(index));
+                } else if (currentTicket[5].equals("archived")){
+                    archivedTickets.add(allTickets.get(index));
+                }
             }
         }
         // number of sybmitted tickets
         System.out.println("DEBUGGING Number of all tickets: " + allTickets.size());
         System.out.println("DEBUGGING Number of filtered tickets: " + filteredTickets.size());
+        System.out.println("DEBUGGING Number of open tickets: " + openTickets.size());
+        System.out.println("DEBUGGING Number of closed and resolved tickets: " + closedResolvedTickets.size());
+        System.out.println("DEBUGGING Number of closed and unresolved tickets: " + closedUnresolvedTickets.size());
+        System.out.println("DEBUGGING Number of archived tickets: " + archivedTickets.size());
         for(int i=0; i < allTickets.size(); i++){
             System.out.println("DEBUGGING ALLTICKETS: " + allTickets.get(i));
         }
         for(int i=0; i < filteredTickets.size(); i++){
             System.out.println("DEBUGGING FILTEREDTICKETS: " + filteredTickets.get(i));
+        }
+        for(int i=0; i < openTickets.size(); i++){
+            System.out.println("DEBUGGING OPENTICKETS: " + openTickets.get(i));
+        }
+        for(int i=0; i < closedResolvedTickets.size(); i++){
+            System.out.println("DEBUGGING CLOSEDRESOLVEDTICKETS: " + closedResolvedTickets.get(i));
+        }
+        for(int i=0; i < closedUnresolvedTickets.size(); i++){
+            System.out.println("DEBUGGING CLOSEDUNRESOLVEDTICKETS: " + closedUnresolvedTickets.get(i));
+        }
+        for(int i=0; i < closedUnresolvedTickets.size(); i++){
+            System.out.println("DEBUGGING ARCHIVEDTICKETS: " + archivedTickets.get(i));
         }
     }
 }
