@@ -11,6 +11,12 @@ public class Ticket {
     LocalDateTime creationDate;
     LocalDateTime resolvedDate;
 
+    // Variables are static to be used without a Ticket model being initialised
+    public static String openStatus = "open and unresolved";
+    public static String closedResolvedStatus = "closed and resolved";
+    public static String closedUnresolvedStatus = "closed and unresolved";
+    public static String archivedStatus = "archived";
+
     // Getters and Setters
     public int getId(){ return this.id; }
     public void setId(int id){ this.id = id; }
@@ -49,6 +55,7 @@ public class Ticket {
         details += this.resolvedDate + "\r\n";
         return details;
     }
+
     public String getTicketDetails() {
     	String ticketDetails = "";
     	ticketDetails += "----------------------------\n";

@@ -29,13 +29,13 @@ public class ReportController {
             LocalDateTime currentTicketDate = LocalDateTime.parse(currentTicket[6]);
             if(currentTicketDate.isAfter(startDate) && currentTicketDate.isBefore(endDate)){
                 filteredTickets.add(allTickets.get(index));
-                if(currentTicket[5].equals("open and unresolved")){
+                if(currentTicket[5].equals(Ticket.openStatus)){
                     openTickets.add(allTickets.get(index));
-                } else if (currentTicket[5].equals("closed and unresolved")){
+                } else if (currentTicket[5].equals(Ticket.closedResolvedStatus)){
                     closedResolvedTickets.add(allTickets.get(index));
-                } else if (currentTicket[5].equals("closed")){
+                } else if (currentTicket[5].equals(Ticket.closedUnresolvedStatus)){
                     closedUnresolvedTickets.add(allTickets.get(index));
-                } else if (currentTicket[5].equals("archived")){
+                } else if (currentTicket[5].equals(Ticket.archivedStatus)){
                     archivedTickets.add(allTickets.get(index));
                 }
             }
