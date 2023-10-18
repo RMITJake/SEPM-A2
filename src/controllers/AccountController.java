@@ -122,16 +122,16 @@ public class AccountController {
                     System.out.println("new login id: " +setLoginId());
                     newLogin.setAccountId(newAccount.getId());
                     confirmDetails = true;
+                    System.out.println("New account created");
+                    System.out.println(newAccount.getAccountDetails());
+                    file.write(accountRecord, newAccount.getProperties()+"\r\n");
+                    System.out.println("New login created");
+                    System.out.println(newLogin.getAccountDetails());
+                    file.write(loginRecord, newLogin.getProperties()+"\r\n");
                 } else if (userInput.equals("C")){
                     newAccount = null;
                     confirmDetails = true;
                 }
-                System.out.println("New account created");
-                System.out.println(newAccount.getAccountDetails());
-                file.write(accountRecord, newAccount.getProperties()+"\r\n");
-                System.out.println("New login created");
-                System.out.println(newLogin.getAccountDetails());
-                file.write(loginRecord, newLogin.getProperties()+"\r\n");
             } else {
                 System.out.println("Account creation cancelled.");
             }
