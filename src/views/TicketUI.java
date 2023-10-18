@@ -6,7 +6,12 @@ public class TicketUI {
     }
 
     public void severity(){
-        System.out.println("How severe is this issue? ");
+        String menu = "";
+        menu += "What is the severity of the ticket: ";
+        menu += "[1] Low";
+        menu += "[2] Medium";
+        menu += "[3] High";
+        System.out.print(menu);
     }
 
     public void confirm(int requestedId, String description, String severity){
@@ -57,6 +62,9 @@ public class TicketUI {
     public void changeSeverity(){
         String menu = "";
         menu += "What is the severity of the ticket: ";
+        menu += "[1] Low";
+        menu += "[2] Medium";
+        menu += "[3] High";
         System.out.print(menu);
     }
 
