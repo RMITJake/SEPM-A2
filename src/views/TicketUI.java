@@ -8,9 +8,9 @@ public class TicketUI {
     public void severity(){
         String menu = "";
         menu += "What is the severity of the ticket: ";
-        menu += "[1] Low";
-        menu += "[2] Medium";
-        menu += "[3] High";
+        // menu += "[1] Low";
+        // menu += "[2] Medium";
+        // menu += "[3] High";
         System.out.print(menu);
     }
 
@@ -62,9 +62,9 @@ public class TicketUI {
     public void changeSeverity(){
         String menu = "";
         menu += "What is the severity of the ticket: ";
-        menu += "[1] Low";
-        menu += "[2] Medium";
-        menu += "[3] High";
+        // menu += "[1] Low";
+        // menu += "[2] Medium";
+        // menu += "[3] High";
         System.out.print(menu);
     }
 
