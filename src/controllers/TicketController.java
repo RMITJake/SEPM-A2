@@ -114,6 +114,9 @@ public class TicketController {
 				userTickets.add(ticketTable.get(index));
 			}
 		}
+		if(userTickets.size() == 0){
+			ui.emptyList();
+		}
 		return userTickets;
 	}
 
@@ -137,6 +140,9 @@ public class TicketController {
 			} else if (flow == 2 && Integer.parseInt(ticket[1]) != currentTechnician.getId() && ticket[5].equals(status)) {
 				userTickets.add(ticketTable.get(index));
 			}
+		}
+		if(userTickets.size() == 0){
+			ui.emptyList();
 		}
 		return userTickets;
 	}

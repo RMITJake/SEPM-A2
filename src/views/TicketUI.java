@@ -45,6 +45,10 @@ public class TicketUI {
         System.out.println(ticketDetails);
         System.out.println("------------------------------");
     }
+
+    public void emptyList(){
+        System.out.println("There are no tickets in the list");
+    }
     
     public void archivedPrompt() {
 		System.err.println("Ticket is archived and can no longer be opened!");
