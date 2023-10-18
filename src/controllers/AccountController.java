@@ -103,6 +103,8 @@ public class AccountController {
                         if(password.equals(passwordConfirm)){
                             newLogin.setPassword(password);
                             passwordMatch = true;
+                        } else {
+                            ui.passwordNoMatch();
                         }
                     }
                 }

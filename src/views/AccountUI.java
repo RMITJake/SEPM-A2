@@ -21,6 +21,10 @@ public class AccountUI {
     System.out.println("Confirm the password: ");
   }
 
+  public void passwordNoMatch(){
+    System.out.println("Passwords did not match!");
+  }
+
   public void confirm(String email, String fullName, int phoneNumber){
     System.out.println("----------------------------");
     System.out.println("Account Summary");
