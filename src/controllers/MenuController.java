@@ -82,6 +82,7 @@ public class MenuController {
 		currentTechnician = technician.getTechnicianById(currentUser.getId());
 	
 		if(currentUser.getId() == 0){
+			ui.loginFailed();
 			return false;
 		}
 		

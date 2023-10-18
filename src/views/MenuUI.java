@@ -67,6 +67,11 @@ public class MenuUI {
         System.out.print(uiText);
     }
 
+    public void loginFailed(){
+        uiText = "Those login details don't match any in the current system.";
+        System.out.println(uiText);
+    }
+
     // The techOptions input dependency controls if technician commands are visible
     public void mainMenu(int techOptions){
         // Main menu
