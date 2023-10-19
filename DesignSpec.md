@@ -41,8 +41,8 @@ Legend: X = done, W = Work in progress
 [ ] Tech - See all tickets
 
 10.
-[ ] Show a report for a specified period
-[ ] Show how many tickets were submitted in the report
+[X] Show a report for a specified period
+[X] Show how many tickets were submitted in the report
 [ ] Show how many tickets are:
 	- [ ] Open
 	- [ ] Closed and Resolved
