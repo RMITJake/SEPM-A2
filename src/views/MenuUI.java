@@ -30,7 +30,6 @@ public class MenuUI {
 
 	// Ticket Menu
 	public final String setTicketSeverityOption = "S";
-	public final String escalateTicketOption = "E";
 	public final String changeTicketStatusOption = "T";
 
 	// Ticket Status Menu
@@ -104,7 +103,6 @@ public class MenuUI {
     public void ticketMenu(){
         String menu = "";       
         menu += "[" + setTicketSeverityOption + "] Set ticket severity\n";
-        menu += "[" + escalateTicketOption + "] Escalate ticket\n";
         menu += "[" + changeTicketStatusOption + "] Change ticket status\n";
         menu += "[" + backOption + "] Back to main menu"; 
         System.out.println(menu);
