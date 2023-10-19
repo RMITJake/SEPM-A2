@@ -158,15 +158,13 @@ public class MenuController {
 				// input
 				continue;
 			}
-			while (!menuOption.equals(ui.setTicketSeverityOption) && !menuOption.equals(ui.escalateTicketOption)&&
+			while (!menuOption.equals(ui.setTicketSeverityOption) &&
 					!menuOption.equals(ui.changeTicketStatusOption) && !menuOption.equals(ui.backOption)) {
 				System.out.println("Incorrect Input. Please enter a value in the []:");
 				menuOption = input.getInput().toUpperCase();
 			}
 			if (menuOption.equals(ui.setTicketSeverityOption)) {
 				ticket.changeSeverity(ticket.selectedTicket);
-			} else if (menuOption.equals(ui.escalateTicketOption)) {
-				ticket.escalateTicket(ticket.selectedTicket, currentTechnician);
 			}
 			if (menuOption.equals(ui.changeTicketStatusOption)) {
 				do {
