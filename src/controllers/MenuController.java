@@ -46,6 +46,9 @@ public class MenuController {
 			menuOption = "";
 			ui.welcomePrompt();
 			menuOption = input.getInput().toUpperCase();
+			if (!validate.welcome(menuOption)) {
+				System.out.println("You must enter a letter in the [] to select an option.");
+			}
 		} while (!validate.welcome(menuOption));
 
 		return menuOption;
