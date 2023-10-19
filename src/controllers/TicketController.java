@@ -338,6 +338,10 @@ public class TicketController {
 		selectedTicket = new Ticket();
 		ui.selectTicket();
 		userInput = input.getInput();
+		while (!validate.ticketId(userInput)){
+			System.out.println("You must enter a whole number. Try again:");
+			userInput = input.getInput();
+		}
 		if (validate.ticketId(userInput)){
 			ArrayList<String> ticketTable = file.read(openTicketRecord);
 			String[] ticketString;
