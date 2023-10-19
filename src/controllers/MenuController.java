@@ -131,7 +131,7 @@ public class MenuController {
 				generateReportLoop();
 			} else if (!menuOption.equals(ui.createNewTicketOption) && !menuOption.equals(ui.myOpenTicketsOption) && !menuOption.equals(ui.assignedTicketsOption) && !menuOption.equals(ui.pickTicketOption)
 					&& !menuOption.equals(ui.myArchivedTicketsOption) && !menuOption.equals(ui.otherArchivedTicketsOption) && !menuOption.equals(ui.myClosedTicketsOption) && !menuOption.equals(ui.otherClosedTicketsOption)
-					&& !menuOption.equals(ui.reportOption)){
+					&& !menuOption.equals(ui.reportOption) && !menuOption.equals(ui.quitOption)){
 				
 				System.out.println("You must enter a letter in the [] to select an option.");
 			}
@@ -178,6 +178,10 @@ public class MenuController {
 				System.out.println("Input is null or empty. Please enter a valid option."); // handle null or empty
 				continue;
 			}
+			while (!menuOption.equals(ui.myOpenTicketsOption) && !menuOption.equals(ui.closeTicketOption)&& !menuOption.equals(ui.backOption)) {
+				System.out.println("Incorrect Input. Please enter a value in the []:");
+				menuOption = input.getInput().toUpperCase();
+			}
 			if (menuOption.equals(ui.myOpenTicketsOption)) {
 				ticket.changeOpenStatus(ticket.selectedTicket);
 			}
@@ -185,6 +189,10 @@ public class MenuController {
 			if (menuOption.equals(ui.closeTicketOption)) {
 				ui.resolvePrompt();
 				menuOption = input.getInput().toUpperCase();
+				while (!menuOption.equals(ui.confirmOption) && !menuOption.equals(ui.rejectOption) && !menuOption.equals(ui.backOption)) {
+					System.out.println("Incorrect Input. Please enter 'Y' for yes or 'N' for no:");
+					menuOption = input.getInput().toUpperCase();
+				}
 				if (menuOption.equals(ui.confirmOption)) {
 					ticket.changeStatus(ticket.selectedTicket, menuOption);
 				} else if (menuOption.equals(ui.rejectOption)) {
