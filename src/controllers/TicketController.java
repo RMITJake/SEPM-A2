@@ -405,7 +405,21 @@ public class TicketController {
 	public void changeSeverity(Ticket ticket) {
 		userInput = "";
 		ui.changeSeverity();
-		userInput = input.getInput().toLowerCase();
+		userInput = input.getInput();
+		while (!userInput.equals("1") && !userInput.equals("2") && !userInput.equals("3")) {
+			System.out.println("Retry, you must enter one of the options in the []. ");
+			ui.severity();
+			userInput = input.getInput();
+		}
+		if (userInput.equals("1")){
+			userInput = "low";
+		}
+		if (userInput.equals("2")){
+			userInput = "medium";
+		}
+		if (userInput.equals("3")){
+			userInput = "high";
+		}
 		if(validate.ticketSeverity(userInput)){
 			if((!ticket.getSeverity().equals("high") && userInput.equals("high")) || ticket.getSeverity().equals("high") && !userInput.equals("high")){
 				ticket.setSeverity(userInput);
