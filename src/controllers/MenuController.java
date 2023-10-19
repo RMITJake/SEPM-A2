@@ -102,7 +102,11 @@ public class MenuController {
 				for (int index = 0; index < myTickets.size(); index++) {
 					ticket.displayTicketString(myTickets.get(index));
 				}
+			} else if (currentTechnician.getId()==0 && !menuOption.equals(ui.createNewTicketOption) && !menuOption.equals(ui.myOpenTicketsOption) && !menuOption.equals(ui.logoutOption) && !menuOption.equals(ui.quitOption)){
+				
+				System.out.println("You must enter a letter in the [] to select an option.");
 			}
+			
 			// Technician menu options
 			else if (menuOption.equals(ui.assignedTicketsOption)) {
 				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, currentTechnician);
@@ -129,9 +133,9 @@ public class MenuController {
 				displatTicketList(archivedTickets);
 			} else if (menuOption.equals(ui.reportOption) && currentTechnician.getId() != 0){
 				generateReportLoop();
-			} else if (!menuOption.equals(ui.createNewTicketOption) && !menuOption.equals(ui.myOpenTicketsOption) && !menuOption.equals(ui.assignedTicketsOption) && !menuOption.equals(ui.pickTicketOption)
+			} else if (currentTechnician.getId()>0 && !menuOption.equals(ui.createNewTicketOption) && !menuOption.equals(ui.myOpenTicketsOption) && !menuOption.equals(ui.assignedTicketsOption) && !menuOption.equals(ui.pickTicketOption)
 					&& !menuOption.equals(ui.myArchivedTicketsOption) && !menuOption.equals(ui.otherArchivedTicketsOption) && !menuOption.equals(ui.myClosedTicketsOption) && !menuOption.equals(ui.otherClosedTicketsOption)
-					&& !menuOption.equals(ui.reportOption) && !menuOption.equals(ui.quitOption)){
+					&& !menuOption.equals(ui.reportOption) && !menuOption.equals(ui.logoutOption) && !menuOption.equals(ui.quitOption)){
 				
 				System.out.println("You must enter a letter in the [] to select an option.");
 			}
