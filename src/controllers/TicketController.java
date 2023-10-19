@@ -448,9 +448,21 @@ public class TicketController {
 		do {
 			confirm = "";
 			userInput = input.getInput();
-			System.out.println("Is the below escalation reason correct? [Y/N] ");
-			System.out.println(userInput);
-			confirm = input.getInput().toUpperCase();
+			if(userInput.isEmpty()) {
+				System.out.println("Incorrect Input, cannot be empty. Try again: ");
+			}
+			if(!userInput.isEmpty()) {
+				System.out.println("Is the below escalation reason correct? [Y/N] ");
+				System.out.println(userInput);
+				confirm = input.getInput().toUpperCase();
+				while (!confirm.toUpperCase().equals("Y") && !confirm.toUpperCase().equals("N")) {
+					System.out.println("Incorrect Input! Enter 'Y' for yes or 'N' for no.");
+					confirm = input.getInput().toUpperCase();
+				}
+				if (confirm.toUpperCase().equals("N")) {
+					System.out.println("Please re-enter the reason for escalation:");
+				}
+			}
 		} while (!confirm.equals("Y"));
 		escalationTicket.setDescription(userInput);
 		escalationTicket.setRequesterId(currentTechnician.getId());
