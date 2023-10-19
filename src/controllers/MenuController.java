@@ -151,6 +151,11 @@ public class MenuController {
 				// input
 				continue;
 			}
+			while (!menuOption.equals(ui.setTicketSeverityOption) && !menuOption.equals(ui.escalateTicketOption)&&
+					!menuOption.equals(ui.changeTicketStatusOption) && !menuOption.equals(ui.backOption)) {
+				System.out.println("Incorrect Input. Please enter a value in the []:");
+				menuOption = input.getInput().toUpperCase();
+			}
 			if (menuOption.equals(ui.setTicketSeverityOption)) {
 				ticket.changeSeverity(ticket.selectedTicket);
 			} else if (menuOption.equals(ui.escalateTicketOption)) {
