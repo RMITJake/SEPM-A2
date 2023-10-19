@@ -129,7 +129,13 @@ public class MenuController {
 				displatTicketList(archivedTickets);
 			} else if (menuOption.equals(ui.reportOption) && currentTechnician.getId() != 0){
 				generateReportLoop();
+			} else if (!menuOption.equals(ui.createNewTicketOption) && !menuOption.equals(ui.myOpenTicketsOption) && !menuOption.equals(ui.assignedTicketsOption) && !menuOption.equals(ui.pickTicketOption)
+					&& !menuOption.equals(ui.myArchivedTicketsOption) && !menuOption.equals(ui.otherArchivedTicketsOption) && !menuOption.equals(ui.myClosedTicketsOption) && !menuOption.equals(ui.otherClosedTicketsOption)
+					&& !menuOption.equals(ui.reportOption)){
+				
+				System.out.println("You must enter a letter in the [] to select an option.");
 			}
+			
 		} while (!menuOption.equals(ui.quitOption) && !menuOption.equals(ui.logoutOption));
 		return menuOption; 
 	}
