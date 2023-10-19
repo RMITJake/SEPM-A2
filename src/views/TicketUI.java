@@ -67,11 +67,4 @@ public class TicketUI {
         menu += "[3] High\n";
         System.out.print(menu);
     }
-
-    public void escalationReason(){
-        String menu = "";
-        menu += "Why is this ticket being escalated: ";
-        System.out.print(menu);
-    }
-    
 }
