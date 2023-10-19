@@ -27,7 +27,6 @@ public class TicketController {
 	// Record strings, used to minimize hard coded file references
 	protected final String openTicketRecord = file.openTicketRecord;
 	protected List<String> allTickets;
-	private final String escalationRecord = file.escalationRecord;
 	private final String technicianRecord = file.technicianRecord;
 	List<Ticket> tickets;
 	
@@ -432,47 +431,7 @@ public class TicketController {
 		}
 	}
 
-	public void escalateTicket(Ticket ticket, Technician currentTechnician) {
-		// Options to escalate ticket
-		// 1. Create a new ticket in the escalate table which is assigned to L2
-		// - Pros = original CO maintains ticket ownership, L2 can open and close
-		// tickets for escalation
-		// - Cons
-		// 2. Assign ticket to L2
-		// - Pros = easy
-		// - Cons - L1 looses track of the ticket
-
-		Ticket escalationTicket = ticket;
-		ui.escalationReason();
-		String confirm;
-		do {
-			confirm = "";
-			userInput = input.getInput();
-			if(userInput.isEmpty()) {
-				System.out.println("Incorrect Input, cannot be empty. Try again: ");
-			}
-			if(!userInput.isEmpty()) {
-				System.out.println("Is the below escalation reason correct? [Y/N] ");
-				System.out.println(userInput);
-				confirm = input.getInput().toUpperCase();
-				while (!confirm.toUpperCase().equals("Y") && !confirm.toUpperCase().equals("N")) {
-					System.out.println("Incorrect Input! Enter 'Y' for yes or 'N' for no.");
-					confirm = input.getInput().toUpperCase();
-				}
-				if (confirm.toUpperCase().equals("N")) {
-					System.out.println("Please re-enter the reason for escalation:");
-				}
-			}
-		} while (!confirm.equals("Y"));
-		escalationTicket.setDescription(userInput);
-		escalationTicket.setRequesterId(currentTechnician.getId());
-		escalationTicket.setTechnicianAssignedId(assignTechnician("high"));
-		escalationTicket.setId(getNewestTicket(escalationRecord).getId() + 1);
-		escalationTicket.setCreationDate(LocalDateTime.now());
-		file.write(escalationRecord, escalationTicket.getProperties());
-	}
-
-	public void changeStatus(Ticket ticket, String menuOption) {
+		public void changeStatus(Ticket ticket, String menuOption) {
 		Ticket statusTicket = ticket;
 		statusTicket.setResolvedDate(LocalDateTime.now());
 		if (menuOption.equals("Y")) {
