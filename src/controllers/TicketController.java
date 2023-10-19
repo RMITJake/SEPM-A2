@@ -47,11 +47,34 @@ public class TicketController {
 			// Loop and validate this
 			ui.severity();
 			userInput = input.getInput();
+			while (!userInput.equals("1") && !userInput.equals("2") && !userInput.equals("3")) {
+				System.out.println("Retry, you must enter one of the options in the []. ");
+				ui.severity();
+				userInput = input.getInput();
+			}
+			if (userInput.equals("1")){
+				userInput = "low";
+			}
+			if (userInput.equals("2")){
+				userInput = "medium";
+			}
+			if (userInput.equals("3")){
+				userInput = "high";
+			}
 			newTicket.setSeverity(userInput);
 
 			ui.confirm(newTicket.getRequesterId(), newTicket.getDescription(), newTicket.getSeverity());
-			if (input.getInput().toUpperCase().equals("Y")) {
+			userInput = input.getInput();
+			while (!userInput.toUpperCase().equals("Y") && !userInput.toUpperCase().equals("N")) {
+				System.out.println("You must enter 'Y' for yes or 'N' for No. Try again:");
+				ui.confirm(newTicket.getRequesterId(), newTicket.getDescription(), newTicket.getSeverity());
+				userInput = input.getInput();
+			}
+			if (userInput.toUpperCase().equals("Y")) {
 				confirmDetails = true;
+			}
+			if (userInput.toUpperCase().equals("N")) {
+				System.out.println("Please start again!");
 			}
 		}
 
