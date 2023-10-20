@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class ReportController {
     private FileHandler file = new FileHandler();
+    private TicketController ticket = new TicketController();
     final String openTicketRecord = file.openTicketRecord;
 
     public void generateReport(ArrayList<String> allTickets, LocalDateTime startDate, LocalDateTime endDate){
@@ -41,29 +42,42 @@ public class ReportController {
             }
         }
         // number of sybmitted tickets
-        System.out.println("DEBUGGING Number of all tickets: " + allTickets.size());
-        System.out.println("DEBUGGING Number of filtered tickets: " + filteredTickets.size());
-        System.out.println("DEBUGGING Number of open tickets: " + openTickets.size());
-        System.out.println("DEBUGGING Number of closed and resolved tickets: " + closedResolvedTickets.size());
-        System.out.println("DEBUGGING Number of closed and unresolved tickets: " + closedUnresolvedTickets.size());
-        System.out.println("DEBUGGING Number of archived tickets: " + archivedTickets.size());
+        System.out.println("");
+        System.out.println("REPORT FOR " + startDate + " TO " + endDate);
+        System.out.println("Number of all tickets submitted: " + allTickets.size());
+        System.out.println("Number of filtered tickets: " + filteredTickets.size());
+        System.out.println("Number of open tickets: " + openTickets.size());
+        System.out.println("Number of closed and resolved tickets: " + closedResolvedTickets.size());
+        System.out.println("Number of closed and unresolved tickets: " + closedUnresolvedTickets.size());
+        System.out.println("Number of archived tickets: " + archivedTickets.size());
+        System.out.println("");
         // for(int i=0; i < allTickets.size(); i++){
         //     System.out.println("DEBUGGING ALLTICKETS: " + allTickets.get(i));
         // }
         // for(int i=0; i < filteredTickets.size(); i++){
         //     System.out.println("DEBUGGING FILTEREDTICKETS: " + filteredTickets.get(i));
         // }
-        // for(int i=0; i < openTickets.size(); i++){
-        //     System.out.println("DEBUGGING OPENTICKETS: " + openTickets.get(i));
-        // }
-        // for(int i=0; i < closedResolvedTickets.size(); i++){
-        //     System.out.println("DEBUGGING CLOSEDRESOLVEDTICKETS: " + closedResolvedTickets.get(i));
-        // }
-        // for(int i=0; i < closedUnresolvedTickets.size(); i++){
-        //     System.out.println("DEBUGGING CLOSEDUNRESOLVEDTICKETS: " + closedUnresolvedTickets.get(i));
-        // }
-        // for(int i=0; i < closedUnresolvedTickets.size(); i++){
-        //     System.out.println("DEBUGGING ARCHIVEDTICKETS: " + archivedTickets.get(i));
-        // }
+        System.out.println("OPEN TICKETS");
+        for(int i=0; i < openTickets.size(); i++){
+            ticket.displayTicketString(openTickets.get(i));
+        }
+        System.out.println("");
+        System.out.println("CLOSED RESOLVED TICKETS");
+        for(int i=0; i < closedResolvedTickets.size(); i++){
+            ticket.displayTicketString(closedResolvedTickets.get(i));
+        }
+        System.out.println("");
+        System.out.println("CLOSED UNRESOLVED TICKETS");
+        for(int i=0; i < closedUnresolvedTickets.size(); i++){
+            ticket.displayTicketString(closedUnresolvedTickets.get(i));
+        }
+        System.out.println("");
+        System.out.println("ARCHIVED TICKETS");
+        for(int i=0; i < closedUnresolvedTickets.size(); i++){
+            ticket.displayTicketString(archivedTickets.get(i));
+        }
+        System.out.println("");
+        System.out.println("END REPORT");
+        System.out.println("");
     }
 }

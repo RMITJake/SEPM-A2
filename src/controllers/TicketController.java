@@ -388,6 +388,8 @@ public class TicketController {
 
 	public void displayTicketString(String ticket) {
 		Ticket newTicket = new Ticket();
+		Duration closureTime;
+		String closureString;
 		String[] ticketString;
 		ticketString = ticket.split(",", -1);
 		newTicket.setId(Integer.parseInt(ticketString[0]));
@@ -397,8 +399,17 @@ public class TicketController {
 		newTicket.setSeverity(ticketString[4]);
 		newTicket.setStatus(ticketString[5]);
 		newTicket.setCreationDate(LocalDateTime.parse(ticketString[6]));
-		// selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
-		ui.displayTicket(newTicket);
+		if(!ticketString[7].equals("null")){
+			newTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
+			closureTime = Duration.between(newTicket.getCreationDate(), newTicket.getResolvedDate());
+			closureString = String.format("%d days, %02d hours, %02d minutes", 
+                                closureTime.toDays(), 
+                                (closureTime.toHours() % 24), 
+                                closureTime.toMinutesPart()); 
+			ui.displayTicket(newTicket, closureString);
+		} else {
+			ui.displayTicket(newTicket);
+		}
 	}
 
 	public void changeSeverity(Ticket ticket) {
