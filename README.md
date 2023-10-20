@@ -80,7 +80,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         - `Q` - Quit the system.
     6. Enter `N` to create a new ticket.
         1. Provide a description of your IT issue.
-        2. Select a severity of the issue (`[1]`: Low/`[2]`: Medium/`[3]`: High).
+        2. Select a severity of the issue ([`1`]: Low/[`2`]: Medium/[`3`]: High).
         3. Check the Ticket Summary and confirm it is correct `Y`/`N`.
         4. The ticket for your issue has been opened! 
     7. Enter `O` to view my tickets that have been opened.
@@ -107,7 +107,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
             - `Q` - Quit the system.
     6. Enter `N` to create a new ticket.
         1. Provide a description of your IT issue.
-        2. Provide a severity of the issue ([`1`]: Low/`[2]`: Medium/`[3]`: High).
+        2. Provide a severity of the issue ([`1`]: Low/[`2`]: Medium/[`3`]: High).
         3. Check the Ticket Summary and confirm it is correct `Y`/`N`.
         4. The ticket for your issue has been opened! 
     7. Enter `O` to view my tickets that have been opened.
@@ -120,7 +120,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
             - `T` - Change the ticket status.
             - `B` - Back to the Main Menu.
         3. Enter `S` to change the ticket severity.
-            1. Enter a new severity (`[1]`: Low/`[2]`: Medium/`[3]`: High).
+            1. Enter a new severity ([`1`]: Low/[`2`]: Medium/[`3`]: High).
             2. Check the updated Ticket Information.
         4. Enter `T` to change the ticket status. The following status options are shown:
             - `O` - `Open`
