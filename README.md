@@ -20,7 +20,7 @@
 
 | User ID  | Password  |
 |---|---|
-| `4005`  | `SuperSecure55SuperSecure55`  |
+| `4005`  | `SuperSecure55`  |
 
 
 <br/>
@@ -29,7 +29,7 @@
 
 | User ID  | Password  |
 |---|---|
-| `4000`  | `Password123Password123`  |
+| `4000`  | `Password123`  |
 
 
 ## ▶ Running the program
