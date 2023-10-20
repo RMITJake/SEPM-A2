@@ -14,7 +14,7 @@
 - OpenJDK 17.0.8 or a compatible version should be installed.
 - Have an access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
 
-## 🔢 Example Inputs (for Testing Purposes)
+## 🔢 Example Accounts (for Testing Purposes)
 
 > **Staff**
 
@@ -63,7 +63,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
     2. Enter your email address.
     3. Enter your full name.
     4. Enter your valid phone number (*the phone number length should be **10***).
-    5. Enter a new password (including **lowercase**/**uppercase**/**number**/**min 20 characters**).
+    5. Enter a new password (including **lowercase**/**uppercase**/**number**/**min 6 characters**).
     6. Confirm the entered password.
     7. Check the Account Summary and confirm it is correct `Y`/`N`.
     8. New account successfully created! <br/>Don't forget your Account ID and password.
@@ -71,7 +71,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 3. ***`[AS A STAFF]`*** Login:
     1. Enter `L` to log in.
     2. Enter your account ID (e.g. `4005`).
-    3. Enter your password (e.g. `SuperSecure55SuperSecure55`).
+    3. Enter your password (e.g. `SuperSecure55`).
     4. Logged in succesfully!
     5. The Main Menu presents the following options:
         - `N` - Create a New ticket.
@@ -80,7 +80,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         - `Q` - Quit the system.
     6. Enter `N` to create a new ticket.
         1. Provide a description of your IT issue.
-        2. Provide a severity of the issue (`low`/`medium`/`high`).
+        2. Select a severity of the issue (`[1]`: Low/`[2]`: Medium/`[3]`: High).
         3. Check the Ticket Summary and confirm it is correct `Y`/`N`.
         4. The ticket for your issue has been opened! 
     7. Enter `O` to view my tickets that have been opened.
@@ -90,7 +90,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 4. 🔐 ***`[AS A TECHNICIAN]`*** Login:
     1. Enter `L` to log in.
     2. Enter your account ID (e.g. `4000`).
-    3. Enter your password (e.g. `Password123Password123`).
+    3. Enter your password (e.g. `Password123`).
     4. Logged in succesfully!
     5. The Main Menu and Tech Menu present the following options:
         - **Main Menu**
@@ -99,16 +99,20 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         - **Tech Menu**
             - `A` - View Assigned Tickets.
             - `P` - Pick a ticket to take actions.
+            - `G` - My Closed Tickets.
+            - `H` - Other Technician's Closed Tickets.
+            - `U` - My Archived Tickets.
+            - `V` - Other Technician's Archived Tickets.
             - `L` - Logout the account.
             - `Q` - Quit the system.
     6. Enter `N` to create a new ticket.
         1. Provide a description of your IT issue.
-        2. Provide a severity of the issue (`low`/`medium`/`high`).
+        2. Provide a severity of the issue (`[1]`: Low/`[2]`: Medium/`[3]`: High).
         3. Check the Ticket Summary and confirm it is correct `Y`/`N`.
         4. The ticket for your issue has been opened! 
     7. Enter `O` to view my tickets that have been opened.
         1. Check the Ticket Information and its status.
-    8. Enter `A` to view the tickets assigned.
+    8. Enter `A` to view all of the tickets assigned to you.
     9. Enter `P` to pick a ticket to take actions.
         1. Enter the Ticket ID.
         2. View the detailed ticket information and the following options.
@@ -116,36 +120,41 @@ Follow these steps to execute the IT Service Desk Ticketing System.
             - `E` - Escalate the ticket.
             - `T` - Change the ticket status.
             - `B` - Back to the Main Menu.
-    10. Enter `S` to change the ticket severity.
-        1. Enter a new severity (`low`/`medium`/`high`).
-        2. Check the updated Ticket Information.
-    11. 🆙 Enter `E` to escalate the ticket.
-        1. Provide a reason to escalate this ticket.
-        2. Confirm the reason for escalation by entering `Y`.
-        3. Check the updated Ticket Information.
-    12. Enter `T` to change the ticket status. The following status options are shown:
-        - `O` - `Open`
-        - `X` - `Close`
-        - `B` - Back to the Main Menu.<br/>
-        1. `Open` status
-            1. Enter `O` to open the ticket.
-            2. The ticket has been opened. Check the updated Ticket Information.
-        2. `Close` status - `Resolved` ✅
-            1. Enter `X` to close the ticket.
-            2. Enter ***Y***, meaning that the issue was resolved.
+        3. Enter `S` to change the ticket severity.
+            1. Enter a new severity (`low`/`medium`/`high`).
+            2. Check the updated Ticket Information.
+        4. 🆙 Enter `E` to escalate the ticket.
+            1. Provide a reason to escalate this ticket.
+            2. Confirm the reason for escalation by entering `Y`.
             3. Check the updated Ticket Information.
-        3. `Close` status - `Unresolved` ❎
-            1. Enter `X` to close the ticket.
-            2. Enter ***N***, meaning that the issue was unresolved.
-            3. Check the updated Ticket Information.
-    13. Enter `B` to go back to the Main Menu.
-    14. Enter `Q` to quit the system. 
+        5. Enter `T` to change the ticket status. The following status options are shown:
+            - `O` - `Open`
+            - `X` - `Close`
+            - `B` - Back to the Main Menu.<br/>
+            1. `Open` status
+                1. Enter `O` to open the ticket.
+                2. The ticket has been opened. Check the updated Ticket Information.
+            2. `Close` status - `Resolved` ✅
+                1. Enter `X` to close the ticket.
+                2. Enter ***Y***, meaning that the issue was resolved.
+                3. Check the updated Ticket Information.
+            3. `Close` status - `Unresolved` ❎
+                1. Enter `X` to close the ticket.
+                2. Enter ***N***, meaning that the issue was unresolved.
+                3. Check the updated Ticket Information.
+        6. Enter `B` to go back to the Main Menu.
+    10. Enter `G` to view all of the closed tickets assigned to you.
+    11. Enter `H` to view all of the closed tickets assigned to other technicians.
+    12. Enter `U` to view all of the archived tickets assigned to you.
+    13. Enter `V` to view all of the archived tickets assigned to other technicians.
+    14. Enter `L` to log out of the current user and return to the login menu.
+    15. Enter `Q` to quit the system. 
 
 
 4. Forgot Password:
     1. Enter `F` to access the ***Forgot Password*** feature.
     2. Enter your email address to reset your password.
-    3. A ticket to reset your password has been opened.<br/>It is marked as ❗***High Priority*** and will be resolved as soon as possible.
+    3. A ticket to reset your password has been opened.<br/>It is marked as ***High Priority*** and will be resolved as soon as possible.
 
 
 5. Exit:
