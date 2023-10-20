@@ -112,25 +112,31 @@ public class AccountController {
             if(!exitLoopCheck(userInput)){
                 ui.confirm(newAccount.getEmail(), newAccount.getFullName(), newAccount.getPhoneNumber());
                 userInput = input.getInput().toUpperCase();
+                while (!userInput.equals("Y") && !userInput.equals("N")) {
+                	System.out.println("You must enter 'Y' for yes or 'N' for No. Try again:");
+                	userInput = input.getInput().toUpperCase();
+                }
                 if(userInput.equals("Y")){
                     newAccount.setId(getNewestAccountId()+1);
-                    System.out.println("old account id: " +getNewestAccountId());
-                    System.out.println("new account id: " +(getNewestAccountId()+1));
+                    //System.out.println("old account id: " +getNewestAccountId());
+                    //System.out.println("new account id: " +(getNewestAccountId()+1));
                     newAccount.setCreationDate(LocalDateTime.now());
                     newAccount.setDisabled(false);
                     newLogin.setId(setLoginId());
-                    System.out.println("new login id: " +setLoginId());
+                    //System.out.println("new login id: " +setLoginId());
                     newLogin.setAccountId(newAccount.getId());
                     confirmDetails = true;
-                    System.out.println("New account created");
-                    System.out.println(newAccount.getAccountDetails());
+                    //System.out.println("New account created");
+                    //System.out.println(newAccount.getAccountDetails());
                     file.write(accountRecord, newAccount.getProperties()+"\r\n");
+                    System.out.println("----------------------------");
                     System.out.println("New login created");
                     System.out.println(newLogin.getAccountDetails());
                     file.write(loginRecord, newLogin.getProperties()+"\r\n");
-                } else if (userInput.equals("C")){
+                } else if (userInput.equals("N")){
                     newAccount = null;
                     confirmDetails = true;
+                    System.out.println("Please start again!");
                 }
             } else {
                 System.out.println("Account creation cancelled.");

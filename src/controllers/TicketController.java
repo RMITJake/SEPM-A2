@@ -27,7 +27,6 @@ public class TicketController {
 	// Record strings, used to minimize hard coded file references
 	protected final String openTicketRecord = file.openTicketRecord;
 	protected List<String> allTickets;
-	private final String escalationRecord = file.escalationRecord;
 	private final String technicianRecord = file.technicianRecord;
 	List<Ticket> tickets;
 	
@@ -47,11 +46,34 @@ public class TicketController {
 			// Loop and validate this
 			ui.severity();
 			userInput = input.getInput();
+			while (!userInput.equals("1") && !userInput.equals("2") && !userInput.equals("3")) {
+				System.out.println("Retry, you must enter one of the options in the []. ");
+				ui.severity();
+				userInput = input.getInput();
+			}
+			if (userInput.equals("1")){
+				userInput = "low";
+			}
+			if (userInput.equals("2")){
+				userInput = "medium";
+			}
+			if (userInput.equals("3")){
+				userInput = "high";
+			}
 			newTicket.setSeverity(userInput);
 
 			ui.confirm(newTicket.getRequesterId(), newTicket.getDescription(), newTicket.getSeverity());
-			if (input.getInput().toUpperCase().equals("Y")) {
+			userInput = input.getInput();
+			while (!userInput.toUpperCase().equals("Y") && !userInput.toUpperCase().equals("N")) {
+				System.out.println("You must enter 'Y' for yes or 'N' for No. Try again:");
+				ui.confirm(newTicket.getRequesterId(), newTicket.getDescription(), newTicket.getSeverity());
+				userInput = input.getInput();
+			}
+			if (userInput.toUpperCase().equals("Y")) {
 				confirmDetails = true;
+			}
+			if (userInput.toUpperCase().equals("N")) {
+				System.out.println("Please start again!");
 			}
 		}
 
@@ -287,8 +309,8 @@ public class TicketController {
 		do {
 			ui.forgotPassword();
 			userInput = input.getInput();
-		} while (validate.email(userInput) != null && !userInput.equals("B") && !userInput.equals("b"));
-		if (validate.email(userInput) != null) {
+		} while (validate.email(userInput) != null && !userInput.toUpperCase().equals("B"));
+		if (validate.email(userInput) == null) {
 			ui.forgotPassword(userInput);
 			resetPassword(userInput);
 		}
@@ -315,6 +337,10 @@ public class TicketController {
 		selectedTicket = new Ticket();
 		ui.selectTicket();
 		userInput = input.getInput();
+		while (!validate.ticketId(userInput)){
+			System.out.println("You must enter a whole number. Try again:");
+			userInput = input.getInput();
+		}
 		if (validate.ticketId(userInput)){
 			ArrayList<String> ticketTable = file.read(openTicketRecord);
 			String[] ticketString;
@@ -378,7 +404,21 @@ public class TicketController {
 	public void changeSeverity(Ticket ticket) {
 		userInput = "";
 		ui.changeSeverity();
-		userInput = input.getInput().toLowerCase();
+		userInput = input.getInput();
+		while (!userInput.equals("1") && !userInput.equals("2") && !userInput.equals("3")) {
+			System.out.println("Retry, you must enter one of the options in the []. ");
+			ui.severity();
+			userInput = input.getInput();
+		}
+		if (userInput.equals("1")){
+			userInput = "low";
+		}
+		if (userInput.equals("2")){
+			userInput = "medium";
+		}
+		if (userInput.equals("3")){
+			userInput = "high";
+		}
 		if(validate.ticketSeverity(userInput)){
 			if((!ticket.getSeverity().equals("high") && userInput.equals("high")) || ticket.getSeverity().equals("high") && !userInput.equals("high")){
 				ticket.setSeverity(userInput);
@@ -391,35 +431,7 @@ public class TicketController {
 		}
 	}
 
-	public void escalateTicket(Ticket ticket, Technician currentTechnician) {
-		// Options to escalate ticket
-		// 1. Create a new ticket in the escalate table which is assigned to L2
-		// - Pros = original CO maintains ticket ownership, L2 can open and close
-		// tickets for escalation
-		// - Cons
-		// 2. Assign ticket to L2
-		// - Pros = easy
-		// - Cons - L1 looses track of the ticket
-
-		Ticket escalationTicket = ticket;
-		ui.escalationReason();
-		String confirm;
-		do {
-			confirm = "";
-			userInput = input.getInput();
-			System.out.println("Is the below escalation reason correct? [Y/N] ");
-			System.out.println(userInput);
-			confirm = input.getInput().toUpperCase();
-		} while (!confirm.equals("Y"));
-		escalationTicket.setDescription(userInput);
-		escalationTicket.setRequesterId(currentTechnician.getId());
-		escalationTicket.setTechnicianAssignedId(assignTechnician("high"));
-		escalationTicket.setId(getNewestTicket(escalationRecord).getId() + 1);
-		escalationTicket.setCreationDate(LocalDateTime.now());
-		file.write(escalationRecord, escalationTicket.getProperties());
-	}
-
-	public void changeStatus(Ticket ticket, String menuOption) {
+		public void changeStatus(Ticket ticket, String menuOption) {
 		Ticket statusTicket = ticket;
 		statusTicket.setResolvedDate(LocalDateTime.now());
 		if (menuOption.equals("Y")) {

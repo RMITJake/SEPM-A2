@@ -39,8 +39,19 @@ Legend: X = done, W = Work in progress
 [X] Tech - See all archived tickets
 [X] Tech - See all closed tickets
 [ ] Tech - See all tickets
-[ ] L2 - See my escalations
-[ ] L2 - See all escalations
+
+10.
+[X] Show a report for a specified period
+[X] Show how many tickets were submitted in the report
+[ ] Show how many tickets are:
+	- [ ] Open
+	- [ ] Closed and Resolved
+	- [ ] Closed and Unresolved
+	- [ ] Archived
+[ ] Show who submitted each ticket
+[ ] Show the creation time of each ticket
+[ ] Show the severity
+[ ] Show who closed the ticket and how long it took to close
 
 ---
 # Key Classes and Functions

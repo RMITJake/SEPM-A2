@@ -13,7 +13,6 @@ public class FileHandler {
     // Set record strings to minimize hardcoding
     public final String accountRecord = "Account";
     public final String archivedTicketRecord = "ArchivedTicket";
-    public final String escalationRecord = "Escalation";
     public final String loginRecord = "Login";
     public final String openTicketRecord = "OpenTicket";
     public final String technicianRecord = "Technician";
