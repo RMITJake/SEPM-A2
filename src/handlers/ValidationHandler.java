@@ -143,7 +143,12 @@ public class ValidationHandler {
     return ticketStatusMatch;
   }
 
-  public boolean reportDate(String input){
-    return true;
+  public String reportDate(String input){
+    regex = "^([0-2][0-9]|[3][0-1])(0[0-9]|1[0-2])[0-9]{2,2}$";
+    boolean reportDateMatch = Pattern.matches(regex, input);
+    if(!reportDateMatch){
+      return "**Date format must be provided as DDMMYY";
+    }
+    return null;
   }
 }

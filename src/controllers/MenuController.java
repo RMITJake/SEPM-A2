@@ -199,21 +199,29 @@ public class MenuController {
 		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("ddMMyy");
 		LocalDate start = null;
 		LocalDate end = null;
+		String startDateValidationResult;
+		String endDateValidationResult;
 		do{
 			menuOption = "";
 			ui.reportStartDatePrompt();
 			menuOption = input.getInput();
-			if(validate.reportDate(menuOption)){
+			startDateValidationResult = validate.reportDate(menuOption);
+			if(startDateValidationResult == null){
 				start = LocalDate.parse(menuOption, dateFormat);
 				ui.reportEndDatePrompt();
 				menuOption = input.getInput();
+				endDateValidationResult = validate.reportDate(menuOption);
+				if(endDateValidationResult == null && startDateValidationResult == null){
+					end = LocalDate.parse(menuOption, dateFormat);
+					ui.reportConfirmPrompt(start.toString(), end.toString());
+					menuOption = input.getInput().toUpperCase();
+				} else {
+					System.out.println(endDateValidationResult);
+				}
+			} else {
+				System.out.println(startDateValidationResult);
 			}
-			if(validate.reportDate(menuOption)){
-				end = LocalDate.parse(menuOption, dateFormat);
-				ui.reportConfirmPrompt(start.toString(), end.toString());
-				menuOption = input.getInput().toUpperCase();
-			}
-		} while(!menuOption.equals(ui.confirmOption) && !menuOption.equals(ui.backOption));
+		} while(!menuOption.equals(ui.confirmOption) && !menuOption.toUpperCase().equals(ui.backOption));
 		if(menuOption.equals(ui.confirmOption)){
 			ArrayList<String> allTickets = ticket.getAllTickets(file.openTicketRecord);
 			LocalDateTime startDate = start.atStartOfDay();
