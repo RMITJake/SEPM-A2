@@ -153,7 +153,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
             - Number of closed and resolved tickets
             - Number of closed and unresolved tickets
             - Number of archived tickets
-            and lists of detailed information for all tickets.
+            - *+and lists of detailed information for all tickets.*
     14. Enter `L` to log out of the current user and return to the login menu.
     15. Enter `Q` to quit the system. 
 
