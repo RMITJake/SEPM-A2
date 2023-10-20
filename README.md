@@ -117,17 +117,12 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         1. Enter the Ticket ID.
         2. View the detailed ticket information and the following options.
             - `S` - Set the ticket severity.
-            - `E` - Escalate the ticket.
             - `T` - Change the ticket status.
             - `B` - Back to the Main Menu.
         3. Enter `S` to change the ticket severity.
-            1. Enter a new severity (`low`/`medium`/`high`).
+            1. Enter a new severity (`[1]`: Low/`[2]`: Medium/`[3]`: High).
             2. Check the updated Ticket Information.
-        4. 🆙 Enter `E` to escalate the ticket.
-            1. Provide a reason to escalate this ticket.
-            2. Confirm the reason for escalation by entering `Y`.
-            3. Check the updated Ticket Information.
-        5. Enter `T` to change the ticket status. The following status options are shown:
+        4. Enter `T` to change the ticket status. The following status options are shown:
             - `O` - `Open`
             - `X` - `Close`
             - `B` - Back to the Main Menu.<br/>
@@ -142,11 +137,23 @@ Follow these steps to execute the IT Service Desk Ticketing System.
                 1. Enter `X` to close the ticket.
                 2. Enter ***N***, meaning that the issue was unresolved.
                 3. Check the updated Ticket Information.
-        6. Enter `B` to go back to the Main Menu.
+        5. Enter `B` to go back to the Main Menu.
     10. Enter `G` to view all of the closed tickets assigned to you.
     11. Enter `H` to view all of the closed tickets assigned to other technicians.
     12. Enter `U` to view all of the archived tickets assigned to you.
     13. Enter `V` to view all of the archived tickets assigned to other technicians.
+    14. Enter `R` to generate a report.
+        1. Specify the start-date to generate a report in the format of *DDMMYY*. (e.g. `051023`)
+        2. Specify the start-date to generate a report in the format of *DDMMYY*. (e.g. `211023`)
+        3. Enter ***Y*** to generate a report with the specified period.
+        4. Check the generated report including:
+            - Number of all tickets submited
+            - Number of filtered tickets
+            - Number of open tickets
+            - Number of closed and resolved tickets
+            - Number of closed and unresolved tickets
+            - Number of archived tickets
+            and lists of detailed information for all tickets.
     14. Enter `L` to log out of the current user and return to the login menu.
     15. Enter `Q` to quit the system. 
 
@@ -159,6 +166,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 
 5. Exit:
     1. Enter `Q` to quit the system.
+    2. Thank you for using our program!
 
 
 ---
