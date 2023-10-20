@@ -14,11 +14,15 @@ public class AccountUI {
   }
 
   public void password(){
-    System.out.println("Enter a new password (Password must have a lower case letter, a uppercase letter, one number and minimum 20 characters): ");
+    System.out.println("Enter a new password (Password must have a lower case letter, a uppercase letter, one number and minimum 6 characters): ");
   }
 
   public void passwordConfirm(){
     System.out.println("Confirm the password: ");
+  }
+
+  public void passwordNoMatch(){
+    System.out.println("Passwords did not match!");
   }
 
   public void confirm(String email, String fullName, int phoneNumber){

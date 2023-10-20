@@ -11,6 +11,18 @@ public class Ticket {
     LocalDateTime creationDate;
     LocalDateTime resolvedDate;
 
+    // Variables are static to be used without a Ticket model being initialised
+    // Severities
+    public static final String highSeverity = "high";
+    public static final String mediumSeverity = "medium";
+    public static final String lowSeverity = "low";
+
+    // Ticket Satuses
+    public static final String openStatus = "open and unresolved";
+    public static final String closedResolvedStatus = "closed and resolved";
+    public static final String closedUnresolvedStatus = "closed and unresolved";
+    public static final String archivedStatus = "archived";
+
     // Getters and Setters
     public int getId(){ return this.id; }
     public void setId(int id){ this.id = id; }
@@ -48,5 +60,19 @@ public class Ticket {
         details += this.creationDate + ",";
         details += this.resolvedDate + "\r\n";
         return details;
+    }
+
+    public String getTicketDetails() {
+    	String ticketDetails = "";
+    	ticketDetails += "----------------------------\n";
+    	ticketDetails += "Ticket ID: "+this.id + "\n";
+    	ticketDetails += "Assigned Technician ID: "+this.technicianAssignedId + "\n";
+    	ticketDetails += "Requester ID: "+this.requesterId + "\n";
+    	ticketDetails += "Issue Description: "+this.description + "\n";
+    	ticketDetails += "Severity: "+this.severity + "\n";
+    	ticketDetails += "Status: "+this.status + "\n";
+    	ticketDetails += "Creation Date: "+this.creationDate + "\n";
+    	ticketDetails += "----------------------------";
+    	return ticketDetails;
     }
 }
