@@ -369,16 +369,19 @@ public class TicketController {
 	}
 
 	public void changeSeverity(Ticket ticket) {
-		do{
-			userInput = "";
-			ui.changeSeverity();
-			userInput = input.getInput();
-			if(!validate.ticketSeverity(userInput)){
-				System.out.println("Ticket statuses can only be \"low\", \"medium\", or \"high\"");
+		userInput = "";
+		ui.changeSeverity();
+		userInput = input.getInput().toLowerCase();
+		if(validate.ticketSeverity(userInput)){
+			if((!ticket.getSeverity().equals("high") && userInput.equals("high")) || ticket.getSeverity().equals("high") && !userInput.equals("high")){
+				ticket.setSeverity(userInput);
+				ticket.setTechnicianAssignedId(assignTechnician(ticket.getSeverity()));
+				updateTicketRecord(ticket);
+			} else {
+				ticket.setSeverity(userInput);
+				updateTicketRecord(ticket);
 			}
-		} while (!validate.ticketSeverity(userInput));
-		ticket.setSeverity(userInput);
-		updateTicketRecord(ticket);
+		}
 	}
 
 	public void escalateTicket(Ticket ticket, Technician currentTechnician) {
@@ -414,8 +417,24 @@ public class TicketController {
 		statusTicket.setResolvedDate(LocalDateTime.now());
 		if (menuOption.equals("Y")) {
 			statusTicket.setStatus("closed and resolved");
+			ui.displayTicket(statusTicket);
 		} else if (menuOption.equals("N")) {
 			statusTicket.setStatus("closed and unresolved");
+			ui.displayTicket(statusTicket);
+		}
+		updateTicketRecord(statusTicket);
+	}
+
+	
+
+	public void changeOpenStatus(Ticket ticket) {
+		Ticket statusTicket = ticket;
+		if (statusTicket.getStatus().equals("archived")) {
+			ui.archivedPrompt();
+			ui.displayTicket(statusTicket);
+		} else {
+			statusTicket.setStatus("open and unresolved");
+			ui.displayTicket(statusTicket);
 		}
 		updateTicketRecord(statusTicket);
 	}

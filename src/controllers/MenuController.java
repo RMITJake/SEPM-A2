@@ -83,11 +83,6 @@ public class MenuController {
 			menuOption = input.getInput().toUpperCase();
 			if (menuOption.equals("N") || menuOption.equals("n")) {
 				ticket.createNewTicket(currentUser, ticket.openTicketRecord);
-			} else if (menuOption.equals("P")|| menuOption.equals("p")) {
-				ticket.selectTicket();
-				do {
-					menuOption = ticketMenuLoop();
-				} while (!menuOption.equals("B") && !menuOption.equals("b"));
 			} else if (menuOption.equals("O") || menuOption.equals("o")) {
 				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, null);
 //				ticket.getAllTickets();
@@ -102,6 +97,11 @@ public class MenuController {
 				for (int index = 0; index < myTickets.size(); index++) {
 					ticket.displayTicketString(myTickets.get(index));
 				}
+			} else if (menuOption.equals("P") && currentUser.getId()<4005) {
+				ticket.selectTicket();
+				do {
+					menuOption = ticketMenuLoop();
+				} while (!menuOption.equals("B") && !menuOption.equals("b"));
 			}
 		} while (!menuOption.equals("Q"));
 		return menuOption; 
@@ -141,6 +141,11 @@ public class MenuController {
 				System.out.println("Input is null or empty. Please enter a valid option."); // handle null or empty
 				continue;
 			}
+			if (menuOption.equals("O") || menuOption.equals("o")) {
+				ticket.changeOpenStatus(ticket.selectedTicket);
+				
+			}
+
 			if (menuOption.equals("X") || menuOption.equals("x")) {
 				ui.resolvePrompt();
 				menuOption = input.getInput().toUpperCase();

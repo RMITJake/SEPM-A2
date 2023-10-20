@@ -68,7 +68,7 @@ public class ValidationHandler {
     boolean phoneNumberMatch = Pattern.matches(regex, input);
     
     if (!phoneNumberMatch) {
-      return "**Invalid phone number. Please try again with a valid phone number(10 length).\n";
+      return "**Invalid phone number. Must be 10 digits long. Please try again.\n";
     }
 
     return null;
@@ -85,7 +85,7 @@ public class ValidationHandler {
     // Per spec we check for uppercase and lowercase alphanumeric, no symbols
     // TEMPORARY - ONLY CHECKING FOR 4 MIN CHARACTERS FOR TESTING, PER SPEC CHECK FOR 20
     // Check length of the string
-    regex = "^[a-zA-Z\\d]{4,}";
+    regex = "^[a-zA-Z\\d]{20,}";
     lengthMatch = Pattern.matches(regex, input);
 
     if (!lengthMatch){
