@@ -6,11 +6,10 @@ import src.models.Account;
 public class LoginController {
     private FileHandler file = new FileHandler();
     private Account currentUser = new Account();
-    private String loginRecord = file.loginRecord;
 
     public Account verifyLogin(int accountId, String password){
         // loginTable temporarily stores the contents of file.Read()
-        ArrayList<String> loginTable = file.read(loginRecord);
+        ArrayList<String> loginTable = file.read(FileHandler.loginRecord);
         // Login object which temporarily holds data to be checked
         Login checkIndex = new Login();
         for(int index=0; index < loginTable.size(); index++) {

@@ -11,8 +11,6 @@ public class AccountController {
     private ValidationHandler validate = new ValidationHandler();
     private AccountUI ui = new AccountUI();
     String userInput;
-    private String accountRecord = file.accountRecord;
-    private String loginRecord = file.loginRecord;
     private String exitLoop = "B";
 
     private boolean exitLoopCheck(String input){
@@ -128,11 +126,11 @@ public class AccountController {
                     confirmDetails = true;
                     //System.out.println("New account created");
                     //System.out.println(newAccount.getAccountDetails());
-                    file.write(accountRecord, newAccount.getProperties()+"\r\n");
+                    file.write(FileHandler.accountRecord, newAccount.getProperties()+"\r\n");
                     System.out.println("----------------------------");
                     System.out.println("New login created");
                     System.out.println(newLogin.getAccountDetails());
-                    file.write(loginRecord, newLogin.getProperties()+"\r\n");
+                    file.write(FileHandler.loginRecord, newLogin.getProperties()+"\r\n");
                 } else if (userInput.equals("N")){
                     newAccount = null;
                     confirmDetails = true;
@@ -147,7 +145,7 @@ public class AccountController {
 
     public Account getAccountById(int accountId){
         // accountTable arraylist to store the file contents
-        ArrayList<String> accountTable = file.read(accountRecord);
+        ArrayList<String> accountTable = file.read(FileHandler.accountRecord);
         // Account object to temporarily store account details
         Account currentAccount = new Account();
         for(int index=0; index < accountTable.size(); index++){
@@ -172,14 +170,14 @@ public class AccountController {
 
     public int getNewestAccountId(){
         // Functionally similar to getNewestTicket()
-        ArrayList<String> accountTable = file.read(accountRecord);
+        ArrayList<String> accountTable = file.read(FileHandler.accountRecord);
         String[] lastAccountInList = accountTable.get(accountTable.size()-1).split(",",-1);
         return Integer.parseInt(lastAccountInList[0]);
     }
 
     public int setLoginId(){
         // Streamlined version of getNewestTicket to only return the need ID
-        ArrayList<String> loginTable = file.read(loginRecord);
+        ArrayList<String> loginTable = file.read(FileHandler.loginRecord);
         String[] lastLoginProperties = loginTable.get(loginTable.size()-1).split(",",-1);
         return Integer.parseInt(lastLoginProperties[0])+1;
     }
