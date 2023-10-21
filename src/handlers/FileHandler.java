@@ -12,11 +12,9 @@ public class FileHandler {
 
     // Set record strings to minimize hardcoding
     public final static String accountRecord = "Account";
-    public final static String archivedTicketRecord = "ArchivedTicket";
     public final static String loginRecord = "Login";
     public final static String ticketRecord = "Ticket";
     public final static String technicianRecord = "Technician";
-    public final static String ticketUpdateRecord = "TicketUpdate";
 
     public void write(String file, String input){
         // Add the input filename to the path so we can write to a file

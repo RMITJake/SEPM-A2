@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import src.models.Ticket;
 
 public class MenuController {
 	// Create the MenuUI, InputHandler, LoginController, TicketController
@@ -122,17 +123,19 @@ public class MenuController {
 				ticketMenuLoop();
 			// } else if (menuOption.equals(myArchivedTicketsOption) && currentTechnician.getId() != 0){
 			} else if (menuOption.equals(ui.myArchivedTicketsOption) && currentTechnician.getId() != 0){
-				ArrayList<String> archivedTickets = ticket.getUserTickets("archived", currentTechnician, 1);
-				displatTicketList(archivedTickets);
+				ArrayList<String> archivedTickets = ticket.getUserTickets(Ticket.archivedStatus, currentTechnician, 1);
+				displayTicketList(archivedTickets);
 			} else if (menuOption.equals(ui.otherArchivedTicketsOption) && currentTechnician.getId() != 0){
-				ArrayList<String> archivedTickets = ticket.getUserTickets("archived", currentTechnician, 2);
-				displatTicketList(archivedTickets);
+				ArrayList<String> archivedTickets = ticket.getUserTickets(Ticket.archivedStatus, currentTechnician, 2);
+				displayTicketList(archivedTickets);
 			} else if (menuOption.equals(ui.myClosedTicketsOption) && currentTechnician.getId() != 0){
-				ArrayList<String> archivedTickets = ticket.getUserTickets("closed", currentTechnician, 1);
-				displatTicketList(archivedTickets);
+				ArrayList<String> closedResolvedTickets = ticket.getUserTickets(Ticket.closedResolvedStatus, currentTechnician, 1);
+				displayTicketList(closedResolvedTickets);
+				ArrayList<String> closedUnresolvedTickets = ticket.getUserTickets(Ticket.closedUnresolvedStatus, currentTechnician, 1);
+				displayTicketList(closedUnresolvedTickets);
 			} else if (menuOption.equals(ui.otherClosedTicketsOption) && currentTechnician.getId() != 0){
-				ArrayList<String> archivedTickets = ticket.getUserTickets("closed", currentTechnician, 2);
-				displatTicketList(archivedTickets);
+				ArrayList<String> closedTickets = ticket.getUserTickets("closed", currentTechnician, 2);
+				displayTicketList(closedTickets);
 			} else if (menuOption.equals(ui.reportOption) && currentTechnician.getId() != 0){
 				generateReportLoop();
 			} else if (currentTechnician.getId()>0 && !menuOption.equals(ui.createNewTicketOption) && !menuOption.equals(ui.myOpenTicketsOption) && !menuOption.equals(ui.assignedTicketsOption) && !menuOption.equals(ui.pickTicketOption)
@@ -207,7 +210,7 @@ public class MenuController {
 		return menuOption;
 	}
 		
-	private void displatTicketList(ArrayList<String> ticketList){
+	private void displayTicketList(ArrayList<String> ticketList){
 		if(ticketList.size() == 0){
 			System.out.println("There are no tickets in this list available to display.");
 		} else {
