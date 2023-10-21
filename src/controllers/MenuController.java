@@ -134,8 +134,10 @@ public class MenuController {
 				ArrayList<String> closedUnresolvedTickets = ticket.getUserTickets(Ticket.closedUnresolvedStatus, currentTechnician, 1);
 				displayTicketList(closedUnresolvedTickets);
 			} else if (menuOption.equals(ui.otherClosedTicketsOption) && currentTechnician.getId() != 0){
-				ArrayList<String> closedTickets = ticket.getUserTickets("closed", currentTechnician, 2);
-				displayTicketList(closedTickets);
+				ArrayList<String> closedResolvedTickets = ticket.getUserTickets(Ticket.closedResolvedStatus, currentTechnician, 2);
+				displayTicketList(closedResolvedTickets);
+				ArrayList<String> closedUnresolvedTickets = ticket.getUserTickets(Ticket.closedUnresolvedStatus, currentTechnician, 2);
+				displayTicketList(closedUnresolvedTickets);
 			} else if (menuOption.equals(ui.reportOption) && currentTechnician.getId() != 0){
 				generateReportLoop();
 			} else if (currentTechnician.getId()>0 && !menuOption.equals(ui.createNewTicketOption) && !menuOption.equals(ui.myOpenTicketsOption) && !menuOption.equals(ui.assignedTicketsOption) && !menuOption.equals(ui.pickTicketOption)
