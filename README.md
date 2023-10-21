@@ -144,7 +144,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
     13. Enter `V` to view all of the archived tickets assigned to other technicians.
     14. Enter `R` to generate a report.
         1. Specify the start-date to generate a report in the format of *DDMMYY*. (e.g. `051023`)
-        2. Specify the start-date to generate a report in the format of *DDMMYY*. (e.g. `211023`)
+        2. Specify the end-date to generate a report in the format of *DDMMYY*. (e.g. `211023`)
         3. Enter ***Y*** to generate a report with the specified period.
         4. Check the generated report including:
             - Number of all tickets submited
