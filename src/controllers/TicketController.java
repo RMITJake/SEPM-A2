@@ -405,7 +405,7 @@ public class TicketController {
 			closureString = String.format("%d days, %02d hours, %02d minutes", 
                                 closureTime.toDays(), 
                                 (closureTime.toHours() % 24), 
-                                closureTime.toMinutesPart()); 
+                                closureTime.toMinutes()); 
 			ui.displayTicket(newTicket, closureString);
 		} else {
 			ui.displayTicket(newTicket);
