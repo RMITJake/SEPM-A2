@@ -13,6 +13,14 @@ public class AccountController {
     String userInput;
     private String accountRecord = file.accountRecord;
     private String loginRecord = file.loginRecord;
+    private String exitLoop = "B";
+
+    private boolean exitLoopCheck(String input){
+        if(input.toUpperCase().equals(exitLoop)){
+            return true;
+        }
+        return false;
+    }
 
     public void createUser(){
         // Initialise account
@@ -20,15 +28,18 @@ public class AccountController {
         Login newLogin = new Login();
         
         // Get user input for needed properties
+        userInput = "";
         boolean confirmDetails = false;
-        while(!confirmDetails){
-        	String emailValidationResult;
+        while(!confirmDetails && !exitLoopCheck(userInput)){
+        	String emailValidationResult = "";
         	String emailUniqueCheckResult = null;
-            do{
+            while(!exitLoopCheck(userInput) && (emailValidationResult != null || emailUniqueCheckResult != null)){
+            // while(!exitLoopCheck(userInput)){
+                userInput = "";
                 ui.email();
                 userInput = input.getInput();
                 emailValidationResult = validate.email(userInput);
-                if(emailValidationResult != null) {
+                if(!exitLoopCheck(userInput) && emailValidationResult != null) {
                 	System.out.println(emailValidationResult);
                 } else {
                 	emailUniqueCheckResult = validate.emailUniqueCheck(userInput);
@@ -36,77 +47,103 @@ public class AccountController {
                 		System.out.println(emailUniqueCheckResult);
                 	}
                 }
-            } while (emailValidationResult != null || emailUniqueCheckResult != null);
-            newAccount.setEmail(userInput);
+            }
+            if(!exitLoopCheck(userInput)){
+                newAccount.setEmail(userInput);
+            }
             
-            String fullNameValidationResult;
-            do{
+            String fullNameValidationResult = "";
+            while(!exitLoopCheck(userInput) && fullNameValidationResult != null){
+                userInput = "";
                 ui.fullName();
                 userInput = input.getInput();
                 fullNameValidationResult = validate.fullName(userInput);
                 if(fullNameValidationResult != null) {
                 	System.out.println(fullNameValidationResult);
                 }
-            } while (fullNameValidationResult != null);
-            newAccount.setFullName(userInput);
+            }
+            if(!exitLoopCheck(userInput)){
+                newAccount.setFullName(userInput);
+            }
             
-            String phoneNumberValidationResult;
-            do{
+            String phoneNumberValidationResult = "";
+            while(!exitLoopCheck(userInput) && phoneNumberValidationResult != null){
                 ui.phoneNumber();
                 userInput = input.getInput();
                 phoneNumberValidationResult = validate.phoneNumber(userInput);
                 if(phoneNumberValidationResult != null) {
                 	System.out.println(phoneNumberValidationResult);
                 }
-            } while (phoneNumberValidationResult != null);
-            newAccount.setPhoneNumber(Integer.parseInt(userInput));
+            }
+            if(!exitLoopCheck(userInput)){
+                newAccount.setPhoneNumber(Integer.parseInt(userInput));
+            }
 
             boolean passwordMatch = false;
             String password;
             String passwordConfirm;
-            while(!passwordMatch){
-            	String passwordValidationResult;
-                do{
+            while(!exitLoopCheck(userInput) && !passwordMatch){
+            	String passwordValidationResult = "";
+                while (!exitLoopCheck(userInput) && passwordValidationResult != null){
                 	ui.password();
-                	password = input.getInput();
-                	passwordValidationResult = validate.password(password);
+                	userInput = input.getInput();
+                    password = userInput;
+                    try{
+                        passwordValidationResult = validate.password(password);
+                    } catch (StringIndexOutOfBoundsException ex) {
+                        System.out.println("Password field cannot be blank.");
+                    }
                 	if(passwordValidationResult != null) {
                 		System.out.println(passwordValidationResult);
                 	}
-                } while (passwordValidationResult != null);
                 
-                ui.passwordConfirm();
-                passwordConfirm = input.getInput();
-                if(password.equals(passwordConfirm)){
-                    newLogin.setPassword(password);
-                    passwordMatch = true;
+                    if(!exitLoopCheck(userInput) && passwordValidationResult == null){
+                        ui.passwordConfirm();
+                        passwordConfirm = input.getInput();
+                        if(password.equals(passwordConfirm)){
+                            newLogin.setPassword(password);
+                            passwordMatch = true;
+                        } else {
+                            ui.passwordNoMatch();
+                        }
+                    }
                 }
             }
-            ui.confirm(newAccount.getEmail(), newAccount.getFullName(), newAccount.getPhoneNumber());
-            userInput = input.getInput().toUpperCase();
-            if(userInput.equals("Y")){
-                newAccount.setId(getNewestAccountId()+1);
-                System.out.println("old account id: " +getNewestAccountId());
-                System.out.println("new account id: " +(getNewestAccountId()+1));
-                newAccount.setCreationDate(LocalDateTime.now());
-                newAccount.setDisabled(false);
-                newLogin.setId(setLoginId());
-                System.out.println("new login id: " +setLoginId());
-                newLogin.setAccountId(newAccount.getId());
-                confirmDetails = true;
-            } else if (userInput.equals("C")){
-                newAccount = null;
-                confirmDetails = true;
+            if(!exitLoopCheck(userInput)){
+                ui.confirm(newAccount.getEmail(), newAccount.getFullName(), newAccount.getPhoneNumber());
+                userInput = input.getInput().toUpperCase();
+                while (!userInput.equals("Y") && !userInput.equals("N")) {
+                	System.out.println("You must enter 'Y' for yes or 'N' for No. Try again:");
+                	userInput = input.getInput().toUpperCase();
+                }
+                if(userInput.equals("Y")){
+                    newAccount.setId(getNewestAccountId()+1);
+                    //System.out.println("old account id: " +getNewestAccountId());
+                    //System.out.println("new account id: " +(getNewestAccountId()+1));
+                    newAccount.setCreationDate(LocalDateTime.now());
+                    newAccount.setDisabled(false);
+                    newLogin.setId(setLoginId());
+                    //System.out.println("new login id: " +setLoginId());
+                    newLogin.setAccountId(newAccount.getId());
+                    confirmDetails = true;
+                    //System.out.println("New account created");
+                    //System.out.println(newAccount.getAccountDetails());
+                    file.write(accountRecord, newAccount.getProperties()+"\r\n");
+                    System.out.println("----------------------------");
+                    System.out.println("New login created");
+                    System.out.println(newLogin.getAccountDetails());
+                    file.write(loginRecord, newLogin.getProperties()+"\r\n");
+                } else if (userInput.equals("N")){
+                    newAccount = null;
+                    confirmDetails = true;
+                    System.out.println("Please start again!");
+                }
+            } else {
+                System.out.println("Account creation cancelled.");
             }
         }
-        
-        System.out.println("New account created");
-        System.out.println(newAccount.getAccountDetails());
-        file.write(accountRecord, newAccount.getProperties()+"\r\n");
-        System.out.println("New login created");
-        System.out.println(newLogin.getAccountDetails());
-        file.write(loginRecord, newLogin.getProperties()+"\r\n");
     }
+        
 
     public Account getAccountById(int accountId){
         // accountTable arraylist to store the file contents

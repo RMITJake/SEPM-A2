@@ -35,15 +35,15 @@ public class ValidationHandler {
 	  boolean emailMatch = false;
 	  boolean match = false;
 	  for(int index=0; index < accountTable.size(); index++) {
-		  String[] indexDetails = accountTable.get(index).split(",", -1);;
-          checkIndex.setEmail((indexDetails[1]));
-          if (!input.equals(checkIndex.getEmail()) && !match) {
-        	  emailMatch = true;
-          }
-          if (input.equals(checkIndex.getEmail())) {
-        	  match = true;
-        	  emailMatch = false;
-          }
+		  String[] indexDetails = accountTable.get(index).split(",", -1);
+      checkIndex.setEmail((indexDetails[1]));
+      if (!input.equals(checkIndex.getEmail()) && !match) {
+        emailMatch = true;
+      }
+      if (input.equals(checkIndex.getEmail())) {
+        match = true;
+        emailMatch = false;
+      }
 	  }
     if (emailMatch){
       return null;
@@ -85,11 +85,11 @@ public class ValidationHandler {
     // Per spec we check for uppercase and lowercase alphanumeric, no symbols
     // TEMPORARY - ONLY CHECKING FOR 4 MIN CHARACTERS FOR TESTING, PER SPEC CHECK FOR 20
     // Check length of the string
-    regex = "^[a-zA-Z\\d]{20,}";
+    regex = "^[a-zA-Z\\d]{6,}";
     lengthMatch = Pattern.matches(regex, input);
 
     if (!lengthMatch){
-      errorMessage = "**Password must be at least 20 characters long.\n";
+      errorMessage = "**Password must be at least 6 characters long.\n";
     }
 
     // Check uppercase
@@ -141,5 +141,14 @@ public class ValidationHandler {
     regex = "^(low|medium|high)$";
     boolean ticketStatusMatch = Pattern.matches(regex, input);
     return ticketStatusMatch;
+  }
+
+  public String reportDate(String input){
+    regex = "^([0-2][0-9]|[3][0-1])(0[0-9]|1[0-2])[0-9]{2,2}$";
+    boolean reportDateMatch = Pattern.matches(regex, input);
+    if(!reportDateMatch){
+      return "**Date format must be provided as DDMMYY";
+    }
+    return null;
   }
 }

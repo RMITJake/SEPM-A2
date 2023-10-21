@@ -25,22 +25,33 @@ Legend: X = done, W = Work in progress
 [X] Escalate ticket, requires SelectTicket
 
 7.
-[ ] Change ticket status, requires SelectTicket
+[X] Change ticket status, requires SelectTicket
 -> additional move tickets to the ArchiveTicket record
 
 8.
-[ ] Move ticket from OpenTickets to ArchivedTickets after 24 hours
+[X] Move ticket from closed to archived after 24 hours
 
 9.
 [X] Log in
 [X] Staff - See my open tickets
-[ ] Staff - See my archived tickets
-[W] Tech - See my assigned tickets
-[ ] Tech - See all archived tickets
-[ ] Tech - See all closed tickets
+[X] Staff - See my archived tickets
+[X] Tech - See my assigned tickets
+[X] Tech - See all archived tickets
+[X] Tech - See all closed tickets
 [ ] Tech - See all tickets
-[ ] L2 - See my escalations
-[ ] L2 - See all escalations
+
+10.
+[X] Show a report for a specified period
+[X] Show how many tickets were submitted in the report
+[ ] Show how many tickets are:
+	- [ ] Open
+	- [ ] Closed and Resolved
+	- [ ] Closed and Unresolved
+	- [ ] Archived
+[ ] Show who submitted each ticket
+[ ] Show the creation time of each ticket
+[ ] Show the severity
+[ ] Show who closed the ticket and how long it took to close
 
 ---
 # Key Classes and Functions

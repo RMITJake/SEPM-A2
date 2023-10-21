@@ -6,7 +6,12 @@ public class TicketUI {
     }
 
     public void severity(){
-        System.out.println("How severe is this issue? ");
+        String menu = "";
+        menu += "What is the severity of the ticket: \n";
+        menu += "[1] Low\n";
+        menu += "[2] Medium\n";
+        menu += "[3] High\n";
+        System.out.print(menu);
     }
 
     public void confirm(int requestedId, String description, String severity){
@@ -42,8 +47,28 @@ public class TicketUI {
         ticketDetails += "Status: " + ticket.getStatus() + "\n";
         ticketDetails += "Creation Date: " + ticket.getCreationDate()+ "\n";
         ticketDetails += "Resolution Date: " + ticket.getResolvedDate() + "\n";
-        System.out.println(ticketDetails);
+        System.out.print(ticketDetails);
         System.out.println("------------------------------");
+    }
+
+    public void displayTicket(Ticket ticket, String closureString){
+        String ticketDetails;
+        System.out.println("------------------------------");
+        ticketDetails = "Ticket ID: " + ticket.getId();
+        ticketDetails += ", Requester: " + ticket.getRequesterId() + "\n";
+        ticketDetails += "Assigned Technician: " + ticket.getTechnicianAssignedId() + "\n";
+        ticketDetails += "Description: " + ticket.getDescription() + "\n";
+        ticketDetails += "Severity: " + ticket.getSeverity() + "\n";
+        ticketDetails += "Status: " + ticket.getStatus() + "\n";
+        ticketDetails += "Creation Date: " + ticket.getCreationDate()+ "\n";
+        ticketDetails += "Resolution Date: " + ticket.getResolvedDate() + "\n";
+        ticketDetails += "Time from Creation to Resolution: " + closureString + "\n";
+        System.out.print(ticketDetails);
+        System.out.println("------------------------------");
+    }
+
+    public void emptyList(){
+        System.out.println("There are no tickets in the list");
     }
     
     public void archivedPrompt() {
@@ -52,14 +77,10 @@ public class TicketUI {
     
     public void changeSeverity(){
         String menu = "";
-        menu += "What is the severity of the ticket: ";
+        menu += "What is the severity of the ticket: \n";
+        menu += "[1] Low\n";
+        menu += "[2] Medium\n";
+        menu += "[3] High\n";
         System.out.print(menu);
     }
-
-    public void escalationReason(){
-        String menu = "";
-        menu += "Why is this ticket being escalated: ";
-        System.out.print(menu);
-    }
-    
 }

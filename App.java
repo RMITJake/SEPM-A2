@@ -12,19 +12,22 @@ class App {
         archive.getAllTickets();
         do{
             applicationLoop = menu.welcomeLoop().toUpperCase();
-            if(applicationLoop.equals("C")){
+            if(applicationLoop.equals(menu.createAccountOption)){
                 menu.createUser();
             }
-            if(applicationLoop.equals("F")){
+            if(applicationLoop.equals(menu.forgotPasswordOption)){
                 menu.forgotPassword();
             }
-            if(applicationLoop.equals("L")){
+            if(applicationLoop.equals(menu.loginOption)){
                 loggedIn = menu.loginLoop();
             }
             if(loggedIn){
                 applicationLoop = menu.mainMenuLoop();
+                if(applicationLoop.equals(menu.logoutOption)){
+                    loggedIn = false;
+                }
             }
-        } while (!applicationLoop.equals("Q"));
+        } while (!applicationLoop.equals(menu.quitOption));
         System.out.println("Thank you for using the program");
     }
 

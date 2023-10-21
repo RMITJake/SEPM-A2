@@ -22,12 +22,11 @@ public class TicketController {
 	private ValidationHandler validate = new ValidationHandler();
 	private TicketUI ui = new TicketUI();
 	private String userInput;
-	protected Ticket selectedTicket = new Ticket();
+	protected Ticket selectedTicket;
 
 	// Record strings, used to minimize hard coded file references
 	protected final String openTicketRecord = file.openTicketRecord;
 	protected List<String> allTickets;
-	private final String escalationRecord = file.escalationRecord;
 	private final String technicianRecord = file.technicianRecord;
 	List<Ticket> tickets;
 	
@@ -47,11 +46,34 @@ public class TicketController {
 			// Loop and validate this
 			ui.severity();
 			userInput = input.getInput();
+			while (!userInput.equals("1") && !userInput.equals("2") && !userInput.equals("3")) {
+				System.out.println("Retry, you must enter one of the options in the []. ");
+				ui.severity();
+				userInput = input.getInput();
+			}
+			if (userInput.equals("1")){
+				userInput = "low";
+			}
+			if (userInput.equals("2")){
+				userInput = "medium";
+			}
+			if (userInput.equals("3")){
+				userInput = "high";
+			}
 			newTicket.setSeverity(userInput);
 
 			ui.confirm(newTicket.getRequesterId(), newTicket.getDescription(), newTicket.getSeverity());
-			if (input.getInput().toUpperCase().equals("Y")) {
+			userInput = input.getInput();
+			while (!userInput.toUpperCase().equals("Y") && !userInput.toUpperCase().equals("N")) {
+				System.out.println("You must enter 'Y' for yes or 'N' for No. Try again:");
+				ui.confirm(newTicket.getRequesterId(), newTicket.getDescription(), newTicket.getSeverity());
+				userInput = input.getInput();
+			}
+			if (userInput.toUpperCase().equals("Y")) {
 				confirmDetails = true;
+			}
+			if (userInput.toUpperCase().equals("N")) {
+				System.out.println("Please start again!");
 			}
 		}
 
@@ -68,7 +90,7 @@ public class TicketController {
 		// Show ticket confirmation
 		System.out.println("New ticket created");
 		// Show ticket details
-		System.out.println(newTicket.getProperties());
+		System.out.println(newTicket.getTicketDetails());
 		// Write the ticket to OpenTicket.csv
 		file.write(record, newTicket.getProperties());
 	}
@@ -114,35 +136,40 @@ public class TicketController {
 				userTickets.add(ticketTable.get(index));
 			}
 		}
+		if(userTickets.size() == 0){
+			ui.emptyList();
+		}
 		return userTickets;
 	}
 
-//	public List<Ticket> getAllTickets() {
-//		tickets = new ArrayList<>();
-//
-//        try (BufferedReader reader = new BufferedReader(new FileReader("records/OpenTicket.csv"))) {
-//            String line;
-//            while ((line = reader.readLine()) != null) {
-//                String[] data = line.split(",");
-//                Ticket ticket = new Ticket();
-//                ticket.setId(Integer.parseInt(data[0]));
-//                ticket.setTechnicianAssignedId(Integer.parseInt(data[1]));
-//                ticket.setRequesterId(Integer.parseInt(data[2]));
-//                ticket.setDescription(data[3]);
-//                ticket.setSeverity(data[4]);
-//                ticket.setStatus(data[5]);
-//                ticket.setCreationDate(LocalDateTime.parse(data[6]));
-//                if (!data[7].equals("null")) {
-//                    ticket.setResolvedDate(LocalDateTime.parse(data[7]));
-//                }
-//                tickets.add(ticket);            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        
-//        return tickets;
-//    }
-//
+	public ArrayList<String> getAllTickets(String record) {
+		ArrayList<String> ticketTable = file.read(record);
+		return ticketTable;
+	}
+
+	public ArrayList<String> getUserTickets(String status, Technician currentTechnician, int flow){
+		// pass ints in to this function to control the flow
+		// 1 = my user tickets
+		// 2 = other users archived tickets
+		// This cuts down on code duplication
+		ArrayList<String> userTickets = new ArrayList<String>();
+		ArrayList<String> ticketTable = getAllTickets(openTicketRecord);
+		String[] ticket;
+		for (int index = 0; index < ticketTable.size(); index++) {
+			ticket = ticketTable.get(index).split(",", -1);
+			if(flow == 1 && Integer.parseInt(ticket[1]) == currentTechnician.getId() && ticket[5].equals(status)){
+				userTickets.add(ticketTable.get(index));
+			} else if (flow == 2 && Integer.parseInt(ticket[1]) != currentTechnician.getId() && ticket[5].equals(status)) {
+				userTickets.add(ticketTable.get(index));
+			}
+		}
+		if(userTickets.size() == 0){
+			ui.emptyList();
+		}
+		return userTickets;
+	}
+
+
 //    public void archiveOldTickets() {
 //        tickets = getAllTickets();
 //        for (Ticket ticket : tickets) {
@@ -282,8 +309,8 @@ public class TicketController {
 		do {
 			ui.forgotPassword();
 			userInput = input.getInput();
-		} while (validate.email(userInput) != null && !userInput.equals("B") && !userInput.equals("b"));
-		if (validate.email(userInput) != null) {
+		} while (validate.email(userInput) != null && !userInput.toUpperCase().equals("B"));
+		if (validate.email(userInput) == null) {
 			ui.forgotPassword(userInput);
 			resetPassword(userInput);
 		}
@@ -307,9 +334,14 @@ public class TicketController {
 		// Needs checks so users can only select their own tickets
 		// Techs can check all tickets
 		// Create an empty ticket
+		selectedTicket = new Ticket();
 		ui.selectTicket();
 		userInput = input.getInput();
-		if (validate.ticketId(userInput)) {
+		while (!validate.ticketId(userInput)){
+			System.out.println("You must enter a whole number. Try again:");
+			userInput = input.getInput();
+		}
+		if (validate.ticketId(userInput)){
 			ArrayList<String> ticketTable = file.read(openTicketRecord);
 			String[] ticketString;
 			int ticketIndex = 0;
@@ -329,9 +361,10 @@ public class TicketController {
 				}
 				ticketIndex++;
 			} while (selectedTicket.getId() == 0 && ticketIndex < ticketTable.size());
-
+			if(selectedTicket.getId() == 0){
+				System.out.println("No ticket found.");
+			}
 		}
-
 	}
 
 	public void updateTicketRecord(Ticket ticket) {
@@ -355,6 +388,8 @@ public class TicketController {
 
 	public void displayTicketString(String ticket) {
 		Ticket newTicket = new Ticket();
+		Duration closureTime;
+		String closureString;
 		String[] ticketString;
 		ticketString = ticket.split(",", -1);
 		newTicket.setId(Integer.parseInt(ticketString[0]));
@@ -364,14 +399,37 @@ public class TicketController {
 		newTicket.setSeverity(ticketString[4]);
 		newTicket.setStatus(ticketString[5]);
 		newTicket.setCreationDate(LocalDateTime.parse(ticketString[6]));
-		// selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
-		ui.displayTicket(newTicket);
+		if(!ticketString[7].equals("null")){
+			newTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
+			closureTime = Duration.between(newTicket.getCreationDate(), newTicket.getResolvedDate());
+			closureString = String.format("%d days, %02d hours, %02d minutes", 
+                                closureTime.toDays(), 
+                                (closureTime.toHours() % 24), 
+                                closureTime.toMinutesPart()); 
+			ui.displayTicket(newTicket, closureString);
+		} else {
+			ui.displayTicket(newTicket);
+		}
 	}
 
 	public void changeSeverity(Ticket ticket) {
 		userInput = "";
 		ui.changeSeverity();
-		userInput = input.getInput().toLowerCase();
+		userInput = input.getInput();
+		while (!userInput.equals("1") && !userInput.equals("2") && !userInput.equals("3")) {
+			System.out.println("Retry, you must enter one of the options in the []. ");
+			ui.severity();
+			userInput = input.getInput();
+		}
+		if (userInput.equals("1")){
+			userInput = "low";
+		}
+		if (userInput.equals("2")){
+			userInput = "medium";
+		}
+		if (userInput.equals("3")){
+			userInput = "high";
+		}
 		if(validate.ticketSeverity(userInput)){
 			if((!ticket.getSeverity().equals("high") && userInput.equals("high")) || ticket.getSeverity().equals("high") && !userInput.equals("high")){
 				ticket.setSeverity(userInput);
@@ -384,42 +442,14 @@ public class TicketController {
 		}
 	}
 
-	public void escalateTicket(Ticket ticket, Technician currentTechnician) {
-		// Options to escalate ticket
-		// 1. Create a new ticket in the escalate table which is assigned to L2
-		// - Pros = original CO maintains ticket ownership, L2 can open and close
-		// tickets for escalation
-		// - Cons
-		// 2. Assign ticket to L2
-		// - Pros = easy
-		// - Cons - L1 looses track of the ticket
-
-		Ticket escalationTicket = ticket;
-		ui.escalationReason();
-		String confirm;
-		do {
-			confirm = "";
-			userInput = input.getInput();
-			System.out.println("Is the below escalation reason correct? [Y/N] ");
-			System.out.println(userInput);
-			confirm = input.getInput().toUpperCase();
-		} while (!confirm.equals("Y"));
-		escalationTicket.setDescription(userInput);
-		escalationTicket.setRequesterId(currentTechnician.getId());
-		escalationTicket.setTechnicianAssignedId(assignTechnician("high"));
-		escalationTicket.setId(getNewestTicket(escalationRecord).getId() + 1);
-		escalationTicket.setCreationDate(LocalDateTime.now());
-		file.write(escalationRecord, escalationTicket.getProperties());
-	}
-
-	public void changeStatus(Ticket ticket, String menuOption) {
+		public void changeStatus(Ticket ticket, String menuOption) {
 		Ticket statusTicket = ticket;
 		statusTicket.setResolvedDate(LocalDateTime.now());
 		if (menuOption.equals("Y")) {
-			statusTicket.setStatus("closed and resolved");
+			statusTicket.setStatus(Ticket.closedResolvedStatus);
 			ui.displayTicket(statusTicket);
 		} else if (menuOption.equals("N")) {
-			statusTicket.setStatus("closed and unresolved");
+			statusTicket.setStatus(Ticket.closedUnresolvedStatus);
 			ui.displayTicket(statusTicket);
 		}
 		updateTicketRecord(statusTicket);
@@ -429,11 +459,11 @@ public class TicketController {
 
 	public void changeOpenStatus(Ticket ticket) {
 		Ticket statusTicket = ticket;
-		if (statusTicket.getStatus().equals("archived")) {
+		if (statusTicket.getStatus().equals(Ticket.archivedStatus)) {
 			ui.archivedPrompt();
 			ui.displayTicket(statusTicket);
 		} else {
-			statusTicket.setStatus("open and unresolved");
+			statusTicket.setStatus(Ticket.openStatus);
 			ui.displayTicket(statusTicket);
 		}
 		updateTicketRecord(statusTicket);
