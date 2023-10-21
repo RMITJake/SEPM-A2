@@ -16,7 +16,6 @@ import src.models.Ticket;
 public class ArchiveController {
 	private FileHandler fileHandler = new FileHandler();
 	public TicketController ticketController = new TicketController();
-	public final String openTicketRecord = fileHandler.openTicketRecord;
 	public ArrayList<String[]> allTickets;
 	public Iterator<String[]> iterator;
 	public ArrayList<Ticket> tickets;
@@ -24,7 +23,7 @@ public class ArchiveController {
 	public List<Ticket> getAllTickets() {
 		 tickets = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("records/OpenTicket.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader( "records/" + FileHandler.ticketRecord + ".csv"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");

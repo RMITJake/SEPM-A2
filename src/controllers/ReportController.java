@@ -8,11 +8,10 @@ import java.util.ArrayList;
 public class ReportController {
     private FileHandler file = new FileHandler();
     private TicketController ticket = new TicketController();
-    final String openTicketRecord = file.openTicketRecord;
 
     public void generateReport(ArrayList<String> allTickets, LocalDateTime startDate, LocalDateTime endDate){
-        ArrayList<String> filteredTickets = new ArrayList<String>();
         String[] currentTicket;
+        ArrayList<String> filteredTickets = new ArrayList<String>();
         ArrayList<String> openTickets = new ArrayList<String>();
         ArrayList<String> closedResolvedTickets = new ArrayList<String>();
         ArrayList<String> closedUnresolvedTickets = new ArrayList<String>();

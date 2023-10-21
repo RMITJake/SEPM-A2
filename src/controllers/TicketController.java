@@ -25,7 +25,7 @@ public class TicketController {
 	protected Ticket selectedTicket;
 
 	// Record strings, used to minimize hard coded file references
-	protected final String openTicketRecord = file.openTicketRecord;
+	// protected final String openTicketRecord = file.openTicketRecord;
 	protected List<String> allTickets;
 	private final String technicianRecord = file.technicianRecord;
 	List<Ticket> tickets;
@@ -78,7 +78,7 @@ public class TicketController {
 		}
 
 		// Use getNewestTicket() to calculate the ticket Id
-		newTicket.setId(getNewestTicket(openTicketRecord).getId() + 1);
+		newTicket.setId(getNewestTicket(FileHandler.ticketRecord).getId() + 1);
 		// Use assignTechnicianByTicketCount() to calculate assigned tech
 		newTicket.setTechnicianAssignedId(assignTechnician(newTicket.getSeverity()));
 		// Set the ticket status to open
@@ -153,7 +153,7 @@ public class TicketController {
 		// 2 = other users archived tickets
 		// This cuts down on code duplication
 		ArrayList<String> userTickets = new ArrayList<String>();
-		ArrayList<String> ticketTable = getAllTickets(openTicketRecord);
+		ArrayList<String> ticketTable = getAllTickets(FileHandler.ticketRecord);
 		String[] ticket;
 		for (int index = 0; index < ticketTable.size(); index++) {
 			ticket = ticketTable.get(index).split(",", -1);
@@ -242,7 +242,7 @@ public class TicketController {
 		// Int to store the case count for the assigned technician
 		int assignedTechnicianCaseCount = -1;
 		// Read the OpenTicket.csv to an array
-		ArrayList<String> openTicketTable = file.read(openTicketRecord);
+		ArrayList<String> openTicketTable = file.read(FileHandler.ticketRecord);
 		// Initialise an array to store the case counts
 		ArrayList<Integer> technicianCaseCount = new ArrayList<Integer>();
 		// String to temporarily hold split OpenTicket information
@@ -322,12 +322,12 @@ public class TicketController {
 		newTicket.setRequesterId(1);
 		newTicket.setDescription("Password Reset: " + email);
 		newTicket.setSeverity("low");
-		newTicket.setId(getNewestTicket(openTicketRecord).getId() + 1);
+		newTicket.setId(getNewestTicket(FileHandler.ticketRecord).getId() + 1);
 		newTicket.setTechnicianAssignedId(assignTechnician(newTicket.getSeverity()));
 		newTicket.setStatus("open and unresolved");
 		newTicket.setCreationDate(LocalDateTime.now());
 		// Write the ticket to OpenTicket.csv
-		file.write(openTicketRecord, newTicket.getProperties());
+		file.write(FileHandler.ticketRecord, newTicket.getProperties());
 	}
 
 	public void selectTicket() {
@@ -342,7 +342,7 @@ public class TicketController {
 			userInput = input.getInput();
 		}
 		if (validate.ticketId(userInput)){
-			ArrayList<String> ticketTable = file.read(openTicketRecord);
+			ArrayList<String> ticketTable = file.read(FileHandler.ticketRecord);
 			String[] ticketString;
 			int ticketIndex = 0;
 			do {
@@ -368,7 +368,7 @@ public class TicketController {
 	}
 
 	public void updateTicketRecord(Ticket ticket) {
-		ArrayList<String> oldTicketTable = file.read(openTicketRecord);
+		ArrayList<String> oldTicketTable = file.read(FileHandler.ticketRecord);
 		String newTicketTable = "";
 		String[] ticketString;
 		for (int ticketIndex = 0; ticketIndex < oldTicketTable.size(); ticketIndex++) {
@@ -379,7 +379,7 @@ public class TicketController {
 				newTicketTable += oldTicketTable.get(ticketIndex) + "\r\n";
 			}
 		}
-		file.writeOver(openTicketRecord, newTicketTable);
+		file.writeOver(FileHandler.ticketRecord, newTicketTable);
 	}
 
 	public void displayTicket(Ticket ticket) {

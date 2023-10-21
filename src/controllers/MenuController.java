@@ -98,10 +98,9 @@ public class MenuController {
 			ui.mainMenu(currentTechnician.getId());
 			menuOption = input.getInput().toUpperCase();
 			if (menuOption.equals(ui.createNewTicketOption)) {
-				ticket.createNewTicket(currentUser, ticket.openTicketRecord);
+				ticket.createNewTicket(currentUser, FileHandler.ticketRecord);
 			} else if (menuOption.equals(ui.myOpenTicketsOption)) {
-				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, null);
-//				ticket.getAllTickets();
+				ArrayList<String> myTickets = ticket.getAllTickets(FileHandler.ticketRecord, currentUser, null);
 				for (int index = 0; index < myTickets.size(); index++) {
 					ticket.displayTicketString(myTickets.get(index));
 				}
@@ -112,7 +111,7 @@ public class MenuController {
 			
 			// Technician menu options
 			else if (menuOption.equals(ui.assignedTicketsOption)) {
-				ArrayList<String> myTickets = ticket.getAllTickets(ticket.openTicketRecord, currentUser, currentTechnician);
+				ArrayList<String> myTickets = ticket.getAllTickets(FileHandler.ticketRecord, currentUser, currentTechnician);
 				String[] currentTicket;
 				for (int index = 0; index < myTickets.size(); index++) {
 					currentTicket = myTickets.get(index).split(",",-1);
@@ -247,7 +246,7 @@ public class MenuController {
 			}
 		} while(!menuOption.equals(ui.confirmOption) && !menuOption.toUpperCase().equals(ui.backOption));
 		if(menuOption.equals(ui.confirmOption)){
-			ArrayList<String> allTickets = ticket.getAllTickets(file.openTicketRecord);
+			ArrayList<String> allTickets = ticket.getAllTickets(FileHandler.ticketRecord);
 			LocalDateTime startDate = start.atStartOfDay();
 			LocalDateTime endDate = end.atStartOfDay();
 			report.generateReport(allTickets, startDate, endDate);
