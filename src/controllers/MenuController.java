@@ -198,9 +198,9 @@ public class MenuController {
 					menuOption = input.getInput().toUpperCase();
 				}
 				if (menuOption.equals(ui.confirmOption)) {
-					ticket.changeStatus(ticket.selectedTicket, menuOption);
+					ticket.changeStatus(ticket.selectedTicket, menuOption, currentTechnician);
 				} else if (menuOption.equals(ui.rejectOption)) {
-					ticket.changeStatus(ticket.selectedTicket, menuOption);
+					ticket.changeStatus(ticket.selectedTicket, menuOption, currentTechnician);
 				}
 			}
 		} while (!menuOption.equals(ui.backOption));			

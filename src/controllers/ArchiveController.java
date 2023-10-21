@@ -37,8 +37,10 @@ public class ArchiveController {
                 ticket.setCreationDate(LocalDateTime.parse(data[6]));
                 if (!data[7].equals("null")) {
                     ticket.setResolvedDate(LocalDateTime.parse(data[7]));
+                    ticket.setClosingTechnician(Integer.parseInt(data[8]));
                 }
-                tickets.add(ticket);            }
+                tickets.add(ticket);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -46,15 +48,15 @@ public class ArchiveController {
         return tickets;
     }
 	public void archiveOldTickets() {
-      for (Ticket ticket : tickets) {
-          if (ticket.getResolvedDate() != null) { 	
-              if (LocalDateTime.now().isAfter(ticket.getResolvedDate().plusDays(1)) 
-                  && ((ticket.getStatus().equals("closed and resolved") 
-                  || ticket.getStatus().equals("closed and unresolved")))) {
-                  ticket.setStatus("archived");
-                  ticketController.updateTicketRecord(ticket);                   
-              }
-          }
-      }
-  }
+        for (Ticket ticket : tickets) {
+            if (ticket.getResolvedDate() != null) { 	
+                if (LocalDateTime.now().isAfter(ticket.getResolvedDate().plusDays(1)) 
+                    && ((ticket.getStatus().equals("closed and resolved") 
+                    || ticket.getStatus().equals("closed and unresolved")))) {
+                    ticket.setStatus("archived");
+                    ticketController.updateTicketRecord(ticket);                   
+                }
+            }
+        }
+    }
 }

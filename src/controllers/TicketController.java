@@ -339,6 +339,7 @@ public class TicketController {
 					selectedTicket.setCreationDate(LocalDateTime.parse(ticketString[6]));
 					if (ticketString[7] != null && !ticketString[7].equals("null")) {
 						selectedTicket.setResolvedDate(LocalDateTime.parse(ticketString[7]));
+						selectedTicket.setClosingTechnician(Integer.parseInt(ticketString[8]));
 					}
 				}
 				ticketIndex++;
@@ -388,6 +389,7 @@ public class TicketController {
                                 closureTime.toDays(), 
                                 (closureTime.toHours() % 24), 
                                 closureTime.toMinutes()); 
+			newTicket.setClosingTechnician(Integer.parseInt(ticketString[8]));
 			ui.displayTicket(newTicket, closureString);
 		} else {
 			ui.displayTicket(newTicket);
@@ -424,14 +426,16 @@ public class TicketController {
 		}
 	}
 
-		public void changeStatus(Ticket ticket, String menuOption) {
+		public void changeStatus(Ticket ticket, String menuOption, Technician technician) {
 		Ticket statusTicket = ticket;
 		statusTicket.setResolvedDate(LocalDateTime.now());
 		if (menuOption.equals("Y")) {
 			statusTicket.setStatus(Ticket.closedResolvedStatus);
+			statusTicket.setClosingTechnician(technician.getId());
 			ui.displayTicket(statusTicket);
 		} else if (menuOption.equals("N")) {
 			statusTicket.setStatus(Ticket.closedUnresolvedStatus);
+			statusTicket.setClosingTechnician(technician.getId());
 			ui.displayTicket(statusTicket);
 		}
 		updateTicketRecord(statusTicket);

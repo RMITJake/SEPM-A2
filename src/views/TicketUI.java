@@ -47,6 +47,7 @@ public class TicketUI {
         ticketDetails += "Status: " + ticket.getStatus() + "\n";
         ticketDetails += "Creation Date: " + ticket.getCreationDate()+ "\n";
         ticketDetails += "Resolution Date: " + ticket.getResolvedDate() + "\n";
+        ticketDetails += "Closing Technician: " + ticket.getClosingTechnician() + "\n";
         System.out.print(ticketDetails);
         System.out.println("------------------------------");
     }
@@ -62,6 +63,7 @@ public class TicketUI {
         ticketDetails += "Status: " + ticket.getStatus() + "\n";
         ticketDetails += "Creation Date: " + ticket.getCreationDate()+ "\n";
         ticketDetails += "Resolution Date: " + ticket.getResolvedDate() + "\n";
+        ticketDetails += "Closing Technician: " + ticket.getClosingTechnician() + "\n";
         ticketDetails += "Time from Creation to Resolution: " + closureString + "\n";
         System.out.print(ticketDetails);
         System.out.println("------------------------------");

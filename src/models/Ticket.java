@@ -10,6 +10,7 @@ public class Ticket {
     String status;
     LocalDateTime creationDate;
     LocalDateTime resolvedDate;
+    int closingTechnician;
 
     // Variables are static to be used without a Ticket model being initialised
     // Severities
@@ -48,6 +49,9 @@ public class Ticket {
     public LocalDateTime getResolvedDate() { return resolvedDate; }
     public void setResolvedDate(LocalDateTime resolvedDate){ this.resolvedDate = resolvedDate; }
 
+    public int getClosingTechnician(){ return this.closingTechnician; }
+    public void setClosingTechnician(int closingTechnician){ this.closingTechnician = closingTechnician; }
+
     // Return model properties in CSV format
     public String getProperties(){
         String details = "";
@@ -58,7 +62,8 @@ public class Ticket {
         details += this.severity + ",";
         details += this.status + ",";
         details += this.creationDate + ",";
-        details += this.resolvedDate + "\r\n";
+        details += this.resolvedDate + ",";
+        details += this.closingTechnician + "\r\n";
         return details;
     }
 
@@ -72,6 +77,8 @@ public class Ticket {
     	ticketDetails += "Severity: "+this.severity + "\n";
     	ticketDetails += "Status: "+this.status + "\n";
     	ticketDetails += "Creation Date: "+this.creationDate + "\n";
+    	ticketDetails += "Resolved Date: "+this.resolvedDate + "\n";
+    	ticketDetails += "Closing Technician: "+this.closingTechnician + "\n";
     	ticketDetails += "----------------------------";
     	return ticketDetails;
     }
