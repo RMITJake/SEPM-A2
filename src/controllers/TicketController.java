@@ -27,7 +27,6 @@ public class TicketController {
 	// Record strings, used to minimize hard coded file references
 	// protected final String openTicketRecord = file.openTicketRecord;
 	protected List<String> allTickets;
-	private final String technicianRecord = file.technicianRecord;
 	List<Ticket> tickets;
 	
 	public void createNewTicket(Account currentUser, String record) {
@@ -212,7 +211,7 @@ public class TicketController {
 
 	private ArrayList<Integer> assignTechnicianBySeverity(String severity) {
 		// Read Technician.csv into an array
-		ArrayList<String> technicianTable = file.read(technicianRecord);
+		ArrayList<String> technicianTable = file.read(FileHandler.technicianRecord);
 		ArrayList<Integer> technicianList = new ArrayList<Integer>();
 
 		String technicianLevel;
