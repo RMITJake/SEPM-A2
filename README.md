@@ -1,20 +1,20 @@
-# 👨‍💻👩‍💻 IT Service Desk Ticketing System
+# IT Service Desk Ticketing System
 - Software Engineering Project Management Assessment 2
 - An IT Service Desk ticketing system for a small startup, Cinco. 
 <br/>It allows staff members to submit IT issues and technicians to manage and resolve the issues efficiently.
 - Developed using openjdk version "17.0.8" 2023-07-18.
 
-## 📁 Files
+## Files
 - As the project is pure Java and there is no scope to write SQL queries, data persistence will be handled through csv files in the "records" folder which will act in place of database tables. Each file will be a list of records reflecting the structure of it's associated class.
 
 
 ---
-# 📄 User Guide
-## ✅ Prerequisites 
+# User Guide
+## Prerequisites 
 - OpenJDK 17.0.8 or a compatible version should be installed.
 - Have an access to [RMIT's myDesktop](https://mydesktop.rmit.edu.au/).
 
-## 🔢 Example Accounts (for Testing Purposes)
+## Example Accounts (for Testing Purposes)
 
 > **Staff**
 
@@ -32,16 +32,16 @@
 | `4000`  | `Password123`  |
 
 
-## ▶ Running the program
+## Running the program
 Follow these steps to execute the IT Service Desk Ticketing System.
 
-### Step 1: 📥 Download the ZIP file
+### Step 1: Download the ZIP file
 1. Open ***Google Chrome*** and go to [SEPM-2 Github](https://github.com/RMITJake/SEPM-A2).
 2. Sign in using your Github credentials.
 3. Click `<> Code` and `Download ZIP` to download `SEPM-2-main.zip`.
 4. Unzip the downloaded file in the ***Downloads*** folder. 
 
-### Step 2: ▶ Run the Java application
+### Step 2: Run the Java application
 1. Open ***Eclipse*** >> ***File*** >> ***Open Projects from File System...***
 2. Click ***Directory*** >> ***Downloads/SEPM-A2-main*** >> ***Finish***
 3. Click the `SEPM-A2-main` in ***Project Explorer*** and then click the *green play button* to run the app.
@@ -50,7 +50,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
 4. The Java application is successfully running!
 <br/>![Screenshot2](https://github.com/RMITJake/SEPM-A2/blob/579735a7708b685596d7f76bca497ac8bb4c82f4/Screen%20Shot%2057.png) 
 
-### Step 3: 🖥 Execute the IT Service Desk Ticketing System
+### Step 3: Execute the IT Service Desk Ticketing System
 1. Menu Options: 
     1. Upon starting, the program presents the following options:
         - `L` - Log in to an existing account.
@@ -87,7 +87,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
         1. Check the Ticket Information and its status.
     8. Enter `Q` to quit the system. Thank you for using!
 
-4. 🔐 ***`[AS A TECHNICIAN]`*** Login:
+4. ***`[AS A TECHNICIAN]`*** Login:
     1. Enter `L` to log in.
     2. Enter your account ID (e.g. `4000`).
     3. Enter your password (e.g. `Password123`).
@@ -129,11 +129,11 @@ Follow these steps to execute the IT Service Desk Ticketing System.
             1. `Open` status
                 1. Enter `O` to open the ticket.
                 2. The ticket has been opened. Check the updated Ticket Information.
-            2. `Close` status - `Resolved` ✅
+            2. `Close` status - `Resolved`
                 1. Enter `X` to close the ticket.
                 2. Enter ***Y***, meaning that the issue was resolved.
                 3. Check the updated Ticket Information.
-            3. `Close` status - `Unresolved` ❎
+            3. `Close` status - `Unresolved`
                 1. Enter `X` to close the ticket.
                 2. Enter ***N***, meaning that the issue was unresolved.
                 3. Check the updated Ticket Information.
