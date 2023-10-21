@@ -168,23 +168,6 @@ public class TicketController {
 		return userTickets;
 	}
 
-
-//    public void archiveOldTickets() {
-//        tickets = getAllTickets();
-//        for (Ticket ticket : tickets) {
-//            System.out.println(ticket.getStatus());
-//            if (ticket.getResolvedDate() != null) { 	
-//                System.out.println(ticket.getStatus());
-//                if (ticket.getResolvedDate().isAfter(LocalDateTime.now().plusDays(1)) 
-//                    && (ticket.getStatus().equals("closed and resolved") 
-//                    || ticket.getStatus().equals("closed and unresolved"))) {
-//                    ticket.setStatus("archived");
-//                    updateTicketRecordArchive(ticket);                   
-//                }
-//            }
-//        }
-//    }
-//
     public void updateTicketRecordArchive(Ticket updatedTicket) {
         // Update the list of tickets in memory
         for (int i = 0; i < tickets.size(); i++) {
