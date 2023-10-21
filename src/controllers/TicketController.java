@@ -388,7 +388,7 @@ public class TicketController {
 			closureString = String.format("%d days, %02d hours, %02d minutes", 
                                 closureTime.toDays(), 
                                 (closureTime.toHours() % 24), 
-                                closureTime.toMinutes()); 
+                                closureTime.toMinutes() % 60); 
 			newTicket.setClosingTechnician(Integer.parseInt(ticketString[8]));
 			ui.displayTicket(newTicket, closureString);
 		} else {

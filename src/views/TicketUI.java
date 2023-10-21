@@ -1,5 +1,6 @@
 package src.views;
 import src.models.Ticket;
+import java.time.format.DateTimeFormatter;
 public class TicketUI {
     public void description(){
         System.out.println("What is the issue? ");
@@ -45,9 +46,11 @@ public class TicketUI {
         ticketDetails += "Description: " + ticket.getDescription() + "\n";
         ticketDetails += "Severity: " + ticket.getSeverity() + "\n";
         ticketDetails += "Status: " + ticket.getStatus() + "\n";
-        ticketDetails += "Creation Date: " + ticket.getCreationDate()+ "\n";
-        ticketDetails += "Resolution Date: " + ticket.getResolvedDate() + "\n";
-        ticketDetails += "Closing Technician: " + ticket.getClosingTechnician() + "\n";
+        ticketDetails += "Creation Date: " + ticket.getCreationDate().format(DateTimeFormatter.ofPattern("dd/mm/yyyy HH:mm:ss")) + "\n";
+        if(ticket.getClosingTechnician() != 0){
+            ticketDetails += "Resolution Date: " + ticket.getResolvedDate() + "\n";
+            ticketDetails += "Closing Technician: " + ticket.getClosingTechnician() + "\n";
+        }
         System.out.print(ticketDetails);
         System.out.println("------------------------------");
     }
@@ -61,10 +64,12 @@ public class TicketUI {
         ticketDetails += "Description: " + ticket.getDescription() + "\n";
         ticketDetails += "Severity: " + ticket.getSeverity() + "\n";
         ticketDetails += "Status: " + ticket.getStatus() + "\n";
-        ticketDetails += "Creation Date: " + ticket.getCreationDate()+ "\n";
-        ticketDetails += "Resolution Date: " + ticket.getResolvedDate() + "\n";
-        ticketDetails += "Closing Technician: " + ticket.getClosingTechnician() + "\n";
-        ticketDetails += "Time from Creation to Resolution: " + closureString + "\n";
+        ticketDetails += "Creation Date: " + ticket.getCreationDate().format(DateTimeFormatter.ofPattern("dd/mm/yyyy HH:mm:ss")) + "\n";
+        if(ticket.getClosingTechnician() != 0){
+            ticketDetails += "Resolution Date: " + ticket.getResolvedDate().format(DateTimeFormatter.ofPattern("dd/mm/yyyy HH:mm:ss")) + "\n";
+            ticketDetails += "Closing Technician: " + ticket.getClosingTechnician() + "\n";
+            ticketDetails += "Time from Creation to Resolution: " + closureString + "\n";
+        }
         System.out.print(ticketDetails);
         System.out.println("------------------------------");
     }

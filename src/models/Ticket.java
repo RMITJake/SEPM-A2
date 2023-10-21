@@ -1,5 +1,6 @@
 package src.models;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 public class Ticket {
     // Required model properties
     int id;
@@ -76,8 +77,8 @@ public class Ticket {
     	ticketDetails += "Issue Description: "+this.description + "\n";
     	ticketDetails += "Severity: "+this.severity + "\n";
     	ticketDetails += "Status: "+this.status + "\n";
-    	ticketDetails += "Creation Date: "+this.creationDate + "\n";
-    	ticketDetails += "Resolved Date: "+this.resolvedDate + "\n";
+    	ticketDetails += "Creation Date: "+ this.creationDate + "\n";
+    	ticketDetails += "Resolved Date: "+ this.resolvedDate + "\n";
     	ticketDetails += "Closing Technician: "+this.closingTechnician + "\n";
     	ticketDetails += "----------------------------";
     	return ticketDetails;

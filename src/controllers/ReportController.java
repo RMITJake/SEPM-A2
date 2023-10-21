@@ -17,13 +17,6 @@ public class ReportController {
         ArrayList<String> closedUnresolvedTickets = new ArrayList<String>();
         ArrayList<String> archivedTickets = new ArrayList<String>();
 
-        //SHOW
-        //who
-        //when submitted (creationDate)
-        //severity
-        //tecnician
-        //time to close (Close date - creation date)
-
         for(int index=0; index < allTickets.size(); index++){
             currentTicket = allTickets.get(index).split(",", -1);
             LocalDateTime currentTicketDate = LocalDateTime.parse(currentTicket[6]);
@@ -50,12 +43,6 @@ public class ReportController {
         System.out.println("Number of closed and unresolved tickets: " + closedUnresolvedTickets.size());
         System.out.println("Number of archived tickets: " + archivedTickets.size());
         System.out.println("");
-        // for(int i=0; i < allTickets.size(); i++){
-        //     System.out.println("DEBUGGING ALLTICKETS: " + allTickets.get(i));
-        // }
-        // for(int i=0; i < filteredTickets.size(); i++){
-        //     System.out.println("DEBUGGING FILTEREDTICKETS: " + filteredTickets.get(i));
-        // }
         System.out.println("OPEN TICKETS");
         for(int i=0; i < openTickets.size(); i++){
             ticket.displayTicketString(openTickets.get(i));
