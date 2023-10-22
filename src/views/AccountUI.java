@@ -22,7 +22,7 @@ public class AccountUI {
   }
 
   public void passwordNoMatch(){
-    System.out.println("Passwords did not match!");
+    System.out.println("Passwords did not match! Try again or press \"B\" to go back to the starting menu");
   }
 
   public void confirm(String email, String fullName, int phoneNumber){
