@@ -62,7 +62,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
     1. Enter `C` to create a new user account.
     2. Enter your email address.
     3. Enter your full name.
-    4. Enter your valid phone number (*the phone number length should be **10***).
+    4. Enter your valid phone number (*the phone number length should be **10*** characters).
     5. Enter a new password (including **lowercase**/**uppercase**/**number**/**min 6 characters**).
     6. Confirm the entered password.
     7. Check the Account Summary and confirm it is correct `Y`/`N`.
@@ -103,6 +103,7 @@ Follow these steps to execute the IT Service Desk Ticketing System.
             - `H` - Other Technician's Closed Tickets.
             - `U` - My Archived Tickets.
             - `V` - Other Technician's Archived Tickets.
+						- `R` - Generate Report.
             - `L` - Logout the account.
             - `Q` - Quit the system.
     6. Enter `N` to create a new ticket.
