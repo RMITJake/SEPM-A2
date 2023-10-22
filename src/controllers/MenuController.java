@@ -121,7 +121,6 @@ public class MenuController {
 			} else if (menuOption.equals(ui.pickTicketOption) && currentTechnician.getId() != 0) {
 				ticket.selectTicket();
 				ticketMenuLoop();
-			// } else if (menuOption.equals(myArchivedTicketsOption) && currentTechnician.getId() != 0){
 			} else if (menuOption.equals(ui.myArchivedTicketsOption) && currentTechnician.getId() != 0){
 				ArrayList<String> archivedTickets = ticket.getUserTickets(Ticket.archivedStatus, currentTechnician, 1);
 				displayTicketList(archivedTickets);

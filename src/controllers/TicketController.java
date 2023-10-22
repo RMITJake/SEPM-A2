@@ -288,13 +288,20 @@ public class TicketController {
 	}
 
 	public void forgotPassword() {
+		String emailValidationResult;
 		do {
 			ui.forgotPassword();
 			userInput = input.getInput();
+			emailValidationResult = validate.email(userInput);
+			if(emailValidationResult != null){
+				System.out.println(emailValidationResult);
+			}
 		} while (validate.email(userInput) != null && !userInput.toUpperCase().equals("B"));
 		if (validate.email(userInput) == null) {
 			ui.forgotPassword(userInput);
-			resetPassword(userInput);
+			if(validate.emailUniqueCheck(userInput) != null){
+				resetPassword(userInput);
+			}
 		}
 	}
 
