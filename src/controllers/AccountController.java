@@ -101,6 +101,8 @@ public class AccountController {
                         if(password.equals(passwordConfirm)){
                             newLogin.setPassword(password);
                             passwordMatch = true;
+                        } else if (exitLoopCheck(passwordConfirm)){
+                            userInput = passwordConfirm;
                         } else {
                             ui.passwordNoMatch();
                         }
