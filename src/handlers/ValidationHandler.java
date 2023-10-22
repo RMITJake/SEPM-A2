@@ -151,4 +151,13 @@ public class ValidationHandler {
     }
     return null;
   }
+
+  public String loginId(String input){
+    regex = "^[\\d]{4,4}$";
+    boolean loginIdMatch = Pattern.matches(regex, input);
+    if(!loginIdMatch){
+      return "**Login IDs are 4 digits long (e.g. 4000). Try again or enter \"B\" to go back.";
+    }
+    return null;
+  }
 }
